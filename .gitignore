@@ -1,0 +1,11 @@
+/_book
+/_ignore
+/.DS_Store
+/.quarto/
+
+/_*
+
+!_quarto.yml
+
+/chapters/*_files
+/chapters/*ipynb

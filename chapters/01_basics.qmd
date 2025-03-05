@@ -1,0 +1,1285 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-02-04"
+jupyter: python3
+---
+
+# Basics
+
+Welcome to your first Python tutorial! In this lesson, we'll explore the fundamental building blocks of Python programming, including:
+
+- Variables and how to use them
+- Basic data types (numbers, text, and true/false values)
+- Common operators for calculations and comparisons
+- Essential built-in functions
+- How to control program flow with conditional statements
+
+This is a comprehensive tutorial that covers a lot of ground. Don't feel pressured to master everything at once -- we'll be practicing these concepts throughout the course. Think of this as your first exposure to these ideas, and we'll build on them step by step in the coming weeks.
+
+## Introduction to Python
+
+### What is Python?
+
+Python is a high-level, interpreted programming language known for its simplicity and readability. Created by Guido van Rossum in 1991, it has become one of the most popular languages in scientific computing and bioinformatics.
+
+#### High level
+
+Python is a high-level programming language, meaning it handles many complex computational details automatically. For example, rather than managing computer memory directly, Python does this for you. This allows biologists and researchers to focus on solving scientific problems rather than dealing with technical computing details.
+
+#### Interpreted
+
+Python is an interpreted language, which means you can write code and run it immediately without an extra compilation step. This makes it ideal for bioinformatics work where you often need to:
+
+- Test different approaches to data analysis
+- Quickly prototype analysis pipelines
+- Interactively explore datasets
+
+#### Readable syntax
+
+Python's code is designed to be readable and clear, often reading almost like English. For example:
+
+```python
+if dna_sequence.startswith(start_codon) and dna_sequence.endswith(stop_codon):
+    potential_genes.append(dna_sequence)
+```
+
+Even if you're new to programming, you can probably guess that this code is looking for potential genes by checking a DNA sequence for a start and a stop codon, and if found, adding the sequence to a list of potential genes.
+
+This readability is particularly valuable in research settings where code needs to be shared and reviewed by collaborators.
+
+### Use cases
+
+Python is a versatile language that can be used for a wide range of applications, including:
+
+- Artificial intelligence and machine learning (e.g., TensorFlow, PyTorch)
+- Web development (Django, Flask)
+- Desktop applications (PyQt, Tkinter)
+- Game development (Pygame)
+- Automation and scripting
+
+And of course, bioinformatics and scientific computing:
+
+- Sequence analysis and processing (Biopython, pysam)
+- Phylogenetics (ETE Toolkit)
+- Data visualization (matplotlib, seaborn)
+- Pipeline automation (snakemake for reproducible workflows)
+- Microbial ecology and microbiome analysis (QIIME)
+
+### Why Python for bioinformatics?
+
+Python has become a widely used tool in bioinformatics for several key reasons:
+
+- **Rich ecosystem**: Extensive libraries specifically for biological data analysis
+- **Active scientific community**: Regular updates and support for bioinformatics tools
+- **Integration capabilities**: Easily connects with other bioinformatics tools and databases
+- **Data science support**: Strong support for data manipulation and statistical analysis
+- **Reproducibility**: Excellent tools for creating reproducible research workflows
+
+Whether you're analyzing sequencing data, building analysis pipelines, or developing new computational methods, Python provides the tools and community support needed for modern biological research.
+
+## Variables
+
+Think of variables as labeled containers for storing data in your program. Just as you might label test tubes in a lab to keep track of different samples, variables let you give meaningful names to your data -- whether they're numbers, text, true/false values, or more complex information.
+
+For example, instead of working with raw values like this:
+
+```{python}
+if 47 > 40:
+    print("Temperature too high!")
+```
+
+You can use descriptive variables to make your code clearer:
+
+```{python}
+temperature = 42.3
+temperature_threshold = 40.0
+
+if temperature > temperature_threshold:
+    print("Temperature too high!")
+```
+
+In this section, we'll cover:
+
+- Creating and using variables
+- Understanding basic data types (numbers, text, true/false values)
+- Following Python's naming conventions
+- Converting between different data types
+- Best practices for using variables in scientific code
+
+By the end, you'll be able to use variables effectively to write clear, maintainable research code.
+
+### Creating variables
+
+In Python, you create a variable by giving a name to a value using the `=` operator. Here's a basic example:
+
+```{python}
+sequence_length = 1000
+species_name = "Escherichia coli"
+```
+
+You can then use these variables anywhere in your code by referring to their names. Variables can be combined to create new variables:
+
+```{python}
+# Combining text (string) variables
+genus = "Escherichia"
+species = "coli"
+full_name = genus + " " + species
+print(full_name)  # Prints: Escherichia coli
+
+# Calculations with numeric variables
+reads_forward = 1000000
+reads_reverse = 950000
+total_reads = reads_forward + reads_reverse
+print(total_reads)  # Prints: 1950000
+```
+
+Notice how the `+` operator works differently depending on what type of data we're using:
+
+- With text (strings), it joins them together
+- With numbers, it performs addition
+
+You can also use variables in more complex calculations:
+
+```{python}
+gc_count = 2200
+total_bases = 5000
+gc_content = gc_count / total_bases
+print(gc_content)  # Prints: 0.44
+```
+
+The ability to give meaningful names to values makes your code easier to understand and modify. Instead of trying to remember what the number 5000 represents, you can use a clear variable name like `total_bases`.
+
+### Reassigning variables
+
+Python allows you to change what's stored in a variable after you create it. Let's see how this works:
+
+```{python}
+read_depth = 100
+print(f"Initial read depth: {read_depth}")
+
+read_depth = 47
+print(f"Updated read depth: {read_depth}")
+```
+
+This flexibility extends even further -- Python lets you change not just the value, but also the type of data a variable holds:
+
+```{python}
+quality_score = 30
+quality_score = "High quality"
+print(quality_score)
+```
+
+While this flexibility can be useful, it can also lead to unexpected behavior if you're not careful. Here's an example that could cause problems in a sequence analysis pipeline:
+
+```{python}
+# Correctly calculates and prints the total number of sequences.
+sequences_per_sample = 1000
+sample_count = 5
+total_sequences = sequences_per_sample * sample_count
+print(f"total sequences: {total_sequences}")
+
+# This one produces an unexpected result!
+sequences_per_sample = "1000 sequences "
+sample_count = 5
+total_sequences = sequences_per_sample * sample_count
+print(f"total sequences: {total_sequences}")
+```
+
+In the second case, instead of performing multiplication, Python repeats the string `"1000 sequences "` 5 times! This is probably not what you wanted in your genomics pipeline!
+
+This kind of type changing can be a common source of bugs, especially when:
+
+- Processing input from files or users
+- Handling missing or invalid data
+- Converting between different data formats
+
+Best practice is to be consistent with your variable types throughout your code, and explicitly convert between types when necessary.
+
+#### Augmented assignments
+
+Let's look at a common pattern when working with variables. Here's one way to increment a counter:
+
+```{python}
+read_count = 100
+read_count = read_count + 50
+print(f"Total reads: {read_count}")
+```
+
+Python provides a shorter way to write this using augmented assignment operators:
+
+```{python}
+read_count = 100
+read_count += 50
+print(f"Total reads: {read_count}")
+```
+
+These augmented operators combine arithmetic with assignment. Common ones include:
+
+- `+=`: augmented addition (increment)
+- `-=`: augmented subtraction (decrement)
+- `*=`: augmented multiplication
+- `/=`: augmented division
+
+These operators are particularly handy when updating running totals or counters, like when tracking how many sequences pass quality filters. We'll explore more uses in the next tutorial.
+
+### Named constants
+
+Sometimes you'll want to define values that shouldn't change throughout your program.
+
+```{python}
+GENETIC_CODE_SIZE = 64
+print(f"There are {GENETIC_CODE_SIZE} codons in the standard genetic code")
+
+DNA_BASES = ['A', 'T', 'C', 'G']
+print(f"The DNA bases are: {DNA_BASES}")
+```
+
+In Python, we use ALL_CAPS names as a convention to indicate these values shouldn't change. However, it's important to understand that Python doesn't actually prevent these values from being changed. For example:
+
+```{python}
+MIN_QUALITY_SCORE = 30
+print(f"Filtering sequences with quality scores below {MIN_QUALITY_SCORE}")
+
+MIN_QUALITY_SCORE = 20  # We can change it, even though we shouldn't!
+print(f"Filtering sequences with quality scores below {MIN_QUALITY_SCORE}")
+```
+
+Think of Python variables like labels on laboratory samples: you can always move a label from one test tube to another. When you write:
+
+```{python}
+DNA_BASES = ['A', 'T', 'C', 'G']
+DNA_BASES = ['A', 'U', 'C', 'G']  # Oops, switched to RNA bases!
+print(f"These are now RNA bases: {DNA_BASES}")
+```
+
+You're not modifying the original list of DNA bases -- instead, you're creating a new list and moving the `DNA_BASES` label to point to it. The original list isn't "protected" in any way. So, it's more of a convention that ALL_CAPS variables be treated as constants in your code, even though Python won't enforce this rule.
+
+### Dangerous assignments
+
+Here's a common pitfall when naming variables in Python -- accidentally overwriting built-in functions.
+
+Python has several built-in functions that are always available, including one called `str` that converts values to strings. For example:
+
+```
+sequence = str()  # Creates an empty string
+sequence
+```
+
+_Note: if you convert this static code block to one that is runnable, and then actually run it, it would cause errors in the rest of the notebook in any place that uses the `str` function. If you do this, you will need to restart the notebook kernel._
+
+However, Python will let you use these built-in names as variable names (though you shouldn't!):
+
+```
+str = "ATCGGCTAA"  # Don't do this!
+```
+
+Now if you try to use the `str` function later in your code:
+
+```
+quality_score = 35
+sequence_info = str(quality_score)  # This will fail!
+```
+
+You'll get an error:
+
+```
+TypeError: 'str' object is not callable
+```
+
+This error occurs because we've "shadowed" the built-in `str` function with our own variable. Python now thinks we're trying to use the string "ATCGGCTAA" as a function, which doesn't work!
+
+We'll discuss errors in more detail in a future lesson. For now, remember to avoid using Python's built-in names (like `str`, `list`, `dict`, `set`, `len`) as variable names. You can find a complete list of built-ins in the [Python documentation](https://docs.python.org/3/library/functions.html#built-in-functions).
+
+### Naming variables
+
+Clear, descriptive variable names are crucial for writing maintainable code. When you revisit your analysis scripts months later, good variable names will help you remember what each part of your code does.
+
+#### Valid names
+
+Python variable names can include:
+
+- Letters (A-Z, a-z)
+- Numbers (0-9, but not as the first character)
+- Underscores (\_)
+
+While Python allows Unicode characters (like Greek letters), it's usually better to stick with standard characters:
+
+```{python}
+π = 3.14  # Possible, but not recommended
+pi = 3.14  # Better!
+```
+
+#### Case Sensitivity
+
+Python treats uppercase and lowercase letters as different characters:
+
+```{python}
+sequence = "ATCG"
+Sequence = "GCTA"
+print(f"{sequence} != {Sequence}")
+```
+
+To avoid confusion, stick with lowercase for most variable names.
+
+#### Naming Conventions
+
+For multi-word variable names, Python programmers typically use snake_case (lowercase words separated by underscores):
+
+```{python}
+# Good -- snake case
+read_length = 150
+sequence_count = 1000
+is_high_quality = True
+
+# Avoid - camelCase or PascalCase
+readLength = 150
+SequenceCount = 1000
+```
+
+#### Guidelines for Good Names
+
+Here are some best practices for naming variables in your code:
+
+Use descriptive names that explain the variable's purpose:
+
+```{python}
+# Clear and descriptive
+sequence_length = 1000
+quality_threshold = 30
+
+# Too vague
+x = 1000
+threshold = 30
+```
+
+Use nouns for variables that hold values:
+
+```{python}
+read_count = 500
+dna_sequence = "ATCG"
+```
+
+Boolean variables often start with `is_`, `has_`, or similar:
+
+```{python}
+is_paired_end = True
+has_adapter = False
+```
+
+Collections (which we'll cover later) often use plural names:
+
+```{python}
+sequences = ["ATCG", "GCTA"]
+quality_scores = [30, 35, 40]
+```
+
+Common exceptions where short names are okay:
+
+- `i`, `j`, `k` for loop indices
+- `x`, `y`, `z` for coordinates
+- Standard abbreviations like `msg` for message, `num` for number
+
+Keep names reasonably short while still being clear:
+
+```{python}
+# Too long
+number_of_sequences_passing_quality_filter = 100
+# Better
+passing_sequences = 100
+```
+
+Remember: your code will be read more often than it's written, both by others and by your future self. Clear variable names make your code easier to understand and maintain.
+
+For more detailed naming guidelines, check Python's [PEP 8 Style Guide](https://peps.python.org/pep-0008/#naming-conventions).
+
+## Data Types
+
+Python has many different types of data it can work with. Each data type has its own special properties and uses.
+
+In this section, we'll cover the basic data types you'll use frequently in your code:
+
+- Numbers
+  - Integers (whole numbers, like sequence lengths or read counts)
+  - Floating-point numbers (decimal numbers, like expression levels or ratios)
+- Strings (text, like DNA sequences or gene names)
+- Boolean values (True/False, like whether a sequence passed quality control)
+
+We'll learn how to:
+
+- Identify what type of data you're working with
+- Convert between different types when needed
+
+Understanding these fundamental data types is crucial for handling data correctly in your programs.
+
+### Checking the type of a value
+
+Python is a dynamically typed language, meaning a variable's type can change during your program. While this flexibility is useful, it's important to keep track of your data types to avoid errors in your analysis.
+
+You can check a variable's type using Python's built-in `type()` function. Here's how:
+
+```{python}
+sequence_length = 150
+print(type(sequence_length))  # <class 'int'>
+
+sequence = "ATCGGCTAA"
+print(type(sequence))  # <class 'str'>
+
+is_valid = True
+print(type(is_valid))  # <class 'bool'>
+```
+
+As shown above, `type()` tells us exactly what kind of data we're working with. This can be particularly helpful when debugging calculations that aren't working as expected, or verifying data is in the correct format.
+
+Don't worry too much about the `class` keyword in the output -- we'll cover classes in detail later. For now, focus on recognizing the basic types: `int` for integers, `str` for strings (text), and `bool` for True/False values.
+
+### Numeric types (int, float)
+
+Python has two main types for handling numbers:
+
+- `int`: Integers (whole numbers) for counting things like:
+  - Number of sequences
+  - Read lengths
+  - Gene counts
+- `float`: Floating-point numbers (decimals) for measurements like:
+  - Expression levels
+  - P-values
+  - GC content percentages
+
+For readability with large numbers, you can use underscores: `1_000_000` reads is clearer than `1000000` reads.
+
+#### Numeric operations
+
+The operators `+`, `-`, `*`, `/` are used to perform the basic arithmetic operations.
+
+```{python}
+forward_reads = 1000
+reverse_reads = 800
+print(forward_reads + reverse_reads)
+print(forward_reads - reverse_reads)
+print(forward_reads * 2)
+print((forward_reads + reverse_reads) / 100)
+```
+
+Float division (`/`) always returns a float, whereas integer division (`//`) returns an int by performing [floor division](https://docs.python.org/3/glossary.html#term-floor-division).
+
+```{python}
+total_bases = 17
+reads = 5
+print(total_bases / reads)
+print(total_bases // reads)
+```
+
+The operator `**` is used for exponentiation.
+
+```{python}
+print(2 ** 8)
+print(8 ** 2)
+```
+
+Parentheses `()` can be used to group expressions and control the order of operations.
+
+```{python}
+# Order of operations
+print(2 + 3 * 4)     # multiplication before addition
+print( (2 + 3) * 4 ) # parentheses first
+```
+
+Modulo (`%`) gives remainder of division
+
+```{python}
+position = 17
+codon_position = position % 3  # Which position in codon (0, 1, or 2)
+print(codon_position)
+```
+
+Be careful about combining negative numbers with floor division or modulo. Here are some interesting examples showing how negative numbers behave with floor division and modulo in Python:
+
+```{python}
+# Floor division with negative numbers
+print("Floor division with negative numbers:")
+# Rounds down to nearest integer
+print(17 // 5)
+# Rounds down, not toward zero
+print(-17 // 5)
+print(17 // -5)
+print(-17 // -5)
+
+# Modulo with negative numbers
+print("\nModulo with negative numbers:")
+print(17 % 5)
+# Result is positive with positive divisor
+print(-17 % 5)
+# Result has same sign as divisor
+print(17 % -5)
+print(-17 % -5)
+```
+
+Don't worry too much about the details of how negative numbers work with division and modulo operations. Just be aware that they can behave unexpectedly, and look up the specific rules if you need them.
+
+#### Scientific notation
+
+Scientific notation is essential when working with very large or small numbers:
+
+```{python}
+# 3.2 billion bases
+genome_size = 3.2e9
+
+# 0.00000001 mutations per base
+mutation_rate = 1e-8
+```
+
+#### Precision Considerations
+
+##### Integers
+
+Python can handle arbitrarily large integers, limited only by memory:
+
+```{python}
+big_number = 125670495610435017239401723907559279347192756
+print(big_number)
+```
+
+##### Floats
+
+Floating-point numbers have limited precision (about 15-17 decimal digits). This can affect calculations:
+
+```{python}
+x = 0.1
+y = 0.2
+
+# Might not be exactly 0.3
+print(x + y)
+```
+
+While these precision errors are usually small, they can accumulate in large-scale calculations.
+
+### Strings
+
+Strings are how Python handles text data, like sequences or gene names.
+
+```{python}
+# Strings can use single or double quotes
+sequence = 'ATCG'
+gene_name = "nrdA"
+print(sequence)
+print(gene_name)
+```
+
+Strings are immutable -- once created, they cannot be modified. For example, you can't change individual bases in a sequence directly:
+
+```{python}
+dna = "ATCG"
+# This would raise an error:
+# dna[0] = "G"
+```
+
+Try uncommenting that line and see what happens!
+
+You can combine strings using the `+` operator:
+
+```{python}
+# String concatenation
+sequence_1 = "ATCG"
+sequence_2 = "GCTA"
+full_sequence = sequence_1 + sequence_2
+print("the sequence is: " + full_sequence)
+```
+
+Special characters can be included using escape sequences:
+
+- `\n` for new line
+- `\t` for tab
+- `\\` for backslash
+
+```{python}
+# Formatting sequence output
+print("Sequence 1:\tATCG\nSequence 2:\tGCTA")
+```
+
+F-strings (format strings) are particularly useful for creating formatted output. They allow you to embed variables and expressions in strings using `{expression}`:
+
+```{python}
+gene_id = "nrdJ"
+position = 37_531
+
+print(f"Gene {gene_id} is located at position {position}")
+```
+
+F-strings can also format numbers, which is useful for scientific notation and precision control:
+
+```{python}
+# Two decimal places
+gc_content = 0.42857142857
+print(f"GC content: {gc_content:.2f}")
+
+# Scientific notation
+p_value = 0.000000342
+print(f"P-value: {p_value:.2e}")
+```
+
+Strings can contain Unicode characters:
+
+```{python}
+# Unicode characters
+print("你好")
+print("こんにちは")
+```
+
+While Python supports Unicode characters in variable names, it's better to use standard ASCII characters for code:
+
+```{python}
+# Possible, but not recommended
+α = 0.05
+β = 0.20
+
+# Better
+alpha = 0.05
+beta = 0.20
+```
+
+#### Common string operations
+
+String operations are fundamental for processing and manipulating textual data, formatting output, and cleaning up input in your applications and analysis pipelines.
+
+##### String concatenation with `+`
+
+The `+` operator joins strings together:
+
+```{python}
+# Joining DNA sequences
+sequence1 = "ATCG"
+sequence2 = "GCTA"
+combined_sequence = sequence1 + sequence2
+print(combined_sequence)
+
+# Adding labels to sequences
+gene_id = "nrdA"
+labeled_sequence = gene_id + ": " + combined_sequence
+print(labeled_sequence)
+```
+
+##### String repetition with `*`
+
+The `*` operator repeats a string a specified number of times:
+
+```{python}
+# Repeating DNA motifs
+motif = "AT"
+repeat = motif * 3
+print(repeat)
+
+# Creating alignment gap markers
+gap = "-" * 6
+print(gap)
+```
+
+##### String indexing
+
+Python uses zero-based indexing to access individual characters in a string. You can also use negative indices to count from the end:
+
+```{python}
+# Indexing
+s = "Hello, world!"
+print(s[0])
+print(s[7])
+print(s[-1])
+print(s[-8])
+```
+
+##### String slicing
+
+Slicing lets you extract parts of a string using the format `[start:end]`. The `end` index is exclusive:
+
+```{python}
+# Slicing
+s = "Hello, World!"
+print(s[0:5])
+print(s[7:])
+print(s[:5])
+print(s[-6:])
+print(s[-12:-8])
+```
+
+##### String methods
+
+Python strings have built-in methods for common operations. Here are a few common ones:
+
+```{python}
+# Clean up sequence data with leading/trailing white space
+raw_sequence = "  ATCG GCTA  "
+clean_sequence = raw_sequence.strip()
+print("|" + raw_sequence + "|")
+print("|" + clean_sequence + "|")
+
+# Convert between upper and lower case
+mixed_sequence = "AtCg"
+print(mixed_sequence.upper())
+print(mixed_sequence.lower())
+
+# Chaining methods
+messy_sequence = "  AtCg  "
+clean_upper = messy_sequence.strip().upper()
+print("|" + clean_upper + "|")
+```
+
+### Boolean values
+
+Boolean values represent binary states (True/False) and are used to make decisions in code:
+
+- `True` represents a condition being met
+- `False` represents a condition not being met
+
+(Note: These are capitalized keywords in Python!)
+
+Boolean variables often use prefixes like `is_`, `has_`, or `contains_` to clearly indicate their purpose:
+
+```python
+is_paired_end = True
+has_adapter = False
+contains_start_codon = True
+```
+
+Boolean values are used in control flow -- they drive decision-making in your code:
+
+```{python}
+is_high_quality = True
+if is_high_quality:
+    print("Sequence passes quality check!")
+
+has_ambiguous_bases = False
+if has_ambiguous_bases:
+    # This won't execute because condition is False
+    print("Warning: Sequence contains N's")
+```
+
+Boolean values are created through comparisons, for example:
+
+```{python}
+# Quality score checking
+quality_score = 35
+print(quality_score > 30)
+print(quality_score < 20)
+print(quality_score == 40)
+print(quality_score != 35)
+```
+
+Logical operators (`and`, `or`, `not`) combine boolean values:
+
+```{python}
+# Logical operations
+print(True and False)
+print(True or False)
+print(not True)
+print(not False)
+```
+
+For example, you could use logical operators to combine multiple logical statements:
+
+```
+is_long_enough and is_high_quality
+
+is_exempt or exceeds_threshold
+```
+
+#### Comparison operators In Depth
+
+Comparison operators are used to compare "compare" values. They return a boolean value (`True` or `False`) and are often used in conditional statements and loops to control program flow.
+
+The basic comparison operators are:
+
+- `==`: equal to
+- `!=`: not equal to
+- `<`: strictly less than
+- `<=`: less than or equal to
+- `>`: strictly greater than
+- `>=`: greater than or equal to
+
+Additional operators we'll cover later:
+
+- `is`, `is not`: object identity
+- `in`, `not in`: sequence membership
+
+Here are a couple examples:
+
+```{python}
+# Basic boolean values
+is_sunny = True
+is_raining = False
+
+print(f"Is it sunny? {is_sunny}")
+print(f"Is it raining? {is_raining}")
+
+# Comparison operations produce boolean results
+temperature = 25
+is_hot = temperature > 30
+print(f"Is it hot? {is_hot}")
+
+# Logical operations
+is_good_weather = is_sunny and not is_raining
+print(f"Is it good weather? {is_good_weather}")
+```
+
+```{python}
+# Comparison operations
+print(5 == 5)
+print(5 != 5)
+print(5 < 3)
+print(5 <= 3)
+print(5 <= 5)
+print(5 > 3)
+print(5 >= 3)
+print(5 >= 5)
+```
+
+##### Chained Comparisons
+
+Comparisons can be chained together, e.g. `1 < 2 < 3` is equivalent to `1 < 2 and 2 < 3`.
+
+```{python}
+# Chained comparisons
+print(1 < 2 < 3)
+print(1 < 2 < 2)
+print(1 < 2 <= 2)
+
+# This one is a bit weird, but it's valid Python!
+print(1 < 2 > 2)
+```
+
+The comparisons operators can also be used to compare the values of variables.
+
+```{python}
+# Check if value is in valid range
+coverage = 30
+print(10 < coverage < 50)
+
+quality_score = 35
+print(20 < quality_score <= 40)
+
+# Multiple range checks
+temperature = 37.2
+print(37.0 <= temperature <= 37.5)
+```
+
+##### Comparing Strings & Other Values
+
+Python's comparison operators work beyond just numbers, allowing comparisons between various types of data. Be careful though -- while some comparisons make intuitive sense, others might require careful consideration or custom implementation.
+
+```{python}
+# Comparison of different types
+print("Hello" == "Hello")
+print("Hello" == "World")
+print("Hello" == 5)
+print("Hello" == True)
+
+# Some non-numeric types also have a natural ordering.
+print("a" < "b")
+print("a" < "A")
+
+# This is a bit weird, but it's valid Python!
+print([1, 2, 3] <= [10, 20, 30])
+```
+
+#### Logical Operators In Depth
+
+Think of logical operators as ways to combine or modify simple yes/no conditions in your code, much like how you might combine criteria when filtering data in Excel or selecting samples for an experiment.
+
+For example, you can use logical operators to express conditions like:
+
+- "If a DNA sequence is **both** longer than 250 bases **AND** has no ambiguous bases, include it in the analysis"
+- "If a gene is **either** highly expressed **OR** shows significant differential expression, flag it for further study"
+- "If a sample is **NOT** properly labeled, skip it and log a warning"
+
+These operators (`and`, `or`, `not`) work similarly to the way we combine conditions in everyday language. Just as you might say "I'll go for a run if it's not raining AND the temperature is above 60°F," you can write code that makes decisions based on multiple criteria.
+
+Here are a couple of examples:
+
+```python
+# In a sequence quality filtering pipeline
+#
+# Both conditions must be true
+if sequence_length >= 250 and quality_score >= 30:
+    keep(sequence)
+
+# In a variant calling pipeline
+#
+# Either condition being true is sufficient
+if mutation_frequency > 0.01 or supporting_reads >= 100:
+    report(variant)
+
+# In a data validation step
+#
+# Triggers if the condition is false
+if not sample_id.startswith('PROJ_'):
+    warn_user(sample_id)
+```
+
+Think of these operators as the digital equivalent of the decision-making process you use in the lab: checking multiple criteria before proceeding with an experiment, or having alternative procedures based on different conditions.
+
+##### Behavior of logical operators
+
+Let's explore how Python's logical operators (`and`, `or`, `not`) work, using examples relevant to biological data analysis.
+
+Think of these operators as ways to check multiple conditions, similar to how you might design experimental criteria:
+
+- `and`: Like requiring ALL criteria to be met (e.g., both proper staining AND correct cell count)
+- `or`: Like accepting ANY of several criteria (e.g., either elevated temperature OR positive test result)
+- `not`: Like reversing a condition (e.g., NOT contaminated)
+
+Here's a truth table showing all possible combinations.
+
+| **A** | **B** | **A and B** | **A or B** | **not A** |
+| ----- | ----- | ----------- | ---------- | --------- |
+| True  | True  | True        | True       | False     |
+| True  | False | False       | True       | False     |
+| False | True  | False       | True       | True      |
+| False | False | False       | False      | True      |
+
+Here are the rules:
+
+- `and` only gives True if both conditions are True (like requiring all quality checks to pass)
+- `or` gives True if at least one condition is True (like having multiple acceptable criteria)
+- `not` flips True to False and vice versa (like converting "passed QC" to "failed QC")
+
+Interestingly, Python can also evaluate non-boolean values (values that aren't strictly True or False) using these operators. We call values that Python treats as True "truthy" and values it treats as False "falsy". This becomes important when working with different types of data in your programs and analysis pipelines.
+
+##### Understanding "Truthy" and "Falsy" Values
+
+In Python, every value can be interpreted as either "true-like" (truthy) or "false-like" (falsy) when used in logical operations. This is similar to how in biology, we might categorize results as "positive" or "negative" even when the underlying data is more complex than a simple yes/no.
+
+Think of "falsy" values as representing empty, zero, or null states -- essentially, the absence of meaningful data. Python considers the following values as "falsy":
+
+- `False`: The boolean False value
+- `None`: Python's way of representing "nothing" or "no value" (like a blank entry in a spreadsheet)
+- Any form of zero (like `0`, `0.0`)
+- Empty containers:
+  - Empty string (`""`)
+  - Empty list (`[]`)
+  - Empty set (`set()`)
+  - Empty dictionary (`{}`)
+
+Everything else is considered "truthy" - meaning it represents the presence of some meaningful value or data.
+
+Let's look at some practical examples. We can use Python's `bool()` function to explicitly check whether Python considers a value truthy or falsy:
+
+```{python}
+# Examples from sample processing:
+sample_count = 0
+# False (no samples)
+print(bool(sample_count))
+
+sample_ids = []
+# False (empty list of IDs)
+print(bool(sample_ids))
+
+patient_data = {}
+ # False (empty data table)
+print(bool(patient_data))
+
+# Compare with:
+sample_count = 5
+# True (we have samples)
+print(bool(sample_count))
+
+sample_ids = ["A1", "B2"]
+# True (we have some IDs)
+print(bool(sample_ids))
+
+patient_data = {"age": 45}
+# True (we have some data)
+print(bool(patient_data))
+```
+
+Understanding truthy and falsy values becomes particularly useful when writing conditions in your code, like checking whether you have data before proceeding with analysis:
+
+```python
+# Sort of like saying: if there are some samples IDs,
+# then do something with them.
+if sample_ids:
+    process_samples(sample_ids)
+else:
+    print("No samples to process")
+```
+
+We'll see more examples of how this concept is useful in practice as we work through more advanced topics.
+
+##### Even More Details About `and` and `or`
+
+_Note: This section is a bit low-level, so don't worry too much about it. It's just here for your reference._
+
+One kind of neat thing about the logical operators is that you can directly use them as a type of control flow.
+
+###### `and`
+
+Given an expression `a and b`, the following steps are taken:
+
+1. First, evaluate `a`.
+2. If `a` is "falsy", then return the value of `a`.
+3. Otherwise, evaluate `b` and return its value.
+
+Check it out:
+
+```{python}
+a = "apple"
+b = "banana"
+result = a and b
+print(result)
+
+name = "Maya"
+age = 45
+result = age >= 18 and f"{name} is an adult"
+print(result)
+
+name = "Amira"
+age = 15
+result = age >= 18 and f"{name} is an adult"
+print(result)
+```
+
+Were the values assigned to `result` what you expected?
+
+###### `or`
+
+Given an expression `a or b`, the following steps are taken:
+
+1. First, evaluate `a`.
+2. If `a` is "truthy", then return the value of `a`.
+3. Otherwise, evaluate `b` and return its value.
+
+Let's return to the previous example, but this time we will use `or` instead of `and`.
+
+```{python}
+a = "apple"
+b = "banana"
+result = a or b
+print(result)
+
+name = "Maya"
+age = 45
+# Observe that this code isn't really doing what we want it to do.
+# `result` will be True, rather than "Maya is an adult".
+# That's because it should be using `and`
+#   ...again, it's just for illustration.
+result = age >= 18 or f"{name} is an adult"
+print(result)
+
+name = "Amira"
+age = 15
+# This code is a bit obscure, and you probably wouldn't
+# write it like this in practice.  But it illustrates the
+# point.
+result = age >= 18 or f"{name} is not an adult"
+print(result)
+```
+
+Were the values assigned to `result` what you expected?
+
+## Control Flow
+
+Think of control flow as the decision-making logic in your code - like following a lab protocol, but for data analysis. Just as you make decisions in the lab ("if the pH is too high, add buffer"), your code needs to make decisions about how to handle different situations.
+
+Control flow statements are the programming equivalent of those decision points in your protocols. They let your program take different paths depending on the conditions it encounters, much like how you might follow different steps in an experiment based on your observations.
+
+In this section, we'll cover several ways to build these decision points into your code:
+
+- Simple `if` statements (like "if the sequence quality is low, skip it")
+- `if-else` statements (like "if the gene is expressed, mark it as active; otherwise, mark it as inactive")
+- `if-elif-else` chains (for handling multiple possibilities, like different ranges of p-values)
+- Nested conditions (for more complex decisions, like filtering sequences based on multiple quality metrics)
+
+Control flow is essential for writing programs that can:
+
+- Make decisions based on data
+- Handle different scenarios
+- Respond to user input
+- Conditionally process data
+
+Just as following the right branch points in a protocol is crucial for experimental success, proper control flow is key to writing programs that correctly handle your data.
+
+Let's explore the main types of control flow in Python:
+
+### `if` Statements
+
+Think of these as your basic yes/no checkpoints, like checking if a sample meets quality control:
+
+```{python}
+quality_score = 35
+if quality_score > 30:
+    print("Sample passes QC")
+```
+
+### `if-else` Statements
+
+These handle two alternative outcomes, like categorizing genes as expressed or not expressed:
+
+```{python}
+expression_level = 1.5
+if expression_level > 1.0:
+    print("Gene is upregulated")
+else:
+    print("Gene is not upregulated")
+```
+
+### `if-elif-else` Chains
+
+Perfect for handling multiple possibilities, like categorizing p-values or expression levels:
+
+```{python}
+p_value = 0.03
+if p_value < 0.01:
+    print("Highly significant")
+elif p_value < 0.05:
+    print("Significant")
+else:
+    print("Not significant")
+```
+
+### Multiple Conditions
+
+Sometimes you need to check multiple criteria, like filtering sequencing data:
+
+```{python}
+read_length = 100
+gc_content = 0.45
+quality_score = 35
+
+if read_length >= 100 and quality_score > 30 and 0.4 <= gc_content <= 0.6:
+    print("Read passes all quality filters")
+else:
+    print("Read filtered out")
+```
+
+### Key Points to Remember
+
+- Conditions are checked in order from top to bottom
+- Only the first matching condition's code block will execute
+- Keep your conditions clear and logical, like a well-designed experimental workflow
+- Try to avoid deeply nested conditions as they can become confusing
+
+Think of control flow as building decision points into your data analysis pipeline. Just as you wouldn't proceed with a PCR if your DNA quality was poor, your code can automatically make similar decisions about data processing.
+
+### Nested Conditional Statements
+
+Conditional statements can also be nested. Here is some code that is checking if someone can go to the beach. If they are not at work, and the weather is sunny, then they can go to the beach.
+
+```{python}
+at_work = False
+weather = "sunny"
+
+if weather == "sunny" and not at_work:
+    print("It's sunny and you are not at work, let's go to the beach!")
+else:
+    print("We can't go to the beach today for some reason.")
+
+# Let's move the check for at_work nested inside the if statement that checks
+# the weather.
+#
+# Note that this code isn't equivalent to the previous code, just an example
+# of nesting.
+
+if weather == "sunny":
+    if at_work:
+        print("You are at work and can't go to the beach.")
+    else:
+        print("It's sunny and you are not at work, let's go to the beach!")
+else:
+    print("It's not sunny, so we can't go to the beach regardless.")
+
+# Just to be clear, let's "unnest" that conditional.
+if weather == "sunny" and at_work:
+    print("You are at work and can't go to the beach.")
+elif weather == "sunny":
+    print("It's sunny and you are not at work, let's go to the beach!")
+else:
+    print("It's not sunny, so we can't go to the beach regardless.")
+```
+
+### A Note on Keeping Things Simple
+
+Just as you want to keep your experimental protocols clear and straightforward, the same principle applies to writing conditional statements in your code. Think of deeply nested if-statements like trying to follow a complicated diagnostic flowchart - the more branches and decision points you add, the easier it is to lose track of where you are.
+
+For example, imagine designing a PCR troubleshooting guide where each problem leads to three more questions, each with their own set of follow-up questions. While technically complete, it would be challenging for anyone to follow correctly. The same goes for code -- when we stack too many decisions inside other decisions, we're setting ourselves up for confusion.
+
+Here's why keeping conditions simple matters:
+
+- Each decision point is an opportunity for something to go wrong (like each step in a protocol)
+- Complex nested conditions are harder to debug (like trying to figure out where a multi-step experiment went wrong)
+- Simple, clear code is easier for colleagues to review and understand
+
+When you find yourself writing deeply nested conditions, it's often a sign to step back and consider whether there's a clearer way to structure your code.
+
+## Basic Built-in Functions
+
+Think of Python's built-in functions as your basic laboratory toolkit - they're always there when you need them, no special setup required. These functions will become your go-to tools for handling biological data, from DNA sequences to experimental measurements.
+
+Here are some of the most useful built-in functions you'll use regularly:
+
+- `print()`: Displays your data or results
+- `len()`: Counts the length of something
+- `abs()`: Gives you the absolute value
+- `round()`: Tidies up decimal numbers
+- `min()` and `max()`: Find the lowest and highest values
+- `sum()`: Adds up a collection of numbers
+- `type()`: Tells you what kind of data you're working with (helpful for debugging)
+
+Let's look at some examples:
+
+```{python}
+# Printing experimental results
+print("Gene expression analysis complete!")
+
+# Checking sequence length
+dna_sequence = "ATCGATCGTAGCTAGCTAG"
+length = len(dna_sequence)
+print(f"This DNA sequence is {length} base pairs long.")
+
+# Working with expression fold changes
+fold_change = -2.5
+absolute_change = abs(fold_change)
+print(f"The absolute fold change is {absolute_change}x.")
+
+# Cleaning up p-values
+p_value = 0.0000234567
+rounded_p = round(p_value, 6)
+print(f"p-value = {rounded_p}")
+
+# Analyzing multiple expression values
+expression_levels = [10.2, 5.7, 8.9, 12.3, 6.8]
+lowest = min(expression_levels)
+highest = max(expression_levels)
+print(f"Expression range: {lowest} to {highest}")
+
+# Calculating average coverage
+coverage_values = [15, 22, 18, 20, 17]
+average_coverage = sum(coverage_values) / len(coverage_values)
+print(f"Average sequencing coverage: {average_coverage}x")
+
+# Checking data types
+gene_name = "nrdA"
+data_type = type(gene_name)
+print(f"The variable gene_name is of type: {data_type}")
+```
+
+To use these functions, just type the function name followed by parentheses containing your data (the "arguments"). Some functions, like `min()` and `max()`, can handle multiple inputs, which is handy when comparing several values at once.
+
+## Wrap-Up
+
+In this tutorial, we covered the fundamental building blocks of Python programming that you'll use throughout your bioinformatics work:
+
+- **Variables** help you store and manage data with meaningful names
+- **Data types** like numbers, strings, and booleans let you work with different kinds of biological data
+- **Control flow** statements help your programs make decisions based on data
+- **Built-in functions** provide essential tools for common programming tasks
+
+Remember:
+
+- Choose clear, descriptive variable names
+- Be mindful of data types when performing operations
+- Keep conditional logic as simple as possible
+- Make use of Python's built-in functions for common tasks
+
+These basics form the foundation for more advanced programming concepts we'll explore in future tutorials. Practice working with these fundamentals -- they're the tools you'll use to build more complex bioinformatics applications.
+
+Don't worry if everything hasn't clicked yet. Programming is a skill that develops with practice. Focus on understanding one concept at a time, and remember that you can always refer back to this tutorial as a reference.
+
+Next up, we'll build on these basics to work with more complex data structures and write functions of our own!

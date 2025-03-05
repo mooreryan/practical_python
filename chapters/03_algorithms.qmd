@@ -1,0 +1,809 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-02-18"
+jupyter: python3
+---
+
+# Algorithmic Thinking
+
+## Overview
+
+An algorithm is a step-by-step procedure for solving a problem or accomplishing a task. It as a detailed set of instructions that takes some input, follows a clear sequence of steps, and produces a desired output.
+
+Algorithms can vary greatly in their level of complexity, from simple operations like finding the larger of two numbers to complex tasks such as generating a phylogenetic tree from a sequence alignment. It's worth noting that the same problem might have multiple algorithmic solutions, each with its own advantages and trade-offs in terms of simplicity and efficiency.
+
+### Key Characteristics of Algorithms
+
+_(Adapted from The Art of Computer Programming by Donald E. Knuth)_
+
+All algorithms share some important properties:
+
+- Defined inputs & outputs
+  - Algorithms must have clearly defined inputs and outputs.
+  - Example: PCR protocol
+    - Input: Template DNA, primers, nucleotides, polymerase
+    - Output: Amplified DNA fragments
+- Definiteness
+  - Steps must be clear and unambiguous
+  - Each step must be understood exactly the same way by anyone following it
+  - Examples:
+    - Good example: "Heat the sample at 95°C for 5 minutes"
+    - Bad example: "Heat the sample for a while"
+- Finiteness
+  - The algorithm must terminate after a finite number of steps
+  - I.e., it cannot run indefinitely
+  - Examples:
+    - Good example: A PCR reaction has a specific number of cycles
+    - Bad example: "Keep checking gel until bands appear" (no clear end point)
+- Effectiveness
+  - Each step must be basic enough to be executed
+  - Must be doable with available resources (ideally by a person using a pen and paper, but not always practical)
+  - Examples:
+    - Good example: "Pipette 100 µL"
+    - Bad example: "Separate molecules instantly"
+
+There are a few more important properties of algorithms. Generally an algorithm should produce the same output given the same input. For example, if your algorithm is supposed to triple a number, an input of `5` should always produce an output of `15`. Additionally, an algorithm should ideally be general enough to solve similar problems in a category. Your tripling algorithm would be more useful (and general) if a user could supply both the number to be multiplied (multiplicand) and the multiplier. This way, the same algorithm could be used for doubling, tripling, quadrupling, etc.
+
+## Algorithmic Thinking Process
+
+Being able to think algorithmically is essential for success in programming. Algorithmic thinking is the ability to break down problems into clear, logical steps that a computer can follow -- like writing a very detailed recipe where nothing can be assumed or left to interpretation. This skill helps you break down complex problems and translate them into effective code solutions.
+
+Let's go through the various aspects of algorithms.
+
+### Basic Components
+
+Every algorithm consists of three fundamental parts:
+
+- Input
+  - The data or information that your algorithm needs to work with.
+  - This could be numbers, text, DNA sequences, or any other form of data.
+- Processing
+  - The step-by-step instructions that transform your input into the desired result.
+  - This is essentially your recipe or procedure.
+- Output
+  - The final result or solution that your algorithm produces.
+  - This should match what you need to solve your problem.
+
+Before you can write an algorithm, you need to understand what problem you're trying to solve:
+
+- Defining the problem scope
+  - Clearly state what your algorithm should and shouldn't do.
+  - For example, "Find all prime numbers under 100" is clearer than "Find prime numbers."
+- Understanding requirements
+  - List everything your solution needs to handle.
+  - What kinds of input should it work with?
+  - What should it do with invalid input?
+
+You can think of these as "behind-the-scenes" components. They are critical to algorithmic thinking and construction, but not always explicitly part of the algorithm itself.
+
+### Breaking Problems Into Steps
+
+Once you have these components in mind, you can break large problems into smaller pieces, which are much more manageable:
+
+- One big problem -> Mutliple sub-problems
+  - Break your main problem into smaller, manageable tasks.
+  - Instead of "Analyze DNA sequence," think about
+    - Read sequence
+    - Check validity
+    - Find patterns
+  - These steps can get as granular as necessary for you to solve the problem at hand.
+- Determine the essential operations needed for each sub-problem.
+- Create a logical sequence of operations
+  - Arrange your sub-problems in a logical order.
+  - What needs to happen first?
+  - Which steps depend on other steps?
+
+### Pseudocode Development
+
+Depending on the complexity of your problem, it can be helpful to sketch out your solution in plain language or pseudocode:
+
+- Writing abstract steps
+  - Write out your algorithm in everyday language.
+  - Use simple statements like "For each number in the list" or "If sequence is valid then..."
+- Planning program flow
+  - Map out how your program will move from start to finish.
+  - What decisions need to be made?
+  - What steps might need to repeat?
+- Outlining solution structure
+  - Organize your steps into a clear structure, showing where loops and decisions occur.
+
+Planning your code's structure and components before diving into actual programming makes the whole process much smoother. When you tackle problems this way, you can focus on one aspect at a time, first mapping out the logic and flow, then implementing the code itself. This approach prevents you from getting overwhelmed by trying to solve multiple challenges simultaneously.
+
+While thorough planning is essential when you're learning, you'll likely develop a more streamlined approach as you gain experience. For simpler problems, you may find yourself able to start coding directly, having internalized the planning process. However, for complex projects, taking time to sketch out your approach first remains valuable regardless of your skill level.
+
+### Implementation
+
+Now that you have a solid plan, it's time to translate it into working code.
+
+- Convert each step from your pseudocode into actual Python code, one piece at a time
+- Build your code following the structure you mapped out earlier
+- Keep your code clean and maintainable by:
+  - Using descriptive variable names that make sense
+  - Adding helpful comments to explain what your code does
+  - Following consistent formatting and organization
+
+This stage is a bit like assembling the pieces of a puzzle where you already know what the final picture should look like. Take your time with each component -- rushing through implementation often leads to mistakes that can be challenging to fix later.
+
+### Testing and Validation
+
+After your implementation is complete, be sure to test that your algorithm works correctly:
+
+- Testing with simple examples
+  - Start with basic test cases where you know the correct answer.
+  - Check that your algorithm produces correct results for all expected inputs.
+- Iterative refinement
+  - Improve your solution based on test results.
+  - Fix errors and handle edge cases.
+
+We will discuss more testing strategies in a later tutorial.
+
+## Real-World Algorithm Example -- Making Coffee
+
+Let's take an everyday activity, making coffee, and practice turning it into clear instructions that could work as an algorithm. We will start with some pretty bad instructions, identify problems with them, and then refine them.
+
+(Apologies to all the tea lovers reading this!)
+
+### Take 1
+
+Here is a silly set of instructions for making coffee:
+
+> You'll want to put some liquid in there first, then put the paper thing in. Get the coffee ready -- not too much, not too little. Make sure everything is closed tight before you get things going. Now, just give it a tap and wait a while. If all goes well, you should end up with something drinkable!
+
+If you have ever made coffee before, you could probably figure out how to follow these instructions. However, it doesn't really work as an algorithm:
+
+- "liquid": should I add water or milk?
+- "in there": in where?
+- "paper thing" instead of filter
+- "coffee": should I add coffee beans, ground coffee, instant coffee?
+- "give it a tap" instead of pressing the start button
+- "not too much, not too little": no specific measurements or timing
+- Uses subjective phrases like "nice and tight" and "you know how it goes"
+- Uncertain outcome ("if all goes well")
+
+Let's address some of these issues and try again.
+
+### Take 2
+
+> Pour fresh water into the top part until it looks full enough. Insert a clean paper filter (any size should work) into the basket area. Measure some coffee grounds -- about a few spoonfuls should do it, depending on how strong you like it. Make sure to close the top properly until you hear a click or something. Find the power button (it might be on the front or side) and push it down. After a few minutes when you stop hearing the machine make noise, your coffee should be done!
+
+Though this version is definitely better than the last one, it still has a few issues:
+
+- Imprecise measurements ("looks full enough", "a few spoonfuls")
+- Ambiguous specifications ("any size should work")
+- Subjective criteria ("how strong you like it")
+- Uncertain timing ("a few minutes")
+- Vague sensory cues ("hear a click or something", "stop hearing the machine")
+- Optional or unclear elements ("or something", "might be on the front")
+
+Again, if you have ever used a coffee machine, you could probably understand the instructions and adapt them to your taste to make a good cup of coffee. But to be a good algorithm, it still needs more precision, less ambiguity, and it shouldn't leave so much up to your own taste.
+
+Let's address some more of those ambiguities.
+
+### Take 3
+
+> Pour 8 cups of fresh water into the top reservoir, filling to the marked water line. Insert a #4 cone paper filter into the filter basket. Measure 2 level tablespoons of ground coffee per cup of water (16 tablespoons total for a full pot). Press down firmly on the lid until you hear a distinct click indicating it's fully closed. Locate the power switch on the front panel and press it to the "ON" position. The brewing process will take approximately 5-7 minutes, and is complete when the gurgling sound stops and the brewing indicator light turns off. Your coffee is now ready to serve.
+
+Here are some specific improvements as compared to the last version:
+
+- Using specific measurements (8 cups, #4 filter, 2 tablespoons per cup)
+- Providing clear indicators (marked water line, distinct click)
+- Giving a defined time range (5-7 minutes)
+- Including concrete completion signals (gurgling stops, indicator light)
+- Specifying exact locations (front panel)
+
+### Beyond the Basic Steps
+
+Though we could keep refining these instructions, it's not a bad description of making coffee now!
+
+If this were a "real algorithm" that we needed to program in Python, there are some more things we should think about. When writing instructions for a computer (or a coffee maker!), it's easy to focus on the happy path -- the sequence of actions that work perfectly. However, robust algorithms must consider various other factors to effectively handle real-world situations where things can go wrong.
+
+Here are some things to think about that are "beyond the basic steps".
+
+#### Setup and Requirements
+
+Before starting any process, we need to ensure everything is in place. This includes checking equipment, materials, and the system's readiness. (You might see the term "preconditions" if you are reading about algorithms online.)
+
+- General Questions:
+  - Have we verified all equipment is functional?
+  - Are all necessary materials available?
+  - Is the system in a ready state?
+- Coffee Maker Example:
+  - Is the coffee maker plugged in and working?
+  - Is it clean/ready to use?
+  - Do you have all needed supplies on hand?
+
+#### Handling Problems
+
+Things can go wrong. A good algorithm anticipates potential problems and provides solutions.
+
+- General Questions:
+  - How do we handle insufficient resources?
+  - What happens if components fail?
+  - How do we respond to interruptions?
+  - What backup procedures are needed?
+- Coffee Maker Example:
+  - What if there's not enough water?
+  - What if the filter is inserted incorrectly?
+  - What if the machine doesn't turn on?
+  - What if the brewing stops midway?
+
+While you can't generally anticipate everything that may go wrong, it's a good idea to put some thought into it, and try to handle any likely errors.
+
+#### Sequential Dependencies
+
+Generally, certain steps will rely on others. We need to define the correct order of operations.
+
+- General Questions:
+  - Which steps must happen in a specific order?
+  - What are the critical timing requirements?
+  - Which steps block others from proceeding?
+- Coffee Maker Example:
+  - The filter must be inserted before adding coffee grounds
+  - Water must be added before turning on the machine
+  - The lid must be closed before powering on
+
+#### Conditional Pathways
+
+Algorithms often need to handle different scenarios based on input or conditions.
+
+- General Questions:
+  - How do varying inputs affect the process?
+  - What alternative routes exist?
+  - How do we handle different scenarios?
+- Coffee Maker Example:
+  - If making less than a full pot, adjust measurements accordingly
+  - If using different grind sizes, adjust portions
+
+#### Validation
+
+Validation and verification of any post-conditions is essential to ensure each step is completed successfully and the final result is correct.
+
+- General Questions:
+  - How do we verify each step succeeded?
+  - What indicates proper operation?
+  - How do we confirm the final result?
+- Coffee Maker Example:
+  - How to check if the filter is seated properly
+  - How to verify the water is actually flowing/brewing
+  - How to confirm the coffee is properly brewed
+
+#### Summary
+
+While we don't need this level of detail for every example, it's valuable to understand how simple procedures evolve into robust algorithms through careful consideration of edge cases, error handling, and validation steps.
+
+This methodology applies broadly to software development: start simple, then systematically address complexities and potential problems.
+
+## Building Blocks for Solving Programming Problems
+
+When you're learning to program, it helps to recognize that many solutions are built from common, reusable patterns. These patterns are basic building blocks that you can combine and adapt to solve more complex problems.
+
+While there are often many ways to solve a programming challenge, we'll focus on straightforward approaches that are easy to understand and implement. These might not always be the most efficient solutions, but they're good learning tools that will help you:
+
+- Break big problems into manageable pieces
+- Learn reliable approaches to common challenges
+- Develop your problem-solving skills
+
+As you gain experience, you'll learn more sophisticated methods, or ways that are built-in to the language itself, but mastering these fundamental patterns first will give you a solid foundation. Let's look at some practical examples that demonstrate these basic patterns in action.
+
+In this tutorial, we will mostly focus on strategies that involve looking at one element at a time from a sequence. Often, this sequential processing will also involve tracking or accumulating values.
+
+### Character Processing
+
+Tutorial 2 showed many examples of using for loops to process characters of a string one-by-one. We will repeat some of them here so that you can get more practice seeing the common patterns.
+
+#### Printing Each Character
+
+Printing each letter of a string:
+
+```{python}
+word = "HELLO"
+for character in word:
+    # Do something interesting with each character...
+    print(character)
+```
+
+#### Iterating with an Index
+
+Accessing the index of the character during iteration:
+
+```{python}
+# Print with position
+word = "hello"
+for index, letter in enumerate(word):
+    print(f"Position {index}: {letter}")
+```
+
+#### Iterating in Reverse
+
+Processing a string in reverse order:
+
+```{python}
+# Process in reverse
+for letter in reversed(word):
+    print(letter)
+```
+
+#### Frequencies
+
+Counting the frequency of individual letters:
+
+```{python}
+letter_counts = {}
+
+for letter in word:
+    current_count = letter_counts.get(letter, 0)
+    letter_counts[letter] = current_count + 1
+
+print(letter_counts)
+```
+
+_Note: This is a good example of what I mentioned above regarding these solutions not always being the best way to do something. In Tutorial 2, we discussed a better way to approach this particular counting problem. Can you remember it?_
+
+### Number Processing
+
+#### Running Sum
+
+Tracking a running sum:
+
+```{python}
+numbers = [2, 5, 3, 1]
+total = 0
+
+for number in numbers:
+    total += number
+
+print(f"Total: {total}")
+```
+
+While Python provides built-in functions like `sum()` for this specific case, understanding the basic pattern helps with more complex variations.
+
+#### Summing Positive Numbers
+
+Sum of positive numbers:
+
+```{python}
+numbers = [-1, 2, -5, 3, -8, 1]
+
+positive_sum = sum(num for num in numbers if num > 0)
+
+print(f"Sum of positive numbers: {positive_sum}")
+```
+
+#### Averages
+
+Calculating the average of a list of numbers:
+
+```{python}
+# Calculate average
+numbers = [2, 5, 3, 8, 1]
+average = sum(numbers) / len(numbers)
+print(f"Average: {average}")
+```
+
+### Finding Maximum/Minimum
+
+Finding the largest number in a list without using Python's built-in `max` function:
+
+```{python}
+numbers = [5, 3, 0, -1, 8]
+largest_number = numbers[0]
+
+for number in numbers[1:]:
+    if number > largest_number:
+        largest_number = number
+
+print(largest_number)
+```
+
+Finding the shortest string in a list:
+
+```{python}
+words = ["i", "like", "apple", "pie"]
+shortest_word = words[0]
+
+for word in words[1:]:
+    if len(word) < len(shortest_word):
+        shortest_word = word
+
+print(shortest_word)
+```
+
+### Simple Search/Validation
+
+Another common task is finding an item in a collection or validating some condition of a collection.
+
+#### Finding a Number in a List
+
+Finding a specific number in a list:
+
+```{python}
+target = 5
+numbers = list(range(10))
+is_found = False
+
+for number in numbers:
+    if number == target:
+        is_found = True
+        print("we found the number!")
+
+if not is_found:
+    print("we didn't find the number!")
+```
+
+#### Is a List Sorted?
+
+Checking if a list is sorted. (Before reading the code, try and think of how the solution might look.)
+
+```{python}
+numbers = [1, 2, 4, 3, 5]
+previous_number = numbers[0]
+
+is_sorted = True
+
+for current_number in numbers[1:]:
+    if current_number < previous_number:
+        is_sorted = False
+        break
+    previous_number = current_number
+
+if is_sorted:
+    print("the list is sorted!")
+else:
+    print("the list is not sorted!")
+```
+
+This example has a couple of interesting things to focus on:
+
+- We start the iteration at index 1 in the array
+- As soon as we see a number that is not sorted, we `break` since that is enough to say the array as a whole is unsorted.
+
+### Nested Loops
+
+Problems often require nested loops, such as cases where for every item in one list, you need to process every item in another list. Note that these nested loop problems can often be solved in clever ways that help you avoid a having to look at every combination. There's a good chance you will see some of these clever solutions as you are exposed to more code in the future.
+
+#### Distance Between Points
+
+Calculating distances between points. Here we are using 1-dimensional points. The distance between two points in 1D (on a line) is the absolute value of their difference. E.g., if you have two points `x₁` and `x₂`, the distance between them is `|x₁ - x₂|`.
+
+```{python}
+points = [8, 3, 4]
+distances = []
+
+for x in points:
+    for y in points:
+        distance = abs(x - y)
+        distances.append((x, y, distance))
+
+for x, y, distance in distances:
+    print(f"({x}, {y}) => {distance}")
+```
+
+You could imagine instead of distances of 1D points, this pattern could work for calculating all-vs-all homology scores from BLAST output, or comparing some aspect of each sample vs. every other sample.
+
+#### Distance Between Samples
+
+Here's a slightly different example. In this case, say we have ecological distances between all sampling locations stored in a dictionary. Here is one way that you might loop through them:
+
+```{python}
+sample_distances = {
+    "S1": {"S1": 0, "S2": 3, "S3": 5},
+    "S2": {"S1": 2, "S2": 0, "S3": 1},
+    "S3": {"S1": 6, "S2": 2, "S3": 0},
+}
+
+for sample_a, other_samples in sample_distances.items():
+    for sample_b, distance in other_samples.items():
+        print(f"{sample_a} -> {sample_b} => {distance}")
+```
+
+While there are often clever ways to avoid these type of all-vs-all comparisons, they still come up pretty frequently, so it's a good idea to get familiar with them!
+
+## Introduction to Algorithm Analysis
+
+When we write code to solve a problem, there's usually more than one way to do it. It's a bit like how you may have different routes to get to work -- some are faster, some are more efficient, and some are just easier to remember. The same applies to our code solutions.
+
+When evaluating different approaches to solving a problem, we typically look at three main things:
+
+1. Does it actually solve the problem correctly?
+2. How efficiently does it run (in terms of time and computer memory)?
+3. Is it clear and maintainable?
+
+### Time Complexity
+
+Let's focus on efficiency in terms of time for a moment. Imagine you have a list of genes to search through. You could check each gene one by one (we call this linear time), or you might have a clever way to eliminate half the possibilities with each step (logarithmic time). As your gene list grows from hundreds to millions of entries, these different approaches can mean the difference between waiting seconds versus hours for your results.
+
+Computer scientists use something called "Big O notation" to describe how an algorithm's performance changes as the input gets larger. Here are some common patterns you'll encounter.
+
+- Constant time (`O(1)`): The operation always takes the same amount of time
+- Linear time (`O(n)`): The time increases directly with the size of the input
+- Quadratic time (`O(n²)`): The time increases with the square of the input size
+
+The key takeaway is that some solutions scale better than others when working with larger datasets. As you write code, keeping these basic patterns in mind will help you make better choices about how to approach problems.
+
+Here are some simple examples to illustrate these three time complexities.
+
+#### Constant Time -- O(1)
+
+Constant time operations like dictionary lookups:
+
+```{python}
+gene_info = {"nrdA": "ribonucleotide reductase"}
+result = gene_info["nrdA"]
+print(result)
+```
+
+#### Linear Time -- O(n)
+
+Linear time operations like checking each item in a list once:
+
+```{python}
+# Counting mutations
+dna_sequence = "ACTACTGTACTACTGTCACACTAGAGTAT"
+t_count = 0
+
+for base in dna_sequence:
+    if base == "T":
+        t_count += 1
+
+print(t_count)
+```
+
+#### Quadratic Time -- O(n²)
+
+Quadratic time operations like comparing every item with every other item:
+
+```{python}
+# Finding equivalent sequences
+sequences = ["ACTG", "ATGAC", "ACTGGT", "ACTG"]
+sequence_count = len(sequences)
+
+for i in range(sequence_count):
+    for j in range(sequence_count):
+        if i != j and sequences[i] == sequences[j]:
+            print(f"Match found: {sequences[i]}")
+```
+
+### Space Complexity
+
+In addition to thinking about how long our code takes to run, sometimes we also need to consider how much memory it uses. Space complexity describes how memory usage grows with input size. The two most common patterns you'll encounter are:
+
+- O(1) space: Uses a fixed amount of extra memory regardless of input size
+- O(n) space: Uses extra memory that grows with the input size
+
+Here are some examples.
+
+#### Constant Space -- O(1)
+
+In a constant space solution, the same few variables are used regardless of the input size:
+
+```{python}
+g_count = 0
+
+for base in dna_sequence:
+    if base == "G":
+        g_count += 1
+
+print(g_count)
+```
+
+In this example, we're just counting, so we only need one variable no matter how long the DNA sequence is.
+
+#### Linear Space -- O(n)
+
+In a linear space solution, the space needed to calculate the result grows linearly with the size of the input.
+
+```{python}
+g_positions = []
+
+for i in range(len(dna_sequence)):
+    if dna_sequence[i] == "G":
+        g_positions.append(i)
+
+print(g_positions)
+```
+
+In this example, we're storing positions, so we need more space for longer sequences.
+
+## Algorithmic Puzzles
+
+Let's finish off this tutorial by looking at a common, beginner-level algorithmic puzzle: checking if a string is a palindrome.
+
+> A word is a **palindrome** if it reads the same forward and backward.
+
+_Note: This problem description is adapted from LeetCode problem [125. Valid Palindrome](https://leetcode.com/problems/valid-palindrome/description/)._
+
+### Starting with the Problem
+
+First, let's understand what we're trying to do in plain English:
+
+- We need to check if a word reads the same forwards and backwards
+- Examples
+  - "racecar" → Yes!
+  - "hello" → No!
+
+(For this version of the problem, we can assume that the strings we need to check are all a single word with all lowercase letters.)
+
+### Solution 1: The Obvious Way
+
+Let's start with the most obvious solution that uses Python string slicing to check the definition of a palindrome.
+
+```{python}
+string = "racecar"
+is_palindrome = string == string[::-1]
+print(string, is_palindrome)
+
+string = "apple"
+is_palindrome = string == string[::-1]
+print(string, is_palindrome)
+```
+
+This is probably how most people would first think about it: "Just reverse it and compare!"
+
+- It's perfectly valid
+- It's easy to understand
+- It uses built-in Python functions
+- _But_...It requires creating a whole new reversed string in memory
+
+Often, the "but" doesn't really matter in whatever work you are doing. Many times "clear and maintainable" are much more important that optimal efficiency. However, in the world of algorithmic puzzles, the "but" is definitely something you want to address!
+
+### Solution 2: Manual Comparison with a Loop
+
+For this solution, we think, "Wait, do we really need to reverse the string? What a waste of time and space!"
+
+Instead, we will look at "pairs" of letters. First, let's try a word that is a palindrome:
+
+```{python}
+string = "racecar"
+print("Checking {string}")
+is_palindrome = True
+
+for i in range(len(string)):
+    j = len(string) - i - 1
+
+    print(i, j, string[i], string[j])
+
+    if string[i] != string[j]:
+        is_palindrome = False
+        break
+
+print(string, is_palindrome)
+```
+
+Next, try a word that is not a palindrome, just to see the difference:
+
+```{python}
+string = "racethecar"
+print("\n\nChecking {string}")
+is_palindrome = True
+
+for i in range(len(string)):
+    j = len(string) - i - 1
+
+    print(i, j, string[i], string[j])
+
+    if string[i] != string[j]:
+        is_palindrome = False
+        break
+
+print(string, is_palindrome)
+```
+
+Do you see how the non-palindrome stops before checking all the values?
+
+Here is a breakdown of the above solution:
+
+- We compare the first letter with last letter
+- Then, the second letter with second-to-last letter
+- And so on...
+- _But_...We're doing each comparison twice!
+
+Just so it is clear, let's explain that `j` index line. This diagram shows why we use that formula to calculate `j`:
+
+```
+len("racecar") == 7
+
+┌───┬───┬───┬───┬───┬───┬───┐
+│ r │ a │ c │ e │ c │ a │ r │
+└───┴───┴───┴───┴───┴───┴───┘
+  0   1   2   3   4   5   6
+  ↑   ↑   ↑   ↑   ↑   ↑   ↑
+  i=0 │   │   │   │   │   j = 7 - 0 - 1 = 6
+      │   │   │   │   │
+      i=1 │   │   │   j = 7 - 1 - 1 = 5
+          │   │   │
+          i=2 │   j = 7 - 2 - 1 = 4
+              │
+              i=3, j = 7 - 3 - 1 = 3
+
+and so on...
+```
+
+### Solution 3: The Optimized Version
+
+There was another "but" in Solution 2: Wouldn't it be better if we didn't have to do those duplicated checks? Let's give it a shot.
+
+```{python}
+string = "racecar"
+is_palindrome = True
+
+i = 0
+j = len(string) - 1
+
+while i < j:
+    print(i, j, string[i], string[j])
+
+    if string[i] != string[j]:
+        is_palindrome = False
+        break
+
+    i += 1
+    j -= 1
+
+print(string, is_palindrome)
+```
+
+And here again with a string that is not a palindrome:
+
+```{python}
+string = "racethecar"
+is_palindrome = True
+
+i = 0
+j = len(string) - 1
+
+while i < j:
+    print(i, j, string[i], string[j])
+
+    if string[i] != string[j]:
+        is_palindrome = False
+        break
+
+    i += 1
+    j -= 1
+
+print(string, is_palindrome)
+```
+
+And the breakdown:
+
+- We use two "pointers" moving toward each other
+- We only check each pair once
+- We stop at the middle
+
+This is both time and space efficient, and doesn't do any more checks than we need to do. Cool, right?
+
+### General Approach
+
+The above process of refinement suggests a general approach to these kinds of algorithmic puzzles.
+
+- Start simple
+  - Implement the first solution that comes to mind
+  - Don't worry if it's not perfect
+  - Make sure it works!
+- Question your approach
+  - Do I need all these steps?
+  - Am I repeating work?
+  - Is there a more direct way?
+- Look for patterns
+  - Notice we're comparing pairs of letters
+  - Notice we're moving inward from both ends
+  - These observations lead to better solutions
+- Consider resource usage
+  - Time: How many steps are we taking?
+  - Space: How much extra memory do we need?
+  - Can we reduce either?
+
+Focus on making a basic version work before aiming for perfection. Begin with a simple solution, ensure it functions correctly, and then gradually improve it. This mirrors the process of algorithmic thinking described above of breaking down complex problems into manageable steps and refining your solution as needs evolve. This is similar to how programming works in real-world scenarios!
+
+## Summary & Connection to Bioinformatics
+
+In this tutorial, we introduced the concept of algorithmic thinking and simple algorithms. We went over some common patterns for simple problems that can form the building blocks of more complex solutions. Then we covered the basics of algorithmic complexity analysis, and finally, went through the process of solving a common algorithmic puzzle.
+
+You might be wondering how these basic programming concepts connect to the bioinformatics tools you'll use in your research. While we rely on sophisticated software for tasks like homology search and genome assembly, these powerful tools are built on the same fundamental programming principles we're learning now.
+
+Algorithmic thinking, or understanding how to break down problems and translate them into logical steps, is a foundational skill for all coding work. Though we won't be building complex bioinformatics tools from scratch in this course, mastering the basics will give you a solid foundation for writing your own analysis scripts and understanding how the bioinformatics tools you use actually work.
+
+## Bibliography
+
+Knuth, Donald E. 1997. The Art of Computer Programming: Volume 1: Fundamental Algorithms. 3rd ed. Boston, MA: Addison Wesley.

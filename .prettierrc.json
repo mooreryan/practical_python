@@ -1,0 +1,8 @@
+{
+  "overrides": [
+    {
+      "files": "*.qmd",
+      "options": { "parser": "markdown" }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+project:
+  type: book
+
+date-modified: last-modified
+
+book:
+  title: "Practical Python Programming for Life Scientists"
+  description: "Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills."
+  author: "Ryan M. Moore, PhD"
+  date: "2025-02-05"
+  chapters:
+    - index.qmd
+    - chapters/01_basics.qmd
+    - chapters/02_collections.qmd
+    - chapters/03_algorithms.qmd
+    - chapters/04_functions.qmd
+    - chapters/05_classes.qmd
+  cover-image: images/dna_python_logo.webp
+  cover-image-alt: "DNA double helix to the left and Python logo to the right"
+  sidebar:
+    logo: images/dna_python_logo.webp
+    logo-alt: "DNA double helix to the left and Python logo to the right"
+  page-footer:
+    left: "© 2025 Ryan M. Moore. CC BY 4.0."
+    right:
+      - icon: person-lines-fill
+        href: https://orcid.org/0000-0003-3337-8184
+      - icon: journals
+        href: https://scholar.google.com/citations?user=W08DPpMAAAAJ
+      - icon: github
+        href: https://github.com/mooreryan
+  open-graph: true
+
+bibliography: references.bib
+
+number-depth: 1
+toc-depth: 6
+
+format:
+  html:
+    theme:
+      - cosmo
+  pdf:
+    documentclass: scrreprt
