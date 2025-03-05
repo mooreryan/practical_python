@@ -6,6 +6,7 @@
 /_*
 
 !_quarto.yml
+!_freeze
 
 /chapters/*_files
 /chapters/*ipynb
