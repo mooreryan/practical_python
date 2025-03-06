@@ -45,3 +45,6 @@ format:
 
 execute:
   freeze: auto
+
+include-after-body:
+  text: <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
