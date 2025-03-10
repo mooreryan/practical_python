@@ -30,6 +30,7 @@ book:
       - icon: github
         href: https://github.com/mooreryan
   open-graph: true
+  site-url: "https://mooreryan.github.io/practical_python/"
 
 bibliography: references.bib
 
@@ -48,8 +49,6 @@ execute:
 
 include-after-body:
   text: <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-
-site-url: "https://mooreryan.github.io/practical_python/"
 
 resources:
   - robots.txt
