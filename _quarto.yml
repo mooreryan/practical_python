@@ -49,6 +49,8 @@ execute:
 
 include-after-body:
   text: <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+include-in-header:
+  text: <meta name="google-site-verification" content="lAMnqKIoNocjUOHIuFkaXcMzcceqyGBcevAs7t3N_AI" />
 
 resources:
   - robots.txt
