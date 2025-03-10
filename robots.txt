@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mooreryan.github.io/practical_python/sitemap.xml

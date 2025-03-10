@@ -48,3 +48,8 @@ execute:
 
 include-after-body:
   text: <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+
+site-url: "https://mooreryan.github.io/practical_python/"
+
+resources:
+  - robots.txt
