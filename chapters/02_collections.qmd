@@ -246,7 +246,7 @@ except ValueError:
     print("not found!")
 ```
 
-Don't worry too much now about this try/except construction for now -- we will cover it in a later tutorial!  Basically, it is a way to tell Python that we think an error may occur here, and if it does, what we should do to recover.
+Don't worry too much now about this try/except construction for now -- we will cover it in a later tutorial! Basically, it is a way to tell Python that we think an error may occur here, and if it does, what we should do to recover.
 
 #### Check String Prefix/Suffix
 
@@ -299,7 +299,7 @@ sample_info = ["SAMPLE001", 37.5, "positive", True]
 results = []
 ```
 
-Creating an empty list might seem a bit weird, but is actually common practice in Python -- create an empty list and then use a loop to store multiple things in it.  We will see examples of this later in the tutorial.
+Creating an empty list might seem a bit weird, but is actually common practice in Python -- create an empty list and then use a loop to store multiple things in it. We will see examples of this later in the tutorial.
 
 ### List Indexing and Slicing
 
@@ -323,7 +323,7 @@ nucleotides = ["A", "T", "G", "A", "C"]
 
 Don't forget that Python starts counting with 0 rather than with 1.
 
-_Note: For now, don't worry too much right now about **how** Python stores items in a list.  Later in the tutorial, we will adjust our mental model for collections._
+_Note: For now, don't worry too much right now about **how** Python stores items in a list. Later in the tutorial, we will adjust our mental model for collections._
 
 #### Indexing
 
@@ -368,7 +368,7 @@ print(dna[4:])
 print(dna[:4])
 ```
 
-Slices can get pretty fancy.  Check this out:
+Slices can get pretty fancy. Check this out:
 
 ```{python}
 dna = "AaTtCcGg"
@@ -382,7 +382,7 @@ every_other_second = dna[1::2]
 print(every_other_second)
 ```
 
-There are quite a few [rules](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations) about slicing, which can get a bit complicated.  For this reason, it's generally best to keep your slicing operations as simple as possible.
+There are quite a few [rules](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations) about slicing, which can get a bit complicated. For this reason, it's generally best to keep your slicing operations as simple as possible.
 
 ### List Methods
 
@@ -441,7 +441,7 @@ Pay attention to `pop` in particular. While `remove` just takes a value out of o
 
 #### Other Useful List Methods
 
-There are many other cool list methods.  Here are a few more.  Try to guess what the output will be before running the code block.
+There are many other cool list methods. Here are a few more. Try to guess what the output will be before running the code block.
 
 ```{python}
 genes = ["MDM2", "TP53", "BRCA1", "ATM", "PTEN", "TP53"]
@@ -457,7 +457,7 @@ print(genes.count("TP53"))
 
 ### List Operations
 
-We talked about operators in Tutorial 1.  These operators can also be applied to lists in various ways.  Let's check it out.
+We talked about operators in Tutorial 1. These operators can also be applied to lists in various ways. Let's check it out.
 
 Similar to strings, you can concatenate lists into a single list using `+`:
 
@@ -541,7 +541,7 @@ gene2_rep2 = expression_data[1][1][1]
 print(gene2_rep2)
 ```
 
-Lists are very flexible in Python, and so can be complicated.  However, it will be good for you to get comfortable with Lists as they are one of the most commonly used data structures!
+Lists are very flexible in Python, and so can be complicated. However, it will be good for you to get comfortable with Lists as they are one of the most commonly used data structures!
 
 #### What Does Python Actually Store in the List?
 
@@ -591,7 +591,7 @@ Did the last result surprise you? When we modified `point_b`, the change was ref
 
 Understanding this behavior is important because it means changes to your data in one place can unexpectedly affect the same data being used elsewhere in your code.
 
-With this in mind, we can now update our mental model and make it a bit more accurate.  This time, the items in the lists are references that "point" to the actual items we care about.
+With this in mind, we can now update our mental model and make it a bit more accurate. This time, the items in the lists are references that "point" to the actual items we care about.
 
 ```
   "A"   "T"   "G"   "A"   "C"    (items "in" the list are objects)
@@ -668,7 +668,7 @@ for nucleotide in nucleotides:
 
 You can actually use for loops on lots of different Python data structures: as long as it is [iterable](https://docs.python.org/3/glossary.html#term-iterable), then you can use a for loop with it.
 
-Often you will want to take some action multiple times.  For this, we can use `range`:
+Often you will want to take some action multiple times. For this, we can use `range`:
 
 ```{python}
 for number in range(5):
@@ -698,10 +698,9 @@ It's like counting: normally we count "1, 2, 3, 4..." (step of 1), but sometimes
 
 The `start` and `step` arguments are optional -- you can just use `range(stop)` if you want to count normally starting from zero. If you're curious about more advanced uses, like counting backwards or working with negative numbers, check out the Python [range docs](https://docs.python.org/3/library/stdtypes.html#range) for more details.
 
-
 Ranges are memory efficient -- they don't store all the numbers in the range in memory. This is important when generating large batches of numbers.
 
-(This code shouldn't be run.  It's just here to illustrate the point.)
+(This code shouldn't be run. It's just here to illustrate the point.)
 
 ```python
 big_range = range(1, 1000000)  # Takes very little memory
@@ -718,7 +717,7 @@ for i in range(2):
         print(f"i: {i}; j: {j}")
 ```
 
-Let's break down what's happening here. The outer loop (using `i`) runs two times (0, 1), and for *each* of those times, the inner loop (using `j`) runs three times (0, 1, 2). It's a bit like having a set of drawers where you check each drawer (outer loop), and within each drawer, you look at every item inside (inner loop).
+Let's break down what's happening here. The outer loop (using `i`) runs two times (0, 1), and for _each_ of those times, the inner loop (using `j`) runs three times (0, 1, 2). It's a bit like having a set of drawers where you check each drawer (outer loop), and within each drawer, you look at every item inside (inner loop).
 
 When you run the above code, you'll see each combination of `i` and `j` printed out, showing how the loops work together. This pattern of nested loops is incredibly useful when you need to process data that has multiple levels or dimensions, for example, like comparing every gene in one dataset to every gene in another dataset.
 
@@ -744,7 +743,7 @@ Here is a schematic view:
 └──────────────────────────────────────────────┘
 ```
 
-You can have more than two levels of nesting.  For example:
+You can have more than two levels of nesting. For example:
 
 ```{python}
 for i in range(2):
@@ -753,7 +752,7 @@ for i in range(2):
             print(f"i: {i}; j: {j}; k: {k}")
 ```
 
-Though I bet you know what's going on with nested loops by now, let's break it down anyway.  The innermost loop (`k`) completes all its iterations before the middle loop (`j`) counts up once, and the middle loop completes all its iterations before the outer loop (`i`) counts up once. In this example, for each value of `i`, we'll go through all values of `j`, and for each of those, we'll go through all values of `k`.
+Though I bet you know what's going on with nested loops by now, let's break it down anyway. The innermost loop (`k`) completes all its iterations before the middle loop (`j`) counts up once, and the middle loop completes all its iterations before the outer loop (`i`) counts up once. In this example, for each value of `i`, we'll go through all values of `j`, and for each of those, we'll go through all values of `k`.
 
 Remember that each additional level of nesting multiplies the number of iterations. In our example, we have 2 × 3 × 4 = 24 total iterations. Keep this in mind when working with larger datasets.
 
@@ -782,7 +781,7 @@ This creates pairs of positions and values, which can be useful, say, when you n
 
 ### While Loops
 
-While loops keep repeating until the given condition is not true (or truthy).  Let's look at a simple example that counts from 1 to 5:
+While loops keep repeating until the given condition is not true (or truthy). Let's look at a simple example that counts from 1 to 5:
 
 ```{python}
 count = 1
@@ -869,7 +868,7 @@ print(numbers)
 
 Unfortunately, that did not remove all the items from `numbers` like you may have expected.
 
-One way to address this issue is to use `[:]` to create a copy of `numbers` and iterate over _that_ collection.  Meanwhile, you remove items from the original `numbers`.
+One way to address this issue is to use `[:]` to create a copy of `numbers` and iterate over _that_ collection. Meanwhile, you remove items from the original `numbers`.
 
 ```{python}
 numbers = [1, 2, 3, 4, 5]
@@ -879,9 +878,9 @@ for number in numbers[:]:  # The [:] creates a copy
 print(f"at the end: {numbers}")
 ```
 
-Really, this example is pretty artificial -- you wouldn't be trying to delete every item in a list with a for loop anyway.  Just be aware that if you modify a collection during a loop, special care must be taken to ensure that you don't mess things up.
+Really, this example is pretty artificial -- you wouldn't be trying to delete every item in a list with a for loop anyway. Just be aware that if you modify a collection during a loop, special care must be taken to ensure that you don't mess things up.
 
-_Take note of this for miniproject 1 -- you will "probably" have to remove some items from a list to complete it!  But don't worry, you will see some more examples in the project description...._
+_Take note of this for miniproject 1 -- you will "probably" have to remove some items from a list to complete it! But don't worry, you will see some more examples in the project description...._
 
 ### Comprehensions
 
@@ -975,7 +974,7 @@ In this example, we take an existing list, `expressions`, and make a new list, `
 
 Notice that in this example, there is nothing done to the existing items in the list before adding them to the new one, which is why the comprehension starts with `x for x`.
 
-Comprehensions can also be used to create dictionaries.  Check this out:
+Comprehensions can also be used to create dictionaries. Check this out:
 
 ```{python}
 squares = {x: x**2 for x in range(5)}
@@ -987,8 +986,7 @@ print(even_squares)
 
 That is pretty neat right?
 
-While comprehensions are compact, whether or not you think this conciseness leads to better code is a different story.  As you gain more experience, you will get a better feel for such things.  Whether you use them a lot or a little, you should be aware of them as they are quite common in Python codebases.
-
+While comprehensions are compact, whether or not you think this conciseness leads to better code is a different story. As you gain more experience, you will get a better feel for such things. Whether you use them a lot or a little, you should be aware of them as they are quite common in Python codebases.
 
 ## Tuples
 
@@ -1018,7 +1016,7 @@ except TypeError:
 
 If `letters` was a list, the above code would change the list to start with `d` instead of `b`. Instead, we got an error. This is because tuples are _immutable_.
 
-Whether some data is mutable or immutable determines whether you can modify it or not.  Here is a silly metaphor to illustrate what I mean:
+Whether some data is mutable or immutable determines whether you can modify it or not. Here is a silly metaphor to illustrate what I mean:
 
 - **Mutable** collections (like lists and dictionaries) are like erasable whiteboards -- you can add, remove, or change items whenever you need to
 - **Immutable** collections (like tuples) are more like carved stone tablets -- once created, their contents are "set in stone"
@@ -1117,7 +1115,7 @@ Python's packing and unpacking syntax makes this common operation more intuitive
 
 ### Named Tuples
 
-You may be thinking that it could get tricky to remember which field of a tuple is which.  [Named tuples](https://docs.python.org/3/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields) provide a great way to address this.  They're like regular tuples, but with the added benefit of letting you create them and access data using descriptive names instead of index numbers.
+You may be thinking that it could get tricky to remember which field of a tuple is which. [Named tuples](https://docs.python.org/3/library/collections.html#namedtuple-factory-function-for-tuples-with-named-fields) provide a great way to address this. They're like regular tuples, but with the added benefit of letting you create them and access data using descriptive names instead of index numbers.
 
 Let's see how they work:
 
@@ -1177,7 +1175,7 @@ print(seq1)  # Shows all fields with their values
 print(seq2)
 ```
 
-I have mentioned a few times now that tuples are immutable, and named tuples are as well.  There is a way to get an modified copy of a named tuple however:
+I have mentioned a few times now that tuples are immutable, and named tuples are as well. There is a way to get an modified copy of a named tuple however:
 
 ```{python}
 seq1 = Sequence("SEQ1", "GGCTAA", length=6, gc_content=0.5)
@@ -1195,7 +1193,7 @@ The bottom line: When you need to bundle related data together, named tuples are
 
 ### When to Use Tuples vs. Lists
 
-It may still be unclear when to choose tuples rather than lists.  While you will get a feel for it over time, here are some guidelines that can help you choose:
+It may still be unclear when to choose tuples rather than lists. While you will get a feel for it over time, here are some guidelines that can help you choose:
 
 **Choose a Tuple When:**
 
@@ -1212,7 +1210,7 @@ It may still be unclear when to choose tuples rather than lists.  While you will
 
 One way to think of it is: if you're working with data that should remain constant, reach for a tuple. If you need something more flexible that can grow or change (like collecting results), a list is your better choice.
 
-Here is a nice section of the Python docs if you want to dive deeper:  [Why are there separate tuple and list data types?](https://docs.python.org/3/faq/design.html#why-are-there-separate-tuple-and-list-data-types)
+Here is a nice section of the Python docs if you want to dive deeper: [Why are there separate tuple and list data types?](https://docs.python.org/3/faq/design.html#why-are-there-separate-tuple-and-list-data-types)
 
 ## Dictionaries
 
@@ -1328,7 +1326,7 @@ gene_functions = dict(zip(genes, functions))
 print(gene_functions)
 ```
 
-#### Getting Items from a Dictionary
+#### Getting Items from a Dictionary {#sec-get-items-dict}
 
 The most basic way to look up information in a dictionary is similar to how you'd look up a word in a real dictionary: you use the key to find the value. In Python, this means using square brackets:
 
@@ -1338,7 +1336,7 @@ p53_function = gene_functions["TP53"]
 print(p53_function)
 ```
 
-Trying to find a key that doesn't exist will cause an error.  (Again, we wrap the code that will cause an error in a `try/except` block so that it doesn't break our notebook code.)
+Trying to find a key that doesn't exist will cause an error. (Again, we wrap the code that will cause an error in a `try/except` block so that it doesn't break our notebook code.)
 
 ```{python}
 try:
@@ -1363,7 +1361,7 @@ print(result)
 
 #### Adding Items to a Dictionary
 
-We mentioned that dictionaries are mutable.  Let's see how to add items to our dictionary.  You can either add items one at a time or several at once:
+We mentioned that dictionaries are mutable. Let's see how to add items to our dictionary. You can either add items one at a time or several at once:
 
 ```{python}
 # Adding a single new entry
@@ -1392,9 +1390,9 @@ When you're learning to code, it's best to stick with straightforward, easy-to-r
 
 Here's an interesting feature of Python dictionaries that you might have noticed: when you print out a dictionary, the items appear in the exact order you added them. This wasn't always true in older versions of Python, but now dictionaries automatically keep track of the order of your entries.
 
-One final thing to mention.  You can't use every Python type as a dictionary key, only immutable types.  E.g., you couldn't use a list as a key for a dictionary.  The specific reason for that is beyond the scope of this tutorial, but you may be interested in reading more about it here:  [Why must dictionary keys be immutable?](https://docs.python.org/3/faq/design.html#why-must-dictionary-keys-be-immutable)
+One final thing to mention. You can't use every Python type as a dictionary key, only immutable types. E.g., you couldn't use a list as a key for a dictionary. The specific reason for that is beyond the scope of this tutorial, but you may be interested in reading more about it here: [Why must dictionary keys be immutable?](https://docs.python.org/3/faq/design.html#why-must-dictionary-keys-be-immutable)
 
-#### Removing Items from a Dictionary
+#### Removing Items from a Dictionary {#sec-remove-items-dict}
 
 Need to remove something from your dictionary? Here are two options:
 
@@ -1441,7 +1439,7 @@ else:
     print("TP53 not found in our dictionary")
 ```
 
-Note the use of the `in` operator.  It is for [membership testing](https://docs.python.org/3/reference/expressions.html#membership-test-operations) and also works with dictionaries.
+Note the use of the `in` operator. It is for [membership testing](https://docs.python.org/3/reference/expressions.html#membership-test-operations) and also works with dictionaries.
 
 #### Example: Creating the Reverse Complement of a DNA Sequence
 
@@ -1473,7 +1471,7 @@ for nucleotide in reversed(dna_sequence):
 
 While simple dictionaries work well for simple mappings like mapping the name of a gene to its function, biological data often has multiple layers of related information.
 
-Let's look at one way we can organize this richer data using nested dictionaries -- dictionaries that themselves contain other dictionaries or lists.  (Remember how we could nest lists in other lists? This is similar!)
+Let's look at one way we can organize this richer data using nested dictionaries -- dictionaries that themselves contain other dictionaries or lists. (Remember how we could nest lists in other lists? This is similar!)
 
 Here's an example showing how we might store information about the TP53 gene:
 
@@ -1492,7 +1490,7 @@ gene_database = {
 print(gene_database)
 ```
 
-Let's use the filing cabinet metaphor again:  the main drawer is labeled "TP53", and inside that drawer are several folders containing different types of information. Some of these folders (like "position") contain their own sub-folders!  (Alright, it's not the greatest metaphor...but hopefully you get the idea!)
+Let's use the filing cabinet metaphor again: the main drawer is labeled "TP53", and inside that drawer are several folders containing different types of information. Some of these folders (like "position") contain their own sub-folders! (Alright, it's not the greatest metaphor...but hopefully you get the idea!)
 
 Let's break down what we're storing:
 
@@ -1553,13 +1551,13 @@ except IndexError as error:
     print(f"Oops! That data isn't available: {error}")
 ```
 
-In this case, we need to handle the `IndexError` because the data that the `aliases` key points to is a list, but that list doesn't have enough items to handle our request for the item at index `10`.  Don't worry too much right now on handling specific errors.  We will discuss error handling in greater depth in a future tutorial.
+In this case, we need to handle the `IndexError` because the data that the `aliases` key points to is a list, but that list doesn't have enough items to handle our request for the item at index `10`. Don't worry too much right now on handling specific errors. We will discuss error handling in greater depth in a future tutorial.
 
 While there are quite a few other ways to handle missing data when "drilling down" through nested data structures in Python, for now, we will just use the `try/except` approach similar to the one shown above.
 
 ### Default Dictionaries: A Nice Way to Handle Missing Keys
 
-We mentioned earlier that you should check for key presence in a dictionary before doing something interesting with that key to avoid key errors.  Default dictionaries solve this problem elegantly by automatically creating new entries with preset values when you access a key that doesn't exist yet.
+We mentioned earlier that you should check for key presence in a dictionary before doing something interesting with that key to avoid key errors. Default dictionaries solve this problem elegantly by automatically creating new entries with preset values when you access a key that doesn't exist yet.
 
 A default dictionary is sort of like a self-initializing storage system. Instead of having to check if a key exists before using it, the dictionary takes care of that for you. It's particularly useful when you're counting occurrences or building categorized lists.
 
@@ -1651,7 +1649,7 @@ Default dictionaries combine the power of regular dictionaries with automatic ha
 
 ### Counters
 
-Python has another type of dictionary called a [counter](https://docs.python.org/3/library/collections.html#counter-objects).  Counters provide a convenient way to tally [hashable](https://docs.python.org/3/glossary.html#term-hashable) items.
+Python has another type of dictionary called a [counter](https://docs.python.org/3/library/collections.html#counter-objects). Counters provide a convenient way to tally [hashable](https://docs.python.org/3/glossary.html#term-hashable) items.
 
 Let's return to our example from above, but this time, we will use a `Counter`.
 
@@ -1674,7 +1672,7 @@ print(nucleotide_counts.most_common(2))
 
 Very nice!
 
-What if we wanted to calculate the ratio of nucleotides rather than the raw counts?  A counter can help us here too:
+What if we wanted to calculate the ratio of nucleotides rather than the raw counts? A counter can help us here too:
 
 ```{python}
 nucleotide_counts = Counter("ATGCATTAG")
@@ -1696,7 +1694,7 @@ Now that we have covered some of Python's data structures and collections, and g
 
 ### Overview
 
-You have already seen how to loop over collections and sequences.  But it never hurts to have a few more examples.  Here is the for loop on a couple of different type of sequences:
+You have already seen how to loop over collections and sequences. But it never hurts to have a few more examples. Here is the for loop on a couple of different type of sequences:
 
 ```{python}
 phrase = "Hello, Python!"
@@ -1751,7 +1749,7 @@ When you're working with loops, sometimes you need more than just going through 
 
 #### Making Decisions in Loops
 
-We can use boolean expressions and conditional statements to make decisions inside of loops.  This allows us to take different actions depending on characteristics of the data.
+We can use boolean expressions and conditional statements to make decisions inside of loops. This allows us to take different actions depending on characteristics of the data.
 
 ```{python}
 for n in range(10):
@@ -1826,13 +1824,13 @@ for i, sequence in enumerate(sequences):
 print(sequence_with_n)
 ```
 
-Notice how the loop stops after the 3rd sequence and doesn't continue all the way until the end.  This is thanks to the `break` keyword.
+Notice how the loop stops after the 3rd sequence and doesn't continue all the way until the end. This is thanks to the `break` keyword.
 
 #### `continue`
 
 Think of `continue` as a "skip to the next item" command. When you hit a `continue` statement, the loop immediately jumps to the next iteration. This is perfect for when you want to skip over certain items without stopping the entire loop, like focusing only on the data points that meet your criteria.
 
-In this example, we only want to process protein fragments that start with Methionine (`M`) and skip the others.  While there are multiple ways to approach this, let's use `continue`:
+In this example, we only want to process protein fragments that start with Methionine (`M`) and skip the others. While there are multiple ways to approach this, let's use `continue`:
 
 ```{python}
 proteins = ["MVQIPQNPL", "ILVDGSSYLYR", "MAYHAFPPLTNSA", "GEPTGA"]
@@ -1844,7 +1842,7 @@ for protein in proteins:
     print(f"we will process {protein}")
 ```
 
-This example is a little bit contrived.  I actually think writing it _without_ the `continue` is clearer:
+This example is a little bit contrived. I actually think writing it _without_ the `continue` is clearer:
 
 ```{python}
 proteins = ["MVQIPQNPL", "ILVDGSSYLYR", "MAYHAFPPLTNSA", "GEPTGA"]
@@ -1858,8 +1856,7 @@ for protein in proteins:
 
 Let's look at something more interesting -- simulating how bacteria might grow over time. We'll create a simple model where each bacterium can grow, shrink, or stay the same size each day.
 
-_Pay particular attention to this exmaple.  It will be useful for Miniproject 1!_
-
+_Pay particular attention to this exmaple. It will be useful for Miniproject 1!_
 
 ```{python}
 import random
@@ -1902,7 +1899,7 @@ Here is what is happening:
 
 - In the outer loop, we run the simulation for 20 days, with each iteration representing one day of bacterial growth.
 - In the inner loop, we check each bacterium in our population and apply the growth rules using random chances.
-- Then we loop through the bacteria sizes and print out the final size of each bacterium.  (We treat the bacterium's location in the array (plus one) as its ID.)
+- Then we loop through the bacteria sizes and print out the final size of each bacterium. (We treat the bacterium's location in the array (plus one) as its ID.)
 
 #### How the Random Choices Work
 
@@ -1924,7 +1921,7 @@ When we generate a random number between 0 and 1:
 
 This is one way to implement different probabilities for different outcomes. While this example uses bacterial growth, you could adapt this pattern for any situation where you need to simulate random events with different probabilities -- like mutation rates, drug responses, or population changes.
 
-If you are curious, Python has a [method](https://docs.python.org/3/library/random.html#random.choices) that simplifies this random choice logic.  Check it out if you're curious!  You might want to use it for your first miniproject....
+If you are curious, Python has a [method](https://docs.python.org/3/library/random.html#random.choices) that simplifies this random choice logic. Check it out if you're curious! You might want to use it for your first miniproject....
 
 ## Common Sequence Operations
 
@@ -2003,7 +2000,7 @@ To summarize, select the collection type that both enhances code readability and
 
 ## Key Takeaways
 
-We've covered a lot of material about some of Python's most commonly used data structures.  Here are some key takeaways.
+We've covered a lot of material about some of Python's most commonly used data structures. Here are some key takeaways.
 
 ### General Suggestions
 

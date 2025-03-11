@@ -34,7 +34,7 @@ This connection between our programs and the real-world domain we are modeling i
 
 For the rest of this tutorial, we'll explore how to implement Object-Oriented Programming (OOP) in Python, giving you the tools to represent the biological systems you work with in a natural way.
 
-## Four Pillars of OOP
+## Four Pillars of OOP {#sec-four-pillars-oop}
 
 When learning about object-oriented programming (OOP), you'll often hear about four fundamental concepts (pillars) that form its foundation. These concepts help us organize code in a way that mirrors how we think about real-world objects and their relationships:
 
@@ -826,7 +826,7 @@ While convenient, you might not always know if your objects have the method you 
 
 Both approaches have their place, depending on your specific situation and coding style preferences. Let's look at examples of both approaches.
 
-### Asking for Forgiveness
+### Asking for Forgiveness {#sec-asking-for-forgiveness}
 
 In this example, we call the method `fly` on each `animal` and catch any exceptions that occur using `try/except`.
 

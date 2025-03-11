@@ -914,7 +914,7 @@ There's no "best" way -- they're all valid Python. However, it's good practice t
 
 Check out [PEP 308](https://peps.python.org/pep-0308/) for the full story behind Python's conditional expressions.
 
-## Scope & Name Resolution: Where Can You Use Your Variables?
+## Scope & Name Resolution: Where Can You Use Your Variables? {#sec-scope}
 
 Scope is a set of rules that determine where you can use different names in your code (like variables, function names, etc.). Scope is essentially the "visibility" of variables in different parts of your code. Let's look at a simple example to understand this better:
 

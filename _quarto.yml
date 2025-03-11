@@ -15,6 +15,7 @@ book:
     - chapters/03_algorithms.qmd
     - chapters/04_functions.qmd
     - chapters/05_classes.qmd
+    - chapters/06_errors.qmd
   cover-image: images/dna_python_logo.webp
   cover-image-alt: "DNA double helix to the left and Python logo to the right"
   sidebar:
