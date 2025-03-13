@@ -680,6 +680,46 @@ except TypeError as error:
 
 Don't worry if this syntax seems tricky. While Python offers advanced parameter options, you won't need them too much when learning. Focus on mastering basic positional and keyword arguments first, as these cover most programming needs. For more details on advanced features, check the [Python documentation](https://docs.python.org/3/tutorial/controlflow.html#special-parameters) on special parameters.
 
+### Argument Evaluation in Function Calls
+
+When you call a function in Python, any expressions you use as arguments are evaluated _before_ the function receives them, so that the function only receives the final result of any expressions. In other words, the function never "sees" the original expression, only its evaluated result. This applies to simple arithmetic, variables, other function calls, or any other valid Python expression. Check it out:
+
+```{python}
+def print_name(name):
+    print(f"the name is: '{name}'")
+
+
+first_name = "Zinedine"
+last_name = "Zidane"
+
+# A simple string as an argument
+print_name("Lionel")
+
+# Variables as arguments
+print_name(first_name)
+print_name(last_name)
+
+# A complex expression as an argument. Python calculates the complete string
+# first, then passes only the result to the function.
+print_name(first_name + " " + last_name + "!!")
+```
+
+Function calls within arguments follow the same rule - they're evaluated before the outer function receives the result:
+
+```{python}
+def double(x):
+    return x * 2
+
+
+print(double(2))
+print(double(double(2)))
+
+four = 4
+print(double(8) * four)
+```
+
+To sum it up, Python first evaluates all expressions in your function call, and only then passes these final values to the function.
+
 ## Return Values
 
 Every function in Python can give back (or "return") a value when it finishes running. We use the `return` keyword to specify what value we want to get back:
