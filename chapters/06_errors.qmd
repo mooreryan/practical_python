@@ -905,7 +905,7 @@ Let's talk about you should catch exceptions and when it's better to let them bu
 You should catch exceptions when:
 
 - You can recover meaningfully
-  - You can provide a default value if an error occurs (for example, when calculating fold change and dividing by zero, just return zero)
+  - You can provide a default value if an error occurs (for example, when calculating fold change and dividing by zero, just return one)
   - You can safely skip problematic data (for example, when processing multiple sequences from a FASTA file and one is corrupted, just skip that sequence)
 - You need to clean up resources (for example, close a database connection if a query fails)
 - You want to translate an error into a different, more appropriate error type
@@ -976,5 +976,5 @@ You might enjoy checking out some of these resources:
 - Python docs tutorial about [errors and exceptions](https://docs.python.org/3/tutorial/errors.html)
 - Real Python's [introduction to exceptions](Python Exceptions: An Introduction)
 - Real Python's discussion of [built-in exceptions](https://realpython.com/python-built-in-exceptions/)
-- StackOverflow post about the [`else` block](https://stackoverflow.com/a/16138864) 
+- StackOverflow post about the [`else` block](https://stackoverflow.com/a/16138864)
 - StackOverflow post about [raising exceptions](https://stackoverflow.com/a/24065533)
