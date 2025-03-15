@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 13, 2025</p>
+      <p class="date-modified">March 15, 2025</p>
     </div>
   </div>
     
@@ -468,7 +468,7 @@ ValueError: could not convert string to float: 'na'</code></pre>
 <h2 class="anchored" data-anchor-id="basic-exception-handling">Basic Exception Handling</h2>
 <p>Now that we’ve discussed what exceptions are, let’s explore how we can recover from them and prevent unexpected errors from crashing our programs.</p>
 <p>The basic format uses <code>try:</code> followed by an indented block of code, then <code>except SomeError:</code>, followed by another indented block of code:</p>
-<div id="e8cbb625" class="cell" data-execution_count="1">
+<div id="1ac61e81" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">47</span> <span class="op">+</span> <span class="st">"102"</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
@@ -507,7 +507,7 @@ ValueError: could not convert string to float: 'na'</code></pre>
 <section id="no-exception-in-the-try-clause" class="level4">
 <h4 class="anchored" data-anchor-id="no-exception-in-the-try-clause">No Exception in the Try Clause</h4>
 <p>In this example, no exception occurs in the try clause.</p>
-<div id="2f275344" class="cell" data-execution_count="2">
+<div id="8a36192a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"hi"</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
@@ -529,7 +529,7 @@ yo!</code></pre>
 <section id="exception-in-the-try-clause" class="level4">
 <h4 class="anchored" data-anchor-id="exception-in-the-try-clause">Exception in the Try Clause</h4>
 <p>In this example, an error occurs that matches the one in our <code>except</code> clause:</p>
-<div id="43d09091" class="cell" data-execution_count="3">
+<div id="28c6e227" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(greeting)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> error:</span>
@@ -571,7 +571,7 @@ yo!</code></pre>
 <h3 class="anchored" data-anchor-id="catching-multiple-exceptions">Catching Multiple Exceptions</h3>
 <p>You can catch different types of exceptions within a single <code>try/except</code> block by adding multiple except clauses. When an error occurs in the try block, Python looks for a matching except block to handle that specific error type. Once it finds a match, it runs that code and then continues with the rest of your program. If no match is found, then the program crashes.</p>
 <p>For example, if your code causes a <code>NameError</code> (like using a variable that doesn’t exist), only the except clause that handles <code>NameError</code> will run. The other except clauses, like one for <code>TypeError</code>, will be skipped:</p>
-<div id="f7fe3f30" class="cell" data-execution_count="4">
+<div id="38e05037" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(greeting)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> name_error:</span>
@@ -583,7 +583,7 @@ yo!</code></pre>
 </div>
 </div>
 <p>In this case, it is the opposite – the code in the try clause causes a <code>TypeError</code>, causing only the expect clause handling type errors to run:</p>
-<div id="fcf4ed72" class="cell" data-execution_count="5">
+<div id="9a6499dc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">47</span> <span class="op">+</span> <span class="st">"102"</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> name_error:</span>
@@ -595,7 +595,7 @@ yo!</code></pre>
 </div>
 </div>
 <p>Sometimes you might want to handle different errors in the same way. In these cases, you can group multiple exceptions in a single <code>except</code> clause:</p>
-<div id="335d1103" class="cell" data-execution_count="6">
+<div id="5433b31f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(greeting)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (<span class="pp">NameError</span>, <span class="pp">TypeError</span>) <span class="im">as</span> error:</span>
@@ -614,7 +614,7 @@ an error occurred: error=TypeError("unsupported operand type(s) for +: 'int' and
 <section id="clauses-can-contain-multiple-statements" class="level3">
 <h3 class="anchored" data-anchor-id="clauses-can-contain-multiple-statements">Clauses Can Contain Multiple Statements</h3>
 <p>Each section (clause) in a try/except block can include multiple lines of code:</p>
-<div id="52a1f069" class="cell" data-execution_count="7">
+<div id="dadc7be3" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will run successfully</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span>)</span>
@@ -712,7 +712,7 @@ NameError: name 'twenty' is not defined</code></pre>
 <p>Note that a <code>ZeroDivisionError</code> is an <code>ArithmeticError</code>, but it is not a <code>RuntimeError</code> – similar to how cats and dogs are both mammals, but a cat is not a canine.</p>
 <p>The complete <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">exception hierarchy</a> is is available in the Python documentation.</p>
 <p>The benefit of this hierarchy is that we can catch a whole group of related errors without listing each one individually. Here’s a simple example with a function that performs basic math operations:</p>
-<div id="466eeb58" class="cell" data-execution_count="8">
+<div id="e42e3b08" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> silly_math(x, y):</span>
@@ -725,7 +725,7 @@ NameError: name 'twenty' is not defined</code></pre>
 <li>If <code>x</code> or <code>y</code> aren’t numbers, we get a <code>TypeError</code></li>
 </ul>
 <p>Imagine we’re reading the values of <code>x</code> and <code>y</code> from a data file, so we don’t know what they’ll be until the program runs. We can handle potential errors like this:</p>
-<div id="3d835f0e" class="cell" data-execution_count="9">
+<div id="8c0d683d" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ZeroDivisionError</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1</span></span>
@@ -764,7 +764,7 @@ one of the values wasn't numeric! error=TypeError("unsupported operand type(s) f
 </div>
 </div>
 <p>This works, but we can simplify by using the parent class <code>ArithmeticError</code> instead:</p>
-<div id="0e585fc0" class="cell" data-execution_count="10">
+<div id="64da3ed9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ZeroDivisionError</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1</span></span>
@@ -815,7 +815,7 @@ ArithmeticError: oops!</code></pre>
 <h3 class="anchored" data-anchor-id="nesting-tryexcept-blocks">Nesting Try/Except Blocks</h3>
 <p>It can sometimes be useful to nest try/except blocks. This is like having backup plans for your backup plans!</p>
 <p>The first example shows how Python searches for an appropriate error handler. If an inner error handler doesn’t match the exception type, Python will check outer handlers:</p>
-<div id="d9364130" class="cell" data-execution_count="11">
+<div id="22373576" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"oh no!"</span>)</span>
@@ -829,7 +829,7 @@ ArithmeticError: oops!</code></pre>
 </div>
 <p>In this case, the inner handler is looking for a <code>NameError</code>, but we raised a <code>TypeError</code>. Since the inner handler can’t catch it, Python checks the outer handler, which successfully catches the <code>TypeError</code>.</p>
 <p>Our second example is different. Here, the inner handler does catch the <code>TypeError</code>, but then it raises a new <code>NameError</code>:</p>
-<div id="709c3426" class="cell" data-execution_count="12">
+<div id="6370cc44" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"oh no!"</span>)</span>
@@ -862,7 +862,7 @@ caught a NameError</code></pre>
 <p>While the <code>else</code> clause isn’t very common in Python code, it serves specific purposes. One important use is running additional code before any finalization steps without including it in the <code>try</code> block itself. Without using <code>else</code>, you’d have to put this code in the <code>try</code> block, which means unintended errors might get caught and handled incorrectly.</p>
 <p>Unlike <code>finally</code> (which always runs), the <code>else</code> clause only runs when the <code>try</code> block succeeds completely. This makes it useful for operations that should only happen when everything works as expected.</p>
 <p>Here’s a simple example showing how <code>else</code> can make your code cleaner:</p>
-<div id="d3424cf7" class="cell" data-execution_count="13">
+<div id="f735c413" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> example(): ...</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> handle_failure(error): ...</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> handle_success(result): ...</span>
@@ -888,7 +888,7 @@ caught a NameError</code></pre>
 <span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>    handle_success(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s try an example that uses all of the clauses: <code>try</code>, <code>except</code>, <code>else</code>, and <code>finally</code>. This simple example shows how to handle different situations when searching a protein database. The different parts handle specific situations:</p>
-<div id="fcf30af6" class="cell" data-execution_count="14">
+<div id="406d6fb5" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_protein(protein_database, entry):</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Try to find the protein in the database.</span></span>
@@ -947,7 +947,7 @@ nrdA -&gt; Ribonucleoside-diphosphate reductase 1 subunit alpha
 <section id="combining-techniques" class="level3">
 <h3 class="anchored" data-anchor-id="combining-techniques">Combining Techniques</h3>
 <p>Let’s take a look at an example that combines a few of the techniques we have talked about so far. Here we’re trying to read a file, convert each line to an integer, and store those integers in a list. Our code is structured with a <code>try</code> clause followed by several <code>except</code> clauses to handle different types of errors:</p>
-<div id="1d12d6a8" class="cell" data-execution_count="15">
+<div id="702d6604" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_integers(file_name):</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Read a file and convert each line to an integer."""</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_name) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -992,7 +992,7 @@ nrdA -&gt; Ribonucleoside-diphosphate reductase 1 subunit alpha
 </ul>
 <p>These custom errors make it easier for users to handle problems specific to that library. Users can then distinguish between errors from the library and errors from their own code.</p>
 <p>Let’s look at an example. First, we’ll write code without a custom error, then improve it by adding one.</p>
-<div id="799fe42e" class="cell" data-execution_count="16">
+<div id="a56da09e" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_dna_string(dna_string):</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse a DNA string, validating the nucleotides."""</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    valid_bases <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>, <span class="st">"N"</span>}</span>
@@ -1017,7 +1017,7 @@ error=ValueError("Invalid DNA base at index 2: 'X'")</code></pre>
 </div>
 <p>This works fine, but imagine you’re writing a library with many classes for different aspects of sequence analysis and file parsing. Error handling could become confusing. Creating custom errors helps users understand and handle problems more clearly.</p>
 <p>A common approach is to define a base error class for your package, and then create specific error types that inherit from it. For example, if our package is called <code>EasyBio</code>, we might do this:</p>
-<div id="f59879a4" class="cell" data-execution_count="17">
+<div id="ac9636c8" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EasyBioError(<span class="pp">Exception</span>):</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Base class for all EasyBio package errors."""</span></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
@@ -1110,7 +1110,7 @@ error=InvalidBaseError("Invalid DNA base at index 2: 'X'")</code></pre>
 <ul>
 <li>You can recover meaningfully
 <ul>
-<li>You can provide a default value if an error occurs (for example, when calculating fold change and dividing by zero, just return zero)</li>
+<li>You can provide a default value if an error occurs (for example, when calculating fold change and dividing by zero, just return one)</li>
 <li>You can safely skip problematic data (for example, when processing multiple sequences from a FASTA file and one is corrupted, just skip that sequence)</li>
 </ul></li>
 <li>You need to clean up resources (for example, close a database connection if a query fails)</li>
@@ -1153,7 +1153,7 @@ error=InvalidBaseError("Invalid DNA base at index 2: 'X'")</code></pre>
 <section id="example" class="level3">
 <h3 class="anchored" data-anchor-id="example">Example</h3>
 <p>Here is a tiny example that breaks pretty much all the suggestions that we have given:</p>
-<div id="b164d362" class="cell" data-execution_count="18">
+<div id="b9bab70f" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> example(x, y, z):</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> potentially_risky_function(x, y, z)</span>
