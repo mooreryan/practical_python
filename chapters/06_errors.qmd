@@ -69,7 +69,7 @@ NameError: name 'y' is not defined
 
 This error message shows the type of error, the file where it happened, and a helpful explanation of the problem. We will go into more detail about reading error messages later in this tutorial.
 
-::: {.callout-tip title="Stop & Think" collapse="false"}
+::: {#tip-06-name-error .callout-tip title="Stop & Think" collapse="false"}
 Look at the following code:
 
 ```python
@@ -116,7 +116,7 @@ Some other exceptions you might encounter include:
 
 For a complete list of Python exceptions, see the [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#built-in-exceptions) section of the Python manual.
 
-::: {.callout-tip title="Stop & Think" collapse="false"}
+::: {#tip-06-file-not-exist .callout-tip title="Stop & Think" collapse="false"}
 If you were writing a program to read and parse FASTA files, which type of error would occur if the file you were trying to read did not exist?
 :::
 
@@ -255,7 +255,7 @@ The error message shows us the exact path of execution that led to the problem. 
 
 This is a common issue when working with biological datasets, which often contain missing values represented as "na", "N/A", or similar placeholders. To fix this problem, we would need to add error handling when running the `float` function, or use some other technique to check for these special values before attempting the conversion.
 
-::: {.callout-tip title="Stop & Think" collapse="false"}
+::: {#tip-06-handle-na .callout-tip title="Stop & Think" collapse="false"}
 In the above example, can you think of a better way to handle the `na` value rather than letting the program crash?
 :::
 
@@ -476,7 +476,7 @@ Notice the key message: "During handling of the above exception, another excepti
 
 For more information about this concept, check out the Python documentation on [exception chaining](https://docs.python.org/3/tutorial/errors.html#exception-chaining).
 
-::: {.callout-tip title="Stop & Think" collapse="false"}
+::: {#tip-06-exception-chaining .callout-tip title="Stop & Think" collapse="false"}
 If you're developing a program to analyze biological sequencing data, can you think of a reason why allowing exceptions to occur within an `except` block might lead to tricky issues in your code?
 :::
 
@@ -621,7 +621,7 @@ _Note: check out the [raise](https://docs.python.org/3/reference/simple_stmts.ht
 
 You may have noticed that this connects back to the Object-Oriented Programming concepts we discussed in @sec-four-pillars-oop. This error class hierarchy shows inheritance at work: exception classes inherit from their parent exception classes. When we catch an `ArithmeticError`, we're using this inheritance relationship to handle any type of exception that belongs to that family. This is a practical example of why inheritance is useful in programming.
 
-::: {.callout-tip title="Stop & Think" collapse="false"}
+::: {#tip-06-file-read-errors .callout-tip title="Stop & Think" collapse="false"}
 Consider a function that reads a FASTA file. What exception types might you want to catch, and which parent exception class could catch all of them?
 :::
 
@@ -751,7 +751,7 @@ Here is a flowchart to help you visualize how the logic flows through the try/ex
 
 ![try/except/else/finally flowchart](/images/try_except_flowchart_light.svg "try/except/else/finally flowchart"){fig-alt="try/except/else/finally flowchart"}
 
-::: {.callout-tip title="Stop & Think" collapse="false"}
+::: {#tip-06-finally-clause .callout-tip title="Stop & Think" collapse="false"}
 Can you think of any scenarios in which the `finally` clause would be useful when working with biological data or analysis?
 :::
 
@@ -868,7 +868,7 @@ Benefits of using custom exceptions include:
 
 Users of your code will often expect to see custom error types that are specific to your package or library. This approach lets you control which errors users need to handle and gives them clear information about what went wrong.
 
-::: {.callout-tip title="Stop & Think" collapse="false"}
+::: {#tip-06-custom-exceptions .callout-tip title="Stop & Think" collapse="false"}
 If you were creating a package for RNA-seq analysis, what custom exception types might be useful to define?
 :::
 
@@ -1015,3 +1015,64 @@ You might enjoy checking out some of these resources:
 - Real Python's discussion of [built-in exceptions](https://realpython.com/python-built-in-exceptions/)
 - StackOverflow post about the [`else` block](https://stackoverflow.com/a/16138864)
 - StackOverflow post about [raising exceptions](https://stackoverflow.com/a/24065533)
+
+
+## Practice Problems
+
+### 6.1 {#sec-problem-6.1}
+
+Write a `try/except` block that attempts to convert a string to a float, but catches the `ValueError` if the string isn't a valid number. When an error occurs, it should print "Not a valid number".
+
+### 6.2 {#sec-problem-6.2}
+
+Modify this code to catch the potential error:
+
+```python
+counts = {"A": 1, "C": 2, "G": 0, "T": 4}
+total = sum(counts.values())
+n_ratio = counts["N"] / total 
+```
+
+### 6.3 {#sec-problem-6.3}
+
+Here is a tiny, misbehaving Python function:
+
+```python
+import random
+
+def silly_divide(x, y):
+    if random.random() < 0.25:
+        raise Exception("oops!")
+
+    return x / y
+```
+
+About 75% of the time, it divides two numbers. However, the other 25% of the time, it raises an `Exception`.
+
+Write code that runs this function inside a `try/except` block.  It should have two `except` clauses, one to catch the `ZeroDivisionError` and one to catch the potential `Exception`.  You should give the user info about the error that was caught.
+
+### 6.4 {#sec-problem-6.4}
+
+Write a function called `fold_change` that takes two expression values and calculates their fold change.  Make sure to handle any potential errors that could occur.  If there is an error, the function should return `None`.
+
+### 6.5 {#sec-problem-6.5}
+
+Create a custom exception called `SequenceLengthError` that inherits from `Exception`.  Then use it in a function called `validate_sequence_length` that raises a `SequenceLengthError` if the given sequence length is not between 50 and 150 bases.
+
+### 6.6 {#sec-problem-6.6}
+
+Consider the following code:
+
+```python
+def run_simulation(max_turns):
+    if max_turns < 1:
+        raise ValueError("bad input")
+    
+    if max_turns > 1000:
+        raise ValueError("bad input")
+    
+    # Simulation code would follow
+    pass
+```
+
+Rewrite this function so that it provides the uses with better error messages.
