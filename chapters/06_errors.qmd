@@ -69,6 +69,19 @@ NameError: name 'y' is not defined
 
 This error message shows the type of error, the file where it happened, and a helpful explanation of the problem. We will go into more detail about reading error messages later in this tutorial.
 
+::: {.callout-tip title="Stop & Think" collapse="false"}
+Look at the following code:
+
+```python
+try:
+    print(gene)
+except NameError as error:
+    print(f"{error=}")
+```
+
+What do you think will happen and why?
+:::
+
 #### Type Errors
 
 A `TypeError` happens when you try to perform an operation on a data type that doesn't support that operation. (It's sort of like trying to use a lab technique on the wrong type of sample.)
@@ -102,6 +115,10 @@ Some other exceptions you might encounter include:
   - Trying to convert `na` expression values (`float("na")`)
 
 For a complete list of Python exceptions, see the [Built-in Exceptions](https://docs.python.org/3/library/exceptions.html#built-in-exceptions) section of the Python manual.
+
+::: {.callout-tip title="Stop & Think" collapse="false"}
+If you were writing a program to read and parse FASTA files, which type of error would occur if the file you were trying to read did not exist?
+:::
 
 ### Reading Error Messages
 
@@ -237,6 +254,10 @@ The script processes gene expression data from a CSV file. It runs smoothly for 
 The error message shows us the exact path of execution that led to the problem. It starts at line 14 where we call `read_expression_data()`, then moves to line 10 where we call `parse_line()`, and finally reaches line 4 where the actual error occurs when trying to convert `"na"` to a float.
 
 This is a common issue when working with biological datasets, which often contain missing values represented as "na", "N/A", or similar placeholders. To fix this problem, we would need to add error handling when running the `float` function, or use some other technique to check for these special values before attempting the conversion.
+
+::: {.callout-tip title="Stop & Think" collapse="false"}
+In the above example, can you think of a better way to handle the `na` value rather than letting the program crash?
+:::
 
 ## Basic Exception Handling
 
@@ -455,6 +476,10 @@ Notice the key message: "During handling of the above exception, another excepti
 
 For more information about this concept, check out the Python documentation on [exception chaining](https://docs.python.org/3/tutorial/errors.html#exception-chaining).
 
+::: {.callout-tip title="Stop & Think" collapse="false"}
+If you're developing a program to analyze biological sequencing data, can you think of a reason why allowing exceptions to occur within an `except` block might lead to tricky issues in your code?
+:::
+
 ## Advanced Exception Handling
 
 Let's explore some more advanced ways to handle exceptions in Python. While you might not need to use these techniques in your current assignments and miniprojects, it's still valuable to understand them. You'll encounter these patterns when reading other people's code or working with existing Python libraries and tools.
@@ -596,6 +621,10 @@ _Note: check out the [raise](https://docs.python.org/3/reference/simple_stmts.ht
 
 You may have noticed that this connects back to the Object-Oriented Programming concepts we discussed in @sec-four-pillars-oop. This error class hierarchy shows inheritance at work: exception classes inherit from their parent exception classes. When we catch an `ArithmeticError`, we're using this inheritance relationship to handle any type of exception that belongs to that family. This is a practical example of why inheritance is useful in programming.
 
+::: {.callout-tip title="Stop & Think" collapse="false"}
+Consider a function that reads a FASTA file. What exception types might you want to catch, and which parent exception class could catch all of them?
+:::
+
 ### Nesting Try/Except Blocks
 
 It can sometimes be useful to nest try/except blocks. This is like having backup plans for your backup plans!
@@ -722,6 +751,10 @@ Here is a flowchart to help you visualize how the logic flows through the try/ex
 
 ![try/except/else/finally flowchart](/images/try_except_flowchart_light.svg "try/except/else/finally flowchart"){fig-alt="try/except/else/finally flowchart"}
 
+::: {.callout-tip title="Stop & Think" collapse="false"}
+Can you think of any scenarios in which the `finally` clause would be useful when working with biological data or analysis?
+:::
+
 ### Combining Techniques
 
 Let's take a look at an example that combines a few of the techniques we have talked about so far. Here we're trying to read a file, convert each line to an integer, and store those integers in a list. Our code is structured with a `try` clause followed by several `except` clauses to handle different types of errors:
@@ -834,6 +867,10 @@ Benefits of using custom exceptions include:
 - **Documentation**: Custom exceptions serve as self-documenting code, showing users what can go wrong.
 
 Users of your code will often expect to see custom error types that are specific to your package or library. This approach lets you control which errors users need to handle and gives them clear information about what went wrong.
+
+::: {.callout-tip title="Stop & Think" collapse="false"}
+If you were creating a package for RNA-seq analysis, what custom exception types might be useful to define?
+:::
 
 ## General Tips
 
