@@ -11,7 +11,7 @@ jupyter: python3
 
 ### Stop & Think
 
-@tip-06-name-error:  When Python tries to evaluate the name `gene` and doesn't find it in any scope, it raises a `NameError`, which matches the exception type specified in the except clause.  This causes a message with the error details to be printed to the console.
+@tip-06-name-error: When Python tries to evaluate the name `gene` and doesn't find it in any scope, it raises a `NameError`, which matches the exception type specified in the except clause. This causes a message with the error details to be printed to the console.
 
 @tip-06-file-not-exist: `FileNotFoundError`
 
@@ -30,10 +30,10 @@ jupyter: python3
 #### Solution @sec-problem-6.1
 
 ```python
-   try:
-       value = float("abc")
-   except ValueError:
-       print("Not a valid number")
+try:
+    value = float("abc")
+except ValueError:
+    print("Not a valid number")
 ```
 
 #### Solution @sec-problem-6.2
@@ -43,7 +43,7 @@ counts = {"A": 1, "C": 2, "G": 0, "T": 4}
 total = sum(counts.values())
 
 try:
-    n_ratio = counts["N"] / total 
+    n_ratio = counts["N"] / total
 except KeyError:
     print("N is not present in the counts dictionary")
     n_ratio = None
@@ -51,7 +51,7 @@ except KeyError:
 
 #### Solution @sec-problem-6.3
 
-```python 
+```python
 try:
     silly_divide(5, 0)
 except ZeroDivisionError:
@@ -62,7 +62,7 @@ except Exception as error:
 
 #### Solution @sec-problem-6.4
 
-```python 
+```python
 def fold_change(expression_1, expression_2)
     try:
         return expression_1 / expression_2
@@ -73,12 +73,12 @@ def fold_change(expression_1, expression_2)
 
 #### Solution @sec-problem-6.5
 
-```python 
+```python
 class SequenceLengthError(Exception):
     pass
 
 MIN_LENGTH = 50
-MAX_LENGTH = 150 
+MAX_LENGTH = 150
 
 def validate_sequence_length(sequence):
     sequence_length = len(sequence)
@@ -88,20 +88,96 @@ def validate_sequence_length(sequence):
 
     if sequence_length > MAX_LENGTH:
         raise SequenceLengthError(f"sequence length {sequence_length} was too long!")
-    
+
     return None
 ```
 
 #### Solution @sec-problem-6.6
 
-```python 
+```python
 def run_simulation(max_turns):
     if max_turns < 1:
         raise ValueError(f"Expected at least 1 iteration, but got {max_turns=}")
-    
+
     if max_turns > 1000:
         raise ValueError(f"Expected at most 1000 iterations, but got {max_turns=}")
-    
+
     # Simulation code would follow
     pass
+```
+
+## Chapter 7: Intro to Exploratory Data Analysis with Python
+
+### Stop & Think
+
+@tip-07-why-summarize-data response:  Looking at a summary of your data has a ton of benefits.  Summarizing your data can help you:
+
+- Identify data import issues, like importing the wrong file
+- Identify data quality issues, like missing values or outliers
+- Become familiar with the data, including data types and ranges
+
+The more familiar you are with your data, the better!
+
+@tip-07-why-nice-plots response: Clean visualizations aren’t just important for presenting data to others, they are also important for presenting data to yourself!  A messy graph may hide trends, overload the viewer, or be otherwise difficult to interpret, potentially leading to misinterpretations or missed patterns.  Professional-looking visualizations can also be shared with colleagues through presentations and reports with minimal modifications, freeing up time later.  Lastly, it’s never bad to get in the habit of producing clear and effective visualizations of your data!
+
+@tip-07-good-color-palette response: Choosing a good color palette is critical for communicating information about your data.  Improper color choice can easily lead to misinterpretations.  In the heatmap example, we use a diverging color scheme to show the difference between positive and negative correlations, but the balance of those colors must be correct:
+
+- If the center of the palette was on 0.2 rather than zero, it would visually suggest that values around 0.2 are "neutral" or "average,” rather than “positive”
+- With asymmetric color intensity (brightest blue at -0.2, brightest orange at 1.0), it would create visual bias, making positive correlations appear weaker than negative ones of the same magnitude
+
+In both cases, viewers would easily be thrown off by the color scheme, even with a legend available.
+
+@tip-07-why-filter-columns response: Filtering columns by category can help manage cognitive load and distraction when working with large datasets, allowing you to focus on particular variables. It can make it easier to identify patterns, facilitate more targeted analysis, and help build intuition about how different aspects of the data relate to each other.
+
+@tip-07-what-correlation-tells-us response: Correlation values can show potential relationships between variables and suggest further avenues for investigation. However, they have limitations: they only measure linear relationships, can be heavily influenced by outliers, and don't indicate causation. They should be considered as starting points for deeper analysis rather than conclusive findings.
+
+@tip-07-log-scale-purpose response: While we are most used to linear scales, logarithmic scales are useful in many situations:
+
+⁃ When data spans several orders of magnitude, log scales lett you visualize both small and large values effectively on the same plot
+⁃ When data follows exponential growth patterns, like in the early stages of an [epidemic](https://data.europa.eu/apps/data-visualisation-guide/logarithmic-y-axes)
+⁃ When looking for proportional or percentage changes rather than count changes, like in the case of this [library example](https://www.lrs.org/2020/06/17/visualizing-data-the-logarithmic-scale/)
+
+In fact, visualizing data on a logarithmic scale can sometimes reveal trends that are not apparent from count data, as in [this example using cancer data](https://www.pa.gov/content/dam/copapwp-pagov/en/health/documents/topics/healthstatistics/statistical-resources/understandinghealthstats/documents/Arithmetic_vs_Logarithmic_Line_Charts.pdf).
+
+Logarithmic transformations also have some nifty statistical applications, like [reducing skew in data](https://pmc.ncbi.nlm.nih.gov/articles/PMC9036143/).
+
+@tip-07-why-correlation-heatmap response: Heatmaps add an extra visual layer that is not present in tables (color), making strong correlations visually obvious.  Clustering reveals groups of variables that behave similarly, and the dendrograms show how those variables are related to each other.  Together, these components make patterns easier to spot than a table alone and add hierarchical structure that can’t be easily represented in a data table.
+
+@tip-07-merge-considerations response: When merging datasets, it’s important to consider:
+
+1. Whether incomplete data is acceptable or problematic.  If problematic, choose an inner join.
+2. If either dataset is primary to your analysis.  If no, choose an outer join.  If yes, choose a left or right join according to the dataset.
+
+Along the way, consider how representative the resulting dataset will be and whether you will be able to use it effectively for any planned analyses or visualizations.
+
+### Practice Problems
+
+#### Solution @sec-problem-7.1
+
+```python
+df = pd.DataFrame(state_cancer_data)
+```
+
+#### Solution @sec-problem-7.2
+
+```python
+df["Cancer Deaths Per 100k"] = df["Cancer Deaths"] / df["Population"] * 100_000
+```
+
+#### Solution @sec-problem-7.3
+
+```python
+df.query("`Cancer Deaths Per 100k` >= 180 and `Median Household Income` < 68_500")
+```
+
+#### Solution @sec-problem-7.4
+
+```python
+df.plot(kind="scatter", x="Median Household Income", y="Cancer Deaths Per 100k")
+```
+
+#### Solution @sec-problem-7.5
+
+```python
+df.plot(kind="scatter", x="Percent Aged 65+", y="Cancer Deaths Per 100k")
 ```
