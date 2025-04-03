@@ -44,6 +44,7 @@ toc-depth: 6
 format:
   html:
     theme:
+      - custom.scss
       - cosmo
   # pdf:
   #   documentclass: scrreprt
