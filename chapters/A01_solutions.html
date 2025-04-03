@@ -67,7 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/06_errors.html" rel="prev">
+<link href="../chapters/A02_regex.html" rel="next">
+<link href="../chapters/07_exploratory_data_analysis.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -193,8 +194,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/07_exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intro to Exploratory Data Analysis with Python</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/A01_solutions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Appendix 1: Solutions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/A02_regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Appendix 2: Regular Expressions</span></a>
   </div>
 </li>
     </ul>
@@ -218,6 +231,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#solution-sec-problem-6.4" id="toc-solution-sec-problem-6.4" class="nav-link" data-scroll-target="#solution-sec-problem-6.4">Solution <span>6.4</span></a></li>
   <li><a href="#solution-sec-problem-6.5" id="toc-solution-sec-problem-6.5" class="nav-link" data-scroll-target="#solution-sec-problem-6.5">Solution <span>6.5</span></a></li>
   <li><a href="#solution-sec-problem-6.6" id="toc-solution-sec-problem-6.6" class="nav-link" data-scroll-target="#solution-sec-problem-6.6">Solution <span>6.6</span></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#chapter-7-intro-to-exploratory-data-analysis-with-python" id="toc-chapter-7-intro-to-exploratory-data-analysis-with-python" class="nav-link" data-scroll-target="#chapter-7-intro-to-exploratory-data-analysis-with-python">Chapter 7: Intro to Exploratory Data Analysis with Python</a>
+  <ul>
+  <li><a href="#stop-think-1" id="toc-stop-think-1" class="nav-link" data-scroll-target="#stop-think-1">Stop &amp; Think</a></li>
+  <li><a href="#practice-problems-1" id="toc-practice-problems-1" class="nav-link" data-scroll-target="#practice-problems-1">Practice Problems</a>
+  <ul>
+  <li><a href="#solution-sec-problem-7.1" id="toc-solution-sec-problem-7.1" class="nav-link" data-scroll-target="#solution-sec-problem-7.1">Solution <span>7.1</span></a></li>
+  <li><a href="#solution-sec-problem-7.2" id="toc-solution-sec-problem-7.2" class="nav-link" data-scroll-target="#solution-sec-problem-7.2">Solution <span>7.2</span></a></li>
+  <li><a href="#solution-sec-problem-7.3" id="toc-solution-sec-problem-7.3" class="nav-link" data-scroll-target="#solution-sec-problem-7.3">Solution <span>7.3</span></a></li>
+  <li><a href="#solution-sec-problem-7.4" id="toc-solution-sec-problem-7.4" class="nav-link" data-scroll-target="#solution-sec-problem-7.4">Solution <span>7.4</span></a></li>
+  <li><a href="#solution-sec-problem-7.5" id="toc-solution-sec-problem-7.5" class="nav-link" data-scroll-target="#solution-sec-problem-7.5">Solution <span>7.5</span></a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -252,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 24, 2025</p>
+      <p class="date-modified">April 3, 2025</p>
     </div>
   </div>
     
@@ -279,10 +304,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="practice-problems">Practice Problems</h3>
 <section id="solution-sec-problem-6.1" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-6.1">Solution <a href="06_errors.html#sec-problem-6.1" class="quarto-xref"><span>6.1</span></a></h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>   <span class="cf">try</span>:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>       value <span class="op">=</span> <span class="bu">float</span>(<span class="st">"abc"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       <span class="bu">print</span>(<span class="st">"Not a valid number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> <span class="bu">float</span>(<span class="st">"abc"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Not a valid number"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="solution-sec-problem-6.2" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-6.2">Solution <a href="06_errors.html#sec-problem-6.2" class="quarto-xref"><span>6.2</span></a></h4>
@@ -290,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">sum</span>(counts.values())</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    n_ratio <span class="op">=</span> counts[<span class="st">"N"</span>] <span class="op">/</span> total </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    n_ratio <span class="op">=</span> counts[<span class="st">"N"</span>] <span class="op">/</span> total</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">KeyError</span>:</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"N is not present in the counts dictionary"</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    n_ratio <span class="op">=</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -319,7 +344,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>MIN_LENGTH <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>MAX_LENGTH <span class="op">=</span> <span class="dv">150</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>MAX_LENGTH <span class="op">=</span> <span class="dv">150</span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_sequence_length(sequence):</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    sequence_length <span class="op">=</span> <span class="bu">len</span>(sequence)</span>
@@ -329,7 +354,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sequence_length <span class="op">&gt;</span> MAX_LENGTH:</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> SequenceLengthError(<span class="ss">f"sequence length </span><span class="sc">{</span>sequence_length<span class="sc">}</span><span class="ss"> was too long!"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="solution-sec-problem-6.6" class="level4">
@@ -337,12 +362,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_simulation(max_turns):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> max_turns <span class="op">&lt;</span> <span class="dv">1</span>:</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Expected at least 1 iteration, but got </span><span class="sc">{</span>max_turns<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> max_turns <span class="op">&gt;</span> <span class="dv">1000</span>:</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Expected at most 1000 iterations, but got </span><span class="sc">{</span>max_turns<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulation code would follow</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="chapter-7-intro-to-exploratory-data-analysis-with-python" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-7-intro-to-exploratory-data-analysis-with-python">Chapter 7: Intro to Exploratory Data Analysis with Python</h2>
+<section id="stop-think-1" class="level3">
+<h3 class="anchored" data-anchor-id="stop-think-1">Stop &amp; Think</h3>
+<p><a href="07_exploratory_data_analysis.html#tip-07-why-summarize-data" class="quarto-xref">Tip&nbsp;<span>7.1</span></a> response:&nbsp;&nbsp;Looking at a summary of your data has a ton of benefits.&nbsp;&nbsp;Summarizing your data can help you:</p>
+<ul>
+<li>Identify data import issues, like importing the wrong file</li>
+<li>Identify data quality issues, like missing values or outliers</li>
+<li>Become familiar with the data, including data types and ranges</li>
+</ul>
+<p>The more familiar you are with your data, the better!</p>
+<p><a href="07_exploratory_data_analysis.html#tip-07-why-nice-plots" class="quarto-xref">Tip&nbsp;<span>7.3</span></a> response: Clean visualizations aren’t just important for presenting data to others, they are also important for presenting data to yourself!&nbsp;&nbsp;A messy graph may hide trends, overload the viewer, or be otherwise difficult to interpret, potentially leading to misinterpretations or missed patterns.&nbsp;&nbsp;Professional-looking visualizations can also be shared with colleagues through presentations and reports with minimal modifications, freeing up time later.&nbsp;&nbsp;Lastly, it’s never bad to get in the habit of producing clear and effective visualizations of your data!</p>
+<p><a href="07_exploratory_data_analysis.html#tip-07-good-color-palette" class="quarto-xref">Tip&nbsp;<span>7.6</span></a> response: Choosing a good color palette is critical for communicating information about your data.&nbsp;&nbsp;Improper color choice can easily lead to misinterpretations.&nbsp;&nbsp;In the heatmap example, we use a diverging color scheme to show the difference between positive and negative correlations, but the balance of those colors must be correct:</p>
+<ul>
+<li>If the center of the palette was on 0.2 rather than zero, it would visually suggest that values around 0.2 are “neutral” or “average,” rather than “positive”</li>
+<li>With asymmetric color intensity (brightest blue at -0.2, brightest orange at 1.0), it would create visual bias, making positive correlations appear weaker than negative ones of the same magnitude</li>
+</ul>
+<p>In both cases, viewers would easily be thrown off by the color scheme, even with a legend available.</p>
+<p><a href="07_exploratory_data_analysis.html#tip-07-why-filter-columns" class="quarto-xref">Tip&nbsp;<span>7.2</span></a> response: Filtering columns by category can help manage cognitive load and distraction when working with large datasets, allowing you to focus on particular variables. It can make it easier to identify patterns, facilitate more targeted analysis, and help build intuition about how different aspects of the data relate to each other.</p>
+<p><a href="07_exploratory_data_analysis.html#tip-07-what-correlation-tells-us" class="quarto-xref">Tip&nbsp;<span>7.5</span></a> response: Correlation values can show potential relationships between variables and suggest further avenues for investigation. However, they have limitations: they only measure linear relationships, can be heavily influenced by outliers, and don’t indicate causation. They should be considered as starting points for deeper analysis rather than conclusive findings.</p>
+<p><a href="07_exploratory_data_analysis.html#tip-07-log-scale-purpose" class="quarto-xref">Tip&nbsp;<span>7.4</span></a> response: While we are most used to linear scales, logarithmic scales are useful in many situations:</p>
+<p>⁃ When data spans several orders of magnitude, log scales lett you visualize both small and large values effectively on the same plot ⁃ When data follows exponential growth patterns, like in the early stages of an <a href="https://data.europa.eu/apps/data-visualisation-guide/logarithmic-y-axes">epidemic</a> ⁃ When looking for proportional or percentage changes rather than count changes, like in the case of this <a href="https://www.lrs.org/2020/06/17/visualizing-data-the-logarithmic-scale/">library example</a></p>
+<p>In fact, visualizing data on a logarithmic scale can sometimes reveal trends that are not apparent from count data, as in <a href="https://www.pa.gov/content/dam/copapwp-pagov/en/health/documents/topics/healthstatistics/statistical-resources/understandinghealthstats/documents/Arithmetic_vs_Logarithmic_Line_Charts.pdf">this example using cancer data</a>.</p>
+<p>Logarithmic transformations also have some nifty statistical applications, like <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9036143/">reducing skew in data</a>.</p>
+<p><a href="07_exploratory_data_analysis.html#tip-07-why-correlation-heatmap" class="quarto-xref">Tip&nbsp;<span>7.7</span></a> response: Heatmaps add an extra visual layer that is not present in tables (color), making strong correlations visually obvious.&nbsp;&nbsp;Clustering reveals groups of variables that behave similarly, and the dendrograms show how those variables are related to each other.&nbsp;&nbsp;Together, these components make patterns easier to spot than a table alone and add hierarchical structure that can’t be easily represented in a data table.</p>
+<p><a href="07_exploratory_data_analysis.html#tip-07-merge-considerations" class="quarto-xref">Tip&nbsp;<span>7.8</span></a> response: When merging datasets, it’s important to consider:</p>
+<ol type="1">
+<li>Whether incomplete data is acceptable or problematic.&nbsp;&nbsp;If problematic, choose an inner join.</li>
+<li>If either dataset is primary to your analysis.&nbsp;&nbsp;If no, choose an outer join.&nbsp;&nbsp;If yes, choose a left or right join according to the dataset.</li>
+</ol>
+<p>Along the way, consider how representative the resulting dataset will be and whether you will be able to use it effectively for any planned analyses or visualizations.</p>
+</section>
+<section id="practice-problems-1" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problems-1">Practice Problems</h3>
+<section id="solution-sec-problem-7.1" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-7.1">Solution <a href="07_exploratory_data_analysis.html#sec-problem-7.1" class="quarto-xref"><span>7.1</span></a></h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(state_cancer_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-sec-problem-7.2" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-7.2">Solution <a href="07_exploratory_data_analysis.html#sec-problem-7.2" class="quarto-xref"><span>7.2</span></a></h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Cancer Deaths Per 100k"</span>] <span class="op">=</span> df[<span class="st">"Cancer Deaths"</span>] <span class="op">/</span> df[<span class="st">"Population"</span>] <span class="op">*</span> <span class="dv">100_000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-sec-problem-7.3" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-7.3">Solution <a href="07_exploratory_data_analysis.html#sec-problem-7.3" class="quarto-xref"><span>7.3</span></a></h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"`Cancer Deaths Per 100k` &gt;= 180 and `Median Household Income` &lt; 68_500"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-sec-problem-7.4" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-7.4">Solution <a href="07_exploratory_data_analysis.html#sec-problem-7.4" class="quarto-xref"><span>7.4</span></a></h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"Median Household Income"</span>, y<span class="op">=</span><span class="st">"Cancer Deaths Per 100k"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="solution-sec-problem-7.5" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-7.5">Solution <a href="07_exploratory_data_analysis.html#sec-problem-7.5" class="quarto-xref"><span>7.5</span></a></h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"Percent Aged 65+"</span>, y<span class="op">=</span><span class="st">"Cancer Deaths Per 100k"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -769,11 +850,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/06_errors.html" class="pagination-link" aria-label="Errors &amp; Exceptions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Errors &amp; Exceptions</span></span>
+      <a href="../chapters/07_exploratory_data_analysis.html" class="pagination-link" aria-label="Intro to Exploratory Data Analysis with Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intro to Exploratory Data Analysis with Python</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../chapters/A02_regex.html" class="pagination-link" aria-label="Appendix 2: Regular Expressions">
+        <span class="nav-page-text">Appendix 2: Regular Expressions</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
