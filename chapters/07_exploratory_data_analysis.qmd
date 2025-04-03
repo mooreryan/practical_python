@@ -107,7 +107,7 @@ This [state demographics data](https://corgis-edu.github.io/corgis/csv/state_dem
 The first thing we need to do is import the data. To do that, we can use the [read_csv()](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) function:
 
 ```{python}
-state_demographics = pd.read_csv("../_data/corgis/state_demographics.csv")
+state_demographics = pd.read_csv("../_data/state_demographics.csv")
 ```
 
 ### Data Overview
@@ -126,7 +126,7 @@ That's not too much data, so let's look at the table directly. We will use the [
 state_demographics.head()
 ```
 
-To get summary statistics of the numeric rows of a data frame, we use [describe()][https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe]. This can help you to get an overall sense of your data.
+To get summary statistics of the numeric rows of a data frame, we use [describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html#pandas.DataFrame.describe). This can help you to get an overall sense of your data.
 
 ```{python}
 state_demographics.describe()
@@ -781,7 +781,7 @@ We're going to look at the [cancer data](https://corgis-edu.github.io/corgis/csv
 To start, we need to read the CSV file with the cancer data.
 
 ```{python}
-cancer = pd.read_csv("../_data/corgis/cancer.csv")
+cancer = pd.read_csv("../_data/cancer.csv")
 cancer.head()
 ```
 
@@ -985,7 +985,7 @@ Let's check out some public health data next. This data is a bit different in th
 We start by importing the data.
 
 ```{python}
-disease = pd.read_csv("../_data/corgis/health.csv")
+disease = pd.read_csv("../_data/health.csv")
 disease.head()
 ```
 
@@ -1256,7 +1256,7 @@ To wrap up, let's summarize everything by giving you a "little" reference that y
 For this, we can use the classic coffee data.
 
 ```{python}
-coffee = pd.read_csv("../_data/corgis/coffee_small.csv")
+coffee = pd.read_csv("../_data/coffee_small.csv")
 coffee
 ```
 
