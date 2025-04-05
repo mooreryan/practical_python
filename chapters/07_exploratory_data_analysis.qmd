@@ -793,18 +793,7 @@ cancer.describe().style.format(precision=1)
 
 ### Effect of Population
 
-In the state demographics data, we saw that strong dependency between some of the variables and state population. We would also expect there to be a pretty strong dependency between the total number of cancer deaths and the total state population.
-
-```{python}
-cancer.plot(
-    kind="scatter",
-    x="Total.Population",
-    y="Total.Number",
-    loglog=True,
-)
-```
-
-Let's get an overall idea of different states and cancer. Since we would expect states with more people to naturally have more deaths due to cancer, we will use the rates per 100k people again.
+In the state demographics data, we saw a strong dependency between some of the variables and state population. We would also expect there to be a pretty strong dependency between the total number of cancer deaths and the total state population.  Let's see if that is the case:
 
 ```{python}
 cancer.plot(
@@ -825,6 +814,8 @@ cancer.plot(
     logx=True,
 )
 ```
+
+Because of this, we will use the rates per 100k people rather than total numbers for this section.
 
 ### Comparing States
 
