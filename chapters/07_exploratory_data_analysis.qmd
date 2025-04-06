@@ -5,7 +5,7 @@ date: "2025-04-01"
 jupyter: python3
 ---
 
-# Intro to Exploratory Data Analysis with Python
+# Intro to Exploratory Data Analysis with Python {#sec-eda}
 
 In this tutorial, we will learn the basics of exploratory data analysis in Python using Pandas (and just a tiny bit of seaborn).
 

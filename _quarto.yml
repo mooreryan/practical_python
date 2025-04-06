@@ -17,6 +17,7 @@ book:
     - chapters/05_classes.qmd
     - chapters/06_errors.qmd
     - chapters/07_exploratory_data_analysis.qmd
+    - chapters/08_stats_models.qmd
     - chapters/A01_solutions.qmd
     - chapters/A02_regex.qmd
   cover-image: images/dna_python_logo.webp
