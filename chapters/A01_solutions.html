@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/A02_regex.html" rel="next">
-<link href="../chapters/07_exploratory_data_analysis.html" rel="prev">
+<link href="../chapters/08_stats_models.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -110,7 +110,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <meta property="og:title" content="Appendix 1: Solutions – Practical Python Programming for Life Scientists">
 <meta property="og:description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
+<meta property="og:image" content="https://mooreryan.github.io/practical_python/chapters/A01_solutions_files/figure-html/cell-7-output-1.png">
 <meta property="og:site_name" content="Practical Python Programming for Life Scientists">
+<meta property="og:image:height" content="946">
+<meta property="og:image:width" content="1068">
 </head>
 
 <body class="nav-sidebar floating">
@@ -200,6 +203,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/08_stats_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Intro to Statistics &amp; Modeling with Python</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/A01_solutions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Appendix 1: Solutions</span></a>
   </div>
@@ -245,6 +254,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#solution-sec-problem-7.5" id="toc-solution-sec-problem-7.5" class="nav-link" data-scroll-target="#solution-sec-problem-7.5">Solution <span>7.5</span></a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#chapter-8-intro-to-statistics-modeling-with-python" id="toc-chapter-8-intro-to-statistics-modeling-with-python" class="nav-link" data-scroll-target="#chapter-8-intro-to-statistics-modeling-with-python">Chapter 8: Intro to Statistics &amp; Modeling with Python</a>
+  <ul>
+  <li><a href="#stop-and-think" id="toc-stop-and-think" class="nav-link" data-scroll-target="#stop-and-think">Stop and Think</a></li>
+  <li><a href="#practice-problems-2" id="toc-practice-problems-2" class="nav-link" data-scroll-target="#practice-problems-2">Practice Problems</a>
+  <ul>
+  <li><a href="#solution-sec-problem-8.1" id="toc-solution-sec-problem-8.1" class="nav-link" data-scroll-target="#solution-sec-problem-8.1">Solution <span>8.1</span></a></li>
+  <li><a href="#solution-sec-problem-8.2" id="toc-solution-sec-problem-8.2" class="nav-link" data-scroll-target="#solution-sec-problem-8.2">Solution <span>8.2</span></a></li>
+  <li><a href="#solution-sec-problem-8.3" id="toc-solution-sec-problem-8.3" class="nav-link" data-scroll-target="#solution-sec-problem-8.3">Solution <span>8.3</span></a></li>
+  <li><a href="#solution-sec-problem-8.4" id="toc-solution-sec-problem-8.4" class="nav-link" data-scroll-target="#solution-sec-problem-8.4">Solution <span>8.4</span></a></li>
+  <li><a href="#solution-sec-problem-8.5" id="toc-solution-sec-problem-8.5" class="nav-link" data-scroll-target="#solution-sec-problem-8.5">Solution <span>8.5</span></a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -277,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 5, 2025</p>
+      <p class="date-modified">April 11, 2025</p>
     </div>
   </div>
     
@@ -424,6 +445,124 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="solution-sec-problem-7.5" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-7.5">Solution <a href="07_exploratory_data_analysis.html#sec-problem-7.5" class="quarto-xref"><span>7.5</span></a></h4>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.plot(kind<span class="op">=</span><span class="st">"scatter"</span>, x<span class="op">=</span><span class="st">"Percent Aged 65+"</span>, y<span class="op">=</span><span class="st">"Cancer Deaths Per 100k"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="chapter-8-intro-to-statistics-modeling-with-python" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-8-intro-to-statistics-modeling-with-python">Chapter 8: Intro to Statistics &amp; Modeling with Python</h2>
+<section id="stop-and-think" class="level3">
+<h3 class="anchored" data-anchor-id="stop-and-think">Stop and Think</h3>
+<p><a href="08_stats_models.html#tip-08-pvalue-misconceptions" class="quarto-xref">Tip&nbsp;<span>8.1</span></a>: Relying solely on p-values can lead to overinterpreting small, biologically meaningless differences as important simply because they’re statistically significant, especially with large sample sizes.</p>
+<p><a href="08_stats_models.html#tip-08-parametric-vs-nonparametric" class="quarto-xref">Tip&nbsp;<span>8.2</span></a>: You might choose a nonparametric test like Mann-Whitney when your data doesn’t follow a normal distribution or when you have small sample sizes and can’t verify distributional assumptions.</p>
+<p><a href="08_stats_models.html#tip-08-which-anova" class="quarto-xref">Tip&nbsp;<span>8.5</span></a>: This is definitely a personal preference type of questions! But I kind of like the 2nd option. It’s a bit “fancy” but it’s nice because it only uses data contained in the data frame itself and doesn’t require going through the keys in the <code>REGIONS</code> map.</p>
+<p><a href="08_stats_models.html#tip-08-statistical-vs-biological" class="quarto-xref">Tip&nbsp;<span>8.3</span></a>: A result can be statistically significant but have such a small effect size that it’s biologically meaningless, or a result can have a large biological effect but fail to reach statistical significance due to small sample size.</p>
+<p><a href="08_stats_models.html#tip-08-effect-size-examples" class="quarto-xref">Tip&nbsp;<span>8.4</span></a>: In drug studies, a medication might show a statistically significant reduction in some biomarker (p &lt; 0.05), but the actual change might be so small (tiny effect size) that it doesn’t translate to any meaningful clinical improvement for patients.</p>
+<p><a href="08_stats_models.html#tip-08-post-hoc-interpretation" class="quarto-xref">Tip&nbsp;<span>8.6</span></a>: Regions whose confidence intervals don’t overlap have significantly different cancer death rates. From the plot, it appears the West has significantly lower death rates than several other regions, particularly the Southeast.</p>
+<p><a href="08_stats_models.html#tip-08-regression-interpretation" class="quarto-xref">Tip&nbsp;<span>8.7</span></a>: An R-squared value close to zero indicates that the linear model explains almost none of the variation in the dependent variable, suggesting there’s no linear relationship between the predictor and response variables.</p>
+<p><a href="08_stats_models.html#tip-08-feature-selection" class="quarto-xref">Tip&nbsp;<span>8.8</span></a>: You can determine important predictors by examining their coefficients and p-values in the summary output. Predictors with larger absolute coefficient values and p-values &lt; 0.05 (like X1 and X2 in our example) are more important to the model.</p>
+<p><a href="08_stats_models.html#tip-08-pca-interpretation" class="quarto-xref">Tip&nbsp;<span>8.9</span></a>: Although we didn’t go over the biplot, it can be a useful tool for interpreting the principal components. That said, you can still examine the loadings returned by the PCA model to understand how each feature relates to PC 1 (the x-axis). Specifically, you can compute the angle each loading vector makes with the x-axis. Features with small angles (or angles close to 180°) align closely with PC 1. For example, you could use something like <code>result.loadings.apply(lambda row: np.arctan2(row[1], row[0]) * 180 / np.pi, axis=1)</code> to calculate these angles. In this dataset, petal length and petal width are most strongly associated with PC 1.</p>
+<p><a href="08_stats_models.html#tip-08-clustering-challenges" class="quarto-xref">Tip&nbsp;<span>8.10</span></a>: One potential explanation that k-means performed less well for <em>virginica</em> is because it overlaps more with <em>versicolor</em> in the feature space, while <em>setosa</em> is more distinct. This suggests <em>virginica</em> and <em>versicolor</em> share more similar morphological characteristics.</p>
+</section>
+<section id="practice-problems-2" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problems-2">Practice Problems</h3>
+<p>The solutions use the following imports:</p>
+<div id="aad6edf2" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.cluster <span class="im">as</span> cluster</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="solution-sec-problem-8.1" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-8.1">Solution <a href="08_stats_models.html#sec-problem-8.1" class="quarto-xref"><span>8.1</span></a></h4>
+<div id="ab03bb5d" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2503478</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>group_B <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">15</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stats.ttest_ind(group_A, group_B)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>TtestResult(statistic=np.float64(-8.473531241332175), pvalue=np.float64(9.899983754486164e-12), df=np.float64(58.0))</code></pre>
+</div>
+</div>
+</section>
+<section id="solution-sec-problem-8.2" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-8.2">Solution <a href="08_stats_models.html#sec-problem-8.2" class="quarto-xref"><span>8.2</span></a></h4>
+<div id="c90b04eb" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">493567</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>group_B <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">15</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>group_C <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">11</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stats.f_oneway(group_A, group_B, group_C)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>F_onewayResult(statistic=np.float64(56.614548038664914), pvalue=np.float64(1.7891834179400852e-16))</code></pre>
+</div>
+</div>
+</section>
+<section id="solution-sec-problem-8.3" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-8.3">Solution <a href="08_stats_models.html#sec-problem-8.3" class="quarto-xref"><span>8.3</span></a></h4>
+<div id="6c26fe91" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stats.tukey_hsd(group_A, group_B, group_C)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tukey's HSD Pairwise Group Comparisons (95.0% Confidence Interval)
+Comparison  Statistic  p-value  Lower CI  Upper CI
+ (0 - 1)     -4.656     0.000    -5.787    -3.525
+ (0 - 2)     -0.643     0.369    -1.774     0.488
+ (1 - 0)      4.656     0.000     3.525     5.787
+ (1 - 2)      4.013     0.000     2.882     5.144
+ (2 - 0)      0.643     0.369    -0.488     1.774
+ (2 - 1)     -4.013     0.000    -5.144    -2.882
+</code></pre>
+</div>
+</div>
+</section>
+<section id="solution-sec-problem-8.4" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-8.4">Solution <a href="08_stats_models.html#sec-problem-8.4" class="quarto-xref"><span>8.4</span></a></h4>
+<div id="e49a8c85" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">932847</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> x1 <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">50</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"X1"</span>: x1, <span class="st">"X2"</span>: x2, <span class="st">"Y"</span>: y})</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> statsmodels.formula.api.ols(<span class="st">"Y ~ X1 + X2"</span>, data<span class="op">=</span>df).fit()</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary().tables[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -0.4118      0.295     -1.395      0.170      -1.006       0.182
+X1             3.0064      0.046     65.950      0.000       2.915       3.098
+X2            -0.0319      0.053     -0.606      0.547      -0.138       0.074
+==============================================================================</code></pre>
+</div>
+</div>
+</section>
+<section id="solution-sec-problem-8.5" class="level4">
+<h4 class="anchored" data-anchor-id="solution-sec-problem-8.5">Solution <a href="08_stats_models.html#sec-problem-8.5" class="quarto-xref"><span>8.5</span></a></h4>
+<p>Two clusters mainly separate <em>setosa</em> from <em>versicolor</em> and <em>virginica</em>, which makes biological sense given that <em>setosa</em> is the most distinct species.</p>
+<div id="3197962e" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> pd.read_csv(<span class="st">"../_data/iris.csv"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(iris, hue<span class="op">=</span><span class="st">"Species"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>_centroids, labels <span class="op">=</span> cluster.vq.kmeans2(iris.drop(columns<span class="op">=</span><span class="st">"Species"</span>), k<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>sns.pairplot(iris.assign(Cluster<span class="op">=</span>labels), hue<span class="op">=</span><span class="st">"Cluster"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="A01_solutions_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="A01_solutions_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -850,8 +989,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/07_exploratory_data_analysis.html" class="pagination-link" aria-label="Intro to Exploratory Data Analysis with Python">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Intro to Exploratory Data Analysis with Python</span></span>
+      <a href="../chapters/08_stats_models.html" class="pagination-link" aria-label="Intro to Statistics &amp; Modeling with Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Intro to Statistics &amp; Modeling with Python</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mooreryan.github.io/practical_python/index.html</loc>
-    <lastmod>2025-04-05T16:51:16.948Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.455Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/01_basics.html</loc>
-    <lastmod>2025-04-05T16:51:16.946Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.452Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/02_collections.html</loc>
-    <lastmod>2025-04-05T16:51:16.946Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.453Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/03_algorithms.html</loc>
-    <lastmod>2025-04-05T16:51:16.946Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.453Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/04_functions.html</loc>
-    <lastmod>2025-04-05T16:51:16.946Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.453Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/05_classes.html</loc>
-    <lastmod>2025-04-05T16:51:16.947Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.453Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/06_errors.html</loc>
-    <lastmod>2025-04-05T16:51:16.947Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.454Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/07_exploratory_data_analysis.html</loc>
-    <lastmod>2025-04-05T16:51:16.947Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.454Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mooreryan.github.io/practical_python/chapters/08_stats_models.html</loc>
+    <lastmod>2025-04-11T02:52:34.454Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/A01_solutions.html</loc>
-    <lastmod>2025-04-05T16:51:16.947Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.454Z</lastmod>
   </url>
   <url>
     <loc>https://mooreryan.github.io/practical_python/chapters/A02_regex.html</loc>
-    <lastmod>2025-04-05T16:51:16.947Z</lastmod>
+    <lastmod>2025-04-11T02:52:34.454Z</lastmod>
   </url>
 </urlset>
