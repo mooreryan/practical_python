@@ -23,20 +23,15 @@ EDA has a role in helping you to build an intuition for your problem domain and 
 
 Python has a strong set of libraries for exploratory data analysis (EDA). Here are some of the more common ones:
 
-- Pandas: Essential for working with tabular data, offering powerful DataFrame operations.
-- NumPy: Provides fast array operations, forming the backbone of numerical computing in Python.
-- SciPy: Useful for advanced statistical analysis and scientific computing.
-- Matplotlib: A versatile library for creating static, animated, and interactive plots.
-- Seaborn: Simplifies statistical visualization with built-in themes and functions.
+- [Pandas](https://pandas.pydata.org/): Essential for working with tabular data, offering powerful DataFrame operations.
+- [NumPy](https://numpy.org/): Provides fast array operations, forming the backbone of numerical computing in Python.
+- [SciPy](https://scipy.org/): Useful for advanced statistical analysis and scientific computing.
+- Statsmodels: Extends on the statistical models provided by SciPy and provides and alternative interface.
+- [Matplotlib](https://matplotlib.org/): A versatile library for creating static, animated, and interactive plots.
+- [Seaborn](https://seaborn.pydata.org/): Simplifies statistical visualization with built-in themes and functions.
+- [Jupyter](https://jupyter.org/) and [Quarto](https://quarto.org/): Computational notebooks
 
 There are many more, but you will see these popping up again and again.
-
-- [NumPy](https://numpy.org/)
-- [SciPy](https://scipy.org/)
-- stats models
-- [matplotlib](https://matplotlib.org/) or [seaborn](https://seaborn.pydata.org/)
-- [pandas](https://pandas.pydata.org/): Python's data frame library
-- [Jupyter](https://jupyter.org/) or [Quarto](https://quarto.org/)
 
 ### Why We're Using Pandas
 
@@ -85,6 +80,8 @@ import pandas as pd
 import seaborn as sns
 
 pd.options.mode.copy_on_write = "warn"
+
+pd.set_option("display.max_rows", 10)
 ```
 
 _Note: While we don't need to import it, you will also need to have SciPy installed to run the clustered heatmaps._
@@ -543,17 +540,17 @@ plt.axvline(x=0, color="#666666")
 That's nice! Do you see any interesting trends?
 
 - Age data
-    - Increasing proportion of young population is strongly correlated with positive population change
-    - Increasing proportion of elderly population is highly correlated with decreasing population. 
-    - Makes sense...
-- Ethnic data
-    - These are all positively correlated with population change: "Hispanic or Latino", "Languages other than English at home", "Foreign Born".  
-    - In contrast, "White Alone" and "White Alone, not Hispanic or Latino" are negatively correlated with population change.
-    - Is this suggesting immigration is driving some of the population growth?
+  - Increasing proportion of young population is strongly correlated with positive population change
+  - Increasing proportion of elderly population is highly correlated with decreasing population.
+  - Makes sense...
+- Ethnicity data
+  - These are all positively correlated with population change: "Hispanic or Latino", "Languages other than English at home", "Foreign Born".
+  - In contrast, "White Alone" and "White Alone, not Hispanic or Latino" are negatively correlated with population change.
+  - Is this suggesting immigration is driving some of the population growth?
 - Education & Income data
-    - "Households with a computer", "Households with internet", "Bachelor's Degree or Higher" are positively correlated with population change
-    - "Persons Below Poverty Level" is negatively correlated with population change
-    - Maybe it's suggesting people are moving to more educated or prosperous areas?
+  - "Households with a computer", "Households with internet", "Bachelor's Degree or Higher" are positively correlated with population change
+  - "Persons Below Poverty Level" is negatively correlated with population change
+  - Maybe it's suggesting people are moving to more educated or prosperous areas?
 
 These are all avenues that you might want to take a look at if this data was important to your research.
 
@@ -588,7 +585,7 @@ plot_data_with_some_correlation.plot(
 plt.axvline(x=0, color="#666666")
 ```
 
-It's generally not a good idea to take correlation values at face value: it doesn't measure all types of dependencies and it can be tempting to assign causation to things that have high correlation. So for correlation, it's always a good idea to look at your data whenever possible.  Let's do that now with some of the most highly correlated or anti-correlated variables. We are going to use [seaborn](https://seaborn.pydata.org/) for this, as it makes it super simple to compare multiple variables in a single plot. We can even put regression lines with confidence intervals on the plots by setting the `kind="reg"` argument!
+It's generally not a good idea to take correlation values at face value: it doesn't measure all types of dependencies and it can be tempting to assign causation to things that have high correlation. So for correlation, it's always a good idea to look at your data whenever possible. Let's do that now with some of the most highly correlated or anti-correlated variables. We are going to use [seaborn](https://seaborn.pydata.org/) for this, as it makes it super simple to compare multiple variables in a single plot. We can even put regression lines with confidence intervals on the plots by setting the `kind="reg"` argument!
 
 Here is a plot containing some of the most highly correlated variables:
 
@@ -672,9 +669,9 @@ clustermap_plot = sns.clustermap(
 
 Cool! There are a couple things to note about this:
 
-- One thing to call out is setting the minimum and maximum values of the color palette. You won't always need to do that, or even if you do, you won't always need to set all three. But it is a good idea to be aware of it, as you want to ensure the correct part of the color palette covers the correct part of the data.
-- `cbar_kws`: https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html (and you know that because the docs say to go there and figure out the keyword args! This is a _very_ common thing in docs. They'll be like "oh, just go here and you can see the arguments that work". It's because libraries will often pass arguments through directly to other functions.)
-- What about the type of linkage and the distance? See here: https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html#scipy.cluster.hierarchy.linkage
+- One important consideration is setting the minimum and maximum values of your color palette. While you don't always need to adjust these parameters (and sometimes only need to set one or two of them), being aware of this option is important. Making these adjustments ensures the most informative part of your color palette corresponds to the most relevant range in your data.
+- For fine-tuning your colorbar, check out the `cbar_kws` parameter, which passes arguments directly to matplotlib's [colorbar()](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.colorbar.html) method. This pattern of documentation referral is something you'll encounter frequently in the Python ecosystem. Libraries will often direct you to another component's documentation for parameter details, especially when they're simply passing those arguments through to underlying functions.
+- Don't forget about customizing your clustering approach! The linkage type and distance metric can impact your hierarchical clustering results. The [SciPy documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.linkage.html#scipy.cluster.hierarchy.linkage) provides comprehensive details on these options, allowing you to select methods that best represent the relationships in your data.
 
 ::: {#tip-07-good-color-palette .callout-tip title="Stop & Think" collapse="false"}
 Why is it important to ensure that your color palettes represent the correct data? For example,
@@ -684,7 +681,7 @@ Why is it important to ensure that your color palettes represent the correct dat
 
 :::
 
-There is a lot to unpack with this figure, but the most obvious thing that I see is that blob of bright orange in the bottom right. If you look at the data in those columns, you will see that they are numbers with real magnitude that will be pretty highly influenced by the number of people in the state. A lot of the other columns are not like this. Wouldn't it be interesting to take those counting-style numbers and normalize them by the state population? E.g., something like manufacturers shipments per 10k people.  Let's do that now.
+There is a lot to unpack with this figure, but the most obvious thing that I see is that blob of bright orange in the bottom right. If you look at the data in those columns, you will see that they are numbers with real magnitude that will be pretty highly influenced by the number of people in the state. A lot of the other columns are not like this. Wouldn't it be interesting to take those counting-style numbers and normalize them by the state population? E.g., something like manufacturers shipments per 10k people. Let's do that now.
 
 ```{python}
 # Make a copy of the state demographics data
@@ -793,7 +790,7 @@ cancer.describe().style.format(precision=1)
 
 ### Effect of Population
 
-In the state demographics data, we saw a strong dependency between some of the variables and state population. We would also expect there to be a pretty strong dependency between the total number of cancer deaths and the total state population.  Let's see if that is the case:
+In the state demographics data, we saw a strong dependency between some of the variables and state population. We would also expect there to be a pretty strong dependency between the total number of cancer deaths and the total state population. Let's see if that is the case:
 
 ```{python}
 cancer.plot(
@@ -917,7 +914,7 @@ cancer_demographics_correlation_matrix = cancer_demographics_full_correlation_ma
 cancer_demographics_correlation_matrix
 ```
 
-And now we can generate another heatmap. 
+And now we can generate another heatmap.
 
 ```{python}
 sns.clustermap(
@@ -1080,7 +1077,6 @@ And so on, with any combination required.
 
 _Note: We didn't show it here, but you can also group by single columns, too._
 
-
 You may have noticed that there is too much data to really get a sense of it in the interactive Quarto prompt. The quickest way around this is to use the [to_clipboard()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_clipboard.html#pandas.DataFrame.to_clipboard) method, and then paste the data into your favorite spreadsheet program and you can get a better look.
 
 ```{python}
@@ -1141,7 +1137,7 @@ plot_data.plot(
 )
 ```
 
-Oops! That's not what we want. Pandas uses [matplotlib](https://matplotlib.org/) under the hood, and by default, it works more naturally with a slightly different data format.  For reference, here is the data we just tried to plot:
+Oops! That's not what we want. Pandas uses [matplotlib](https://matplotlib.org/) under the hood, and by default, it works more naturally with a slightly different data format. For reference, here is the data we just tried to plot:
 
 ```{python}
 plot_data
@@ -1214,7 +1210,7 @@ _Note: The corgis page with this data doesn't provide much info, but I think it'
 
 Once you get to that last point, a lot of the other questions are probably pretty easy to explain! Let's see if the introduction of the vaccine for these diseases corresponds with the decline in cases.
 
-The polio vaccine was tested in 1954 and introduced in 1955 by Jonas Salk, becoming a significant breakthrough in the fight against polio.  Let's draw a little vertical dashed line at the year 1955 and see what it looks like.
+The polio vaccine was tested in 1954 and introduced in 1955 by Jonas Salk, becoming a significant breakthrough in the fight against polio. Let's draw a little vertical dashed line at the year 1955 and see what it looks like.
 
 ```{python}
 plot_data.plot(kind="line", x="Year", logy=True, ylabel="Cases")
@@ -1253,7 +1249,7 @@ coffee
 
 ### Creating Data Frames
 
-There are a ton of ways to create data frames in Pandas. (E.g., check out the docs for [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame) and the pages linked from that page.)  However, to keep it simple, we will stick with [read_csv()](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#pandas.read_csv) and creating data frames from Python dictionaries.
+There are a ton of ways to create data frames in Pandas. (E.g., check out the docs for [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame) and the pages linked from that page.) However, to keep it simple, we will stick with [read_csv()](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#pandas.read_csv) and creating data frames from Python dictionaries.
 
 Reading from a CSV file:
 
@@ -1271,7 +1267,7 @@ df = pd.DataFrame(
         "Sample": ["Sample 1", "Sample 2", "Sample 2"],
     }
 )
-df 
+df
 ```
 
 ### Subsetting and Filtering Rows and Columns
@@ -1567,18 +1563,18 @@ There are times when having a row index can be convenient, but generally I have 
 
 Sometimes you have multiple data frames that you want to glue together. This can be done either by glueing rows and keeping columns the same, or by glueing columns and keeping rows the same.
 
-To see it in action, let's make two small data frames.  One for group A:
+To see it in action, let's make two small data frames. One for group A:
 
 ```{python}
 group_a = pd.DataFrame({"Treatment": [1, 2, 3], "Control": [4, 5, 6]})
-group_a 
+group_a
 ```
 
 And one for group B:
 
 ```{python}
 group_b = pd.DataFrame({"Treatment": [10, 20, 30], "Control": [40, 50, 60]})
-group_b 
+group_b
 ```
 
 ##### Glue Rows
@@ -1908,7 +1904,7 @@ In this chapter, we went over the basics of exploratory data analysis (EDA) in P
 Pandas is a massive library. These resources can help get a handle on it:
 
 - [Pandas cheat sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
-Pandas docs
+  Pandas docs
 - [Pandas User Guide](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)
 - [The pandas DataFrame: Make Working With Data Delightful](https://realpython.com/pandas-dataframe)
 
