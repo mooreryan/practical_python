@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../chapters/A02_regex.html" rel="next">
-<link href="../chapters/08_stats_models.html" rel="prev">
+<link href="../chapters/09_io_files_contexts.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../chapters/09_io_files_contexts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">I/O, Files, &amp; Contexts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../chapters/A01_solutions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Appendix 1: Solutions</span></a>
   </div>
@@ -266,6 +272,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#solution-sec-problem-8.5" id="toc-solution-sec-problem-8.5" class="nav-link" data-scroll-target="#solution-sec-problem-8.5">Solution <span>8.5</span></a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#chapter-9" id="toc-chapter-9" class="nav-link" data-scroll-target="#chapter-9">Chapter 9</a>
+  <ul>
+  <li><a href="#stop-think-2" id="toc-stop-think-2" class="nav-link" data-scroll-target="#stop-think-2">Stop &amp; Think</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -298,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">April 14, 2025</p>
+      <p class="date-modified">April 18, 2025</p>
     </div>
   </div>
     
@@ -466,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="practice-problems-2" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problems-2">Practice Problems</h3>
 <p>The solutions use the following imports:</p>
-<div id="aad6edf2" class="cell" data-execution_count="1">
+<div id="ded20290" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.cluster <span class="im">as</span> cluster</span>
@@ -476,7 +486,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="solution-sec-problem-8.1" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.1">Solution <a href="08_stats_models.html#sec-problem-8.1" class="quarto-xref"><span>8.1</span></a></h4>
-<div id="ab03bb5d" class="cell" data-execution_count="2">
+<div id="f2d5e654" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2503478</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>group_B <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">15</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
@@ -489,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="solution-sec-problem-8.2" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.2">Solution <a href="08_stats_models.html#sec-problem-8.2" class="quarto-xref"><span>8.2</span></a></h4>
-<div id="c90b04eb" class="cell" data-execution_count="3">
+<div id="e386b755" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">493567</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>group_B <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">15</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
@@ -503,7 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="solution-sec-problem-8.3" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.3">Solution <a href="08_stats_models.html#sec-problem-8.3" class="quarto-xref"><span>8.3</span></a></h4>
-<div id="6c26fe91" class="cell" data-execution_count="4">
+<div id="9543383f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stats.tukey_hsd(group_A, group_B, group_C)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -521,7 +531,7 @@ Comparison  Statistic  p-value  Lower CI  Upper CI
 </section>
 <section id="solution-sec-problem-8.4" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.4">Solution <a href="08_stats_models.html#sec-problem-8.4" class="quarto-xref"><span>8.4</span></a></h4>
-<div id="e49a8c85" class="cell" data-execution_count="5">
+<div id="3dd16bba" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">932847</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
@@ -543,7 +553,7 @@ X2            -0.0319      0.053     -0.606      0.547      -0.138       0.074
 <section id="solution-sec-problem-8.5" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.5">Solution <a href="08_stats_models.html#sec-problem-8.5" class="quarto-xref"><span>8.5</span></a></h4>
 <p>Two clusters mainly separate <em>setosa</em> from <em>versicolor</em> and <em>virginica</em>, which makes biological sense given that <em>setosa</em> is the most distinct species.</p>
-<div id="3197962e" class="cell" data-execution_count="6">
+<div id="a2d4bc33" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> pd.read_csv(<span class="st">"../_data/iris.csv"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(iris, hue<span class="op">=</span><span class="st">"Species"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>_centroids, labels <span class="op">=</span> cluster.vq.kmeans2(iris.drop(columns<span class="op">=</span><span class="st">"Species"</span>), k<span class="op">=</span><span class="dv">2</span>)</span>
@@ -563,9 +573,19 @@ X2            -0.0319      0.053     -0.606      0.547      -0.138       0.074
 </div>
 </div>
 </div>
-
-
 </section>
+</section>
+</section>
+<section id="chapter-9" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-9">Chapter 9</h2>
+<section id="stop-think-2" class="level3">
+<h3 class="anchored" data-anchor-id="stop-think-2">Stop &amp; Think</h3>
+<p><a href="09_io_files_contexts.html#tip-09-missing-data" class="quarto-xref">Tip&nbsp;<span>9.1</span></a>: This file no longer included <code>Hello, this is my first file!</code> because the write mode (<code>"w"</code>) will overwrite the contents of existing files by default.</p>
+<p><a href="09_io_files_contexts.html#tip-09-improving-error-messages" class="quarto-xref">Tip&nbsp;<span>9.2</span></a>: You could include the name of the file that caused the error.</p>
+<p><a href="09_io_files_contexts.html#tip-09-parse-fasta-fastq" class="quarto-xref">Tip&nbsp;<span>9.3</span></a>: It won’t work correctly! At the time of writing this chapter, biopython gives a warning about the file format.</p>
+<p><a href="09_io_files_contexts.html#tip-09-csv-no-header" class="quarto-xref">Tip&nbsp;<span>9.4</span></a>: If the <code>fieldnames</code> argument is omitted, the values in the first row of the file will be used as the field names and will be omitted from the results.</p>
+
+
 </section>
 </section>
 
@@ -989,8 +1009,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../chapters/08_stats_models.html" class="pagination-link" aria-label="Intro to Statistics &amp; Modeling with Python">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Intro to Statistics &amp; Modeling with Python</span></span>
+      <a href="../chapters/09_io_files_contexts.html" class="pagination-link" aria-label="I/O, Files, &amp; Contexts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">I/O, Files, &amp; Contexts</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
