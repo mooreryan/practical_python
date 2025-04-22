@@ -64,5 +64,5 @@ format:
     # include-in-header: includes/site_verification.html
     number-depth: 1
     toc-depth: 6
-  pdf:
-    documentclass: scrreprt
+  # pdf:
+  #   documentclass: scrreprt
