@@ -48,7 +48,7 @@ book:
   open-graph: true
 
   # GitHub
-  site-url: https://pythonforlifescientists.com
+  # site-url: https://www.pythonforlifescientists.com
   repo-url: https://github.com/mooreryan/practical_python
   repo-branch: main
   repo-actions: [issue, source]
@@ -60,8 +60,8 @@ format:
     theme:
       - custom.scss
       - cosmo
-    include-after-body: includes/simple_analytics.html
-    include-in-header: includes/site_verification.html
+    # include-after-body: includes/simple_analytics.html
+    # include-in-header: includes/site_verification.html
     number-depth: 1
     toc-depth: 6
   pdf:
