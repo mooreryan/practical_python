@@ -60,7 +60,7 @@ format:
     theme:
       - custom.scss
       - cosmo
-    # include-after-body: includes/simple_analytics.html
+    include-after-body: includes/simple_analytics.html
     # include-in-header: includes/site_verification.html
     number-depth: 1
     toc-depth: 6
