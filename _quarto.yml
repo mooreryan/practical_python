@@ -1,13 +1,19 @@
 project:
   type: book
 
+execute:
+  freeze: auto
+
 date-modified: last-modified
 
 book:
+  # Basic info
   title: "Practical Python Programming for Life Scientists"
   description: "Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills."
   author: "Ryan M. Moore, PhD"
   date: "2025-02-05"
+
+  # Content
   chapters:
     - index.qmd
     - chapters/01_basics.qmd
@@ -19,8 +25,12 @@ book:
     - chapters/07_exploratory_data_analysis.qmd
     - chapters/08_stats_models.qmd
     - chapters/09_io_files_contexts.qmd
-    - chapters/A01_solutions.qmd
-    - chapters/A02_regex.qmd
+    - part: Appendices
+      chapters:
+        - chapters/A01_solutions.qmd
+        - chapters/A02_regex.qmd
+
+  # Site stuff
   cover-image: images/dna_python_logo.webp
   cover-image-alt: "DNA double helix to the left and Python logo to the right"
   sidebar:
@@ -36,28 +46,23 @@ book:
       - icon: github
         href: https://github.com/mooreryan
   open-graph: true
-  site-url: "https://mooreryan.github.io/practical_python/"
+
+  # GitHub
+  site-url: https://mooreryan.github.io/practical_python/
+  repo-url: https://github.com/mooreryan/practical_python
+  repo-branch: main
+  repo-actions: [issue, source]
 
 bibliography: references.bib
-
-number-depth: 1
-toc-depth: 6
 
 format:
   html:
     theme:
       - custom.scss
       - cosmo
-  # pdf:
-  #   documentclass: scrreprt
-
-execute:
-  freeze: auto
-
-include-after-body:
-  text: <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-include-in-header:
-  text: <meta name="google-site-verification" content="lAMnqKIoNocjUOHIuFkaXcMzcceqyGBcevAs7t3N_AI" />
-
-resources:
-  - robots.txt
+    include-after-body: includes/simple_analytics.html
+    include-in-header: includes/site_verification.html
+    number-depth: 1
+    toc-depth: 6
+  pdf:
+    documentclass: scrreprt
