@@ -2,8 +2,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      # - main
-      - cf
+      - main
 
 name: Quarto Render
 
