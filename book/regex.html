@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ryan M. Moore, PhD">
-<meta name="dcterms.date" content="2025-02-05">
+<meta name="dcterms.date" content="2025-04-01">
 <meta name="description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
 
-<title>Practical Python Programming for Life Scientists</title>
+<title>Appendix B — Regular Expressions – Practical Python Programming for Life Scientists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./basics.html" rel="next">
+<link href="./solutions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -72,11 +106,9 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Practical Python Programming for Life Scientists">
+<meta property="og:title" content="Appendix B — Regular Expressions – Practical Python Programming for Life Scientists">
 <meta property="og:description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
-<meta property="og:image" content="https://pythonforlifescientists.com/images/dna_python_logo.webp">
 <meta property="og:site_name" content="Practical Python Programming for Life Scientists">
-<meta property="og:image:alt" content="DNA double helix to the left and Python logo to the right">
 </head>
 
 <body class="nav-sidebar docked">
@@ -88,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./solutions.html">Appendices</a></li><li class="breadcrumb-item"><a href="./regex.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Regular Expressions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -196,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regex.html" class="sidebar-item-text sidebar-link">
+  <a href="./regex.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Regular Expressions</span></span></a>
   </div>
 </li>
@@ -212,23 +244,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#importing-the-regular-expression-module" id="toc-importing-the-regular-expression-module" class="nav-link active" data-scroll-target="#importing-the-regular-expression-module">Importing the Regular Expression module</a></li>
+  <li><a href="#basic-pattern-matching" id="toc-basic-pattern-matching" class="nav-link" data-scroll-target="#basic-pattern-matching">Basic Pattern Matching</a></li>
+  <li><a href="#special-symbols-and-character-classes" id="toc-special-symbols-and-character-classes" class="nav-link" data-scroll-target="#special-symbols-and-character-classes">Special Symbols and Character Classes</a></li>
+  <li><a href="#anchoring-patterns" id="toc-anchoring-patterns" class="nav-link" data-scroll-target="#anchoring-patterns">Anchoring Patterns</a></li>
+  <li><a href="#character-classes" id="toc-character-classes" class="nav-link" data-scroll-target="#character-classes">Character Classes</a></li>
+  <li><a href="#capture-groups" id="toc-capture-groups" class="nav-link" data-scroll-target="#capture-groups">Capture Groups</a></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-Up</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/regex.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./solutions.html">Appendices</a></li><li class="breadcrumb-item"><a href="./regex.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Regular Expressions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Practical Python Programming for Life Scientists</h1>
+<h1 class="title"><span id="sec-regex" class="quarto-section-identifier">Appendix B — Regular Expressions</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -243,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 5, 2025</p>
+      <p class="date">April 1, 2025</p>
     </div>
   </div>
   
@@ -261,16 +294,181 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-
-<section id="introduction" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1><p><img src="images/dna_python_logo.webp" title="Practical Python Programming for Life Scientists" class="quarto-cover-image img-fluid" alt="DNA double helix to the left and Python logo to the right"></p>
-<p>Welcome to Practical Python Programming for Life Scientists! This book is designed for biology and life science students with little to no prior coding experience. Rather than aiming to make you Python experts, the goal is to help you develop fundamental programming concepts and data analysis skills using Python as a practical tool.</p>
-<p>The content progresses from basic syntax through algorithms, functions, classes, error handling, data science applications, and testing methodologies. Each concept is presented with life science examples to show how programming principles can enhance your research capabilities.</p>
-<p>This resource serves as an introduction to computational thinking in biological contexts, providing a solid foundation to approach scientific questions from a programming perspective and to effectively incorporate data analysis using Python into your research workflow.</p>
-<p><em>Note: This book is a work in progress and will continue to evolve with student feedback. Some sections may still be in development, with the main chapters expected to be finished by May 2025.</em></p>
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
-<a property="dct:title" rel="cc:attributionURL" href="https://github.com/mooreryan">Practical Python Programming for Life Scientists</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://orcid.org/0000-0003-3337-8184">Ryan M. Moore</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a>
-</p>
+<p>Regular expressions (regex) are powerful tools for working with text data, and are commonly used in bioinformatics applications. They are essentially a specialized mini-language for pattern matching in strings.</p>
+<p>Regular expressions allow you to:</p>
+<ul>
+<li>Search for specific patterns in text</li>
+<li>Validate that strings follow expected patterns</li>
+<li>Extract information from strings with consistent formats</li>
+<li>Replace or modify parts of strings that match patterns</li>
+</ul>
+<p>Let’s take a whirlwind tour of the basics of regular expressions in Python. This will not be comprehensive, but should provide you with just enough of the basics to get some real work done, and be able to understand more <a href="https://www.regular-expressions.info/">comprehensive documentation</a>.</p>
+<section id="importing-the-regular-expression-module" class="level2">
+<h2 class="anchored" data-anchor-id="importing-the-regular-expression-module">Importing the Regular Expression module</h2>
+<p>To use regular expressions, you first need to import the <code>re</code> module.</p>
+<div id="b6f40064" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="basic-pattern-matching" class="level2">
+<h2 class="anchored" data-anchor-id="basic-pattern-matching">Basic Pattern Matching</h2>
+<p>The simplest use of regex is searching for an exact substring within a larger string:</p>
+<div id="de3c3a56" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This checks if "banana" appears anywhere in the string</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.search(<span class="vs">r"banana"</span>, <span class="st">"apple and banana"</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"found banana!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>found banana!</code></pre>
+</div>
+</div>
+<p>The <code>r</code> before the pattern string creates a “raw string”. This is a good practice with regex to avoid problems with backslashes.</p>
+</section>
+<section id="special-symbols-and-character-classes" class="level2">
+<h2 class="anchored" data-anchor-id="special-symbols-and-character-classes">Special Symbols and Character Classes</h2>
+<p>Regex provides special symbols to match categories of characters or to control the matching in some other way. Here are some of the more common ones.</p>
+<ul>
+<li><code>.</code>: Matches any character except newline</li>
+<li><code>^</code>: Matches at the start of the string</li>
+<li><code>$</code> Matches at the end of the string</li>
+<li><code>+</code>: Matches one or more of the preceding regex</li>
+<li><code>*</code>: Matches zero or more of the preceding regex</li>
+<li><code>?</code>: Matches zero or one repetitions of the preceding regex</li>
+<li><code>{m}</code>: Matches exactly <code>m</code> copies of the preceding regex</li>
+<li><code>{m,n}</code>: Matches from <code>m</code> to <code>n</code> copies of the preceding regex</li>
+<li><code>\d</code>: Matches any digit (0-9)</li>
+<li><code>\w</code>: Matches any “word character” (alphanumeric + underscore)</li>
+<li><code>\s</code>: Matches any whitespace</li>
+<li><code>[]</code>: Used to indicate a set of characters</li>
+<li><code>()</code>: Used to indicate a capture group</li>
+</ul>
+<p>There are <a href="https://docs.python.org/3/library/re.html#regular-expression-syntax">many more</a> available in Python, but this set will get you pretty far.</p>
+</section>
+<section id="anchoring-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="anchoring-patterns">Anchoring Patterns</h2>
+<p>Sometimes you want to check if a pattern appears at a specific position in a string. The <code>^</code> symbol anchors the match to the beginning of the string:</p>
+<div id="3242565e" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if "apple" appears at the beginning of the string</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The ^ character is an anchor that means "match at the start of the string"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.search(<span class="vs">r"^apple"</span>, <span class="st">"banana and apple"</span>):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This won't execute because "banana and apple" doesn't start with "apple"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"apple found at the beginning"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This will execute because the pattern doesn't match</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"apple not found at the beginning"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>apple not found at the beginning</code></pre>
+</div>
+</div>
+<p>The <code>$</code> symbol anchors the match to the end of the string:</p>
+<div id="21ebaeb0" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if "banana" appears at the end of the string</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The $ character is an anchor that means "match at the end of the string"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.search(<span class="vs">r"banana$"</span>, <span class="st">"banana and apple"</span>):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This won't execute because "banana and apple" doesn't end with "banana"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"banana found at the end"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This will execute because the pattern doesn't match</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"banana not found at the end"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>banana not found at the end</code></pre>
+</div>
+</div>
+<p>You can use both anchors to require a full-string exact match:</p>
+<div id="9add9df4" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the entire string is exactly "abcd"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Using both ^ and $ together checks if the pattern matches the entire string</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ^ = start anchor, $ = end anchor</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> re.search(<span class="vs">r"^abcd$"</span>, <span class="st">"abcdef"</span>):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This won't execute because "abcdef" is not exactly "abcd"</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"full match"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This will execute because the pattern doesn't completely match</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The string "abcdef" has extra characters beyond "abcd"</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"not a full match"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>not a full match</code></pre>
+</div>
+</div>
+</section>
+<section id="character-classes" class="level2">
+<h2 class="anchored" data-anchor-id="character-classes">Character Classes</h2>
+<p>You can filter based on groups of characters.</p>
+<div id="42f1de7f" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through a list of sample names</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sample <span class="kw">in</span> [<span class="st">"Treatment 1"</span>, <span class="st">"Treatment 2"</span>, <span class="st">"Control 1"</span>, <span class="st">"Control 2"</span>]:</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Search for the pattern "Treatment" followed by space and one or more digits</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># - \d is a character class that matches any digit</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># - \d+ means "one or more digits"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> re.search(<span class="vs">r"Treatment \d+"</span>, sample):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># This will only print for strings that match our pattern</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># In this case, "Treatment 1" and "Treatment 2" will match</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"found a treatment sample"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>found a treatment sample
+found a treatment sample</code></pre>
+</div>
+</div>
+</section>
+<section id="capture-groups" class="level2">
+<h2 class="anchored" data-anchor-id="capture-groups">Capture Groups</h2>
+<p>You can pull out specific pieces of info using capture groups.</p>
+<p>In this example, we have some strings that represent users. The basic format is <code>name=X;age=Y</code>. Our goal is to first check if the given string matches this format, and if it does, pull out the name and age values from the string. Here is the regex that we can use to do it:</p>
+<div id="0ea17bda" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>user_info <span class="op">=</span> re.<span class="bu">compile</span>(<span class="vs">r"name=(\w+);age=(\d+)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here is the break down:</p>
+<ul>
+<li><code>\w+</code>: at least one word character</li>
+<li><code>(\w+)</code>: “capture” the group of at least one word character (this represents the name)</li>
+<li><code>name=(\w+)</code>: match patterns like <code>name=Bob</code>, and extract the name value (<code>Bob</code>)</li>
+<li><code>\d+</code>: at least one digit character</li>
+<li><code>(\d+)</code>: “capture” the group of at least one digit (this represents the age)</li>
+<li><code>age=(\d+)</code>: match patterns like <code>age=47</code>, and extract the age value (<code>47</code>)</li>
+<li><code>name=(\w+);age=(\d+)</code>: combines the above name and age pattern and requires that they are separated with a semicolon</li>
+<li><code>re.compile</code>: compiles the regex so we can use it for matching later</li>
+</ul>
+<p>Now, let’s use that regex.</p>
+<div id="ec1b4542" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of user data strings in different formats</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> [<span class="st">"name=Rafael;age=34"</span>, <span class="st">"NAME=Dev,age:25"</span>, <span class="st">"name=Page;age=46"</span>]</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each user string in the list</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> user <span class="kw">in</span> users:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Apply our regex pattern to search for matches in the current string</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># re.search() returns a match object if found, None otherwise</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> re.search(user_info, user)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if a match was found</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract the first capture group (the name)</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># - This is what matched (\w+) after "name="</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># - result[0] would be the entire match,</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># - result[1] is the first capture group</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        user_name <span class="op">=</span> result[<span class="dv">1</span>]</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract the second capture group (the age)</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># - This is what matched (\d+) after "age="</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># - result[2] is the second capture group</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        user_age <span class="op">=</span> result[<span class="dv">2</span>]</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Display the extracted information</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"name: </span><span class="sc">{</span>user_name<span class="sc">}</span><span class="ss">; age: </span><span class="sc">{</span>user_age<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If no match was found, show which string failed to match our pattern</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># This happens with "NAME=Dev,age:25" since it uses uppercase and</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># different format</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"no match for </span><span class="sc">{</span>user<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>name: Rafael; age: 34
+no match for NAME=Dev,age:25
+name: Page; age: 46</code></pre>
+</div>
+</div>
+<p>When we run this code, only the first and third strings match our pattern. The second string uses uppercase “NAME” and has a different format (comma and colon instead of semicolon), so it doesn’t match our regex pattern.</p>
+</section>
+<section id="wrap-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrap-up">Wrap-Up</h2>
+<p>In this section, we covered the basics of using regular expressions in Python including, exact matching, anchored matching, character classes, and capture groups. Examples include searching for patterns, validating string formats, and extracting structured data. This should give you just enough info for you to get started using regular expressions in your own work.</p>
 
 
 </section>
@@ -696,11 +894,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./solutions.html" class="pagination-link" aria-label="Solutions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Solutions</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./basics.html" class="pagination-link" aria-label="Basics">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -711,7 +909,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/regex.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

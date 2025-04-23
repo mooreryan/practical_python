@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.43">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ryan M. Moore, PhD">
+<meta name="dcterms.date" content="2025-03-04">
+<meta name="description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
+
+<title>5&nbsp; Introduction to Object-Oriented Programming – Practical Python Programming for Life Scientists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./errors.html" rel="next">
+<link href="./functions.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-002b880b3315660e0e1b955d1bdbe0e9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="5&nbsp; Introduction to Object-Oriented Programming – Practical Python Programming for Life Scientists">
+<meta property="og:description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
+<meta property="og:image" content="https://pythonforlifescientists.com/images/robin_class_light.svg">
+<meta property="og:site_name" content="Practical Python Programming for Life Scientists">
+<meta property="og:image:alt" content="Diagram of a Robin class with characteristics and behaviors and two instances of that class with specific characteristics">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./object_oriented_programming.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Object-Oriented Programming</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/dna_python_logo.webp" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Practical Python Programming for Life Scientists</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/mooreryan/practical_python" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./collections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Collections</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./algorithms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Algorithmic Thinking</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./object_oriented_programming.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Object-Oriented Programming</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./errors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Errors &amp; Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./exploratory_data_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./stats_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistics &amp; Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./io_files_contexts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">I/O, Files, &amp; Contexts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Solutions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Regular Expressions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-four-pillars-oop" id="toc-sec-four-pillars-oop" class="nav-link active" data-scroll-target="#sec-four-pillars-oop">Four Pillars of OOP</a></li>
+  <li><a href="#sec-class-basics" id="toc-sec-class-basics" class="nav-link" data-scroll-target="#sec-class-basics">Classes in Python: Syntax and Structure</a></li>
+  <li><a href="#initializing-objects" id="toc-initializing-objects" class="nav-link" data-scroll-target="#initializing-objects">Initializing Objects</a>
+  <ul>
+  <li><a href="#validating-inputs" id="toc-validating-inputs" class="nav-link" data-scroll-target="#validating-inputs">Validating Inputs</a></li>
+  </ul></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a>
+  <ul>
+  <li><a href="#instance-attributes" id="toc-instance-attributes" class="nav-link" data-scroll-target="#instance-attributes">Instance Attributes</a></li>
+  <li><a href="#class-attributes" id="toc-class-attributes" class="nav-link" data-scroll-target="#class-attributes">Class Attributes</a>
+  <ul>
+  <li><a href="#modifying-class-attributes" id="toc-modifying-class-attributes" class="nav-link" data-scroll-target="#modifying-class-attributes">Modifying Class Attributes</a></li>
+  <li><a href="#a-tricky-example" id="toc-a-tricky-example" class="nav-link" data-scroll-target="#a-tricky-example">A Tricky Example</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul>
+  <li><a href="#aside-refactoring-the-amoeba-class" id="toc-aside-refactoring-the-amoeba-class" class="nav-link" data-scroll-target="#aside-refactoring-the-amoeba-class">Aside: Refactoring the Amoeba Class</a></li>
+  <li><a href="#special-methods" id="toc-special-methods" class="nav-link" data-scroll-target="#special-methods">Special Methods</a></li>
+  </ul></li>
+  <li><a href="#duck-typing" id="toc-duck-typing" class="nav-link" data-scroll-target="#duck-typing">Duck Typing</a>
+  <ul>
+  <li><a href="#sec-asking-for-forgiveness" id="toc-sec-asking-for-forgiveness" class="nav-link" data-scroll-target="#sec-asking-for-forgiveness">Asking for Forgiveness</a></li>
+  <li><a href="#looking-before-you-leap" id="toc-looking-before-you-leap" class="nav-link" data-scroll-target="#looking-before-you-leap">Looking Before You Leap</a></li>
+  <li><a href="#special-methods-duck-typing" id="toc-special-methods-duck-typing" class="nav-link" data-scroll-target="#special-methods-duck-typing">Special Methods &amp; Duck Typing</a></li>
+  </ul></li>
+  <li><a href="#standard-python-classes" id="toc-standard-python-classes" class="nav-link" data-scroll-target="#standard-python-classes">Standard Python Classes</a></li>
+  <li><a href="#object-oriented-thinking" id="toc-object-oriented-thinking" class="nav-link" data-scroll-target="#object-oriented-thinking">Object-Oriented Thinking</a>
+  <ul>
+  <li><a href="#balancing-approaches" id="toc-balancing-approaches" class="nav-link" data-scroll-target="#balancing-approaches">Balancing Approaches</a></li>
+  <li><a href="#general-tips-and-pitfalls" id="toc-general-tips-and-pitfalls" class="nav-link" data-scroll-target="#general-tips-and-pitfalls">General Tips and Pitfalls</a></li>
+  </ul></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-Up</a></li>
+  <li><a href="#suggested-readings" id="toc-suggested-readings" class="nav-link" data-scroll-target="#suggested-readings">Suggested Readings</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/object_oriented_programming.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Introduction to Object-Oriented Programming</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ryan M. Moore, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 4, 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">April 23, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Think about the natural world around you for a moment. You can imagine birds, trees, cells, and countless other entities. Each of these things has specific characteristics and behaviors that help you recognize them. One way to turn these entities into code is by using Classes and Objects.</p>
+<p>In programming terms, an <em>object</em> is sort of like a specific entity that exists in the real world:</p>
+<ul>
+<li>A particular robin building a nest outside your window</li>
+<li>An individual <em>E. coli</em> cell growing in your Petri dish</li>
+<li>A specific patient in a hospital</li>
+</ul>
+<p>Just like real-world things, objects have two key aspects:</p>
+<ol type="1">
+<li><strong>Characteristic Properties</strong>: what the object <em>is</em> or <em>has</em> (identity, color, size, weight)</li>
+<li><strong>Behaviors</strong>: what the object can <em>do</em> (fly, eat, divide)</li>
+</ol>
+<p>For example, that robin outside your window has a particular color (characteristic) and can sing a specific song (behavior). The <em>E. coli</em> cell in your Petri dish has a particular size (characteristic) and can metabolize lactose (behavior).</p>
+<p>If objects are the specific things (like a particular robin or <em>E. coli</em> cell) in your domain, then <em>classes</em> are the blueprints or templates that define the characteristics and behaviors of those entities.</p>
+<p>For instance, the <code>Robin</code> <em>class</em> might specify that all robins have characteristics like species, wingspan, feather color, beak shape, plus behaviors such as flying, singing, and nest-building. But each individual robin <em>instance</em> would have its own specific values for these characteristics and behaviors that depend on those specific characteristics.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/robin_class_light.svg" title="An example robin class with two instances" class="img-fluid figure-img" alt="Diagram of a Robin class with characteristics and behaviors and two instances of that class with specific characteristics"></p>
+<figcaption>An example robin class with two instances</figcaption>
+</figure>
+</div>
+<p>Classes enable us to create our own custom data types that model real-world entities. Instead of just having numbers and strings, we can have Birds, Bacteria, Patients, Proteins, and Molecules, each with their own specialized characteristics and behaviors.</p>
+<p>This connection between our programs and the real-world domain we are modeling is what makes object-oriented programming powerful. It allows us to represent and manipulate complex biological entities in a way that feels natural and intuitive, mirroring how we already think about these systems in our research.</p>
+<p>For the rest of this tutorial, we’ll explore how to implement Object-Oriented Programming (OOP) in Python, giving you the tools to represent the biological systems you work with in a natural way.</p>
+<section id="sec-four-pillars-oop" class="level2">
+<h2 class="anchored" data-anchor-id="sec-four-pillars-oop">Four Pillars of OOP</h2>
+<p>When learning about object-oriented programming (OOP), you’ll often hear about four fundamental concepts (pillars) that form its foundation. These concepts help us organize code in a way that mirrors how we think about real-world objects and their relationships:</p>
+<ul>
+<li><strong>Encapsulation</strong>: bundling data and methods that work on that data into a single unit (a class)
+<ul>
+<li>Restricts direct access to some components</li>
+<li>Protects internal state of an object</li>
+<li>Hides data</li>
+</ul></li>
+<li><strong>Abstraction</strong>: showing only essential features while hiding complicated implementation details</li>
+<li><strong>Polymorphism</strong>: objects of different classes responding to the same method in their own ways</li>
+<li><strong>Inheritance</strong>: creating new classes that receive attributes and methods from existing classes</li>
+</ul>
+<p>We’ll introduce some of these concepts at a practical level in this tutorial and continue to explore them throughout the course.</p>
+</section>
+<section id="sec-class-basics" class="level2">
+<h2 class="anchored" data-anchor-id="sec-class-basics">Classes in Python: Syntax and Structure</h2>
+<p>Now that we have some conceptual framework for object-oriented programming, let’s look at how to write classes in Python. To define a class, we use the <code>class</code> keyword, followed by the name of the class. In the indented section that follows, we can define variables and functions that will be associated with the class and with instances of the class:</p>
+<div id="6cae6287" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a class named "Robin".</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (Class names look LikeThis rather than like_this.)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Robin:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Class Attributes</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    common_name <span class="op">=</span> <span class="st">"American Robin"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    species <span class="op">=</span> <span class="st">"Turdus migratorius"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    beak_shape <span class="op">=</span> <span class="st">"pointy"</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># The special method to initialize instances of this class</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, wingspan, weight, color):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.wingspan <span class="op">=</span> wingspan</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weight <span class="op">=</span> weight</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.color <span class="op">=</span> color</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define some instance methods that describe the behavior that Robins</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># will have.</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Each of these methods will use `id(self)` so that you can see the identity</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># of the object that it is being called on.</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fly(<span class="va">self</span>, to):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"robin </span><span class="sc">{</span><span class="bu">id</span>(<span class="va">self</span>)<span class="sc">}</span><span class="ss"> is flying to </span><span class="sc">{</span>to<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> sing(<span class="va">self</span>):</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"robin </span><span class="sc">{</span><span class="bu">id</span>(<span class="va">self</span>)<span class="sc">}</span><span class="ss"> is singing!"</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> eat(<span class="va">self</span>, what):</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"robin </span><span class="sc">{</span><span class="bu">id</span>(<span class="va">self</span>)<span class="sc">}</span><span class="ss"> is eating </span><span class="sc">{</span>what<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> build_nest(<span class="va">self</span>, where):</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"robin </span><span class="sc">{</span><span class="bu">id</span>(<span class="va">self</span>)<span class="sc">}</span><span class="ss"> is building a nest </span><span class="sc">{</span>where<span class="sc">}</span><span class="ss">!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Creating an instance of a class looks a lot like calling a function:</p>
+<div id="0f92fb5f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>robin <span class="op">=</span> Robin(wingspan<span class="op">=</span><span class="dv">35</span>, weight<span class="op">=</span><span class="dv">80</span>, color<span class="op">=</span><span class="st">"gray &amp; reddish brown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can access the instance attributes using the “dot” syntax:</p>
+<div id="37329d16" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"You see a </span><span class="sc">{</span>robin<span class="sc">.</span>color<span class="sc">}</span><span class="ss"> robin "</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"that weighs </span><span class="sc">{</span>robin<span class="sc">.</span>weight<span class="sc">}</span><span class="ss"> grams "</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"with a wingspan of </span><span class="sc">{</span>robin<span class="sc">.</span>wingspan<span class="sc">}</span><span class="ss"> centimeters!"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="ch">\n</span><span class="st">That's a nice find!!</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>You see a gray &amp; reddish brown robin that weighs 80 grams with a wingspan of 35 centimeters!
+That's a nice find!!
+</code></pre>
+</div>
+</div>
+<p>Even though we specified what each of the objects attributes should be when we created it, that doesn’t mean we can’t change them later if we need to. Let’s say our robin eats a worm, and then it gains a little weight afterwards:</p>
+<div id="878e9ea0" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the robin's current weight</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"before eating the worm, the robin weighs </span><span class="sc">{</span>robin<span class="sc">.</span>weight<span class="sc">}</span><span class="ss"> grams"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># The robin eats the worm</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>robin.eat(<span class="st">"a delicious worm"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Then it gains 2 grams of weight</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>robin.weight <span class="op">+=</span> <span class="dv">2</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the robin's weight again</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"after eating the worm, the robin weighs </span><span class="sc">{</span>robin<span class="sc">.</span>weight<span class="sc">}</span><span class="ss"> grams"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>before eating the worm, the robin weighs 80 grams
+robin 4422779632 is eating a delicious worm!
+after eating the worm, the robin weighs 82 grams</code></pre>
+</div>
+</div>
+<p>We can access the object’s behavior by “calling” its methods:</p>
+<div id="9fac23b9" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>robin.sing()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>robin.fly(to<span class="op">=</span><span class="st">"Mexico"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>robin.eat(what<span class="op">=</span><span class="st">"a worm"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>robin.build_nest(where<span class="op">=</span><span class="st">"in a tree"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>robin 4422779632 is singing!
+robin 4422779632 is flying to Mexico!
+robin 4422779632 is eating a worm!
+robin 4422779632 is building a nest in a tree!</code></pre>
+</div>
+</div>
+<p>Multiple distinct instances of the <code>Robin</code> class can be created. Check out how each of them has a different ID:</p>
+<div id="9a5b8741" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>robin_1 <span class="op">=</span> Robin(wingspan<span class="op">=</span><span class="dv">35</span>, weight<span class="op">=</span><span class="dv">80</span>, color<span class="op">=</span><span class="st">"gray &amp; reddish brown"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>robin_2 <span class="op">=</span> Robin(wingspan<span class="op">=</span><span class="dv">32</span>, weight<span class="op">=</span><span class="dv">78</span>, color<span class="op">=</span><span class="st">"gray &amp; brownish orange"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>robin_3 <span class="op">=</span> Robin(wingspan<span class="op">=</span><span class="dv">36</span>, weight<span class="op">=</span><span class="dv">79</span>, color<span class="op">=</span><span class="st">"gray &amp; reddish brown"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_1)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_2)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_3)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>robin_1.sing()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>robin_2.sing()</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>robin_3.sing()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;__main__.Robin object at 0x11c9f34d0&gt;
+&lt;__main__.Robin object at 0x11c9f3390&gt;
+&lt;__main__.Robin object at 0x107942520&gt;
+robin 4775163088 is singing!
+robin 4775162768 is singing!
+robin 4422116640 is singing!</code></pre>
+</div>
+</div>
+<p>Even though all three of the <code>Robin</code> objects were created from the same class, they are distinct entities in our program. If we change something about one of them, it won’t change the others:</p>
+<div id="72c6bcc7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"before changing weight and color of robin 1,"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"the weight and color of robin 2 are:"</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_2.weight)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_2.color)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>robin_1.weight <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>robin_1.color <span class="op">=</span> <span class="st">"mostly gray, with some reddish brown"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="ch">\n</span><span class="st">after changing weight and color of robin 1,"</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"the weight and color of robin 2 are:"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_2.weight)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_2.color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>before changing weight and color of robin 1, the weight and color of robin 2 are:
+78
+gray &amp; brownish orange
+
+after changing weight and color of robin 1, the weight and color of robin 2 are:
+78
+gray &amp; brownish orange</code></pre>
+</div>
+</div>
+<p>Finally, we can even give objects completely new attributes if we want to:</p>
+<div id="2df8090b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>robin_1.favorite_food <span class="op">=</span> <span class="st">"french fries"</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(robin_1.favorite_food)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>french fries</code></pre>
+</div>
+</div>
+<p>Be careful with this though. That attribute will <em>not</em> be available on all your objects. It will only exist on the specific object where you explicitly added it:</p>
+<div id="ad336956" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(robin_2.favorite_food)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">AttributeError</span> <span class="im">as</span> error:</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'Robin' object has no attribute 'favorite_food'</code></pre>
+</div>
+</div>
+<p>Next, let’s dig into some more of the details of creating and using classes in Python.</p>
+</section>
+<section id="initializing-objects" class="level2">
+<h2 class="anchored" data-anchor-id="initializing-objects">Initializing Objects</h2>
+<p>When you instantiate an object from a class in Python, it doesn’t simply create an empty shell. Instead, it invokes a special initialization method called <code>__init__</code> (if defined). This method serves as the object’s constructor, handling the necessary setup to ensure the newly created object is fully functional.</p>
+<p>Let’s make a new class called <code>BlueJay</code> to illustrate some of the details:</p>
+<div id="c14cefa9" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlueJay:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.wingspan <span class="op">=</span> <span class="dv">38</span>  <span class="co"># centimeters</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.color <span class="op">=</span> <span class="st">"blue"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this class, the <strong>init</strong> method takes only one parameter, self, which refers to the newly created object. It assigns the instance attribute color a default value of “blue”. Take a look:</p>
+<div id="acf00f22" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>blue_jay <span class="op">=</span> BlueJay()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.wingspan)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.color)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># We can change the value of an instance attribute after the object is created.</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>blue_jay.wingspan <span class="op">=</span> <span class="dv">35</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>blue_jay.color <span class="op">=</span> <span class="st">"shockingly blue"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.wingspan)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;__main__.BlueJay object at 0x1079e41a0&gt;
+38
+blue
+35
+shockingly blue</code></pre>
+</div>
+</div>
+<p>Creating an object then immediately updating its attributes is such a common operation that Python lets you do it all in one step. This is done by adding additional parameters to the <code>__init__</code> function:</p>
+<div id="ea0b2b4b" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlueJay:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, wingspan, color):</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.wingspan <span class="op">=</span> wingspan</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.color <span class="op">=</span> color</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">36</span>, color<span class="op">=</span><span class="st">"bright blue"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.wingspan)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;__main__.BlueJay object at 0x11c99b230&gt;
+36
+bright blue</code></pre>
+</div>
+</div>
+<p>Now, we need to call <code>BlueJay</code> and provide the <code>color</code> and <code>wingspan</code> arguments. Failing to do so will result in an error:</p>
+<div id="1a254317" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    BlueJay()</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BlueJay.__init__() missing 2 required positional arguments: 'wingspan' and 'color'</code></pre>
+</div>
+</div>
+<p>The error hints at Python’s inner workings. It mentions that two required arguments are missing: <code>color</code> and <code>wingspan</code>. But hang on, doesn’t <code>__init__</code> have three parameters?</p>
+<p>It does! This reveals how Python handles class instantiation: it first <em>creates</em> the object (via <code>__new__</code> behind the scenes), then <em>initializes</em> it with <code>__init__</code>.</p>
+<p>When initializing, Python automatically passes the new object as the first argument (typically called <code>self</code>, but you could name it anything). You only need to provide the remaining arguments – hence the error about missing two arguments, not three.</p>
+<p>Remember that <code>__init__</code> works like any other Python function. You can use all the parameter options we covered earlier (see <a href="functions.html#sec-function-parameters" class="quarto-xref"><span>Section 4.3</span></a>), such as default values for parameters like <code>color</code>:</p>
+<div id="782f2946" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlueJay:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, wingspan, color<span class="op">=</span><span class="st">"blue"</span>):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.wingspan <span class="op">=</span> wingspan</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.color <span class="op">=</span> color</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">35</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>blue</code></pre>
+</div>
+</div>
+<section id="validating-inputs" class="level3">
+<h3 class="anchored" data-anchor-id="validating-inputs">Validating Inputs</h3>
+<p>The <code>__init__</code> method plays a crucial role in validating data when creating class instances. For example, if we need to ensure birds can’t have negative wingspans or empty color strings, we can build these checks directly into initialization. When someone creates a bird with invalid data, instead of failing, the code can substitute sensible defaults. This approach guarantees that all instances meet our basic requirements, protecting against bad input:</p>
+<div id="dccc5b45" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlueJay:</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, wingspan, color<span class="op">=</span><span class="st">"blue"</span>):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> wingspan <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.wingspan <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.wingspan <span class="op">=</span> wingspan</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> color <span class="op">==</span> <span class="st">""</span>:</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.color <span class="op">=</span> <span class="st">"blue"</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.color <span class="op">=</span> color</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>blue_jay <span class="op">=</span> BlueJay(<span class="op">-</span><span class="dv">234</span>, <span class="st">""</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.wingspan)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+blue</code></pre>
+</div>
+</div>
+<p>If you can’t identify a reasonable default value, the most straightforward approach is to simply raise an error. This strategy helps to prevent failures later on.</p>
+<div id="63f898fe" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bird:</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, species):</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> species <span class="op">==</span> <span class="st">""</span>:</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"species name cannot be blank"</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    Bird(<span class="st">""</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> error:</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>species name cannot be blank</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="attributes" class="level2">
+<h2 class="anchored" data-anchor-id="attributes">Attributes</h2>
+<p>Attributes are the data that is associated with the class and with instances of that class.</p>
+<section id="instance-attributes" class="level3">
+<h3 class="anchored" data-anchor-id="instance-attributes">Instance Attributes</h3>
+<p>When initializing a BlueJay object, the <code>__init__</code> function sets up two attributes: <code>wingspan</code> and <code>color</code>. The <code>self</code> parameter refers to the actual instance being created, so <code>self.wingspan = 1234</code> creates a wingspan attribute on your new <code>BlueJay</code> object.</p>
+<p>Instance attributes are not shared between different instances of the same class:</p>
+<div id="5b964363" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tiny_blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">28</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>big_blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tiny_blue_jay.wingspan)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big_blue_jay.wingspan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>28
+40</code></pre>
+</div>
+</div>
+<p>If we change one after creation, it will not affect the other:</p>
+<div id="fd0078e0" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>tiny_blue_jay.wingspan <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tiny_blue_jay.wingspan)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big_blue_jay.wingspan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>29
+40</code></pre>
+</div>
+</div>
+<p>Nice! Each object independently manages its state, completely separate from other objects. Just be careful with mutable values in instance attributes though. For example, if you store a bird’s colors as a list (since birds can have multiple colors), you might run into some unexpected behavior:</p>
+<div id="811a0f0c" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">"blue"</span>, <span class="st">"white"</span>, <span class="st">"black"</span>]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two BlueJay instances with the same color list.</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>tiny_blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">28</span>, color<span class="op">=</span>colors)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>big_blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span>colors)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tiny_blue_jay.color)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big_blue_jay.color)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Can you guess what will happen if we change one of the colors?</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>tiny_blue_jay.color[<span class="dv">0</span>] <span class="op">=</span> <span class="st">"electric blue"</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">after changing color[0] of tiny_blue_jay"</span>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tiny_blue_jay.color)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big_blue_jay.color)</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Or add a color to one of them?</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">after appending a new color to big_blue_jay"</span>)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>big_blue_jay.color.append(<span class="st">"light blue"</span>)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tiny_blue_jay.color)</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big_blue_jay.color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['blue', 'white', 'black']
+['blue', 'white', 'black']
+
+after changing color[0] of tiny_blue_jay
+['electric blue', 'white', 'black']
+['electric blue', 'white', 'black']
+
+after appending a new color to big_blue_jay
+['electric blue', 'white', 'black', 'light blue']
+['electric blue', 'white', 'black', 'light blue']</code></pre>
+</div>
+</div>
+<p>I know I just explained that instance attributes are independent between objects, which might seem contradictory here. But remember our discussion about mutable parameters back in <a href="functions.html#sec-mutable-parameters" class="quarto-xref"><span>Section 4.5.4.1</span></a>? Python variables are actually references to objects, not the objects themselves. In the example, both <code>BlueJay</code> instances ended up referencing the identical list object. Keep this behavior in mind: it’s a common source of subtle bugs.</p>
+<p>As mentioned earlier, you can add more instance attributes to an object after creation:</p>
+<div id="4abf0525" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">35</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>blue_jay.sneakiness <span class="op">=</span> <span class="st">"very sneaky"</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"this blue jay is </span><span class="sc">{</span>blue_jay<span class="sc">.</span>sneakiness<span class="sc">}</span><span class="ss">!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>this blue jay is very sneaky!</code></pre>
+</div>
+</div>
+</section>
+<section id="class-attributes" class="level3">
+<h3 class="anchored" data-anchor-id="class-attributes">Class Attributes</h3>
+<p>In our earlier look at the <code>Robin</code> class in <a href="#sec-class-basics" class="quarto-xref"><span>Section 5.2</span></a>, we used class attributes for data shared across all instances. This approach is ideal for information common to all robins, things like common name, species, and beak shape. Class attributes make sense when the data belongs to the entire group rather than to specific individuals.</p>
+<p>Class attributes are defined directly within the class, but outside any methods:</p>
+<div id="3972e966" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlueJay:</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    common_name <span class="op">=</span> <span class="st">"Blue Jay"</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    species <span class="op">=</span> <span class="st">"Cyanocitta cristata"</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    beak_shape <span class="op">=</span> <span class="st">"medium-length, conical"</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>blue_jay <span class="op">=</span> BlueJay()</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.species)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(blue_jay.beak_shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cyanocitta cristata
+medium-length, conical</code></pre>
+</div>
+</div>
+<p>You can also access class attributes directly on the class object itself:</p>
+<div id="b1b28225" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(BlueJay.species)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(BlueJay.beak_shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cyanocitta cristata
+medium-length, conical</code></pre>
+</div>
+</div>
+<p>Aside: that might seem a bit weird, but in Python, classes themselves are also objects that have properties and methods:</p>
+<div id="25a95a09" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(BlueJay.__class__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'type'&gt;</code></pre>
+</div>
+</div>
+<p>We will talk more about this later in the course.</p>
+<p>Let’s update the <code>BlueJay</code> class to have both class and instance attributes:</p>
+<div id="4a506185" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> BlueJay:</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set class attributes</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    common_name <span class="op">=</span> <span class="st">"Blue Jay"</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    species <span class="op">=</span> <span class="st">"Cyanocitta cristata"</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    beak_shape <span class="op">=</span> <span class="st">"medium-length, conical"</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, wingspan<span class="op">=</span><span class="dv">38</span>, color<span class="op">=</span><span class="st">"blue"</span>):</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set instance attributes</span></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.wingspan <span class="op">=</span> wingspan</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.color <span class="op">=</span> color</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>tiny_blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">28</span>)</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>big_blue_jay <span class="op">=</span> BlueJay(wingspan<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="co"># All blue jays will have the same values for the class attributes, but likely</span></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co"># have different values for the instance attributes.</span></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tiny_blue_jay.wingspan, tiny_blue_jay.species)</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(big_blue_jay.wingspan, big_blue_jay.species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>28 Cyanocitta cristata
+40 Cyanocitta cristata</code></pre>
+</div>
+</div>
+<section id="modifying-class-attributes" class="level4">
+<h4 class="anchored" data-anchor-id="modifying-class-attributes">Modifying Class Attributes</h4>
+<p>Class attributes don’t have to be constant, unchanging things. Let’s look at an example where we change the value of a class attribute from within an instance method to create sequential IDs for instances of that class. Check it out:</p>
+<div id="105e1f3d" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Amoeba:</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a class attribute</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># We increment the value stored in the counter class attribute by 1.</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>        Amoeba.counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Then, we set that value to the value of this amoeba instance's `id`</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># attribute.</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> Amoeba.counter</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If the user doesn't specify a name, then we create a default name</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># that includes the ID.</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> name <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.name <span class="op">=</span> <span class="ss">f"Amoeba_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>amoeba_1 <span class="op">=</span> Amoeba()</span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>amoeba_2 <span class="op">=</span> Amoeba(name<span class="op">=</span><span class="st">"Bob the Amoeba"</span>)</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>amoeba_3 <span class="op">=</span> Amoeba()</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(amoeba_1.name)</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(amoeba_2.name)</span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(amoeba_3.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Amoeba_1
+Bob the Amoeba
+Amoeba_3</code></pre>
+</div>
+</div>
+<p>Pretty neat! We will go into more fancy details like this in a future tutorial.</p>
+</section>
+<section id="a-tricky-example" class="level4">
+<h4 class="anchored" data-anchor-id="a-tricky-example">A Tricky Example</h4>
+<p>In our last example, we contained mutations within class methods—a safer approach than external state modification, which often causes bugs. Let’s flip this and see what happens when we modify class variables from outside. Warning: it gets a bit confusing!</p>
+<div id="61b9ce60" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tiny_blue_jay species:"</span>, tiny_blue_jay.species, <span class="bu">id</span>(tiny_blue_jay.species))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"big_blue_jay species:"</span>, big_blue_jay.species, <span class="bu">id</span>(big_blue_jay.species))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>tiny_blue_jay.species <span class="op">=</span> <span class="st">"i don't know!"</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tiny_blue_jay species:"</span>, tiny_blue_jay.species, <span class="bu">id</span>(tiny_blue_jay.species))</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"big_blue_jay species:"</span>, big_blue_jay.species, <span class="bu">id</span>(big_blue_jay.species))</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>BlueJay.species <span class="op">=</span> <span class="st">"something else"</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"tiny_blue_jay species:"</span>, tiny_blue_jay.species, <span class="bu">id</span>(tiny_blue_jay.species))</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"big_blue_jay species"</span>, big_blue_jay.species, <span class="bu">id</span>(big_blue_jay.species))</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>another_blue_jay <span class="op">=</span> BlueJay()</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"another_blue_jay species:"</span>,</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>    another_blue_jay.species,</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>(another_blue_jay.species),</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tiny_blue_jay species: Cyanocitta cristata 4706377584
+big_blue_jay species: Cyanocitta cristata 4706377584
+
+tiny_blue_jay species: i don't know! 4706284080
+big_blue_jay species: Cyanocitta cristata 4706377584
+
+tiny_blue_jay species: i don't know! 4706284080
+big_blue_jay species something else 4706288112
+
+another_blue_jay species: something else 4706288112</code></pre>
+</div>
+</div>
+<p>Let’s break this down:</p>
+<ol type="1">
+<li>Initially, all <code>BlueJay</code> instances share the class attribute <code>species</code> with value <code>"Cyanocitta cristata"</code> (note the matching IDs in the first two lines).</li>
+<li>When we set <code>tiny_blue_jay.species = "i don't know!"</code>, we’re not changing the class attribute, we’re creating a new instance attribute that shadows it. The ID changes for <code>tiny_blue_jay</code> but stays the same for <code>big_blue_jay</code>.</li>
+<li>With <code>BlueJay.species = "something else"</code>, we modify the actual class attribute. This affects all instances that don’t have their own shadowing attribute—big_blue_jay sees the new value, but tiny_blue_jay still shows its instance-specific value.</li>
+<li>Any new instance (like <code>another_blue_jay</code>) gets the updated class attribute value.</li>
+</ol>
+<p>The apparent complexity stems from Python’s attribute lookup sequence:</p>
+<ol type="1">
+<li>Check the instance namespace first</li>
+<li>Then check the class namespace</li>
+<li>Finally, check parent classes</li>
+</ol>
+<p>This enables both shared values and individual customization with the same name. This is very flexible, but potentially confusing if you don’t understand the lookup mechanism.</p>
+</section>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>Methods are functions inside classes that usually work with instances of that class. Class methods exist too (like class attributes), but we’ll skip those for now.</p>
+<p>Our previous examples were pretty basic. Let’s look at something a bit more interesting to showcase why classes and objects are actually useful.</p>
+<div id="f8bf12d9" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Amoeba:</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Represent an amoeba with position and energy tracking.</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co">    This class models an amoeba that can move around in a 2D space and manage</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="co">    its energy levels. Each amoeba has a unique ID, position coordinates, and</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co">    energy value.</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Attributes:</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co">        counter (int): Class variable that keeps track of how many amoeba instances</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co">            have been created.</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="co">        id (str): Unique identifier for each amoeba instance.</span></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="co">        position (list): A list of two integers representing [x, y] coordinates.</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="co">        energy (int): Current energy level of the amoeba.</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, position<span class="op">=</span><span class="va">None</span>, energy<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a>        Amoeba.counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="ss">f"Amoeba #</span><span class="sc">{</span>Amoeba<span class="sc">.</span>counter<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> position <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position <span class="op">=</span> position</span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.energy <span class="op">=</span> energy</span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This method controls how Amoebas will be printed</span></span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> -- Position: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>position<span class="sc">}</span><span class="ss">, Energy: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>energy<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> move(<span class="va">self</span>, direction):</span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Move the amoeba, consuming energy."""</span></span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.energy <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> is too weak to move!"</span>)</span>
+<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> direction <span class="op">==</span> <span class="st">"right"</span>:</span>
+<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves right!"</span>)</span>
+<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Moving to the right means adding one to the x position</span></span>
+<span id="cb50-44"><a href="#cb50-44" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position[<span class="dv">0</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb50-45"><a href="#cb50-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> direction <span class="op">==</span> <span class="st">"left"</span>:</span>
+<span id="cb50-46"><a href="#cb50-46" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves left!"</span>)</span>
+<span id="cb50-47"><a href="#cb50-47" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Moving to the left means subtracting one from the x position</span></span>
+<span id="cb50-48"><a href="#cb50-48" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position[<span class="dv">0</span>] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb50-49"><a href="#cb50-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> direction <span class="op">==</span> <span class="st">"up"</span>:</span>
+<span id="cb50-50"><a href="#cb50-50" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves up!"</span>)</span>
+<span id="cb50-51"><a href="#cb50-51" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Moving up means adding one to the y position</span></span>
+<span id="cb50-52"><a href="#cb50-52" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position[<span class="dv">1</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb50-53"><a href="#cb50-53" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> direction <span class="op">==</span> <span class="st">"down"</span>:</span>
+<span id="cb50-54"><a href="#cb50-54" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves down!"</span>)</span>
+<span id="cb50-55"><a href="#cb50-55" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Moving down means subtracting one from the y position</span></span>
+<span id="cb50-56"><a href="#cb50-56" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position[<span class="dv">1</span>] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb50-57"><a href="#cb50-57" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb50-58"><a href="#cb50-58" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"direction must one of up, down, left, or right"</span>)</span>
+<span id="cb50-59"><a href="#cb50-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-60"><a href="#cb50-60" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.energy <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb50-61"><a href="#cb50-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-62"><a href="#cb50-62" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> eat(<span class="va">self</span>):</span>
+<span id="cb50-63"><a href="#cb50-63" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""The amoeba eats, increasing its energy."""</span></span>
+<span id="cb50-64"><a href="#cb50-64" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> eats"</span>)</span>
+<span id="cb50-65"><a href="#cb50-65" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.energy <span class="op">+=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are a lot of things to break down about the <code>Amoeba</code> class. Let’s look at a few key points:</p>
+<ul>
+<li><strong>Class attributes vs.&nbsp;Instance attributes</strong>:
+<ul>
+<li><code>counter</code> is a class attribute shared across all instances</li>
+<li><code>id</code>, <code>position</code>, and <code>energy</code> are instance attributes unique to each object</li>
+</ul></li>
+<li><strong>Constructor Implementation</strong>:
+<ul>
+<li>Uses <code>__init__</code> to set up each new amoeba with its initial state</li>
+<li>Automatically increments the counter to assign unique IDs</li>
+<li>Handles default parameters (<code>position=None, energy=5</code>)</li>
+<li>Sets a default position if none is provided</li>
+</ul></li>
+<li><strong>String Representation</strong>:
+<ul>
+<li>Implements <code>__str__</code> to provide a human-readable representation</li>
+<li>Returns formatted string containing the amoeba’s ID, position and energy</li>
+</ul></li>
+<li><strong>`move() Method Implementation</strong>:
+<ul>
+<li><code>move()</code> validates input parameters</li>
+<li>Checks current state before performing actions (<code>if self.energy &lt;= 0</code>)</li>
+<li>Demonstrates internal state modification (changing position and reducing energy)</li>
+<li>Shows error handling with a descriptive error message (<code>ValueError</code>) for bad inputs</li>
+</ul></li>
+<li><strong>2D Movement Representation</strong>:
+<ul>
+<li>Uses a list <code>[x, y]</code> to represent position in 2D space</li>
+<li>Adjusts coordinates based on movement direction</li>
+</ul></li>
+<li><strong>State Management</strong>:
+<ul>
+<li>Class methods track and update the amoeba’s internal state (position, energy)</li>
+<li>Behavior depends on internal state (the amoeba can’t move with 0 energy)</li>
+</ul></li>
+<li><strong>Code Organization</strong>:
+<ul>
+<li>Uses docstrings for class and method documentation</li>
+<li>Follows consistent indentation and naming conventions (methods names are short verbs)</li>
+</ul></li>
+</ul>
+<p>Now, let’s try it out!</p>
+<div id="50f85ac4" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># These are the four directions that an amoeba can move</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>four_directions <span class="op">=</span> [<span class="st">"up"</span>, <span class="st">"down"</span>, <span class="st">"left"</span>, <span class="st">"right"</span>]</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Seed the random generator so that we get the same result each time we run the code</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>random.seed(<span class="dv">37424</span>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a random "walk"</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>directions <span class="op">=</span> random.choices(four_directions, k<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new amoeba instance</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>amoeba <span class="op">=</span> Amoeba()</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Go through each of the moves one by one</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> direction <span class="kw">in</span> directions:</span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(amoeba)</span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Each turn, the amoeba has a 1/5 chance in eating some lunch</span></span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> random.random() <span class="op">&lt;</span> <span class="fl">0.2</span>:</span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>        amoeba.eat()</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Then the amoeba tries to move</span></span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>    amoeba.move(direction)</span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Amoeba #1 -- Position: [0, 0], Energy: 5
+Amoeba #1 eats
+Amoeba #1 moves down!
+
+Amoeba #1 -- Position: [0, -1], Energy: 6
+Amoeba #1 moves down!
+
+Amoeba #1 -- Position: [0, -2], Energy: 5
+Amoeba #1 moves left!
+
+Amoeba #1 -- Position: [-1, -2], Energy: 4
+Amoeba #1 eats
+Amoeba #1 moves down!
+
+Amoeba #1 -- Position: [-1, -3], Energy: 5
+Amoeba #1 moves up!
+
+Amoeba #1 -- Position: [-1, -2], Energy: 4
+Amoeba #1 moves down!
+
+Amoeba #1 -- Position: [-1, -3], Energy: 3
+Amoeba #1 moves up!
+
+Amoeba #1 -- Position: [-1, -2], Energy: 2
+Amoeba #1 moves left!
+
+Amoeba #1 -- Position: [-2, -2], Energy: 1
+Amoeba #1 moves up!
+
+Amoeba #1 -- Position: [-2, -1], Energy: 0
+Amoeba #1 is too weak to move!
+</code></pre>
+</div>
+</div>
+<section id="aside-refactoring-the-amoeba-class" class="level3">
+<h3 class="anchored" data-anchor-id="aside-refactoring-the-amoeba-class">Aside: Refactoring the Amoeba Class</h3>
+<p>After building our Amoeba class, we can see that some functionality, specifically position tracking and movement, isn’t necessarily Amoeba-specific. We’re currently using a two-element list for position and updating it within the Amoeba’s <code>move</code> method. While this works for our small class, let’s extract this common behavior into a dedicated <code>Position</code> class.</p>
+<div id="e5fb1bf4" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Position:</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Represents a position in 2D space.</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co">    This class handles tracking and updating a position in a 2D grid system,</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">    with methods for moving in cardinal directions.</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co">    Attributes:</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="co">        x (int): The x-coordinate</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="co">        y (int): The y-coordinate</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, x<span class="op">=</span><span class="dv">0</span>, y<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x <span class="op">=</span> x</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">=</span> y</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"(</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>x<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>y<span class="sc">}</span><span class="ss">)"</span></span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> move_right(<span class="va">self</span>):</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Move one unit to the right (increase x)."""</span></span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> move_left(<span class="va">self</span>):</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Move one unit to the left (decrease x)."""</span></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.x <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> move_up(<span class="va">self</span>):</span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Move one unit up (increase y)."""</span></span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> move_down(<span class="va">self</span>):</span>
+<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Move one unit down (decrease y)."""</span></span>
+<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">-=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have the <code>Position</code> class, we can use it in the <code>Amoeba</code> class instead of the original two-element list. In this way, the <code>Amoeba</code> class delegates the behavior of position and movement to the <code>Position</code> class rather than manage that itself.</p>
+<div id="50d96e94" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Amoeba:</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Represent an amoeba with position and energy tracking.</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co">    This class models an amoeba that can move around in a 2D space and manage</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">    its energy levels. Each amoeba has a unique ID, position coordinates, and</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co">    energy value.</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Attributes:</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co">        counter (int): Class variable that keeps track of how many amoeba instances</span></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co">            have been created.</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co">        id (str): Unique identifier for each amoeba instance.</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co">        position (Position): A Position object representing the amoeba's location.</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co">        energy (int): Current energy level of the amoeba.</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, position<span class="op">=</span><span class="va">None</span>, energy<span class="op">=</span><span class="dv">5</span>):</span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a>        Amoeba.counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="ss">f"Amoeba #</span><span class="sc">{</span>Amoeba<span class="sc">.</span>counter<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> position <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position <span class="op">=</span> Position()</span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position <span class="op">=</span> position</span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.energy <span class="op">=</span> energy</span>
+<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> -- Position: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>position<span class="sc">}</span><span class="ss">, Energy: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>energy<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb54-32"><a href="#cb54-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-33"><a href="#cb54-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> move(<span class="va">self</span>, direction):</span>
+<span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Move the amoeba, consuming energy."""</span></span>
+<span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.energy <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> is too weak to move!"</span>)</span>
+<span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span></span>
+<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> direction <span class="op">==</span> <span class="st">"right"</span>:</span>
+<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves right!"</span>)</span>
+<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position.move_right()</span>
+<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> direction <span class="op">==</span> <span class="st">"left"</span>:</span>
+<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves left!"</span>)</span>
+<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position.move_left()</span>
+<span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> direction <span class="op">==</span> <span class="st">"up"</span>:</span>
+<span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves up!"</span>)</span>
+<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position.move_up()</span>
+<span id="cb54-49"><a href="#cb54-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> direction <span class="op">==</span> <span class="st">"down"</span>:</span>
+<span id="cb54-50"><a href="#cb54-50" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss"> moves down!"</span>)</span>
+<span id="cb54-51"><a href="#cb54-51" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.position.move_down()</span>
+<span id="cb54-52"><a href="#cb54-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb54-53"><a href="#cb54-53" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"direction must one of up, down, left, or right"</span>)</span>
+<span id="cb54-54"><a href="#cb54-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-55"><a href="#cb54-55" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.energy <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb54-56"><a href="#cb54-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-57"><a href="#cb54-57" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> eat(<span class="va">self</span>):</span>
+<span id="cb54-58"><a href="#cb54-58" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""The amoeba eats, increasing its energy."""</span></span>
+<span id="cb54-59"><a href="#cb54-59" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.energy <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There’s a new syntax element to note: <code>self.position.move_right()</code>. This expression chains multiple “dots” to connect attributes and method calls, something you’ll see frequently in Python. You can read it left to right like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/self_position_move_light.svg" title="A schematic of chained method calls" class="img-fluid figure-img" alt="A schematic of chained method calls: self which represents an amoeba on the left, position, which represents a Position in the middle, and move_right(), which represents a method of the Position class on the right. All are connected by arrows."></p>
+<figcaption>A schematic of chained method calls</figcaption>
+</figure>
+</div>
+<p><a href="https://refactoring.com/catalog/extractClass.html">Extracting</a> the <code>Position</code> class from the <code>Amoeba</code> class brings a couple of nice benefits:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separation of concerns</a>: Each class now has a single responsibility</li>
+<li><a href="https://en.wikipedia.org/wiki/Reusability">Reusability</a>
+<ul>
+<li>The <code>Position</code> class could now be used for other entities that need position tracking.</li>
+<li>If we need to change how positions work, we only need to change one place rather than in every class that need position tracking.</li>
+</ul></li>
+<li><a href="https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)">Encapsulation</a>: Position management details are hidden inside the <code>Position</code> class</li>
+</ul>
+<p>This process is called a <a href="https://refactoring.com/">refactoring</a>, and in this case, we have shown how to spot shared functionality and extract it into a separate class. While this is a good skill to have in your toolkit, don’t feel that you have to separate everything. Sometimes it’s overkill, especially for one-off scripts or when code reuse is unlikely. Use your judgment!</p>
+</section>
+<section id="special-methods" class="level3">
+<h3 class="anchored" data-anchor-id="special-methods">Special Methods</h3>
+<p>Special methods (like <code>__init__</code> and <code>__str__</code>) let your custom classes work with Python’s built-in operations. These “magic methods” act as interfaces between your code and core Python functionality. Though they have a cool name, these methods aren’t mysterious, rather, they’re like standardized hooks that let your classes interact more easily with Python’s built-in functions.</p>
+<p>For example, when Python performs certain operations, it looks for certain methods:</p>
+<ul>
+<li>When using the <code>+</code> operator, Python looks for the <code>__add__</code> method</li>
+<li>When using the <code>len()</code> function, Python looks for the <code>__len__</code> method</li>
+<li>When initializing an object, Python looks for the <code>__init__</code> method</li>
+<li>When printing an object, Python looks for the <code>__str__</code> method</li>
+</ul>
+<p>By implementing these methods, your custom objects can behave like Python’s native types. For example, a DNA sequence class with <code>__add__</code> could allow sequence concatenation using the simple <code>+</code> operator, just like with strings.</p>
+<p>In the <code>Amoeba</code> and <code>Position</code> classes, we implemented <code>__str__</code>. The <code>__str__</code> method is called whenever Python needs a human-readable string representation of your object, such as when you use the <code>print()</code> function.</p>
+<p>The <code>__str__</code> method should return a concise, informative string that gives the user meaningful information about the object. If you don’t define a <code>__str__</code> method for your class, Python will use a default representation. Compare the output when printing an <code>Amoeba</code> instance versus when printing a <code>BlueJay</code> instance:</p>
+<div id="cb1d2a81" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Amoeba())</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(BlueJay())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Amoeba #1 -- Position: (0, 0), Energy: 5
+&lt;__main__.BlueJay object at 0x11ccf6650&gt;</code></pre>
+</div>
+</div>
+<p>Since we didn’t explicitly define a <code>__str__</code> method for the <code>BlueJay</code> class, Python prints a default representation of the object, rather than a nice, informative message.</p>
+</section>
+</section>
+<section id="duck-typing" class="level2">
+<h2 class="anchored" data-anchor-id="duck-typing">Duck Typing</h2>
+<p>The <a href="https://en.wikipedia.org/wiki/Duck_test">duck test</a> goes something like this:</p>
+<blockquote class="blockquote">
+<p>If it looks like a duck, swims like a duck, and quacks like a duck, then it probably <em>is</em> a duck!</p>
+</blockquote>
+<p>Many programming languages, including Python, use this idea for something we call <a href="https://docs.python.org/3/glossary.html#term-duck-typing">duck typing</a>. In this context, Python is essentially saying, “Well, I don’t know what class this object is, but if it can <code>swim</code> or <code>fly</code> or <code>quack</code>, then I will treat it like a <code>Duck</code>.” In other words, it only cares whether the object can perform the needed actions. If it can, then Python will happily work with it regardless of what it actually is. This practical approach represents one way Python implements the polymorphism pillar of OOP mentioned earlier.</p>
+<p>Let’s see an example of this in action:</p>
+<div id="27619909" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Duck:</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> quack(<span class="va">self</span>):</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"quack, QUACK!!"</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fly(<span class="va">self</span>):</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"the duck is flying!"</span>)</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> swim(<span class="va">self</span>):</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"the duck is swimming"</span>)</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Gull:</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> squawk(<span class="va">self</span>):</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"squawk!!!"</span>)</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fly(<span class="va">self</span>):</span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"the crow flies!"</span>)</span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> swim(<span class="va">self</span>):</span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"the gull swims near the beach"</span>)</span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Whale:</span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> swim(<span class="va">self</span>):</span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"the whale is swims underwater"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>All three of these classes have a method called <code>swim</code>. If we have a collection of those objects, we can call the <code>swim</code> method on each of them without having to know what type the object is:</p>
+<div id="8cd73095" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>animals <span class="op">=</span> [Duck(), Duck(), Gull(), Whale()]</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> animal <span class="kw">in</span> animals:</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    animal.swim()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the duck is swimming
+the duck is swimming
+the gull swims near the beach
+the whale is swims underwater</code></pre>
+</div>
+</div>
+<p>While convenient, you might not always know if your objects have the method you need. There are two common ways to deal with this:</p>
+<ol type="1">
+<li>Simply call the method and catch any exceptions that occur. (the Python docs call this <a href="https://docs.python.org/3/glossary.html#term-EAFP">EAFP style programming</a> – “Easier to ask for forgiveness than permission”)</li>
+<li>Check if the object has the method before attempting to call it. (the Python docs call this <a href="https://docs.python.org/3/glossary.html#term-LBYL">LBYL style programming</a> – “look before you leap”)</li>
+</ol>
+<p>Both approaches have their place, depending on your specific situation and coding style preferences. Let’s look at examples of both approaches.</p>
+<section id="sec-asking-for-forgiveness" class="level3">
+<h3 class="anchored" data-anchor-id="sec-asking-for-forgiveness">Asking for Forgiveness</h3>
+<p>In this example, we call the method <code>fly</code> on each <code>animal</code> and catch any exceptions that occur using <code>try/except</code>.</p>
+<div id="c0fddd88" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>animals <span class="op">=</span> [Duck(), Duck(), Gull(), Whale()]</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> animal <span class="kw">in</span> animals:</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>        animal.fly()</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">AttributeError</span> <span class="im">as</span> error:</span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(error)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the duck is flying!
+the duck is flying!
+the crow flies!
+'Whale' object has no attribute 'fly'</code></pre>
+</div>
+</div>
+</section>
+<section id="looking-before-you-leap" class="level3">
+<h3 class="anchored" data-anchor-id="looking-before-you-leap">Looking Before You Leap</h3>
+<p>In this example, we use <code>hasattr</code> (short for “has attribute”) to check if each <code>animal</code> has the <code>fly</code> attribute before attempting to call the method.</p>
+<div id="9acd8aad" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>animals <span class="op">=</span> [Duck(), Duck(), Gull(), Whale()]</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> animal <span class="kw">in</span> animals:</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">hasattr</span>(animal, <span class="st">"fly"</span>):</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>        animal.fly()</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>animal<span class="sc">}</span><span class="ss"> can't fly!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>the duck is flying!
+the duck is flying!
+the crow flies!
+&lt;__main__.Whale object at 0x118834050&gt; can't fly!</code></pre>
+</div>
+</div>
+</section>
+<section id="special-methods-duck-typing" class="level3">
+<h3 class="anchored" data-anchor-id="special-methods-duck-typing">Special Methods &amp; Duck Typing</h3>
+<p>Let’s return once more to Python’s special “magic methods”. These are a great example of how duck typing can be useful. If we implement special methods like <code>__str__</code> or <code>__len__</code> for our custom classes, then Python can treat them like built-ins. Here’s an example of a <code>Gene</code> class:</p>
+<div id="f930d0c3" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Gene:</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, sequence):</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sequence <span class="op">=</span> sequence</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Special method for string representation</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__str__</span>(<span class="va">self</span>):</span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"&gt;</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ch">\n</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>sequence<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Special method for length</span></span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.sequence)</span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>gene <span class="op">=</span> Gene(<span class="st">"awesome_gene"</span>, <span class="st">"ATGATATCCATCGCTACTAGACTACTACGCGCGGCTCT"</span>)</span>
+<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(gene))</span>
+<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gene)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>38
+&gt;awesome_gene
+ATGATATCCATCGCTACTAGACTACTACGCGCGGCTCT</code></pre>
+</div>
+</div>
+<p>In this example, our <code>__str__</code> method formats the gene to match FASTA file conventions, while the length method returns the sequence length. These additions help our <code>Gene</code> class behave more like native Python objects, seamlessly integrating with the language’s expectations.</p>
+</section>
+</section>
+<section id="standard-python-classes" class="level2">
+<h2 class="anchored" data-anchor-id="standard-python-classes">Standard Python Classes</h2>
+<p>In <a href="collections.html" class="quarto-xref"><span>Chapter 2</span></a>, we introduced built-in Python data structures like lists, dictionaries, and sets. Now we can recognize these as classes that follow the principles we’ve just learned: they combine data and behavior into objects with methods that help us work with them safely and effectively.</p>
+<p>Let’s look at a few examples of how built-in Python classes provide methods that operate on their internal data:</p>
+<div id="4b72224b" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List methods</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Adds an element to the end</span></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>my_list.append(<span class="dv">5</span>)</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Reverses the list in-place</span></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>my_list.reverse()</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_list)</span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="co"># String methods</span></span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"  hello world  "</span></span>
+<span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-15"><a href="#cb66-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Strip whitespace</span></span>
+<span id="cb66-16"><a href="#cb66-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.strip())</span>
+<span id="cb66-17"><a href="#cb66-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-18"><a href="#cb66-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Strip whitespace, then uppercase</span></span>
+<span id="cb66-19"><a href="#cb66-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.strip().upper())</span>
+<span id="cb66-20"><a href="#cb66-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-21"><a href="#cb66-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Strip whitespace, then uppercase, then replace capital L with lowercase l</span></span>
+<span id="cb66-22"><a href="#cb66-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(text.strip().upper().replace(<span class="st">"L"</span>, <span class="st">"l"</span>))</span>
+<span id="cb66-23"><a href="#cb66-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-24"><a href="#cb66-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-25"><a href="#cb66-25" aria-hidden="true" tabindex="-1"></a>gene_info <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"some_gene"</span>, <span class="st">"chromosome"</span>: <span class="dv">10</span>}</span>
+<span id="cb66-26"><a href="#cb66-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-27"><a href="#cb66-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the keys</span></span>
+<span id="cb66-28"><a href="#cb66-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gene_info.keys())</span>
+<span id="cb66-29"><a href="#cb66-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-30"><a href="#cb66-30" aria-hidden="true" tabindex="-1"></a><span class="co"># "Merge" the dictionaries</span></span>
+<span id="cb66-31"><a href="#cb66-31" aria-hidden="true" tabindex="-1"></a>gene_info.update({<span class="st">"function"</span>: <span class="st">"tumor suppressor"</span>})</span>
+<span id="cb66-32"><a href="#cb66-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-33"><a href="#cb66-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gene_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[5, 4, 3, 2, 1]
+hello world
+HELLO WORLD
+HEllO WORlD
+dict_keys(['name', 'chromosome'])
+{'name': 'some_gene', 'chromosome': 10, 'function': 'tumor suppressor'}</code></pre>
+</div>
+</div>
+<p>Other commonly used built-in classes include:</p>
+<ul>
+<li><code>set</code> – for handling collections of unique items</li>
+<li><code>file</code> objects – returned when opening files with the <code>open()</code> function</li>
+<li><code>datetime</code> – for working with dates and times</li>
+</ul>
+<p>Each of these classes encapsulates both data (like the items in a list) and behavior (methods like <code>append</code> or <code>sort</code>), just like the custom classes we wrote in this tutorial.</p>
+</section>
+<section id="object-oriented-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="object-oriented-thinking">Object-Oriented Thinking</h2>
+<p>Now that you have seen the mechanics of building and using classes in Python, let’s get a little meta. When thinking in an object-oriented way, you see your system in terms interacting entities – an approach that fits naturally with how we like to think about biological systems. Here’s a quick guide to developing an object-oriented mindset:</p>
+<ul>
+<li>Identify key entities
+<ul>
+<li>What are your main working pieces?</li>
+<li>Physical things like cells, proteins, genes, patients?</li>
+<li>Abstract concepts like Files, Queues, Nodes, Graphs?</li>
+</ul></li>
+<li>Determine their properties
+<ul>
+<li>What characteristics define them?</li>
+<li>Example: cells have size, type, metabolic rate</li>
+</ul></li>
+<li>Identify their actions
+<ul>
+<li>What can they do?</li>
+<li>Cells divide, proteins fold, birds fly, files can be read</li>
+</ul></li>
+<li>Group related functionality: cell properties and behaviors belong in a Cell class</li>
+<li>Split classes when they become unwieldy or overly complex</li>
+</ul>
+<p>Start with these steps as your foundation. As you gain experience, you’ll naturally develop a feel for modeling systems that works best for your specific projects.</p>
+<section id="balancing-approaches" class="level3">
+<h3 class="anchored" data-anchor-id="balancing-approaches">Balancing Approaches</h3>
+<p>Python’s flexibility lets you mix programming approaches within a single project or script.</p>
+<p>Good Python code often combines different <a href="https://en.wikipedia.org/wiki/Programming_paradigm">paradigms</a>:</p>
+<ul>
+<li><strong>Object-oriented</strong> for modeling biological entities where data and behavior are linked</li>
+<li><strong>Functional</strong> for data transformations and analysis</li>
+<li><strong>Procedural</strong> for simple sequential operations</li>
+</ul>
+<p>Let the problem you’re tyring to solve guide your programming approach. Sometimes a simple module with functions works better than a class, while other times a well-designed class hierarchy models your domain in the clearest way.</p>
+<p>In general, classes work well when you’re working with entities that have both data (attributes) and behaviors (methods) that naturally belong together. Consider using classes when:</p>
+<ul>
+<li>You need multiple similar entities with shared structure and behavior (like 1000 cells in a simulation)</li>
+<li>You repeatedly apply the same operations to specific data types</li>
+<li>Your data needs validation (ensuring DNA sequences only contain valid nucleotides)</li>
+<li>Data and actions are tightly coupled</li>
+<li>You need to track state across operations</li>
+<li>Your project needs additional structure</li>
+<li>Your data has natural hierarchies (DNA and Proteins are both Molecules)</li>
+</ul>
+<p><em>Note: We didn’t get into class hierarchies in this tutorial. That’s an advanced topic for a later time.</em></p>
+<p>Consider simpler alternatives when:</p>
+<ul>
+<li>Writing straightforward data processing scripts</li>
+<li>Dealing with mostly static data</li>
+<li>Using functions that transform data without maintaining state</li>
+<li>Working with data where built-in Python structures are sufficient</li>
+<li>Your project is small and classes would add unnecessary complexity</li>
+</ul>
+<p>Many popular data science libraries like pandas and seaborn emphasize data transformations and function chaining rather than object-oriented approaches. When using these libraries, follow their patterns instead of forcing objects where they don’t make sense.</p>
+<p>The goal is clear, maintainable code that you and colleagues understand. Start simple, adding complexity only when needed. With experience, you’ll develop intuition for when classes are the right tool.</p>
+</section>
+<section id="general-tips-and-pitfalls" class="level3">
+<h3 class="anchored" data-anchor-id="general-tips-and-pitfalls">General Tips and Pitfalls</h3>
+<p>Let’s wrap up with some broad best practices and common pitfalls for working with classes. We’ll refine these as you tackle more complex programs throughout the course.</p>
+<p>General tips:</p>
+<ul>
+<li>Follow naming conventions
+<ul>
+<li>PascalCase for classes (<code>BacterialCell</code>), snake_case for methods/attributes (<code>growth_rate</code>)</li>
+</ul></li>
+<li>Keep classes focused
+<ul>
+<li>One clear purpose per class</li>
+<li>Avoid mixing responsibilities</li>
+</ul></li>
+<li>Design intuitive interfaces
+<ul>
+<li>Consider how others will interact with your classes</li>
+<li>Make correct usage easy, incorrect usage difficult</li>
+</ul></li>
+<li>Document with docstrings</li>
+<li>Validate inputs in <code>__init__</code></li>
+<li>Implement magic methods when appropriate</li>
+</ul>
+<p>General pitfalls:</p>
+<ul>
+<li>Modeling excessive behavior
+<ul>
+<li>Include only what’s relevant to your specific application</li>
+<li>A bird has many attributes, but you only need what serves your research question</li>
+</ul></li>
+<li>Overloaded classes
+<ul>
+<li>A <code>Cell</code> class shouldn’t also process sequencing data and generate plots</li>
+</ul></li>
+<li>Underutilized classes
+<ul>
+<li>Data-only classes might work better as dictionaries</li>
+<li>Method-only classes might work better as function modules</li>
+</ul></li>
+<li>Poor naming choices
+<ul>
+<li><code>class Gene</code> communicates purpose better than <code>class X</code></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="wrap-up" class="level2">
+<h2 class="anchored" data-anchor-id="wrap-up">Wrap-Up</h2>
+<p>Python classes create custom data types that bundle related data and functions together, helping organize code by grouping attributes and methods. In scientific programming, they’re great for representing complex entities with intertwined data and behavior. Use classes when they make your code more organized and readable – with experience, you’ll develop instincts for when to use them versus simpler approaches. Keep exploring, stay curious, and experiment with different solutions to your scientific problems!</p>
+</section>
+<section id="suggested-readings" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-readings">Suggested Readings</h2>
+<p>You might enjoy checking out some of these resources:</p>
+<ul>
+<li>Python Docs: <a href="https://docs.python.org/3/tutorial/classes.html">Classes</a></li>
+<li>Real Python
+<ul>
+<li><a href="https://realpython.com/python3-object-oriented-programming">Object-Oriented Programming (OOP) in Python</a></li>
+<li><a href="https://realpython.com/python-class-constructor">Python Class Constructors: Control Your Object Instantiation</a></li>
+<li><a href="https://realpython.com/lessons/class-and-instance-attributes/">Class and Instance Attributes</a></li>
+<li><a href="https://realpython.com/duck-typing-python/">Duck Typing in Python: Writing Flexible and Decoupled Code</a></li>
+</ul></li>
+<li>Wikipedia’s <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object-oriented programming</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script async="" src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/pythonforlifescientists\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./functions.html" class="pagination-link" aria-label="Functions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./errors.html" class="pagination-link" aria-label="Errors &amp; Exceptions">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Errors &amp; Exceptions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Ryan M. Moore. CC BY 4.0.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/object_oriented_programming.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://orcid.org/0000-0003-3337-8184">
+      <i class="bi bi-person-lines-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=W08DPpMAAAAJ">
+      <i class="bi bi-journals" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mooreryan">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
