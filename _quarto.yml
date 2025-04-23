@@ -25,10 +25,9 @@ book:
     - chapters/07_exploratory_data_analysis.qmd
     - chapters/08_stats_models.qmd
     - chapters/09_io_files_contexts.qmd
-    - part: Appendices
-      chapters:
-        - chapters/A01_solutions.qmd
-        - chapters/A02_regex.qmd
+  appendices:
+    - chapters/A01_solutions.qmd
+    - chapters/A02_regex.qmd
 
   # Site stuff
   cover-image: images/dna_python_logo.webp

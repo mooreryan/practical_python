@@ -5,7 +5,7 @@ date: "2025-04-01"
 jupyter: python3
 ---
 
-# Appendix 2: Regular Expressions {.unnumbered}
+# Regular Expressions
 
 Regular expressions (regex) are powerful tools for working with text data, and are commonly used in bioinformatics applications. They are essentially a specialized mini-language for pattern matching in strings.
 

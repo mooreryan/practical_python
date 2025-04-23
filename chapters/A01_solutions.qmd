@@ -5,7 +5,7 @@ date: "2025-03-24"
 jupyter: python3
 ---
 
-# Appendix 1: Solutions {.unnumbered}
+# Solutions
 
 ## Chapter 6: Errors & Exceptions
 
