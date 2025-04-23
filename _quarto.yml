@@ -16,23 +16,27 @@ book:
   # Content
   chapters:
     - index.qmd
-    - chapters/01_basics.qmd
-    - chapters/02_collections.qmd
-    - chapters/03_algorithms.qmd
-    - chapters/04_functions.qmd
-    - chapters/05_classes.qmd
-    - chapters/06_errors.qmd
-    - chapters/07_exploratory_data_analysis.qmd
-    - chapters/08_stats_models.qmd
-    - chapters/09_io_files_contexts.qmd
+    - basics.qmd
+    - collections.qmd
+    - algorithms.qmd
+    - functions.qmd
+    - text: "Object-Oriented Programming"
+      href: object_oriented_programming.qmd
+    - errors.qmd
+    - text: "Exploratory Data Analysis"
+      href: exploratory_data_analysis.qmd
+    - text: "Statistics & Modeling"
+      href: stats_models.qmd
+    - io_files_contexts.qmd
   appendices:
-    - chapters/A01_solutions.qmd
-    - chapters/A02_regex.qmd
+    - solutions.qmd
+    - regex.qmd
 
   # Site stuff
   cover-image: images/dna_python_logo.webp
   cover-image-alt: "DNA double helix to the left and Python logo to the right"
   sidebar:
+    style: "docked"
     logo: images/dna_python_logo.webp
     logo-alt: "DNA double helix to the left and Python logo to the right"
   page-footer:
