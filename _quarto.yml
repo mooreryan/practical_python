@@ -48,7 +48,7 @@ book:
   open-graph: true
 
   # GitHub
-  # site-url: https://www.pythonforlifescientists.com
+  site-url: https://pythonforlifescientists.com
   repo-url: https://github.com/mooreryan/practical_python
   repo-branch: main
   repo-actions: [issue, source]
