@@ -1,0 +1,12 @@
+{
+  "hash": "6a6e5ebb7439bc535233550ff57ab9fb",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\nauthor: \"Ryan M. Moore, PhD\"\ndate-modified: last-modified\ndate: \"2025-04-24\"\njupyter: python3\n---\n\n# Practice Problem Solutions — @sec-errors-exceptions\n\n## Solution @sec-problem-6.1\n\n```python\ntry:\n    value = float(\"abc\")\nexcept ValueError:\n    print(\"Not a valid number\")\n```\n\n## Solution @sec-problem-6.2\n\n```python\ncounts = {\"A\": 1, \"C\": 2, \"G\": 0, \"T\": 4}\ntotal = sum(counts.values())\n\ntry:\n    n_ratio = counts[\"N\"] / total\nexcept KeyError:\n    print(\"N is not present in the counts dictionary\")\n    n_ratio = None\n```\n\n## Solution @sec-problem-6.3\n\n```python\ntry:\n    silly_divide(5, 0)\nexcept ZeroDivisionError:\n    print(\"you can't divide by zero!\")\nexcept Exception as error:\n    print(f\"a mysterious error occurred: {error=}\")\n```\n\n## Solution @sec-problem-6.4\n\n```python\ndef fold_change(expression_1, expression_2)\n    try:\n        return expression_1 / expression_2\n    except ZeroDivisionError:\n        print(\"expression_2 was zero!\")\n        return None\n```\n\n## Solution @sec-problem-6.5\n\n```python\nclass SequenceLengthError(Exception):\n    pass\n\nMIN_LENGTH = 50\nMAX_LENGTH = 150\n\ndef validate_sequence_length(sequence):\n    sequence_length = len(sequence)\n\n    if sequence_length < MIN_LENGTH:\n        raise SequenceLengthError(f\"sequence length {sequence_length} was too short!\")\n\n    if sequence_length > MAX_LENGTH:\n        raise SequenceLengthError(f\"sequence length {sequence_length} was too long!\")\n\n    return None\n```\n\n## Solution @sec-problem-6.6\n\n```python\ndef run_simulation(max_turns):\n    if max_turns < 1:\n        raise ValueError(f\"Expected at least 1 iteration, but got {max_turns=}\")\n\n    if max_turns > 1000:\n        raise ValueError(f\"Expected at most 1000 iterations, but got {max_turns=}\")\n\n    # Simulation code would follow\n    pass\n```\n\n",
+    "supporting": [
+      "practice_solutions_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
