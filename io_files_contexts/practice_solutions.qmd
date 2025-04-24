@@ -1,0 +1,780 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-04-24"
+jupyter: python3
+---
+
+# Practice Problem Solutions — @sec-io-files-contexts {#sec-io-files-contexts-practice-problem-solutions}
+
+## Set Up
+
+Set up some fake data that we will use in the practice problems.
+
+```{python}
+with open("sample.txt", "w") as file:
+    file.write("first line\nsecond line\nthird line\n")
+
+data_lines = [
+    "1. Basics\n",
+    "2. Collections\n",
+    "3. Algorithms\n",
+    "4. Functions\n",
+    "5. OOP\n",
+    "6. Errors\n",
+    "7. EDA\n",
+    "8. Stats\n",
+    "9. I/O\n",
+]
+with open("data.txt", "w") as file:
+    file.writelines(data_lines)
+```
+
+## Group 1 {#sec-io-files-contexts-practice-problem-solutions-group-1}
+
+1. Open a file called `data.txt` for reading, print its type, then close it.
+
+```{python}
+file = open("data.txt", "r")
+print(type(file))
+file.close()
+```
+
+2. Write "Hello, World!" into a file named `test.txt`.
+
+```{python}
+with open("test.txt", "w") as f:
+    f.write("Hello, World!")
+```
+
+3. Read and print all text from a file named `sample.txt`.
+
+```{python}
+with open("sample.txt") as f:
+    content = f.read()
+    print(content)
+```
+
+4. Read a file line by line and print each line without the trailing newline character(s).
+
+```{python}
+with open("sample.txt") as file:
+    for line in file:
+        print(line.strip())
+```
+
+5. Append the text "New Entry" to `log.txt`.
+
+```{python}
+with open("log.txt", "a") as file:
+    file.write("New Entry\n")
+```
+
+6. Print the file's name and mode after opening it.
+
+```{python}
+with open("sample.txt") as file:
+    print(file.name)
+    print(file.mode)
+```
+
+7. Write three lines to `multi.txt`: "One", "Two", "Three", each on its own line.
+
+```{python}
+with open("multi.txt", "w") as file:
+    file.write("One\n")
+    file.write("Two\n")
+    file.write("Three\n")
+```
+
+8. Use a for-loop to write the numbers 1-5 to a file (one per line).
+
+```{python}
+with open("numbers.txt", "w") as file:
+    for i in range(1, 6):
+        file.write(str(i) + "\n")
+```
+
+9. Print `"File is closed"` if file is closed after exiting a `with`-block.
+
+```{python}
+with open("sample.txt") as file:
+    pass
+
+if file.closed:
+    print("File is closed")
+```
+
+10. Use `readline()` to read and print just the first line of `sample.txt`.
+
+```{python}
+with open("sample.txt") as file:
+    print(file.readline().strip())
+```
+
+11. Create a function that prints the contents of a file it is given.
+
+```{python}
+def print_file(file_path):
+    with open(file_path) as file:
+        print(file.read())
+```
+
+12. Use a `for` loop to write a list of fruits into a file, one fruit per line.
+
+```{python}
+fruits = ["apple", "banana", "cherry"]
+with open("fruits.txt", "w") as file:
+    for fruit in fruits:
+        file.write(fruit + "\n")
+```
+
+13. Read and print the first eight characters of `sample.txt`.
+
+```{python}
+with open("sample.txt", "rb") as file:
+    print(file.read(8))
+```
+
+14. Demonstrate that opening an existing file in write mode (`"w"`) mode erases its contents.
+
+```{python}
+with open("test.txt", "w") as file:
+    file.write("contents")
+
+with open("test.txt", "w") as file:
+    file.write("Overwritten!")
+
+with open("test.txt") as file:
+    contents = file.read()
+    assert contents == "Overwritten!"
+```
+
+15. Use a try-except block to print a message if `not_a_file.txt` does not exist.
+
+```{python}
+try:
+    with open("not_a_file.txt") as file:
+        data = file.read()
+except FileNotFoundError as error:
+    print(f"{error=}")
+```
+
+16. Print file position (using `.tell()`) before and after reading 4 bytes.
+
+```{python}
+with open("sample.txt", "rb") as file:
+    print(file.tell())
+    file.read(4)
+    print(file.tell())
+```
+
+17. Write binary bytes `b'ABC'` to a file called `bytes.bin`.
+
+```{python}
+with open("bytes.bin", "wb") as file:
+    file.write(b"ABCDEFGHIJK")
+```
+
+18. Read the binary file you just created (`bytes.bin`) and print the first five bytes.
+
+```{python}
+with open("bytes.bin", "rb") as f:
+    print(f.read(5))
+```
+
+19. Use `"rt"` mode to read text and `"wb"` mode to write bytes.
+
+```{python}
+with open("sample.txt", "rt") as file:
+    print(file.read())
+with open("bytes.bin", "wb") as file:
+    file.write(b"xyz")
+```
+
+20. Print the error message if a file open operation raises an `OSError`.
+
+```{python}
+try:
+    with open("/fake/file.txt") as file:
+        content = file.read()
+except OSError as error:
+    print(f"{error=}")
+```
+
+21. Print the first line from a file, then use `.seek(0)` to go back to the beginning of the file and re-print the first line.
+
+```{python}
+with open("sample.txt") as file:
+    print(file.readline().strip())
+    file.seek(0)
+    print(file.readline().strip())
+```
+
+22. Use `with` statement to write the line `"Finished!"` into `finished.txt`.
+
+```{python}
+with open("finished.txt", "w") as file:
+    file.write("Finished!\n")
+```
+
+23. Open the file `finished.txt` and append the line `"Appending again!"`.
+
+```{python}
+with open("finished.txt", "a") as file:
+    file.write("Appending again!\n")
+```
+
+24. Create a dictionary, and write each key-value pair to a file (format: `key => value`).
+
+```{python}
+d = {"A": 1, "B": 2}
+with open("dict.txt", "w") as file:
+    for k, v in d.items():
+        file.write(f"{k} => {v}\n")
+```
+
+25. Print current working directory using `os.getcwd()` module.
+
+```python
+import os
+print(os.getcwd())
+```
+
+26. List files in the current directory with `os.listdir()`.
+
+```python
+import os
+print(os.listdir("."))
+```
+
+27. Pass a file name to `os.listdir()`, then handle the error using `try/except`.
+
+```{python}
+import os
+
+dirname = "sample.txt"
+
+try:
+    os.listdir(dirname)
+except NotADirectoryError:
+    print(f"'{dirname}' is not a directory!")
+```
+
+28. After writing three lines to a file called `sample.txt`, read the file and print the number of lines. (Use `writelines()` and `readlines()`.)
+
+```{python}
+lines = ["first line\n", "second line\n", "third line\n"]
+
+with open("sample.txt", "w") as file:
+    file.writelines(lines)
+
+with open("sample.txt") as file:
+    print(len(file.readlines()))
+```
+
+29. Use `seek` to skip the first 3 bytes then print the rest of the file.
+
+```{python}
+with open("sample.txt", "rb") as file:
+    file.seek(3)
+    print(file.read())
+```
+
+30. Catch any `OSError` when trying to open a file.
+
+```{python}
+try:
+    with open("maybe_missing.txt") as file:
+        data = file.read()
+except OSError as error:
+    print("Caught OSError:", error)
+```
+
+## Group 2 {#sec-io-files-contexts-practice-problem-solutions-group-2}
+
+1. Read all lines from `data.txt` into a list, then write every second line to `even_lines.txt`.
+
+```{python}
+with open("data.txt") as file:
+    lines = file.readlines()
+
+with open("even_lines.txt", "w") as file:
+    for i, line in enumerate(lines):
+        if i % 2 == 1:
+            file.write(line)
+
+# Check your work!
+with open("even_lines.txt") as file:
+    for line in file:
+        print(line.strip())
+```
+
+2. Write user input (entered with `input()`) to a file called `user.txt`.
+
+```python
+text = input("Enter something: ")
+with open("user.txt", "w") as f:
+    f.write(text)
+```
+
+3. Open `data.txt` for writing and write 10 lines (`"Line {i}"`). Then, open the same file again and append a summary line: `"Total lines: 10"`.
+
+```{python}
+with open("data.txt", "w") as file:
+    for i in range(10):
+        file.write(f"Line {i + 1}\n")
+
+with open("data.txt", "a") as file:
+    file.write("Total lines: 10\n")
+
+# Check your work!
+with open("data.txt") as file:
+    print(file.read().strip())
+```
+
+4. Write each character of a string to a new line in a text file.
+
+```{python}
+message = "coding is cool"
+with open("chars.txt", "w") as file:
+    for letter in message:
+        file.write(f"{letter}\n")
+
+# Check your work!
+with open("chars.txt") as file:
+    print(file.read().strip())
+```
+
+5. Ask for a filename. Try to read and print it, or print "Not found!" if the file does not exist.
+
+```python
+filename = input("Filename: ")
+try:
+    with open(filename) as f:
+        print(f.read())
+except FileNotFoundError:
+    print(f"{filename} was not found!")
+```
+
+TODO: make a note about the stdin stuff needind to put the {} around python to try it for yourself.
+
+6. Write an integer list to a text file, then read it and compute their sum.
+
+```{python}
+numbers = [1, 2, 3, 4]
+
+with open("numbers.txt", "w") as file:
+    for number in numbers:
+        file.write(str(number) + "\n")
+
+with open("numbers.txt") as file:
+    total = sum(int(line.strip()) for line in file)
+
+print(total)
+```
+
+7. Read up to the 10th character of a file and print those characters backwards.
+
+   ```python
+   with open('sample.txt') as f:
+       text = f.read(10)
+       print(text[::-1])
+   ```
+
+8. Write a file, then read its contents twice using `seek()`.
+
+```{python}
+with open("temp.txt", "w") as file:
+    file.write("Magic Beans\n")
+
+with open("temp.txt") as file:
+    contents = file.read()
+    print(contents.strip())
+
+    file.seek(0)
+
+    contents = file.read()
+    print(contents.strip())
+```
+
+TODO: decide on a couple of file names and just use those
+
+9. Write three words to a file, each on their own line. Then, print all the lines of that file in uppercase.
+
+```{python}
+words = ["apple", "pie", "is", "good"]
+
+with open("numbers.txt", "w") as file:
+    for word in words:
+        file.write(f"{word}\n")
+
+with open("numbers.txt") as file:
+    for line in file:
+        print(line.strip().upper())
+```
+
+10. Write some lines to a file, including some empty lines. Then, read the file back, counting the number of empty lines.
+
+```{python}
+with open("sample.txt", "w") as file:
+    for line in ["this", "", "is", "a", "", "line"]:
+        file.write(f"{line}\n")
+
+with open("sample.txt") as file:
+    blank_line_count = sum(line.strip() == "" for line in file)
+
+print(f"there were {blank_line_count} empty lines!")
+```
+
+11. Write two lists (`genes` and `counts`) into a file as `gene,count` rows.
+
+```{python}
+genes = ["nrdA", "nrdJ"]
+counts = [10, 20]
+
+with open("pairs.csv", "w") as file:
+    for gene, count in zip(genes, counts):
+        file.write(f"{gene},{count}\n")
+
+# Check your work!
+with open("pairs.csv") as file:
+    print(file.read().strip())
+```
+
+12. Write some lines to a file, some of which contain the word `"gene"`. Then, open that file and print every line that contains the word `"gene"`.
+
+```{python}
+
+with open("data.txt", "w") as file:
+    file.writelines(
+        [
+            "gene therapy\n",
+            "protein sequences\n",
+            "gene annotation\n",
+            "analyzing gene expression\n",
+            "multiple sequence alignment\n",
+        ]
+    )
+
+with open("data.txt") as file:
+    for line in file:
+        if "gene" in line:
+            print(line.strip())
+```
+
+13. Read the contents from one file and write it uppercased to another file. (Read the input file line-by-line.)
+
+```{python}
+with open("data.txt") as input_file, open("upper.txt", "w") as output_file:
+    for line in input_file:
+        output_file.write(line.upper())
+
+# Check your work!
+with open("upper.txt") as file:
+    for line in file:
+        print(line.strip())
+```
+
+14. Try to open a file that doesn't exist without crashing the program.
+
+```{python}
+try:
+    with open('/fake/file.txt') as file:
+        _ = file.read()
+except OSError as error:
+    print(f"{error=}")
+```
+
+15. Create a list of dictionaries like this: `{"A": 1, "B": 2, "C": 3}`. Then write the data as a CSV file with a header line.
+
+```{python}
+rows = [
+    {"A": 1, "B": 4, "C": 7},
+    {"A": 2, "B": 5, "C": 8},
+    {"A": 3, "B": 6, "C": 9},
+]
+
+with open("table.csv", "w") as file:
+    file.write("A,B,C\n")
+    for row in rows:
+        values = [str(value) for value in row.values()]
+        line = ",".join(values)
+        file.write(f"{line}\n")
+
+# Check your work!
+with open("table.csv") as file:
+    for line in file:
+        print(line.strip())
+```
+
+16. Create a small FASTA file. Then, read the file and count how many lines in a file start with ">".
+
+```{python}
+with open("sequences.fasta", "w") as file:
+    file.write(">seq_1\n")
+    file.write("ACTG\n")
+    file.write(">seq_2\n")
+    file.write("GGCAC\n")
+    file.write(">seq_3\n")
+    file.write("AAACTA\n")
+
+
+with open("sequences.fasta") as file:
+    record_count = sum(line.startswith(">") for line in file)
+
+print(record_count)
+```
+
+17. Copy the header lines from the FASTA file you just created into another file. Do not print the `>` in the output file.
+
+```{python}
+with open("sequences.fasta") as fasta_file, open("headers.txt", "w") as output_file:
+    for line in fasta_file:
+        if line.startswith(">"):
+            output_line = line.strip()[1:] + "\n"
+            output_file.write(output_line)
+
+# Check your work!
+with open("headers.txt") as file:
+    for line in file:
+        print(line.strip())
+```
+
+18. Write a few lines to a file. One of the lines should be `"exit"`. Then, read the lines of the file you created, but stop as soon as you read the `"exit"` line.
+
+```{python}
+with open("data.txt", "w") as file:
+    file.writelines(
+        [
+            "line 1\n",
+            "line 2\n",
+            "exit\n",
+            "line 3\n",
+        ]
+    )
+
+with open("data.txt") as file:
+    for line in file:
+        line = line.strip()
+        if line == "exit":
+            break
+
+        print(line)
+```
+
+19. Open an output file, write one line, then print the output of `file.closed`. Next, use `with` to open the file, and after the block, print the result of `file.closed` again.
+
+```{python}
+file = open("output.txt", "w")
+file.write("gene 1\n")
+print(file.closed)
+file.close()
+
+with open("output.txt", "w") as file:
+    file.write("gene 2\n")
+
+print(file.closed)
+```
+
+20. Write three numbers to a binary file as bytes, then read, and print them as integers.
+
+```{python}
+numbers = [7, 8, 9]
+
+with open("numbers.dat", "wb") as file:
+    file.write(bytes(numbers))
+
+with open("numbers.dat", "rb") as file:
+    data = file.read()
+    print(type(data))
+    print(data)
+
+print(list(data))
+```
+
+## Group 3 {#sec-io-files-contexts-practice-problem-solutions-group-3}
+
+1. Using biopython, write code that opens a FASTA file and (1) prints the sequence ID and length for each sequence, and (2) prints the mean sequence length. (Use the FASTA sequence you created earlier.)
+
+```{python}
+sequence_count = 0
+total_length = 0
+
+from Bio import SeqIO
+
+for record in SeqIO.parse("sequences.fasta", "fasta"):
+    sequence_count += 1
+    seq_length = len(record.seq)
+    total_length += seq_length
+
+    print(record.id, seq_length, sep="\t")
+
+print("\nTotal sequences:", sequence_count)
+print("\nMean length:", total_length / sequence_count)
+```
+
+2. Write the contents of a dictionary to a TSV file. Each line should be like `key\tvalue`. Then read the file, insert any lines where the value is greater than or equal to 10 into a new dictionary.
+
+```{python}
+data = {"a": 1, "b": 2, "c": 3, "d": 10, "e": 20, "f": 30}
+with open("dict.tsv", "w") as file:
+    for key, value in data.items():
+        line = f"{key}\t{value}\n"
+        file.write(line)
+
+filtered_data = {}
+with open("dict.tsv") as file:
+    for line in file:
+        key, value = line.strip().split("\t")
+        if int(value) >= 10:
+            filtered_data[key] = value
+
+print(filtered_data)
+```
+
+3. Using pandas, create a data frame with the following data: `{"A": [1, 2, 3], "B": [4, 5, 6], "C": [7, 8, 9]}`, and write it to a CSV without the row index. Read the resulting file using `csv.DictReader`. Print any record in which the value in field "A" is >= 2 and the value in field "C" is <= 8.
+
+```{python}
+import csv
+import pandas as pd
+
+df = pd.DataFrame({"A": [1, 2, 3], "B": [4, 5, 6], "C": [7, 8, 9]})
+df.to_csv("df.csv", index=False)
+
+with open("df.csv", newline="") as file:
+    for record in csv.DictReader(file):
+        if int(record["A"]) >= 2 and int(record["C"]) <= 8:
+            print(record)
+```
+
+4. Write code that opens a FASTQ file, then prints the id and average quality score for the first 10 records.
+
+```{python}
+from Bio import SeqIO
+import numpy as np
+
+# TODO: get the data in the write location
+for i, record in enumerate(SeqIO.parse("../_data/sample_1.fastq", "fastq")):
+    if i >= 10:
+        break
+
+    quality_score = np.mean(record.letter_annotations["phred_quality"])
+    print(record.id, quality_score, sep=" => ")
+```
+
+5. Read a binary file and print each byte in hexadecimal. (Use the built-in [hex()](https://docs.python.org/3/library/functions.html#hex) function.)
+
+```{python}
+with open("data.bin", "wb") as file:
+    file.write(b"apple pie")
+
+with open("data.bin", "rb") as file:
+    data = file.read()
+
+for byte in data:
+    print(hex(byte))
+```
+
+6. Try to read and print the contents of a list of files. If any file doesn't exist, skip it and print a message about the file not being found.
+
+```{python}
+filenames = ["fake.txt", "data.txt", "nope.txt"]
+
+for filename in filenames:
+    print()
+    try:
+        with open(filename) as file:
+            print(f"found {filename}!")
+            print(file.read().strip())
+            print("DONE!")
+    except FileNotFoundError:
+        print(f"file '{filename}' not found")
+```
+
+7. Write the given `gene_data` to a file. Then, read the lines of the file, extracting gene names and sequences from each line using using regular expressions. Finally, print each gene name and sequence in the format "name => sequence".
+
+```{python}
+import re
+
+gene_data = [
+    "gene: nrdA; seq: AACCTTG\n",
+    "gene: nrdJd; seq: ACACGGT\n",
+    "gene: pol; seq: AAACGGTAA\n",
+]
+
+with open("gene_data.txt", "w") as file:
+    file.writelines(gene_data)
+
+pattern = r"gene: ([a-zA-Z]+); seq: ([ACTG]+)"
+
+with open("gene_data.txt") as file:
+    for line in file:
+        matches = re.fullmatch(pattern, line.strip())
+        gene_name = matches[1]
+        sequence = matches[2]
+        print(gene_name, sequence, sep=" => ")
+```
+
+8. Create a file containing 50 random words chosen from the following list `["apple", "pie", "is", "good"]`. Read that file and count how many times each word occurs. Print the dictionary sorted by word count. Don't forget to set the random seed for reproducibility!
+
+```{python}
+from collections import Counter
+import random
+
+random.seed(2341)
+
+with open("words.txt", "w") as file:
+    for word in random.choices(["apple", "pie", "is", "good"], k=50):
+        file.write(word + "\n")
+
+with open("words.txt") as f:
+    words = f.read().split()
+
+counts = Counter(words)
+
+for word in sorted(counts):
+    print(word, counts[word])
+```
+
+9. Without using the CSV module, read a CSV file. If any of the lines have a different number of fields, stop the iteration and print an error message.
+
+```{python}
+with open("df.csv", "a") as file:
+    file.write("1,2,3,4\n")
+
+with open("df.csv") as file:
+    fields = file.readline().strip().split(",")
+    expected_length = len(fields)
+
+    for line in file:
+        line = line.strip()
+        fields = line.split(",")
+
+        if len(fields) != expected_length:
+            print(
+                "ERROR",
+                f"line '{line}'",
+                f"expected: {expected_length} fields",
+                f"found: {len(fields)} fields",
+                sep=" -- "
+            )
+            break
+```
+
+10. Given a file path, open the file either as text or binary based on its extension (`.txt` -- text mode, `.bin` -- binary mode), and print the contents. Make sure to handle file not found errors!
+
+```{python}
+path = "file.txt"
+
+if path.endswith(".bin"):
+    mode = "rb"
+else:
+    mode = "r"
+
+try:
+    with open(path, mode) as file:
+        print(file.read())
+except FileNotFoundError as error:
+    print(f"file '{path}' not found!")
+```

@@ -11,4 +11,8 @@
 /chapters/*_files
 /chapters/*ipynb
 
+/*_files
+/*ipynb
+
+
 /.zed

@@ -1,0 +1,17 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-04-24"
+jupyter: python3
+---
+
+# Stop & Think Answers — @sec-io-files-contexts
+
+@tip-09-missing-data: This file no longer included `Hello, this is my first file!` because the write mode (`"w"`) will overwrite the contents of existing files by default.
+
+@tip-09-improving-error-messages: You could include the name of the file that caused the error.
+
+@tip-09-parse-fasta-fastq: It won't work correctly! At the time of writing this chapter, biopython gives a warning about the file format.
+
+@tip-09-csv-no-header: If the `fieldnames` argument is omitted, the values in the first row of the file will be used as the field names and will be omitted from the results.
+

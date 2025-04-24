@@ -1,0 +1,12 @@
+{
+  "hash": "c814fa6f0070ec6922e3bbcdd5f288b6",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\nauthor: \"Ryan M. Moore, PhD\"\ndate-modified: last-modified\ndate: \"2025-04-24\"\njupyter: python3\n---\n\n# Stop & Think Answers — @sec-errors-exceptions\n\n@tip-06-name-error: When Python tries to evaluate the name `gene` and doesn't find it in any scope, it raises a `NameError`, which matches the exception type specified in the except clause. This causes a message with the error details to be printed to the console.\n\n@tip-06-file-not-exist: `FileNotFoundError`\n\n@tip-06-handle-na: We could check if the expression value is \"na\" before trying to convert it, or use a try/except block to catch the ValueError and set a default value (like `None`, `1`, `0`, or `NaN`).\n\n@tip-06-exception-chaining: When analyzing sequencing datasets, one error might trigger others in a cascade. For example, a file reading error might lead to missing data, which then causes calculation errors. This chain makes it harder to find the root cause of the error.\n\n@tip-06-file-read-errors: Specific exceptions might include: `FileNotFoundError`, `PermissionError`, `IsADirectoryError`. All of these could be caught by `OSError`, which is the parent class for file-related errors.\n\n@tip-06-finally-clause: The `finally` clause is useful when working with resources that need to be released regardless of success or failure, such as closing file handles or database connections.\n\n@tip-06-custom-exceptions: Possible custom exceptions: `InvalidSequenceError`, `AlignmentFailedError`, `LowCoverageError`, `DifferentialExpressionError`, etc.\n\n",
+    "supporting": [
+      "think_answers_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

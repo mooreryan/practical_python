@@ -5,7 +5,7 @@ date: "2025-04-09"
 jupyter: python3
 ---
 
-# Intro to Statistics & Modeling with Python
+# Intro to Statistics & Modeling with Python {#sec-stats-models}
 
 ## Introduction
 

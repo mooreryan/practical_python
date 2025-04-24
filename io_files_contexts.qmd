@@ -5,7 +5,7 @@ date: "2025-04-15"
 jupyter: python3
 ---
 
-# I/O, Files, & Contexts
+# I/O, Files, & Contexts {#sec-io-files-contexts}
 
 Input and output (I/O) operations are how your programs interact with the outside world. Whether you are taking command line arguments or reading files, you will need to get data into and out of your programs. In this chapter, we will cover the basic concepts (I/O) operations, file handling, and context managers with a focus on bioinformatics applications.
 
@@ -841,3 +841,84 @@ These file handling skills are essential for any bioinformatics programmer, as m
 - Python's [Input & Output](https://docs.python.org/3/tutorial/inputoutput.html) docs
 - Python's [io](https://docs.python.org/3/library/io.html) module docs
 - [Context Managers and Python's with Statement](https://realpython.com/python-with-statement/)
+
+## Practice Problems
+
+Give these problems a try if you’d like some extra practice! They’re organized into groups based on similar levels of difficulty.
+
+You can find the solutions here: @sec-io-files-contexts-practice-problem-solutions
+
+### Group 1
+
+1. Open a file called `data.txt` for reading, print its type, then close it.
+2. Write "Hello, World!" into a file named `test.txt`.
+3. Read and print all text from a file named `sample.txt`.
+4. Read a file line by line and print each line without the trailing newline character(s).
+5. Append the text "New Entry" to `log.txt`.
+6. Print the file's name and mode after opening it.
+7. Write three lines to `multi.txt`: "One", "Two", "Three", each on its own line.
+8. Use a for-loop to write the numbers 1-5 to a file (one per line).
+9. Print `"File is closed"` if file is closed after exiting a `with`-block.
+10. Use `readline()` to read and print just the first line of `sample.txt`.
+11. Create a function that prints the contents of a file it is given.
+12. Use a `for` loop to write a list of fruits into a file, one fruit per line.
+13. Read and print the first eight characters of `sample.txt`.
+14. Demonstrate that opening an existing file in write mode (`"w"`) mode erases its contents.
+15. Use a try-except block to print a message if `not_a_file.txt` does not exist.
+16. Print file position (using `.tell()`) before and after reading 4 bytes.
+17. Write binary bytes `b'ABC'` to a file called `bytes.bin`.
+18. Read the binary file you just created (`bytes.bin`) and print the first five bytes.
+19. Use `"rt"` mode to read text and `"wb"` mode to write bytes.
+20. Print the error message if a file open operation raises an `OSError`.
+21. Print the first line from a file, then use `.seek(0)` to go back to the beginning of the file and re-print the first line.
+22. Use `with` statement to write the line `"Finished!"` into `finished.txt`.
+23. Open the file `finished.txt` and append the line `"Appending again!"`.
+24. Create a dictionary, and write each key-value pair to a file (format: `key => value`).
+25. Print current working directory using `os.getcwd()` module.
+26. List files in the current directory with `os.listdir()`.
+27. Pass a file name to `os.listdir()`, then handle the error using `try/except`.
+28. After writing three lines to a file called `sample.txt`, read the file and print the number of lines. (Use `writelines()` and `readlines()`.)
+29. Use `seek` to skip the first 3 bytes then print the rest of the file.
+30. Catch any `OSError` when trying to open a file.
+
+Solutions: @sec-io-files-contexts-practice-problem-solutions-group-1
+
+### Group 2
+
+1. Read all lines from `data.txt` into a list, then write every second line to `even_lines.txt`.
+2. Write user input (entered with `input()`) to a file called `user.txt`.
+3. Open `data.txt` for writing and write 10 lines (`"Line {i}"`). Then, open the same file again and append a summary line: `"Total lines: 10"`.
+4. Write each character of a string to a new line in a text file.
+5. Ask for a filename. Try to read and print it, or print "Not found!" if the file does not exist.
+6. Write an integer list to a text file, then read it and compute their sum.
+7. Read up to the 10th character of a file and print those characters backwards.
+8. Write a file, then read its contents twice using `seek()`.
+9. Write three words to a file, each on their own line. Then, print all the lines of that file in uppercase.
+10. Write some lines to a file, including some empty lines. Then, read the file back, counting the number of empty lines.
+11. Write two lists (`genes` and `counts`) into a file as `gene,count` rows.
+12. Write some lines to a file, some of which contain the word `"gene"`. Then, open that file and print every line that contains the word `"gene"`.
+13. Read the contents from one file and write it uppercased to another file. (Read the input file line-by-line.)
+14. Try to open a file that doesn't exist without crashing the program.
+15. Create a list of dictionaries like this: `{"A": 1, "B": 2, "C": 3}`.  Then write the data as a CSV file with a header line.
+16. Create a small FASTA file. Then, read the file and count how many lines in a file start with ">".
+17. Copy the header lines from the FASTA file you just created into another file.  Do not print the `>` in the output file.
+18. Write a few lines to a file. One of the lines should be `"exit"`.  Then, read the lines of the file you created, but stop as soon as you read the `"exit"` line.
+19. Open an output file, write one line, then print the output of `file.closed`. Next, use `with` to open the file, and after the block, print the result of `file.closed` again.
+20. Write three numbers to a binary file as bytes, then read, and print them as integers.
+
+Solutions: @sec-io-files-contexts-practice-problem-solutions-group-2
+
+### Group 3
+
+1. Using biopython, write code that opens a FASTA file and (1) prints the sequence ID and length for each sequence, and (2) prints the mean sequence length. (Use the FASTA sequence you created earlier.)
+2. Write the contents of a dictionary to a TSV file. Each line should be like `key\tvalue`.  Then read the file, insert any lines where the value is greater than or equal to 10 into a new dictionary.
+3. Using pandas, create a data frame with the following data: `{"A": [1, 2, 3], "B": [4, 5, 6], "C": [7, 8, 9]}`, and write it to a CSV without the row index.  Read the resulting file using `csv.DictReader`.  Print any record in which the value in field "A" is >= 2 and the value in field "C" is <= 8.
+4. Write code that opens a FASTQ file, then prints the id and average quality score for the first 10 records.
+5. Read a binary file and print each byte in hexadecimal. (Use the built-in [hex()](https://docs.python.org/3/library/functions.html#hex) function.)
+6. Try to read and print the contents of a list of files. If any file doesn't exist, skip it and print a message about the file not being found.
+7. Write the given `gene_data` to a file.  Then, read the lines of the file, extracting gene names and sequences from each line using using regular expressions. Finally, print each gene name and sequence in the format "name => sequence".
+8. Create a file containing 50 random words chosen from the following list `["apple", "pie", "is", "good"]`.  Read that file and count how many times each word occurs. Print the dictionary sorted by word count. Don't forget to set the random seed for reproducibility!
+9. Without using the CSV module, read a CSV file. If any of the lines have a different number of fields, stop the iteration and print an error message.
+10. Given a file path, open the file either as text or binary based on its extension (`.txt` -- text mode, `.bin` -- binary mode), and print the contents.  Make sure to handle file not found errors!
+
+Solutions: @sec-io-files-contexts-practice-problem-solutions-group-3

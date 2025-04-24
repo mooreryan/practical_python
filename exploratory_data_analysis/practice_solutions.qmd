@@ -1,0 +1,39 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-04-24"
+jupyter: python3
+---
+
+# Practice Problem Solutions — @sec-eda
+
+## Solution @sec-problem-7.1
+
+```python
+df = pd.DataFrame(state_cancer_data)
+```
+
+## Solution @sec-problem-7.2
+
+```python
+df["Cancer Deaths Per 100k"] = df["Cancer Deaths"] / df["Population"] * 100_000
+```
+
+## Solution @sec-problem-7.3
+
+```python
+df.query("`Cancer Deaths Per 100k` >= 180 and `Median Household Income` < 68_500")
+```
+
+## Solution @sec-problem-7.4
+
+```python
+df.plot(kind="scatter", x="Median Household Income", y="Cancer Deaths Per 100k")
+```
+
+## Solution @sec-problem-7.5
+
+```python
+df.plot(kind="scatter", x="Percent Aged 65+", y="Cancer Deaths Per 100k")
+```
+

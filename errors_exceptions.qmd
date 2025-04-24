@@ -5,7 +5,7 @@ date: "2025-03-11"
 jupyter: python3
 ---
 
-# Errors & Exceptions
+# Errors & Exceptions {#sec-errors-exceptions}
 
 Errors and unexpected situations happen in nearly all programs, even simple ones. It's important to understand that errors are a normal part of programming, and there are good techniques to help us write code that can handle common errors effectively.
 

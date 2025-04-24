@@ -1,0 +1,88 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-04-24"
+jupyter: python3
+---
+
+# Practice Problem Solutions — @sec-errors-exceptions
+
+## Solution @sec-problem-6.1
+
+```python
+try:
+    value = float("abc")
+except ValueError:
+    print("Not a valid number")
+```
+
+## Solution @sec-problem-6.2
+
+```python
+counts = {"A": 1, "C": 2, "G": 0, "T": 4}
+total = sum(counts.values())
+
+try:
+    n_ratio = counts["N"] / total
+except KeyError:
+    print("N is not present in the counts dictionary")
+    n_ratio = None
+```
+
+## Solution @sec-problem-6.3
+
+```python
+try:
+    silly_divide(5, 0)
+except ZeroDivisionError:
+    print("you can't divide by zero!")
+except Exception as error:
+    print(f"a mysterious error occurred: {error=}")
+```
+
+## Solution @sec-problem-6.4
+
+```python
+def fold_change(expression_1, expression_2)
+    try:
+        return expression_1 / expression_2
+    except ZeroDivisionError:
+        print("expression_2 was zero!")
+        return None
+```
+
+## Solution @sec-problem-6.5
+
+```python
+class SequenceLengthError(Exception):
+    pass
+
+MIN_LENGTH = 50
+MAX_LENGTH = 150
+
+def validate_sequence_length(sequence):
+    sequence_length = len(sequence)
+
+    if sequence_length < MIN_LENGTH:
+        raise SequenceLengthError(f"sequence length {sequence_length} was too short!")
+
+    if sequence_length > MAX_LENGTH:
+        raise SequenceLengthError(f"sequence length {sequence_length} was too long!")
+
+    return None
+```
+
+## Solution @sec-problem-6.6
+
+```python
+def run_simulation(max_turns):
+    if max_turns < 1:
+        raise ValueError(f"Expected at least 1 iteration, but got {max_turns=}")
+
+    if max_turns > 1000:
+        raise ValueError(f"Expected at most 1000 iterations, but got {max_turns=}")
+
+    # Simulation code would follow
+    pass
+```
+

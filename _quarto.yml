@@ -22,15 +22,39 @@ book:
     - functions.qmd
     - text: "Object-Oriented Programming"
       href: object_oriented_programming.qmd
-    - errors.qmd
+    - errors_exceptions.qmd
     - text: "Exploratory Data Analysis"
       href: exploratory_data_analysis.qmd
     - text: "Statistics & Modeling"
       href: stats_models.qmd
     - io_files_contexts.qmd
   appendices:
-    - solutions.qmd
-    - regex.qmd
+    - part: Errors & Exceptions
+      chapters:
+        - text: Stop & Think Answers
+          href: errors_exceptions/think_answers.qmd
+        - text: Practice Problem Solutions
+          href: errors_exceptions/practice_solutions.qmd
+    - part: Exploratory Data Analysis
+      chapters:
+        - text: Stop & Think Answers
+          href: exploratory_data_analysis/think_answers.qmd
+        - text: Practice Problem Solutions
+          href: exploratory_data_analysis/practice_solutions.qmd
+    - part: Statistics & Modeling
+      chapters:
+        - text: Stop & Think Answers
+          href: stats_models/think_answers.qmd
+        - text: Practice Problem Solutions
+          href: stats_models/practice_solutions.qmd
+    - part: I/O, Files, & Contexts
+      chapters:
+        - text: Stop & Think Answers
+          href: io_files_contexts/think_answers.qmd
+        - text: Practice Problem Solutions
+          href: io_files_contexts/practice_solutions.qmd
+    - text: Regular Expressions
+      href: regex.qmd
 
   # Site stuff
   cover-image: images/dna_python_logo.webp
