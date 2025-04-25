@@ -1,0 +1,39 @@
+<script>
+  function switchImagesForTheme(theme) {
+    document.querySelectorAll("img").forEach((img) => {
+      // Only process SVGs ending with _light.svg or _dark.svg
+      const lightMatch = img.src.match(/_light\.svg$/);
+      const darkMatch = img.src.match(/_dark\.svg$/);
+
+      if (theme === "quarto-dark" && lightMatch) {
+        img.src = img.src.replace("_light.svg", "_dark.svg");
+      } else if (theme === "quarto-light" && darkMatch) {
+        img.src = img.src.replace("_dark.svg", "_light.svg");
+      }
+    });
+  }
+
+  const observer = new MutationObserver(() => {
+    // Get the current theme class, 'quarto-light' or 'quarto-dark'
+    const theme = [...document.body.classList].find(
+      (c) => c === "quarto-light" || c === "quarto-dark"
+    );
+    if (theme) {
+      switchImagesForTheme(theme);
+    }
+  });
+
+  // Make sure the correct images are loaded
+  const initialTheme = [...document.body.classList].find(
+    (c) => c === "quarto-light" || c === "quarto-dark"
+  );
+  if (initialTheme) {
+    switchImagesForTheme(initialTheme);
+  }
+
+  // Start watching for class changes
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+</script>

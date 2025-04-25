@@ -1,5 +1,9 @@
 project:
   type: book
+  # Make sure both the light and dark images are bundled.
+  resources:
+    - images/*_light.svg
+    - images/*_dark.svg
 
 execute:
   freeze: auto
@@ -85,9 +89,13 @@ bibliography: references.bib
 format:
   html:
     theme:
-      - custom.scss
-      - cosmo
-    include-after-body: includes/simple_analytics.html
+      light: [custom.scss, flatly]
+      dark: [custom.scss, darkly]
+      # - custom.scss
+      # - cosmo
+    include-after-body:
+      - includes/switch_images_for_theme.html
+      - includes/simple_analytics.html
     # include-in-header: includes/site_verification.html
     number-depth: 1
     toc-depth: 6
