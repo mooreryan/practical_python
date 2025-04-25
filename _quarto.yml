@@ -89,10 +89,10 @@ bibliography: references.bib
 format:
   html:
     theme:
-      light: [custom.scss, flatly]
       dark: [custom.scss, darkly]
+      light: [custom.scss, flatly]
       # - custom.scss
-      # - cosmo
+      # - flatly
     include-after-body:
       - includes/switch_images_for_theme.html
       - includes/simple_analytics.html
