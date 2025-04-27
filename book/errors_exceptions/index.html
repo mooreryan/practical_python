@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.43">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ryan M. Moore, PhD">
+<meta name="dcterms.date" content="2025-03-11">
+<meta name="description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
+
+<title>6&nbsp; Errors &amp; Exceptions – Practical Python Programming for Life Scientists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../exploratory_data_analysis/index.html" rel="next">
+<link href="../object_oriented_programming/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4379b0ccadffce622b03caf4c46266b3.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1311abd2fc282a644bc7bb09314c4d58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9f23e3787dc5de8a48344e4e58e23edf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<meta property="og:title" content="6&nbsp; Errors &amp; Exceptions – Practical Python Programming for Life Scientists">
+<meta property="og:description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
+<meta property="og:image" content="https://pythonforlifescientists.com/images/try_except_flowchart_light.svg">
+<meta property="og:site_name" content="Practical Python Programming for Life Scientists">
+<meta property="og:image:alt" content="try/except/else/finally flowchart">
+<link rel="canonical" href="https://pythonforlifescientists.com/errors_exceptions/">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../errors_exceptions/index.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Errors &amp; Exceptions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/dna_python_logo.webp" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Practical Python Programming for Life Scientists</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/mooreryan/practical_python" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../collections/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Collections</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../algorithms/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Algorithmic Thinking</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../functions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../object_oriented_programming/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Object-Oriented Programming</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../errors_exceptions/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Errors &amp; Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exploratory_data_analysis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stats_models/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistics &amp; Modeling</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../io_files_contexts/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">I/O, Files, &amp; Contexts</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Errors &amp; Exceptions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../errors_exceptions/think_answers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Stop &amp; Think Answers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../errors_exceptions/practice_solutions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Practice Problem Solutions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Exploratory Data Analysis</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exploratory_data_analysis/think_answers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Stop &amp; Think Answers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exploratory_data_analysis/practice_solutions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Practice Problem Solutions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Statistics &amp; Modeling</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stats_models/think_answers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Stop &amp; Think Answers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../stats_models/practice_solutions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Practice Problem Solutions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">I/O, Files, &amp; Contexts</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../io_files_contexts/think_answers/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Stop &amp; Think Answers</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../io_files_contexts/practice_solutions/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Practice Problem Solutions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../regex/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Regular Expressions</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#syntax-errors" id="toc-syntax-errors" class="nav-link active" data-scroll-target="#syntax-errors">Syntax Errors</a></li>
+  <li><a href="#understanding-python-exceptions" id="toc-understanding-python-exceptions" class="nav-link" data-scroll-target="#understanding-python-exceptions">Understanding Python Exceptions</a>
+  <ul>
+  <li><a href="#common-exceptions" id="toc-common-exceptions" class="nav-link" data-scroll-target="#common-exceptions">Common Exceptions</a>
+  <ul>
+  <li><a href="#name-errors" id="toc-name-errors" class="nav-link" data-scroll-target="#name-errors">Name Errors</a></li>
+  <li><a href="#type-errors" id="toc-type-errors" class="nav-link" data-scroll-target="#type-errors">Type Errors</a></li>
+  <li><a href="#other-common-exceptions" id="toc-other-common-exceptions" class="nav-link" data-scroll-target="#other-common-exceptions">Other Common Exceptions</a></li>
+  </ul></li>
+  <li><a href="#reading-error-messages" id="toc-reading-error-messages" class="nav-link" data-scroll-target="#reading-error-messages">Reading Error Messages</a></li>
+  </ul></li>
+  <li><a href="#basic-exception-handling" id="toc-basic-exception-handling" class="nav-link" data-scroll-target="#basic-exception-handling">Basic Exception Handling</a>
+  <ul>
+  <li><a href="#tryexcept-code-flow" id="toc-tryexcept-code-flow" class="nav-link" data-scroll-target="#tryexcept-code-flow">Try/Except Code Flow</a>
+  <ul>
+  <li><a href="#no-exception-in-the-try-clause" id="toc-no-exception-in-the-try-clause" class="nav-link" data-scroll-target="#no-exception-in-the-try-clause">No Exception in the Try Clause</a></li>
+  <li><a href="#exception-in-the-try-clause" id="toc-exception-in-the-try-clause" class="nav-link" data-scroll-target="#exception-in-the-try-clause">Exception in the Try Clause</a></li>
+  <li><a href="#non-matching-exception-in-the-try-clause" id="toc-non-matching-exception-in-the-try-clause" class="nav-link" data-scroll-target="#non-matching-exception-in-the-try-clause">Non-Matching Exception in the Try Clause</a></li>
+  </ul></li>
+  <li><a href="#catching-multiple-exceptions" id="toc-catching-multiple-exceptions" class="nav-link" data-scroll-target="#catching-multiple-exceptions">Catching Multiple Exceptions</a></li>
+  <li><a href="#clauses-can-contain-multiple-statements" id="toc-clauses-can-contain-multiple-statements" class="nav-link" data-scroll-target="#clauses-can-contain-multiple-statements">Clauses Can Contain Multiple Statements</a></li>
+  <li><a href="#exceptions-can-happen-in-the-except-block" id="toc-exceptions-can-happen-in-the-except-block" class="nav-link" data-scroll-target="#exceptions-can-happen-in-the-except-block">Exceptions Can Happen in the Except Block</a></li>
+  </ul></li>
+  <li><a href="#advanced-exception-handling" id="toc-advanced-exception-handling" class="nav-link" data-scroll-target="#advanced-exception-handling">Advanced Exception Handling</a>
+  <ul>
+  <li><a href="#exception-hierarchies" id="toc-exception-hierarchies" class="nav-link" data-scroll-target="#exception-hierarchies">Exception Hierarchies</a></li>
+  <li><a href="#nesting-tryexcept-blocks" id="toc-nesting-tryexcept-blocks" class="nav-link" data-scroll-target="#nesting-tryexcept-blocks">Nesting Try/Except Blocks</a></li>
+  <li><a href="#using-else-and-finally" id="toc-using-else-and-finally" class="nav-link" data-scroll-target="#using-else-and-finally">Using <code>else</code> and <code>finally</code></a></li>
+  <li><a href="#combining-techniques" id="toc-combining-techniques" class="nav-link" data-scroll-target="#combining-techniques">Combining Techniques</a></li>
+  </ul></li>
+  <li><a href="#creating-custom-exceptions" id="toc-creating-custom-exceptions" class="nav-link" data-scroll-target="#creating-custom-exceptions">Creating Custom Exceptions</a></li>
+  <li><a href="#general-tips" id="toc-general-tips" class="nav-link" data-scroll-target="#general-tips">General Tips</a>
+  <ul>
+  <li><a href="#use-descriptive-error-messages" id="toc-use-descriptive-error-messages" class="nav-link" data-scroll-target="#use-descriptive-error-messages">Use Descriptive Error Messages</a></li>
+  <li><a href="#when-to-catch-exceptions" id="toc-when-to-catch-exceptions" class="nav-link" data-scroll-target="#when-to-catch-exceptions">When to Catch Exceptions</a></li>
+  <li><a href="#other-tips" id="toc-other-tips" class="nav-link" data-scroll-target="#other-tips">Other tips</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#suggested-readings" id="toc-suggested-readings" class="nav-link" data-scroll-target="#suggested-readings">Suggested Readings</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems">Practice Problems</a>
+  <ul>
+  <li><a href="#sec-problem-6.1" id="toc-sec-problem-6.1" class="nav-link" data-scroll-target="#sec-problem-6.1">6.1</a></li>
+  <li><a href="#sec-problem-6.2" id="toc-sec-problem-6.2" class="nav-link" data-scroll-target="#sec-problem-6.2">6.2</a></li>
+  <li><a href="#sec-problem-6.3" id="toc-sec-problem-6.3" class="nav-link" data-scroll-target="#sec-problem-6.3">6.3</a></li>
+  <li><a href="#sec-problem-6.4" id="toc-sec-problem-6.4" class="nav-link" data-scroll-target="#sec-problem-6.4">6.4</a></li>
+  <li><a href="#sec-problem-6.5" id="toc-sec-problem-6.5" class="nav-link" data-scroll-target="#sec-problem-6.5">6.5</a></li>
+  <li><a href="#sec-problem-6.6" id="toc-sec-problem-6.6" class="nav-link" data-scroll-target="#sec-problem-6.6">6.6</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/errors_exceptions/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-errors-exceptions" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Errors &amp; Exceptions</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ryan M. Moore, PhD </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 11, 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">April 27, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Errors and unexpected situations happen in nearly all programs, even simple ones. It’s important to understand that errors are a normal part of programming, and there are good techniques to help us write code that can handle common errors effectively.</p>
+<p>This chapter explores errors and exceptions and how to manage them in your Python code. We’ll begin with basic errors like syntax mistakes (similar to grammar errors in writing) or mathematical issues like dividing by zero. Then we’ll progress to more advanced techniques that help your programs handle unexpected situations gracefully.</p>
+<p>Throughout this guide, you’ll see practical examples that show how to:</p>
+<ul>
+<li>Identify common errors in your code</li>
+<li>Use try/except blocks to catch and respond to problems</li>
+<li>Create your own custom exceptions when needed</li>
+<li>Handle multiple potential issues in a single piece of code</li>
+</ul>
+<p>By the end, you’ll feel more confident writing code that can recover from problems rather than crashing when something unexpected happens. This skill is essential for creating robust and reliable programs.</p>
+<section id="syntax-errors" class="level2">
+<h2 class="anchored" data-anchor-id="syntax-errors">Syntax Errors</h2>
+<p>Syntax errors are problems that happen when you write Python code that breaks the language’s grammar rules. These errors are very common when you’re first learning Python because you’re still getting used to how Python code should be structured. Here is an example of a syntax error:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you run this Python code, you would get an error message like this:</p>
+<pre><code>for i in range(10)
+                  ^
+SyntaxError: expected ':'</code></pre>
+<p>As you can see, I forgot to put the colon (<code>:</code>) at the end of the first line. This is a classic syntax mistake in Python, similar to forgetting a period at the end of a sentence.</p>
+<p>Remember in previous tutorials and assignments, like when we discussed removing items from dictionaries (<a href="../collections/index.html#sec-remove-items-dict" class="quarto-xref"><span>Section 2.6.2.3</span></a>), scope (<a href="../functions/index.html#sec-scope" class="quarto-xref"><span>Section 4.5</span></a>), and the “ask for forgiveness” approach (<a href="../object_oriented_programming/index.html#sec-asking-for-forgiveness" class="quarto-xref"><span>Section 5.6.1</span></a>), we used <code>try/except</code> blocks to “catch” errors. However, syntax errors cannot be caught using <code>try/except</code>. This is because the Python interpreter checks your code’s syntax before running any of it. The syntax error is detected during this checking phase, before your program even starts executing, so the <code>try/except</code> block never gets a chance to run.</p>
+</section>
+<section id="understanding-python-exceptions" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-python-exceptions">Understanding Python Exceptions</h2>
+<p>Errors can still appear in your code even when the syntax is correct. In Python, these runtime errors are called <em>exceptions</em>. If an exception happens and you don’t address it in your code, your program will crash and stop running.</p>
+<section id="common-exceptions" class="level3">
+<h3 class="anchored" data-anchor-id="common-exceptions">Common Exceptions</h3>
+<p>There are many different exceptions in Python. Let’s start with two simple ones: <a href="https://docs.python.org/3/library/exceptions.html#NameError"><code>NameError</code></a> and <a href="https://docs.python.org/3/library/exceptions.html#TypeError"><code>TypeError</code></a>.</p>
+<section id="name-errors" class="level4">
+<h4 class="anchored" data-anchor-id="name-errors">Name Errors</h4>
+<p>A <code>NameError</code> occurs when Python can’t find a name you’re trying to use. This typically happens when you try to use a variable or function that doesn’t exist or hasn’t been defined yet.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you ran this code in the Python interpreter or from a program, you would see an error message like this:</p>
+<pre><code>NameError             Traceback (most recent call last)
+File 06_errors.qmd:1
+----&gt; 1 x = 1 + y
+
+NameError: name 'y' is not defined</code></pre>
+<p>This error message shows the type of error, the file where it happened, and a helpful explanation of the problem. We will go into more detail about reading error messages later in this tutorial.</p>
+<div id="tip-06-name-error" class="callout callout-style-default callout-tip callout-titled" title="Stop &amp; Think">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;6.1: Stop &amp; Think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Look at the following code:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(gene)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> error:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>What do you think will happen and why?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="type-errors" class="level4">
+<h4 class="anchored" data-anchor-id="type-errors">Type Errors</h4>
+<p>A <code>TypeError</code> happens when you try to perform an operation on a data type that doesn’t support that operation. (It’s sort of like trying to use a lab technique on the wrong type of sample.)</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">47</span> <span class="op">+</span> <span class="st">"102"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Running this code produces the following error:</p>
+<pre><code>TypeError              Traceback (most recent call last)
+File 06_errors.qmd:1
+----&gt; 1 47 + "102"
+
+TypeError: unsupported operand type(s) for +: 'int' and 'str'</code></pre>
+<p>This message tells you that Python doesn’t allow you to add an integer and a string together.</p>
+</section>
+<section id="other-common-exceptions" class="level4">
+<h4 class="anchored" data-anchor-id="other-common-exceptions">Other Common Exceptions</h4>
+<p>Some other exceptions you might encounter include:</p>
+<ul>
+<li><code>IndexError</code>: When you try to access a position beyond the end of a list or string (like trying to access the 5th nucleotide in a 3-nucleotide codon)</li>
+<li><code>FileNotFoundError</code>: When Python can’t find the file or directory you’re trying to access</li>
+<li><code>KeyError</code>: When you try to access a key that doesn’t exist in a dictionary (similar to looking up a gene ID that isn’t in your database)</li>
+<li><code>AttributeError</code>: When you try to access features or properties that don’t exist for a particular object</li>
+<li><code>ValueError</code>: When you provide the right type of value but with incorrect content, such as:
+<ul>
+<li>Trying to use a square root transformation on a sample with a negative value (<code>math.sqrt(-1)</code>)</li>
+<li>Trying to convert <code>na</code> expression values (<code>float("na")</code>)</li>
+</ul></li>
+</ul>
+<p>For a complete list of Python exceptions, see the <a href="https://docs.python.org/3/library/exceptions.html#built-in-exceptions">Built-in Exceptions</a> section of the Python manual.</p>
+<div id="tip-06-file-not-exist" class="callout callout-style-default callout-tip callout-titled" title="Stop &amp; Think">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;6.2: Stop &amp; Think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>If you were writing a program to read and parse FASTA files, which type of error would occur if the file you were trying to read did not exist?</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reading-error-messages" class="level3">
+<h3 class="anchored" data-anchor-id="reading-error-messages">Reading Error Messages</h3>
+<p>One challenge many beginners face is understanding error messages, both how to interpret them and how to fix the problems they indicate.</p>
+<p>As a new programmer, you’ll likely encounter different types of errors than experienced programmers do. You’ll often see syntax errors or errors from misusing Python’s language features or misunderstanding how functions and classes work. This can be particularly frustrating because these aren’t errors you might anticipate. While you might have expected a user-provided file name might not exist, you probably would not have anticipated using a built-in function incorrectly!</p>
+<p>Learning to read error messages is an essential skill for your programming journey. In Python, error messages typically contain:</p>
+<ul>
+<li><strong>Error type</strong>: The kind of error that occurred (e.g., <code>RuntimeError</code>)</li>
+<li><strong>Traceback</strong>: The sequence of function calls that led to the error</li>
+<li><strong>File location</strong>: Where the error occurred (file name and line number)</li>
+<li><strong>Arrow pointer</strong>: Points to the specific part of code causing the error</li>
+<li><strong>Error message</strong>: A description of what went wrong</li>
+</ul>
+<p>Let’s examine a few error messages to better understand their structure and meaning. We will start with a simple example:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wibble():</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">RuntimeError</span>(<span class="st">"oh no!!"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> wobble():</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    wibble()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> woo():</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    wobble()</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>woo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you ran this code in a Quarto notebook, you would get an error that looks like this:</p>
+<pre><code>RuntimeError              Traceback (most recent call last)
+Cell In[2], line 13
+      9 def woo():
+     10     wobble()
+---&gt; 13 woo()
+
+Cell In[2], line 10, in woo()
+      9 def woo():
+---&gt; 10     wobble()
+
+Cell In[2], line 6, in wobble()
+      5 def wobble():
+----&gt; 6     wibble()
+
+Cell In[2], line 2, in wibble()
+      1 def wibble():
+----&gt; 2     raise RuntimeError("oh no!!")
+
+RuntimeError: oh no!!</code></pre>
+<p>In this example, the process went like this:</p>
+<ul>
+<li>First, the program called <code>woo()</code></li>
+<li>Then, inside <code>woo()</code>, it called <code>wobble()</code></li>
+<li>Next, inside <code>wobble()</code>, it called <code>wibble()</code></li>
+<li>Finally, inside <code>wibble()</code>, a <code>RuntimeError</code> occurred</li>
+</ul>
+<p>You can read the traceback in two ways:</p>
+<p>Top-to-bottom (the order the code executed):</p>
+<ol type="1">
+<li>On line 13, <code>woo()</code> is called</li>
+<li>On line 10, in <code>woo</code>, <code>wobble()</code> is called</li>
+<li>On line 6, in <code>wobble</code>, <code>wibble()</code> is called</li>
+<li>On line 2, in <code>wibble</code>, <code>raise RuntimeError</code> is called, which crashes the program</li>
+</ol>
+<p>Bottom-to-top (starting with the actual error):</p>
+<ol type="1">
+<li>On line 2, in <code>wibble</code>, <code>raise RuntimeError</code> is called, which crashes the program</li>
+<li>On line 6, in <code>wobble</code>, <code>wibble()</code> is called</li>
+<li>On line 10, in <code>woo</code>, <code>wobble()</code> is called</li>
+<li>On line 13, <code>woo()</code> is called</li>
+</ol>
+<p>Examining error tracebacks in both directions will often help you better understand what went wrong in your code.</p>
+<p>Let’s look another example:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_line(line):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    gene, sample, expression <span class="op">=</span> line.strip().split(<span class="st">","</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (gene, sample, <span class="bu">float</span>(expression))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_expression_data(filename):</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(filename) <span class="im">as</span> f:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> line <span class="kw">in</span> f:</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>            gene, sample, expression <span class="op">=</span> parse_line(line)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>gene<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>sample<span class="sc">}</span><span class="ss"> =&gt; </span><span class="sc">{</span>expression<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>read_expression_data(<span class="st">"expression_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pretend there is a file called <code>expression_data.csv</code> that has the following contents:</p>
+<pre><code>gene1,sample1,25
+gene1,sample2,50
+gene2,sample1,na
+gene2,sample2,15</code></pre>
+<p>Let’s assume that you have saved that code in a script called <code>example.py</code>. When you run it you would see output that looks something like this:</p>
+<pre><code>gene1-sample1 =&gt; 25.0
+gene1-sample2 =&gt; 50.0
+Traceback (most recent call last):
+  File "example.py", line 14, in &lt;module&gt;
+    read_expression_data("expression_data.csv")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "example.py", line 10, in read_expression_data
+    gene, sample, expression = parse_line(line)
+                               ~~~~~~~~~~^^^^^^
+  File "example.py", line 4, in parse_line
+    return (gene, sample, float(expression))
+                          ~~~~~^^^^^^^^^^^^
+ValueError: could not convert string to float: 'na'</code></pre>
+<p>Let’s break it down:</p>
+<p>The script processes gene expression data from a CSV file. It runs smoothly for the first two lines of the file, but crashes when it encounters <code>"na"</code> in the third line. The error happens because Python’s <code>float()</code> function cannot convert the text <code>"na"</code> (which stands for “not available” in biological data) into a floating-point number.</p>
+<p>The error message shows us the exact path of execution that led to the problem. It starts at line 14 where we call <code>read_expression_data()</code>, then moves to line 10 where we call <code>parse_line()</code>, and finally reaches line 4 where the actual error occurs when trying to convert <code>"na"</code> to a float.</p>
+<p>This is a common issue when working with biological datasets, which often contain missing values represented as “na”, “N/A”, or similar placeholders. To fix this problem, we would need to add error handling when running the <code>float</code> function, or use some other technique to check for these special values before attempting the conversion.</p>
+<div id="tip-06-handle-na" class="callout callout-style-default callout-tip callout-titled" title="Stop &amp; Think">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;6.3: Stop &amp; Think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>In the above example, can you think of a better way to handle the <code>na</code> value rather than letting the program crash?</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="basic-exception-handling" class="level2">
+<h2 class="anchored" data-anchor-id="basic-exception-handling">Basic Exception Handling</h2>
+<p>Now that we’ve discussed what exceptions are, let’s explore how we can recover from them and prevent unexpected errors from crashing our programs.</p>
+<p>The basic format uses <code>try:</code> followed by an indented block of code, then <code>except SomeError:</code>, followed by another indented block of code:</p>
+<div id="000c4c5c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">47</span> <span class="op">+</span> <span class="st">"102"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an type error occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>an type error occurred: error=TypeError("unsupported operand type(s) for +: 'int' and 'str'")</code></pre>
+</div>
+</div>
+<p>Let’s break this down:</p>
+<ul>
+<li>The “try clause” contains the code that might cause an error.
+<ul>
+<li>It is placed between the <a href="https://docs.python.org/3/reference/compound_stmts.html#the-try-statement"><code>try</code></a> and <a href="https://docs.python.org/3/reference/compound_stmts.html#except-clause"><code>except</code></a> keywords.</li>
+<li>Here, our try clause has just one expression: <code>47 + "102"</code></li>
+</ul></li>
+<li>The “except clause” contains the code that runs if an error occurs.
+<ul>
+<li>It is placed after the <code>except</code> keyword and continues until the indentation ends.</li>
+</ul></li>
+<li><code>except TypeError as error:</code>
+<ul>
+<li><code>TypeError</code> specifies which kind of error we want to catch</li>
+<li>If a <code>TypeError</code> happens, Python saves the error information in the variable named <code>error</code> so we can use it</li>
+</ul></li>
+<li><code>print(f"a TypeError occurred: {error}")</code> is the code that runs when a <code>TypeError</code> occurs in the try clause</li>
+</ul>
+<p>The try/except statement is a bit like a safety net for your code: you’re trying something that might fail (the <code>try</code> clause), but you’ve prepared a backup plan (the <code>except</code> clause) just in case.</p>
+<p>Next, let’s see how Python runs through this type of code.</p>
+<section id="tryexcept-code-flow" class="level3">
+<h3 class="anchored" data-anchor-id="tryexcept-code-flow">Try/Except Code Flow</h3>
+<p>Python follows a specific process when it encounters a try/except block. First, it attempts to run all the code inside the “try clause.” If this code runs without any problems, Python simply skips the except clause and continues with the rest of your program.</p>
+<p>However, if an error occurs while running the try clause, Python immediately stops executing that section. It then checks if the error type matches what you specified after the <code>except</code> keyword. For instance, if you wrote <code>except TypeError:</code>, Python looks specifically for <code>TypeErrors</code>.</p>
+<p>If the error matches what you specified, Python runs the code in the except clause and then continues with the rest of your program.</p>
+<p>If the error doesn’t match what you specified, Python considers it an “unhandled exception”. In this case, your program will stop running and display an error message.</p>
+<p>This might sound a bit abstract, so let’s go through some examples to see how it works step by step.</p>
+<section id="no-exception-in-the-try-clause" class="level4">
+<h4 class="anchored" data-anchor-id="no-exception-in-the-try-clause">No Exception in the Try Clause</h4>
+<p>In this example, no exception occurs in the try clause.</p>
+<div id="c5906ae5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"hi"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an error occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"yo!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>hi
+yo!</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Python runs the contents of the try clause: <code>print("hi")</code></li>
+<li><code>print("hi")</code> runs without error and displays “hi” on the screen</li>
+<li>Since no error occurred, Python skips the <code>except</code> clause completely</li>
+<li>Python continues to the next line and runs <code>print("yo!")</code></li>
+</ol>
+</section>
+<section id="exception-in-the-try-clause" class="level4">
+<h4 class="anchored" data-anchor-id="exception-in-the-try-clause">Exception in the Try Clause</h4>
+<p>In this example, an error occurs that matches the one in our <code>except</code> clause:</p>
+<div id="474192f5" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(greeting)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> error:</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an error occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"yo!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>an error occurred: error=NameError("name 'greeting' is not defined")
+yo!</code></pre>
+</div>
+</div>
+<ol type="1">
+<li>Python runs the contents of the try clause: <code>print(greeting)</code></li>
+<li><code>print(greeting)</code> causes a <code>NameError</code> because <code>greeting</code> hasn’t been defined (you must define variables before using them)</li>
+<li>Since a <code>NameError</code> occurred and we specifically included <code>NameError</code> in our except statement, Python executes the except block: <code>print(f"an error occurred: {error=}")</code></li>
+<li>After completing the try/except block, Python continues to the next line and runs <code>print("yo!")</code></li>
+</ol>
+</section>
+<section id="non-matching-exception-in-the-try-clause" class="level4">
+<h4 class="anchored" data-anchor-id="non-matching-exception-in-the-try-clause">Non-Matching Exception in the Try Clause</h4>
+<p>This example shows what happens when the error that occurs is different from the one we’re trying to catch:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">47</span> <span class="op">+</span> <span class="st">"102"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> error:</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an error occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"yo!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Python runs the contents of the try clause: <code>47 + "102"</code></li>
+<li><code>47 + "102"</code> causes a <code>TypeError</code> because Python can’t add a number to text</li>
+<li>Python checks if <code>TypeError</code> matches what we’re catching in our except statement, but we’re only catching <code>NameError</code></li>
+<li>Since the error types don’t match and there are no other try statements, the error remains uncaught</li>
+<li>The program crashes with an error message and stops running</li>
+<li><code>print("yo!")</code> never runs because the program already crashed</li>
+</ol>
+</section>
+</section>
+<section id="catching-multiple-exceptions" class="level3">
+<h3 class="anchored" data-anchor-id="catching-multiple-exceptions">Catching Multiple Exceptions</h3>
+<p>You can catch different types of exceptions within a single <code>try/except</code> block by adding multiple except clauses. When an error occurs in the try block, Python looks for a matching except block to handle that specific error type. Once it finds a match, it runs that code and then continues with the rest of your program. If no match is found, then the program crashes.</p>
+<p>For example, if your code causes a <code>NameError</code> (like using a variable that doesn’t exist), only the except clause that handles <code>NameError</code> will run. The other except clauses, like one for <code>TypeError</code>, will be skipped:</p>
+<div id="2a91b09e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(greeting)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> name_error:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"a NameError occurred: </span><span class="sc">{</span>name_error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> type_error:</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"a TypeError occurred: </span><span class="sc">{</span>type_error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a NameError occurred: name_error=NameError("name 'greeting' is not defined")</code></pre>
+</div>
+</div>
+<p>In this case, it is the opposite – the code in the try clause causes a <code>TypeError</code>, causing only the expect clause handling type errors to run:</p>
+<div id="efe93a8a" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">47</span> <span class="op">+</span> <span class="st">"102"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span> <span class="im">as</span> name_error:</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"a NameError occurred: </span><span class="sc">{</span>name_error<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> type_error:</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"a TypeError occurred: </span><span class="sc">{</span>type_error<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a TypeError occurred: unsupported operand type(s) for +: 'int' and 'str'</code></pre>
+</div>
+</div>
+<p>Sometimes you might want to handle different errors in the same way. In these cases, you can group multiple exceptions in a single <code>except</code> clause:</p>
+<div id="b732abdc" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(greeting)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (<span class="pp">NameError</span>, <span class="pp">TypeError</span>) <span class="im">as</span> error:</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an error occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">47</span> <span class="op">+</span> <span class="st">"102"</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (<span class="pp">NameError</span>, <span class="pp">TypeError</span>) <span class="im">as</span> error:</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an error occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>an error occurred: error=NameError("name 'greeting' is not defined")
+an error occurred: error=TypeError("unsupported operand type(s) for +: 'int' and 'str'")</code></pre>
+</div>
+</div>
+</section>
+<section id="clauses-can-contain-multiple-statements" class="level3">
+<h3 class="anchored" data-anchor-id="clauses-can-contain-multiple-statements">Clauses Can Contain Multiple Statements</h3>
+<p>Each section (clause) in a try/except block can include multiple lines of code:</p>
+<div id="257e4e52" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will run successfully</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will cause a TypeError (mixing number and text)</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">10</span> <span class="op">+</span> <span class="st">"20"</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will never execute because the error above stops the try block</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">100</span> <span class="op">+</span> <span class="dv">200</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line runs because we caught a TypeError from above</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an error occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line also runs since all code in the except clause executes</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># (unless another error happens)</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this will also run!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3
+an error occurred: error=TypeError("unsupported operand type(s) for +: 'int' and 'str'")
+this will also run!</code></pre>
+</div>
+</div>
+<p><em>Note: We’ll discuss this more later, but it’s generally best practice to keep the code in each clause short and simple, with as few statements as possible.</em></p>
+</section>
+<section id="exceptions-can-happen-in-the-except-block" class="level3">
+<h3 class="anchored" data-anchor-id="exceptions-can-happen-in-the-except-block">Exceptions Can Happen in the Except Block</h3>
+<p>One important thing to remember is that exceptions can also occur in your <code>except</code> block code:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will run</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will raise the TypeError</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">10</span> <span class="op">+</span> <span class="st">"20"</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will not run because the previous line caused a TypeError</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">100</span> <span class="op">+</span> <span class="dv">200</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will run because a TypeError occurred in the above clause</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will raise a NameError since the name `twenty` has not been</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># defined</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="dv">10</span> <span class="op">+</span> twenty)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This line will not run because the above line raises another exception!</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this will also run!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you ran this code, you would see output like this:</p>
+<pre><code>TypeError                                 Traceback (most recent call last)
+Cell In[1], line 6
+      5 # This line will raise the TypeError
+----&gt; 6 print(10 + "20")
+      8 # This line will not run because the previous line caused a TypeError
+
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+During handling of the above exception, another exception occurred:
+
+NameError                                 Traceback (most recent call last)
+Cell In[1], line 16
+     12 print(f"an occurred: {error=}")
+     14 # This line will raise a NameError since the name `twenty` has not been
+     15 # defined
+---&gt; 16 print(10 + twenty)
+     18 # This line will not run because the above line raises another exception!
+     19 print("this will also run!")
+
+NameError: name 'twenty' is not defined</code></pre>
+<p>Notice the key message: “During handling of the above exception, another exception occurred”. This tells us what happened. While the program was trying to recover from one error, it encountered a second error. Since there was no error handler set up for this second error, the program crashed.</p>
+<p>For more information about this concept, check out the Python documentation on <a href="https://docs.python.org/3/tutorial/errors.html#exception-chaining">exception chaining</a>.</p>
+<div id="tip-06-exception-chaining" class="callout callout-style-default callout-tip callout-titled" title="Stop &amp; Think">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;6.4: Stop &amp; Think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>If you’re developing a program to analyze biological sequencing data, can you think of a reason why allowing exceptions to occur within an <code>except</code> block might lead to tricky issues in your code?</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="advanced-exception-handling" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-exception-handling">Advanced Exception Handling</h2>
+<p>Let’s explore some more advanced ways to handle exceptions in Python. While you might not need to use these techniques in your current assignments and miniprojects, it’s still valuable to understand them. You’ll encounter these patterns when reading other people’s code or working with existing Python libraries and tools.</p>
+<section id="exception-hierarchies" class="level3">
+<h3 class="anchored" data-anchor-id="exception-hierarchies">Exception Hierarchies</h3>
+<p>Python exceptions form a hierarchy, and are organized a bit like a family tree. Here’s a simplified view of this hierarchy:</p>
+<pre><code>BaseException
+ └── Exception
+      ├── ArithmeticError
+      │    ├── FloatingPointError
+      │    ├── OverflowError
+      │    └── ZeroDivisionError
+      ├── RuntimeError
+      │    ├── NotImplementedError
+      │    ├── PythonFinalizationError
+      │    └── RecursionError</code></pre>
+<p>To understand this relationship:</p>
+<ul>
+<li>A <code>ZeroDivisionError</code> is a type of <code>ArithmeticError</code></li>
+<li>An <code>ArithmeticError</code> is a type of <code>Exception</code></li>
+<li>An <code>Exception</code> is a type of <code>BaseException</code></li>
+</ul>
+<p>This is similar to how taxonomic relationships work. Just as a cat is a feline, all felines are mammals, and all mammals are animals, a <code>ZeroDivisionError</code> is an <code>ArithmeticError</code>, all <code>ArithmeticErrors</code> are <code>Exceptions</code>, and all <code>Exceptions</code> are <code>BaseExceptions</code>.</p>
+<p>Note that a <code>ZeroDivisionError</code> is an <code>ArithmeticError</code>, but it is not a <code>RuntimeError</code> – similar to how cats and dogs are both mammals, but a cat is not a canine.</p>
+<p>The complete <a href="https://docs.python.org/3/library/exceptions.html#exception-hierarchy">exception hierarchy</a> is is available in the Python documentation.</p>
+<p>The benefit of this hierarchy is that we can catch a whole group of related errors without listing each one individually. Here’s a simple example with a function that performs basic math operations:</p>
+<div id="1ae16a1e" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> silly_math(x, y):</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    math.exp(x) <span class="op">/</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function can raise several different errors:</p>
+<ul>
+<li>If <code>y</code> is <code>0</code>, we get a <code>ZeroDivisionError</code></li>
+<li>If <code>x</code> is too large, we get an <code>OverflowError</code></li>
+<li>If <code>x</code> or <code>y</code> aren’t numbers, we get a <code>TypeError</code></li>
+</ul>
+<p>Imagine we’re reading the values of <code>x</code> and <code>y</code> from a data file, so we don’t know what they’ll be until the program runs. We can handle potential errors like this:</p>
+<div id="ec0d1017" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ZeroDivisionError</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    silly_math(x, y)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (<span class="pp">ZeroDivisionError</span>, <span class="pp">OverflowError</span>) <span class="im">as</span> error:</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"there was an arithmetic error! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"one of the values wasn't numeric! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="co"># OverflowError</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    silly_math(x, y)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (<span class="pp">ZeroDivisionError</span>, <span class="pp">OverflowError</span>) <span class="im">as</span> error:</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"there was an arithmetic error! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"one of the values wasn't numeric! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="co"># TypeError</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="st">"2"</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a>    silly_math(x, y)</span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> (<span class="pp">ZeroDivisionError</span>, <span class="pp">OverflowError</span>) <span class="im">as</span> error:</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"there was an arithmetic error! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"one of the values wasn't numeric! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>there was an arithmetic error! error=ZeroDivisionError('float division by zero')
+there was an arithmetic error! error=OverflowError('math range error')
+one of the values wasn't numeric! error=TypeError("unsupported operand type(s) for /: 'float' and 'str'")</code></pre>
+</div>
+</div>
+<p>This works, but we can simplify by using the parent class <code>ArithmeticError</code> instead:</p>
+<div id="d512672c" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ZeroDivisionError</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    silly_math(x, y)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ArithmeticError</span> <span class="im">as</span> error:</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"there was an arithmetic error! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"one of the values wasn't numeric! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># OverflowError</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    silly_math(x, y)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ArithmeticError</span> <span class="im">as</span> error:</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"there was an arithmetic error! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> error:</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"one of the values wasn't numeric! </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>there was an arithmetic error! error=ZeroDivisionError('float division by zero')
+there was an arithmetic error! error=OverflowError('math range error')</code></pre>
+</div>
+</div>
+<p>Both <code>ZeroDivisionError</code> and <code>OverflowError</code> are caught by the <code>ArithmeticError</code> handler because they are both types of <code>ArithmeticError</code>.</p>
+<p>However, it’s important to understand that this doesn’t work in reverse. Let’s see what happens if we try to catch an <code>ArithmeticError</code> with a <code>ZeroDivisionError</code> handler:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This code cause a specific error, in this case an ArithmeticError,</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># to happen</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ArithmeticError</span>(<span class="st">"oops!"</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"this won't catch the ArithmeticError"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is the error message:</p>
+<pre><code>ArithmeticError                  Traceback (most recent call last)
+Cell In[1], line 2
+      1 try:
+----&gt; 2     raise ArithmeticError("oops!")
+      3 except ZeroDivisionError:
+      4     print("this won't catch the ArithmeticError")
+
+ArithmeticError: oops!</code></pre>
+<p>This is because while every <code>ZeroDivisionError</code> is an <code>ArithmeticError</code>, every <code>ArithmeticError</code> is <em>not</em> a <code>ZeroDivisionError</code>.</p>
+<p><em>Note: check out the <a href="https://docs.python.org/3/reference/simple_stmts.html#raise">raise</a> statement for more about manually raising exceptions.</em></p>
+<p>You may have noticed that this connects back to the Object-Oriented Programming concepts we discussed in <a href="../object_oriented_programming/index.html#sec-four-pillars-oop" class="quarto-xref"><span>Section 5.1</span></a>. This error class hierarchy shows inheritance at work: exception classes inherit from their parent exception classes. When we catch an <code>ArithmeticError</code>, we’re using this inheritance relationship to handle any type of exception that belongs to that family. This is a practical example of why inheritance is useful in programming.</p>
+<div id="tip-06-file-read-errors" class="callout callout-style-default callout-tip callout-titled" title="Stop &amp; Think">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;6.5: Stop &amp; Think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Consider a function that reads a FASTA file. What exception types might you want to catch, and which parent exception class could catch all of them?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="nesting-tryexcept-blocks" class="level3">
+<h3 class="anchored" data-anchor-id="nesting-tryexcept-blocks">Nesting Try/Except Blocks</h3>
+<p>It can sometimes be useful to nest try/except blocks. This is like having backup plans for your backup plans!</p>
+<p>The first example shows how Python searches for an appropriate error handler. If an inner error handler doesn’t match the exception type, Python will check outer handlers:</p>
+<div id="d66b7032" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"oh no!"</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">NameError</span>:</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"this won't print because it's trying to catch a NameError"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"caught a TypeError"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>caught a TypeError</code></pre>
+</div>
+</div>
+<p>In this case, the inner handler is looking for a <code>NameError</code>, but we raised a <code>TypeError</code>. Since the inner handler can’t catch it, Python checks the outer handler, which successfully catches the <code>TypeError</code>.</p>
+<p>Our second example is different. Here, the inner handler does catch the <code>TypeError</code>, but then it raises a new <code>NameError</code>:</p>
+<div id="c462c74f" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"oh no!"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"we caught a TypeError"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">NameError</span>(<span class="st">"here is a name error"</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"this will not print!"</span>)</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">NameError</span>:</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"caught a NameError"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>we caught a TypeError
+caught a NameError</code></pre>
+</div>
+</div>
+<p>The inner handler catches the <code>TypeError</code> but then creates a new problem by raising a <code>NameError</code>. Fortunately, the outer handler catches this new error, preventing our program from crashing.</p>
+</section>
+<section id="using-else-and-finally" class="level3">
+<h3 class="anchored" data-anchor-id="using-else-and-finally">Using <code>else</code> and <code>finally</code></h3>
+<p>When working with <code>try/except</code> blocks, we can add two special clauses that give us more control over our code: <code>else</code> and <code>finally</code>.</p>
+<p>The <code>else</code> clause lets us run code only if no errors occurred in the <code>try</code> block. As in, “try this code, and if it works without errors, do this extra step.”</p>
+<p>The <code>finally</code> clause runs its code regardless of whether an error happened or not. It’s like saying “no matter what happens, always do this cleanup step.” This is a good choice for tasks that need to happen even if errors occur like closing files or database connections.</p>
+<p>The <code>else</code> clause is useful for several reasons:</p>
+<ul>
+<li>It keeps your error handling code separate from your normal processing code</li>
+<li>It ensures certain operations only happen when everything works correctly</li>
+<li>It prevents catching unrelated errors that might occur in your processing code</li>
+</ul>
+<p>While the <code>else</code> clause isn’t very common in Python code, it serves specific purposes. One important use is running additional code before any finalization steps without including it in the <code>try</code> block itself. Without using <code>else</code>, you’d have to put this code in the <code>try</code> block, which means unintended errors might get caught and handled incorrectly.</p>
+<p>Unlike <code>finally</code> (which always runs), the <code>else</code> clause only runs when the <code>try</code> block succeeds completely. This makes it useful for operations that should only happen when everything works as expected.</p>
+<p>Here’s a simple example showing how <code>else</code> can make your code cleaner:</p>
+<div id="eb7f80ef" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> example(): ...</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> handle_failure(error): ...</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> handle_success(result): ...</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> example()</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make a boolean flag that says we were successful</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    success <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> MagicError <span class="im">as</span> error:</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    handle_failure(error)</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co"># We only want to run this on success, so it must be behind a flag</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> success:</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    handle_success(result)</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co"># With else -- cleaner approach</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> example()</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> MagicError <span class="im">as</span> error:</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    handle_failure(error)</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    handle_success(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s try an example that uses all of the clauses: <code>try</code>, <code>except</code>, <code>else</code>, and <code>finally</code>. This simple example shows how to handle different situations when searching a protein database. The different parts handle specific situations:</p>
+<div id="30699455" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_protein(protein_database, entry):</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Try to find the protein in the database.</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        info <span class="op">=</span> protein_database[entry]</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">KeyError</span>:</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If it is not found, log an error.</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Entry '</span><span class="sc">{</span>entry<span class="sc">}</span><span class="ss">' not found in the database"</span>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If it is found, return the info</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> info</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Regardless of success or failure, log a message saying you checked for the entry.</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Search completed for entry </span><span class="sc">{</span>entry<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>protein_database <span class="op">=</span> {</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"P00452"</span>: {</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">"gene"</span>: <span class="st">"nrdA"</span>,</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">"protein"</span>: <span class="st">"Ribonucleoside-diphosphate reductase 1 subunit alpha"</span>,</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"P00582"</span>: {<span class="st">"gene"</span>: <span class="st">"polA"</span>, <span class="st">"protein"</span>: <span class="st">"DNA polymerase I"</span>},</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>entries <span class="op">=</span> [<span class="st">"P00582"</span>, <span class="st">"P19822"</span>, <span class="st">"P00452"</span>]</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> entries:</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If the entry is found, return the info, if not, it will return None</span></span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true" tabindex="-1"></a>    info <span class="op">=</span> find_protein(protein_database, entry)</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Since this might be none, we have to check that it exists before working</span></span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># with it.</span></span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> info:</span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(info[<span class="st">"gene"</span>], info[<span class="st">"protein"</span>], sep<span class="op">=</span><span class="st">" -&gt; "</span>)</span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Search completed for entry P00582
+polA -&gt; DNA polymerase I
+
+Entry 'P19822' not found in the database
+Search completed for entry P19822
+
+Search completed for entry P00452
+nrdA -&gt; Ribonucleoside-diphosphate reductase 1 subunit alpha
+</code></pre>
+</div>
+</div>
+<p>Here is a flowchart to help you visualize how the logic flows through the try/except/else/finally code structure.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/try_except_flowchart_light.svg" title="try/except/else/finally flowchart" class="img-fluid figure-img" alt="try/except/else/finally flowchart"></p>
+<figcaption>try/except/else/finally flowchart</figcaption>
+</figure>
+</div>
+<div id="tip-06-finally-clause" class="callout callout-style-default callout-tip callout-titled" title="Stop &amp; Think">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;6.6: Stop &amp; Think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Can you think of any scenarios in which the <code>finally</code> clause would be useful when working with biological data or analysis?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="combining-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="combining-techniques">Combining Techniques</h3>
+<p>Let’s take a look at an example that combines a few of the techniques we have talked about so far. Here we’re trying to read a file, convert each line to an integer, and store those integers in a list. Our code is structured with a <code>try</code> clause followed by several <code>except</code> clauses to handle different types of errors:</p>
+<div id="78856499" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_integers(file_name):</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Read a file and convert each line to an integer."""</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_name) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [<span class="bu">int</span>(line.strip()) <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>]</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    read_integers(<span class="st">"the_best_numbers.txt"</span>)</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Dealing with files can cause errors in the OSError family</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">OSError</span> <span class="im">as</span> error:</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"an error reading the file occurred: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Trying to a convert a string to an integer can fail too</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> error:</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"could not convert line to an integer: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a "catch-all" clause, since we want to log any unexpected errors</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> error:</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Unexpected error: </span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Since it's not good practice to handle errors we are not expecting,</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we reraise the error and then the caller of this code can handle it</span></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># how they want.</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>an error reading the file occurred: error=FileNotFoundError(2, 'No such file or directory')</code></pre>
+</div>
+</div>
+<p>The first <code>except</code> clause catches any <code>OSError</code>. These errors happen when something goes wrong with the file system, like if <code>"the_best_numbers.txt"</code> doesn’t exist. The <code>OSError</code> family includes specific errors like <code>FileNotFoundError</code> (when the file doesn’t exist), <code>PermissionError</code> (when you don’t have permission to read the file), and other file-related problems.</p>
+<p>The second <code>except</code> clause catches <code>ValueError</code>. This happens if the <code>int()</code> function can’t convert a line to an integer. For instance, if a line contains “ABC” instead of a number like “123”, a <code>ValueError</code> will occur.</p>
+<p>The last <code>except</code> clause catches any other type of <code>Exception</code>. This acts as a safety net for unexpected errors. When an unexpected error occurs, we:</p>
+<ol type="1">
+<li>Print information about the error</li>
+<li>Re-raise the error using the <code>raise</code> statement</li>
+</ol>
+<p>Re-raising an error means that after we handle it partially (in this case, by printing information), we pass the error up to whatever code called our function. This is useful when you want to log an error but still want the calling code to to have to deal with it because there is no way to recover at the location which the error happened (i.e., you might not have enough context to do anything about it right then and there).</p>
+</section>
+</section>
+<section id="creating-custom-exceptions" class="level2">
+<h2 class="anchored" data-anchor-id="creating-custom-exceptions">Creating Custom Exceptions</h2>
+<p>Python packages and libraries often create their own custom error types. For example:</p>
+<ul>
+<li>Biopython defines a <a href="https://biopython.org/docs/1.75/api/Bio.Nexus.Trees.html#Bio.Nexus.Trees.TreeError"><code>TreeError</code></a> class to alert users when something goes wrong with phylogenetic trees.</li>
+<li>Pandas defines a <a href="https://pandas.pydata.org/docs/reference/api/pandas.errors.MergeError.html#pandas-errors-mergeerror"><code>MergeError</code></a> for problems that occur when trying to merge data frames.</li>
+</ul>
+<p>These custom errors make it easier for users to handle problems specific to that library. Users can then distinguish between errors from the library and errors from their own code.</p>
+<p>Let’s look at an example. First, we’ll write code without a custom error, then improve it by adding one.</p>
+<div id="239c23a4" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_dna_string(dna_string):</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Parse a DNA string, validating the nucleotides."""</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    valid_bases <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>, <span class="st">"N"</span>}</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, base <span class="kw">in</span> <span class="bu">enumerate</span>(dna_string):</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> base <span class="kw">not</span> <span class="kw">in</span> valid_bases:</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Invalid DNA base at index </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">: '</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">'"</span>)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dna_string</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parse_dna_string(<span class="st">"ACTG"</span>))</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(parse_dna_string(<span class="st">"ACXG"</span>))</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> error:</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ACTG
+error=ValueError("Invalid DNA base at index 2: 'X'")</code></pre>
+</div>
+</div>
+<p>This works fine, but imagine you’re writing a library with many classes for different aspects of sequence analysis and file parsing. Error handling could become confusing. Creating custom errors helps users understand and handle problems more clearly.</p>
+<p>A common approach is to define a base error class for your package, and then create specific error types that inherit from it. For example, if our package is called <code>EasyBio</code>, we might do this:</p>
+<div id="ff701c2c" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> EasyBioError(<span class="pp">Exception</span>):</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Base class for all EasyBio package errors."""</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InvalidBaseError(EasyBioError):</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Error raised when a DNA sequence contains invalid characters"""</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We could define more specific errors for other situations too</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_dna_string(dna_string):</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>    valid_bases <span class="op">=</span> {<span class="st">"A"</span>, <span class="st">"C"</span>, <span class="st">"G"</span>, <span class="st">"T"</span>, <span class="st">"N"</span>}</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, base <span class="kw">in</span> <span class="bu">enumerate</span>(dna_string):</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> base <span class="kw">not</span> <span class="kw">in</span> valid_bases:</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> InvalidBaseError(<span class="ss">f"Invalid DNA base at index </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">: '</span><span class="sc">{</span>base<span class="sc">}</span><span class="ss">'"</span>)</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dna_string</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parse_dna_string(<span class="st">"ACTG"</span>))</span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(parse_dna_string(<span class="st">"ACXG"</span>))</span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> InvalidBaseError <span class="im">as</span> error:</span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>error<span class="op">=</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ACTG
+error=InvalidBaseError("Invalid DNA base at index 2: 'X'")</code></pre>
+</div>
+</div>
+<p>This code is more descriptive about what went wrong - specifically that we found an invalid nucleotide. The benefits of this approach become clearer in larger packages with many different types of potential errors.</p>
+<p>Benefits of using custom exceptions include:</p>
+<ul>
+<li><strong>Clear hierarchy</strong>: Users can catch just the base exception (<code>EasyBioError</code>) to handle any error from your library, or catch specific exceptions for targeted handling.</li>
+<li><strong>Improved error messaging</strong>: Custom exceptions can include field-specific information that helps users understand what went wrong in their context.</li>
+<li><strong>Documentation</strong>: Custom exceptions serve as self-documenting code, showing users what can go wrong.</li>
+</ul>
+<p>Users of your code will often expect to see custom error types that are specific to your package or library. This approach lets you control which errors users need to handle and gives them clear information about what went wrong.</p>
+<div id="tip-06-custom-exceptions" class="callout callout-style-default callout-tip callout-titled" title="Stop &amp; Think">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;6.7: Stop &amp; Think
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>If you were creating a package for RNA-seq analysis, what custom exception types might be useful to define?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="general-tips" class="level2">
+<h2 class="anchored" data-anchor-id="general-tips">General Tips</h2>
+<p>Now that we’ve explored errors and exceptions, let’s go through some general tips about how to deal with them.</p>
+<section id="use-descriptive-error-messages" class="level3">
+<h3 class="anchored" data-anchor-id="use-descriptive-error-messages">Use Descriptive Error Messages</h3>
+<p>It’s important to include helpful details when raising errors. This makes your code more robust and provides valuable context to anyone using your functions.</p>
+<p>Be specific and descriptive:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Too vague</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Invalid input"</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># More descriptive</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Expected DNA sequence but found invalid characters"</span>)</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Shows the specific problems with the sequence</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Expected DNA sequence but found invalid characters at positions </span><span class="sc">{</span>invalid_positions<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Include relevant values:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> start <span class="op">&gt;=</span> end:</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Start position (</span><span class="sc">{</span>start<span class="sc">}</span><span class="ss">) must be less than end position (</span><span class="sc">{</span>end<span class="sc">}</span><span class="ss">)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Suggest solutions when possible:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(filepath):</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">FileNotFoundError</span>(<span class="ss">f"File '</span><span class="sc">{</span>filepath<span class="sc">}</span><span class="ss">' not found. Check spelling or use absolute path."</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Not as good:</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ConnectionError</span>(<span class="st">"connection failed"</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Better</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="cf">raise</span> <span class="pp">ConnectionError</span>(<span class="st">"Database connection failed: check that server is running on port 5432"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Document the exceptions your functions can raise:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_fasta(filename):</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Parse a FASTA file and return sequences.</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">        filename: Path to the FASTA file</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co">        List of (header, sequence) tuples</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Raises:</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a><span class="co">        FileNotFoundError: If the file doesn't exist</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="co">        ValueError: If the file is not in valid FASTA format</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These suggestions will make debugging easier for both you and anyone using your code.</p>
+</section>
+<section id="when-to-catch-exceptions" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-catch-exceptions">When to Catch Exceptions</h3>
+<p>Let’s talk about you should catch exceptions and when it’s better to let them bubble up through your program.</p>
+<p>You should catch exceptions when:</p>
+<ul>
+<li>You can recover meaningfully
+<ul>
+<li>You can provide a default value if an error occurs (for example, when calculating fold change and dividing by zero, just return one)</li>
+<li>You can safely skip problematic data (for example, when processing multiple sequences from a FASTA file and one is corrupted, just skip that sequence)</li>
+</ul></li>
+<li>You need to clean up resources (for example, close a database connection if a query fails)</li>
+<li>You want to translate an error into a different, more appropriate error type</li>
+</ul>
+<p>You should <em>not</em> catch exceptions when:</p>
+<ul>
+<li>There is no reasonable way to recover from the error
+<ul>
+<li>If you have no recovery strategy, let the exception move up to a level that can handle it</li>
+<li>For example:
+<ul>
+<li>When a user provides a file name that doesn’t exist</li>
+<li>When a database connection fails</li>
+</ul></li>
+</ul></li>
+<li>There is a cleaner alternative (for example, using <code>dict.get</code> to provide a default value instead of catching a KeyError)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/error_catching_decision_light.svg" title="Decision Tree for Catching Exceptions" class="img-fluid figure-img" alt="Decision Tree for Catching Exceptions"></p>
+<figcaption>Decision Tree for Catching Exceptions</figcaption>
+</figure>
+</div>
+</section>
+<section id="other-tips" class="level3">
+<h3 class="anchored" data-anchor-id="other-tips">Other tips</h3>
+<ul>
+<li>When you decide to catch an exception, catch it as specifically as possible
+<ul>
+<li>Prefer catching specific exceptions like <code>ValueError</code> or <code>FileNotFoundError</code> rather than broad ones like <code>Exception</code></li>
+<li>This prevents accidentally hiding bugs by catching exceptions you weren’t expecting</li>
+</ul></li>
+<li>Don’t silently ignore exceptions
+<ul>
+<li>At minimum, you should at least log a message to let users know something went wrong</li>
+</ul></li>
+</ul>
+</section>
+<section id="example" class="level3">
+<h3 class="anchored" data-anchor-id="example">Example</h3>
+<p>Here is a tiny example that breaks pretty much all the suggestions that we have given:</p>
+<div id="e0314680" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> example(x, y, z):</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> potentially_risky_function(x, y, z)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is better though!</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> example(x, y, z):</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> potentially_risky_function(x, y, z)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"WARNING -- Invalid value encountered: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> default_value</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">IOError</span> <span class="im">as</span> e:</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"ERROR -- IO error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Re-raise errors we can't handle</span></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this tutorial, we covered Python exceptions and how to handle them.</p>
+<ul>
+<li><strong>Syntax errors</strong> happen when your code breaks Python’s grammar rules. These must be fixed before your code can run.</li>
+<li><strong>Exceptions</strong> occur during program execution when something unexpected happens, like trying to divide by zero.</li>
+<li><strong>try/except blocks</strong> let you catch exceptions and handle them smoothly, similar to how you might have contingency plans in an experiment.</li>
+<li>The <strong>exception hierarchy</strong> allows you to catch specific error types (like <code>FileNotFoundError</code>) or broader categories of errors (like <code>OSError</code>).</li>
+<li><strong>else</strong> and <strong>finally</strong> clauses give you extra control in error handling, letting you run code when no errors occur or ensure cleanup happens regardless.</li>
+<li><strong>Custom exceptions</strong> help you write more readable and maintainable code by creating error types specific to your program.</li>
+</ul>
+<p>Error handling is a crucial skill for building robust programs that can recover gracefully when things go wrong. Practice identifying where your code might fail (like when reading files or processing data) and implement appropriate exception handling to build more reliable applications for your research.</p>
+</section>
+<section id="suggested-readings" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-readings">Suggested Readings</h2>
+<p>You might enjoy checking out some of these resources:</p>
+<ul>
+<li>Python docs tutorial about <a href="https://docs.python.org/3/tutorial/errors.html">errors and exceptions</a></li>
+<li>Real Python’s <a href="Python Exceptions: An Introduction">introduction to exceptions</a></li>
+<li>Real Python’s discussion of <a href="https://realpython.com/python-built-in-exceptions/">built-in exceptions</a></li>
+<li>StackOverflow post about the <a href="https://stackoverflow.com/a/16138864"><code>else</code> block</a></li>
+<li>StackOverflow post about <a href="https://stackoverflow.com/a/24065533">raising exceptions</a></li>
+</ul>
+</section>
+<section id="practice-problems" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problems">Practice Problems</h2>
+<section id="sec-problem-6.1" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem-6.1">6.1</h3>
+<p>Write a <code>try/except</code> block that attempts to convert a string to a float, but catches the <code>ValueError</code> if the string isn’t a valid number. When an error occurs, it should print “Not a valid number”.</p>
+</section>
+<section id="sec-problem-6.2" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem-6.2">6.2</h3>
+<p>Modify this code to catch the potential error:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">1</span>, <span class="st">"C"</span>: <span class="dv">2</span>, <span class="st">"G"</span>: <span class="dv">0</span>, <span class="st">"T"</span>: <span class="dv">4</span>}</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> <span class="bu">sum</span>(counts.values())</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>n_ratio <span class="op">=</span> counts[<span class="st">"N"</span>] <span class="op">/</span> total </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sec-problem-6.3" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem-6.3">6.3</h3>
+<p>Here is a tiny, misbehaving Python function:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> silly_divide(x, y):</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> random.random() <span class="op">&lt;</span> <span class="fl">0.25</span>:</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">"oops!"</span>)</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">/</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>About 75% of the time, it divides two numbers. However, the other 25% of the time, it raises an <code>Exception</code>.</p>
+<p>Write code that runs this function inside a <code>try/except</code> block. It should have two <code>except</code> clauses, one to catch the <code>ZeroDivisionError</code> and one to catch the potential <code>Exception</code>. You should give the user info about the error that was caught.</p>
+</section>
+<section id="sec-problem-6.4" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem-6.4">6.4</h3>
+<p>Write a function called <code>fold_change</code> that takes two expression values and calculates their fold change. Make sure to handle any potential errors that could occur. If there is an error, the function should return <code>None</code>.</p>
+</section>
+<section id="sec-problem-6.5" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem-6.5">6.5</h3>
+<p>Create a custom exception called <code>SequenceLengthError</code> that inherits from <code>Exception</code>. Then use it in a function called <code>validate_sequence_length</code> that raises a <code>SequenceLengthError</code> if the given sequence length is not between 50 and 150 bases.</p>
+</section>
+<section id="sec-problem-6.6" class="level3">
+<h3 class="anchored" data-anchor-id="sec-problem-6.6">6.6</h3>
+<p>Consider the following code:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_simulation(max_turns):</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> max_turns <span class="op">&lt;</span> <span class="dv">1</span>:</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"bad input"</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> max_turns <span class="op">&gt;</span> <span class="dv">1000</span>:</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"bad input"</span>)</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulation code would follow</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Rewrite this function so that it provides the uses with better error messages.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script>
+  function switchImagesForTheme(theme) {
+    document.querySelectorAll("img").forEach((img) => {
+      // Only process SVGs ending with _light.svg or _dark.svg
+      const lightMatch = img.src.match(/_light\.svg$/);
+      const darkMatch = img.src.match(/_dark\.svg$/);
+
+      if (theme === "quarto-dark" && lightMatch) {
+        img.src = img.src.replace("_light.svg", "_dark.svg");
+      } else if (theme === "quarto-light" && darkMatch) {
+        img.src = img.src.replace("_dark.svg", "_light.svg");
+      }
+    });
+  }
+
+  const observer = new MutationObserver(() => {
+    // Get the current theme class, 'quarto-light' or 'quarto-dark'
+    const theme = [...document.body.classList].find(
+      (c) => c === "quarto-light" || c === "quarto-dark"
+    );
+    if (theme) {
+      switchImagesForTheme(theme);
+    }
+  });
+
+  // Make sure the correct images are loaded
+  const initialTheme = [...document.body.classList].find(
+    (c) => c === "quarto-light" || c === "quarto-dark"
+  );
+  if (initialTheme) {
+    switchImagesForTheme(initialTheme);
+  }
+
+  // Start watching for class changes
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+</script>
+<script async="" src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/pythonforlifescientists\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../object_oriented_programming/index.html" class="pagination-link" aria-label="Object-Oriented Programming">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Object-Oriented Programming</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../exploratory_data_analysis/index.html" class="pagination-link" aria-label="Exploratory Data Analysis">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Ryan M. Moore. CC BY 4.0.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/errors_exceptions/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://orcid.org/0000-0003-3337-8184">
+      <i class="bi bi-person-lines-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=W08DPpMAAAAJ">
+      <i class="bi bi-journals" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mooreryan">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

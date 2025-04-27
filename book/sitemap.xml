@@ -1,79 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://pythonforlifescientists.com/index.html</loc>
-    <lastmod>2025-04-25T06:02:29.018Z</lastmod>
+    <loc>https://pythonforlifescientists.com/</loc>
+    <lastmod>2025-04-27T17:33:59.100Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/basics.html</loc>
-    <lastmod>2025-04-25T06:02:29.015Z</lastmod>
+    <loc>https://pythonforlifescientists.com/basics/</loc>
+    <lastmod>2025-04-27T17:33:59.097Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/collections.html</loc>
-    <lastmod>2025-04-25T06:02:29.016Z</lastmod>
+    <loc>https://pythonforlifescientists.com/collections/</loc>
+    <lastmod>2025-04-27T17:33:59.097Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/algorithms.html</loc>
-    <lastmod>2025-04-25T06:02:29.015Z</lastmod>
+    <loc>https://pythonforlifescientists.com/algorithms/</loc>
+    <lastmod>2025-04-27T17:33:59.097Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/functions.html</loc>
-    <lastmod>2025-04-25T06:02:29.017Z</lastmod>
+    <loc>https://pythonforlifescientists.com/functions/</loc>
+    <lastmod>2025-04-27T17:33:59.099Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/object_oriented_programming.html</loc>
-    <lastmod>2025-04-25T06:02:29.019Z</lastmod>
+    <loc>https://pythonforlifescientists.com/object_oriented_programming/</loc>
+    <lastmod>2025-04-27T17:33:59.101Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/errors_exceptions.html</loc>
-    <lastmod>2025-04-25T06:02:29.016Z</lastmod>
+    <loc>https://pythonforlifescientists.com/errors_exceptions/</loc>
+    <lastmod>2025-04-27T17:33:59.098Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/exploratory_data_analysis.html</loc>
-    <lastmod>2025-04-25T06:02:29.016Z</lastmod>
+    <loc>https://pythonforlifescientists.com/exploratory_data_analysis/</loc>
+    <lastmod>2025-04-27T17:33:59.098Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/stats_models.html</loc>
-    <lastmod>2025-04-25T06:02:29.019Z</lastmod>
+    <loc>https://pythonforlifescientists.com/stats_models/</loc>
+    <lastmod>2025-04-27T17:33:59.101Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/io_files_contexts.html</loc>
-    <lastmod>2025-04-25T06:02:29.018Z</lastmod>
+    <loc>https://pythonforlifescientists.com/io_files_contexts/</loc>
+    <lastmod>2025-04-27T17:33:59.100Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/errors_exceptions/think_answers.html</loc>
-    <lastmod>2025-04-25T06:02:29.016Z</lastmod>
+    <loc>https://pythonforlifescientists.com/errors_exceptions/think_answers/</loc>
+    <lastmod>2025-04-27T17:33:59.098Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/errors_exceptions/practice_solutions.html</loc>
-    <lastmod>2025-04-25T06:02:29.016Z</lastmod>
+    <loc>https://pythonforlifescientists.com/errors_exceptions/practice_solutions/</loc>
+    <lastmod>2025-04-27T17:33:59.098Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/exploratory_data_analysis/think_answers.html</loc>
-    <lastmod>2025-04-25T06:02:29.016Z</lastmod>
+    <loc>https://pythonforlifescientists.com/exploratory_data_analysis/think_answers/</loc>
+    <lastmod>2025-04-27T17:33:59.098Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/exploratory_data_analysis/practice_solutions.html</loc>
-    <lastmod>2025-04-25T06:02:29.016Z</lastmod>
+    <loc>https://pythonforlifescientists.com/exploratory_data_analysis/practice_solutions/</loc>
+    <lastmod>2025-04-27T17:33:59.098Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/stats_models/think_answers.html</loc>
-    <lastmod>2025-04-25T06:02:29.019Z</lastmod>
+    <loc>https://pythonforlifescientists.com/stats_models/think_answers/</loc>
+    <lastmod>2025-04-27T17:33:59.102Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/stats_models/practice_solutions.html</loc>
-    <lastmod>2025-04-25T06:02:29.019Z</lastmod>
+    <loc>https://pythonforlifescientists.com/stats_models/practice_solutions/</loc>
+    <lastmod>2025-04-27T17:33:59.101Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/io_files_contexts/think_answers.html</loc>
-    <lastmod>2025-04-25T06:02:29.018Z</lastmod>
+    <loc>https://pythonforlifescientists.com/io_files_contexts/think_answers/</loc>
+    <lastmod>2025-04-27T17:33:59.101Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/io_files_contexts/practice_solutions.html</loc>
-    <lastmod>2025-04-25T06:02:29.018Z</lastmod>
+    <loc>https://pythonforlifescientists.com/io_files_contexts/practice_solutions/</loc>
+    <lastmod>2025-04-27T17:33:59.100Z</lastmod>
   </url>
   <url>
-    <loc>https://pythonforlifescientists.com/regex.html</loc>
-    <lastmod>2025-04-25T06:02:29.019Z</lastmod>
+    <loc>https://pythonforlifescientists.com/regex/</loc>
+    <lastmod>2025-04-27T17:33:59.101Z</lastmod>
   </url>
 </urlset>
