@@ -29,11 +29,9 @@ remove_these = [
     "words.txt",
 ]
 
-directory_name = "io_files_contexts"
-
 for file_name in remove_these:
     try:
-        path = os.path.join(directory_name, file_name)
+        path = os.path.join("io_files_contexts", "practice_solutions", file_name)
         os.remove(path)
     except FileNotFoundError:
         pass

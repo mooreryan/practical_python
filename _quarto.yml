@@ -20,45 +20,45 @@ book:
   # Content
   chapters:
     - index.qmd
-    - basics.qmd
-    - collections.qmd
-    - algorithms.qmd
-    - functions.qmd
+    - basics/index.qmd
+    - collections/index.qmd
+    - algorithms/index.qmd
+    - functions/index.qmd
     - text: "Object-Oriented Programming"
-      href: object_oriented_programming.qmd
-    - errors_exceptions.qmd
+      href: object_oriented_programming/index.qmd
+    - errors_exceptions/index.qmd
     - text: "Exploratory Data Analysis"
-      href: exploratory_data_analysis.qmd
+      href: exploratory_data_analysis/index.qmd
     - text: "Statistics & Modeling"
-      href: stats_models.qmd
-    - io_files_contexts.qmd
+      href: stats_models/index.qmd
+    - io_files_contexts/index.qmd
   appendices:
     - part: Errors & Exceptions
       chapters:
         - text: Stop & Think Answers
-          href: errors_exceptions/think_answers.qmd
+          href: errors_exceptions/think_answers/index.qmd
         - text: Practice Problem Solutions
-          href: errors_exceptions/practice_solutions.qmd
+          href: errors_exceptions/practice_solutions/index.qmd
     - part: Exploratory Data Analysis
       chapters:
         - text: Stop & Think Answers
-          href: exploratory_data_analysis/think_answers.qmd
+          href: exploratory_data_analysis/think_answers/index.qmd
         - text: Practice Problem Solutions
-          href: exploratory_data_analysis/practice_solutions.qmd
+          href: exploratory_data_analysis/practice_solutions/index.qmd
     - part: Statistics & Modeling
       chapters:
         - text: Stop & Think Answers
-          href: stats_models/think_answers.qmd
+          href: stats_models/think_answers/index.qmd
         - text: Practice Problem Solutions
-          href: stats_models/practice_solutions.qmd
+          href: stats_models/practice_solutions/index.qmd
     - part: I/O, Files, & Contexts
       chapters:
         - text: Stop & Think Answers
-          href: io_files_contexts/think_answers.qmd
+          href: io_files_contexts/think_answers/index.qmd
         - text: Practice Problem Solutions
-          href: io_files_contexts/practice_solutions.qmd
+          href: io_files_contexts/practice_solutions/index.qmd
     - text: Regular Expressions
-      href: regex.qmd
+      href: regex/index.qmd
 
   # Site stuff
   cover-image: images/dna_python_logo.webp
@@ -84,10 +84,12 @@ book:
   repo-branch: main
   repo-actions: [issue, source]
 
-bibliography: references.bib
+# bibliography: references.bib
 
 format:
   html:
+    link-external-icon: true
+    canonical-url: true
     theme:
       dark: [custom.scss, darkly]
       light: [custom.scss, flatly]
