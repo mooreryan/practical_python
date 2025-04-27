@@ -1,0 +1,9 @@
+---
+title: Page Not Found
+---
+
+## Sorry, this page isn't available.
+
+The link you followed may be broken, or the page may have been moved or renamed.
+
+Take me back to [PythonForLifeScientists.com](index.qmd)
