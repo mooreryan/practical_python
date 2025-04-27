@@ -23,7 +23,7 @@ book:
     - basics/index.qmd
     - collections/index.qmd
     - algorithms/index.qmd
-    - functions/index.qmd
+    - understanding_functions/index.qmd
     - text: "Object-Oriented Programming"
       href: object_oriented_programming/index.qmd
     - errors_exceptions/index.qmd
