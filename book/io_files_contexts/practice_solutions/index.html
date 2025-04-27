@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../functions/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../understanding_functions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
   </div>
 </li>
@@ -385,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set Up</h2>
 <p>Set up some fake data that we will use in the practice problems.</p>
-<div id="98ff0c59" class="cell" data-execution_count="1">
+<div id="ee601da8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"first line</span><span class="ch">\n</span><span class="st">second line</span><span class="ch">\n</span><span class="st">third line</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -409,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Open a file called <code>data.txt</code> for reading, print its type, then close it.</li>
 </ol>
-<div id="ee821232" class="cell" data-execution_count="2">
+<div id="c29b6924" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"r"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(<span class="bu">file</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span>.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -420,14 +420,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Write “Hello, World!” into a file named <code>test.txt</code>.</li>
 </ol>
-<div id="a71e562f" class="cell" data-execution_count="3">
+<div id="5ac06fc0" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    f.write(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>Read and print all text from a file named <code>sample.txt</code>.</li>
 </ol>
-<div id="3c765534" class="cell" data-execution_count="4">
+<div id="08da3780" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>) <span class="im">as</span> f:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> f.read()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -441,7 +441,7 @@ third line
 <ol start="4" type="1">
 <li>Read a file line by line and print each line without the trailing newline character(s).</li>
 </ol>
-<div id="5b30d88e" class="cell" data-execution_count="5">
+<div id="e86d47f6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>:</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(line.strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -454,14 +454,14 @@ third line</code></pre>
 <ol start="5" type="1">
 <li>Append the text “New Entry” to <code>log.txt</code>.</li>
 </ol>
-<div id="767e0123" class="cell" data-execution_count="6">
+<div id="8f763b58" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"log.txt"</span>, <span class="st">"a"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"New Entry</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="6" type="1">
 <li>Print the file’s name and mode after opening it.</li>
 </ol>
-<div id="be05ded9" class="cell" data-execution_count="7">
+<div id="a60f4c58" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.name)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.mode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -473,7 +473,7 @@ r</code></pre>
 <ol start="7" type="1">
 <li>Write three lines to <code>multi.txt</code>: “One”, “Two”, “Three”, each on its own line.</li>
 </ol>
-<div id="b100f7fc" class="cell" data-execution_count="8">
+<div id="f9610c46" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"multi.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"One</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"Two</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -482,7 +482,7 @@ r</code></pre>
 <ol start="8" type="1">
 <li>Use a for-loop to write the numbers 1-5 to a file (one per line).</li>
 </ol>
-<div id="1c2aa80e" class="cell" data-execution_count="9">
+<div id="e6f23dcb" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"numbers.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">6</span>):</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span>.write(<span class="bu">str</span>(i) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -490,7 +490,7 @@ r</code></pre>
 <ol start="9" type="1">
 <li>Print <code>"File is closed"</code> if file is closed after exiting a <code>with</code>-block.</li>
 </ol>
-<div id="d4788eeb" class="cell" data-execution_count="10">
+<div id="3ddd0e73" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -503,7 +503,7 @@ r</code></pre>
 <ol start="10" type="1">
 <li>Use <code>readline()</code> to read and print just the first line of <code>sample.txt</code>.</li>
 </ol>
-<div id="f94803e8" class="cell" data-execution_count="11">
+<div id="5b54eb02" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.readline().strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -513,7 +513,7 @@ r</code></pre>
 <ol start="11" type="1">
 <li>Create a function that prints the contents of a file it is given.</li>
 </ol>
-<div id="64a3a34c" class="cell" data-execution_count="12">
+<div id="7b14e5db" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_file(file_path):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">file</span>.read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -521,7 +521,7 @@ r</code></pre>
 <ol start="12" type="1">
 <li>Use a <code>for</code> loop to write a list of fruits into a file, one fruit per line.</li>
 </ol>
-<div id="10f6e1e3" class="cell" data-execution_count="13">
+<div id="91e334e0" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"fruits.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> fruit <span class="kw">in</span> fruits:</span>
@@ -530,7 +530,7 @@ r</code></pre>
 <ol start="13" type="1">
 <li>Read and print the first eight characters of <code>sample.txt</code>.</li>
 </ol>
-<div id="0e35e0c8" class="cell" data-execution_count="14">
+<div id="26854b4c" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>, <span class="st">"rb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.read(<span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -540,7 +540,7 @@ r</code></pre>
 <ol start="14" type="1">
 <li>Demonstrate that opening an existing file in write mode (<code>"w"</code>) mode erases its contents.</li>
 </ol>
-<div id="9f96b8e2" class="cell" data-execution_count="15">
+<div id="b8a88c1e" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"test.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"contents"</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -554,7 +554,7 @@ r</code></pre>
 <ol start="15" type="1">
 <li>Use a try-except block to print a message if <code>not_a_file.txt</code> does not exist.</li>
 </ol>
-<div id="8ec3f979" class="cell" data-execution_count="16">
+<div id="0df4c05e" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"not_a_file.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> <span class="bu">file</span>.read()</span>
@@ -567,7 +567,7 @@ r</code></pre>
 <ol start="16" type="1">
 <li>Print file position (using <code>.tell()</code>) before and after reading 4 bytes.</li>
 </ol>
-<div id="ec895c25" class="cell" data-execution_count="17">
+<div id="c28d4945" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>, <span class="st">"rb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.tell())</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.read(<span class="dv">4</span>)</span>
@@ -580,14 +580,14 @@ r</code></pre>
 <ol start="17" type="1">
 <li>Write binary bytes <code>b'ABC'</code> to a file called <code>bytes.bin</code>.</li>
 </ol>
-<div id="e50d387e" class="cell" data-execution_count="18">
+<div id="36bc8ad8" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"bytes.bin"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">b"ABCDEFGHIJK"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="18" type="1">
 <li>Read the binary file you just created (<code>bytes.bin</code>) and print the first five bytes.</li>
 </ol>
-<div id="c90e5918" class="cell" data-execution_count="19">
+<div id="79f1dd62" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"bytes.bin"</span>, <span class="st">"rb"</span>) <span class="im">as</span> f:</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(f.read(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -597,7 +597,7 @@ r</code></pre>
 <ol start="19" type="1">
 <li>Use <code>"rt"</code> mode to read text and <code>"wb"</code> mode to write bytes.</li>
 </ol>
-<div id="ea8cca03" class="cell" data-execution_count="20">
+<div id="6204fa38" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>, <span class="st">"rt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.read())</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"bytes.bin"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -612,7 +612,7 @@ third line
 <ol start="20" type="1">
 <li>Print the error message if a file open operation raises an <code>OSError</code>.</li>
 </ol>
-<div id="56ca1f69" class="cell" data-execution_count="21">
+<div id="d5674003" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"/fake/file.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="bu">file</span>.read()</span>
@@ -625,7 +625,7 @@ third line
 <ol start="21" type="1">
 <li>Print the first line from a file, then use <code>.seek(0)</code> to go back to the beginning of the file and re-print the first line.</li>
 </ol>
-<div id="0a8e93bb" class="cell" data-execution_count="22">
+<div id="8fd780fa" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.readline().strip())</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.seek(<span class="dv">0</span>)</span>
@@ -638,21 +638,21 @@ first line</code></pre>
 <ol start="22" type="1">
 <li>Use <code>with</code> statement to write the line <code>"Finished!"</code> into <code>finished.txt</code>.</li>
 </ol>
-<div id="ef413cc8" class="cell" data-execution_count="23">
+<div id="05bd08e9" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"finished.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"Finished!</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="23" type="1">
 <li>Open the file <code>finished.txt</code> and append the line <code>"Appending again!"</code>.</li>
 </ol>
-<div id="e6e3eac7" class="cell" data-execution_count="24">
+<div id="fcf408b3" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"finished.txt"</span>, <span class="st">"a"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"Appending again!</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="24" type="1">
 <li>Create a dictionary, and write each key-value pair to a file (format: <code>key =&gt; value</code>).</li>
 </ol>
-<div id="1f39b3c6" class="cell" data-execution_count="25">
+<div id="e8a1ff4d" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> {<span class="st">"A"</span>: <span class="dv">1</span>, <span class="st">"B"</span>: <span class="dv">2</span>}</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"dict.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> d.items():</span>
@@ -671,7 +671,7 @@ first line</code></pre>
 <ol start="27" type="1">
 <li>Pass a file name to <code>os.listdir()</code>, then handle the error using <code>try/except</code>.</li>
 </ol>
-<div id="9b8cb4b5" class="cell" data-execution_count="26">
+<div id="45196ae2" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>dirname <span class="op">=</span> <span class="st">"sample.txt"</span></span>
@@ -687,7 +687,7 @@ first line</code></pre>
 <ol start="28" type="1">
 <li>After writing three lines to a file called <code>sample.txt</code>, read the file and print the number of lines. (Use <code>writelines()</code> and <code>readlines()</code>.)</li>
 </ol>
-<div id="b7d721ed" class="cell" data-execution_count="27">
+<div id="a80241fe" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> [<span class="st">"first line</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"second line</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">"third line</span><span class="ch">\n</span><span class="st">"</span>]</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -702,7 +702,7 @@ first line</code></pre>
 <ol start="29" type="1">
 <li>Use <code>seek</code> to skip the first 3 bytes then print the rest of the file.</li>
 </ol>
-<div id="5942f989" class="cell" data-execution_count="28">
+<div id="d8804a79" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>, <span class="st">"rb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.seek(<span class="dv">3</span>)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">file</span>.read())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -713,7 +713,7 @@ first line</code></pre>
 <ol start="30" type="1">
 <li>Catch any <code>OSError</code> when trying to open a file.</li>
 </ol>
-<div id="270da9bf" class="cell" data-execution_count="29">
+<div id="108c324a" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"maybe_missing.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> <span class="bu">file</span>.read()</span>
@@ -729,7 +729,7 @@ first line</code></pre>
 <ol type="1">
 <li>Read all lines from <code>data.txt</code> into a list, then write every second line to <code>even_lines.txt</code>.</li>
 </ol>
-<div id="17f43171" class="cell" data-execution_count="30">
+<div id="d7d40869" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> <span class="bu">file</span>.readlines()</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -758,7 +758,7 @@ first line</code></pre>
 <ol start="3" type="1">
 <li>Open <code>data.txt</code> for writing and write 10 lines (<code>"Line {i}"</code>). Then, open the same file again and append a summary line: <code>"Total lines: 10"</code>.</li>
 </ol>
-<div id="e977f743" class="cell" data-execution_count="31">
+<div id="92394afb" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span>.write(<span class="ss">f"Line </span><span class="sc">{</span>i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
@@ -786,7 +786,7 @@ Total lines: 10</code></pre>
 <ol start="4" type="1">
 <li>Write each character of a string to a new line in a text file.</li>
 </ol>
-<div id="5be6f6bc" class="cell" data-execution_count="32">
+<div id="ff9e823a" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> <span class="st">"coding is cool"</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"chars.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> letter <span class="kw">in</span> message:</span>
@@ -825,7 +825,7 @@ l</code></pre>
 <ol start="6" type="1">
 <li>Write an integer list to a text file, then read it and compute their sum.</li>
 </ol>
-<div id="bdd795a8" class="cell" data-execution_count="33">
+<div id="f22ad865" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"numbers.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -847,7 +847,7 @@ l</code></pre>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(text[::<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Write a file, then read its contents twice using <code>seek()</code>.</p></li>
 </ol>
-<div id="f953cbfb" class="cell" data-execution_count="34">
+<div id="9f8be650" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"temp.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"Magic Beans</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -868,7 +868,7 @@ Magic Beans</code></pre>
 <ol start="9" type="1">
 <li>Write three words to a file, each on their own line. Then, print all the lines of that file in uppercase.</li>
 </ol>
-<div id="3c4f223e" class="cell" data-execution_count="35">
+<div id="3642a6ac" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"pie"</span>, <span class="st">"is"</span>, <span class="st">"good"</span>]</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"numbers.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -888,7 +888,7 @@ GOOD</code></pre>
 <ol start="10" type="1">
 <li>Write some lines to a file, including some empty lines. Then, read the file back, counting the number of empty lines.</li>
 </ol>
-<div id="45437610" class="cell" data-execution_count="36">
+<div id="7bf5190d" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sample.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> [<span class="st">"this"</span>, <span class="st">""</span>, <span class="st">"is"</span>, <span class="st">"a"</span>, <span class="st">""</span>, <span class="st">"line"</span>]:</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">file</span>.write(<span class="ss">f"</span><span class="sc">{</span>line<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
@@ -904,7 +904,7 @@ GOOD</code></pre>
 <ol start="11" type="1">
 <li>Write two lists (<code>genes</code> and <code>counts</code>) into a file as <code>gene,count</code> rows.</li>
 </ol>
-<div id="f7905c39" class="cell" data-execution_count="37">
+<div id="f480ce06" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>genes <span class="op">=</span> [<span class="st">"nrdA"</span>, <span class="st">"nrdJ"</span>]</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">20</span>]</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -923,7 +923,7 @@ nrdJ,20</code></pre>
 <ol start="12" type="1">
 <li>Write some lines to a file, some of which contain the word <code>"gene"</code>. Then, open that file and print every line that contains the word <code>"gene"</code>.</li>
 </ol>
-<div id="d97a2e6d" class="cell" data-execution_count="38">
+<div id="d5e6bdb8" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.writelines(</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>        [</span>
@@ -948,7 +948,7 @@ analyzing gene expression</code></pre>
 <ol start="13" type="1">
 <li>Read the contents from one file and write it uppercased to another file. (Read the input file line-by-line.)</li>
 </ol>
-<div id="07eea38b" class="cell" data-execution_count="39">
+<div id="03adba1e" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>) <span class="im">as</span> input_file, <span class="bu">open</span>(<span class="st">"upper.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> output_file:</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> input_file:</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>        output_file.write(line.upper())</span>
@@ -968,7 +968,7 @@ MULTIPLE SEQUENCE ALIGNMENT</code></pre>
 <ol start="14" type="1">
 <li>Try to open a file that doesn’t exist without crashing the program.</li>
 </ol>
-<div id="18a45da7" class="cell" data-execution_count="40">
+<div id="ae36c357" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'/fake/file.txt'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>        _ <span class="op">=</span> <span class="bu">file</span>.read()</span>
@@ -981,7 +981,7 @@ MULTIPLE SEQUENCE ALIGNMENT</code></pre>
 <ol start="15" type="1">
 <li>Create a list of dictionaries like this: <code>{"A": 1, "B": 2, "C": 3}</code>. Then write the data as a CSV file with a header line.</li>
 </ol>
-<div id="cb67eddc" class="cell" data-execution_count="41">
+<div id="a2373722" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"A"</span>: <span class="dv">1</span>, <span class="st">"B"</span>: <span class="dv">4</span>, <span class="st">"C"</span>: <span class="dv">7</span>},</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"A"</span>: <span class="dv">2</span>, <span class="st">"B"</span>: <span class="dv">5</span>, <span class="st">"C"</span>: <span class="dv">8</span>},</span>
@@ -1009,7 +1009,7 @@ MULTIPLE SEQUENCE ALIGNMENT</code></pre>
 <ol start="16" type="1">
 <li>Create a small FASTA file. Then, read the file and count how many lines in a file start with “&gt;”.</li>
 </ol>
-<div id="98c410f5" class="cell" data-execution_count="42">
+<div id="6a3c4dce" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sequences.fasta"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"&gt;seq_1</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"ACTG</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -1030,7 +1030,7 @@ MULTIPLE SEQUENCE ALIGNMENT</code></pre>
 <ol start="17" type="1">
 <li>Copy the header lines from the FASTA file you just created into another file. Do not print the <code>&gt;</code> in the output file.</li>
 </ol>
-<div id="0a331a2a" class="cell" data-execution_count="43">
+<div id="b59d1d8f" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"sequences.fasta"</span>) <span class="im">as</span> fasta_file, <span class="bu">open</span>(<span class="st">"headers.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> output_file:</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> fasta_file:</span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> line.startswith(<span class="st">"&gt;"</span>):</span>
@@ -1050,7 +1050,7 @@ seq_3</code></pre>
 <ol start="18" type="1">
 <li>Write a few lines to a file. One of the lines should be <code>"exit"</code>. Then, read the lines of the file you created, but stop as soon as you read the <code>"exit"</code> line.</li>
 </ol>
-<div id="b5b3569a" class="cell" data-execution_count="44">
+<div id="50e96922" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.txt"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.writelines(</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>        [</span>
@@ -1076,7 +1076,7 @@ line 2</code></pre>
 <ol start="19" type="1">
 <li>Open an output file, write one line, then print the output of <code>file.closed</code>. Next, use <code>with</code> to open the file, and after the block, print the result of <code>file.closed</code> again.</li>
 </ol>
-<div id="6c6291b5" class="cell" data-execution_count="45">
+<div id="546d3a04" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="bu">open</span>(<span class="st">"output.txt"</span>, <span class="st">"w"</span>)</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span>.write(<span class="st">"gene 1</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">file</span>.closed)</span>
@@ -1094,7 +1094,7 @@ True</code></pre>
 <ol start="20" type="1">
 <li>Write three numbers to a binary file as bytes, then read, and print them as integers.</li>
 </ol>
-<div id="cf90b43f" class="cell" data-execution_count="46">
+<div id="87219194" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"numbers.dat"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
@@ -1118,7 +1118,7 @@ b'\x07\x08\t'
 <ol type="1">
 <li>Using biopython, write code that opens a FASTA file and (1) prints the sequence ID and length for each sequence, and (2) prints the mean sequence length. (Use the FASTA sequence you created earlier.)</li>
 </ol>
-<div id="83c2f78e" class="cell" data-execution_count="47">
+<div id="439a94ab" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>sequence_count <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>total_length <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1146,7 +1146,7 @@ Mean length: 5.0</code></pre>
 <ol start="2" type="1">
 <li>Write the contents of a dictionary to a TSV file. Each line should be like <code>key\tvalue</code>. Then read the file, insert any lines where the value is greater than or equal to 10 into a new dictionary.</li>
 </ol>
-<div id="68135bd4" class="cell" data-execution_count="48">
+<div id="bf84ce1e" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"a"</span>: <span class="dv">1</span>, <span class="st">"b"</span>: <span class="dv">2</span>, <span class="st">"c"</span>: <span class="dv">3</span>, <span class="st">"d"</span>: <span class="dv">10</span>, <span class="st">"e"</span>: <span class="dv">20</span>, <span class="st">"f"</span>: <span class="dv">30</span>}</span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"dict.tsv"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> data.items():</span>
@@ -1168,7 +1168,7 @@ Mean length: 5.0</code></pre>
 <ol start="3" type="1">
 <li>Using pandas, create a data frame with the following data: <code>{"A": [1, 2, 3], "B": [4, 5, 6], "C": [7, 8, 9]}</code>, and write it to a CSV without the row index. Read the resulting file using <code>csv.DictReader</code>. Print any record in which the value in field “A” is &gt;= 2 and the value in field “C” is &lt;= 8.</li>
 </ol>
-<div id="74ded512" class="cell" data-execution_count="49">
+<div id="dc0dfd0e" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1186,7 +1186,7 @@ Mean length: 5.0</code></pre>
 <ol start="4" type="1">
 <li>Write code that opens a FASTQ file, then prints the id and average quality score for the first 10 records.</li>
 </ol>
-<div id="bb40815d" class="cell" data-execution_count="50">
+<div id="6ace3ef4" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> Bio <span class="im">import</span> SeqIO</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1213,7 +1213,7 @@ read_9 =&gt; 24.257142857142856</code></pre>
 <ol start="5" type="1">
 <li>Read a binary file and print each byte in hexadecimal. (Use the built-in <a href="https://docs.python.org/3/library/functions.html#hex">hex()</a> function.)</li>
 </ol>
-<div id="c5bc721a" class="cell" data-execution_count="51">
+<div id="1971b668" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"data.bin"</span>, <span class="st">"wb"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">b"apple pie"</span>)</span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1237,7 +1237,7 @@ read_9 =&gt; 24.257142857142856</code></pre>
 <ol start="6" type="1">
 <li>Try to read and print the contents of a list of files. If any file doesn’t exist, skip it and print a message about the file not being found.</li>
 </ol>
-<div id="774a8cd3" class="cell" data-execution_count="52">
+<div id="898c0270" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>filenames <span class="op">=</span> [<span class="st">"fake.txt"</span>, <span class="st">"data.txt"</span>, <span class="st">"nope.txt"</span>]</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
@@ -1266,7 +1266,7 @@ file 'nope.txt' not found</code></pre>
 <ol start="7" type="1">
 <li>Write the given <code>gene_data</code> to a file. Then, read the lines of the file, extracting gene names and sequences from each line using using regular expressions. Finally, print each gene name and sequence in the format “name =&gt; sequence”.</li>
 </ol>
-<div id="64bffc5e" class="cell" data-execution_count="53">
+<div id="3a2f1733" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>gene_data <span class="op">=</span> [</span>
@@ -1295,7 +1295,7 @@ pol =&gt; AAACGGTAA</code></pre>
 <ol start="8" type="1">
 <li>Create a file containing 50 random words chosen from the following list <code>["apple", "pie", "is", "good"]</code>. Read that file and count how many times each word occurs. Print the dictionary sorted by word count. Don’t forget to set the random seed for reproducibility!</li>
 </ol>
-<div id="973f1077" class="cell" data-execution_count="54">
+<div id="28dc07e5" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1322,7 +1322,7 @@ pie 9</code></pre>
 <ol start="9" type="1">
 <li>Without using the CSV module, read a CSV file. If any of the lines have a different number of fields, stop the iteration and print an error message.</li>
 </ol>
-<div id="90f76aaf" class="cell" data-execution_count="55">
+<div id="ec0240e8" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"df.csv"</span>, <span class="st">"a"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"1,2,3,4</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1350,7 +1350,7 @@ pie 9</code></pre>
 <ol start="10" type="1">
 <li>Given a file path, open the file either as text or binary based on its extension (<code>.txt</code> – text mode, <code>.bin</code> – binary mode), and print the contents. Make sure to handle file not found errors!</li>
 </ol>
-<div id="19490016" class="cell" data-execution_count="56">
+<div id="cfc4059e" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"file.txt"</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> path.endswith(<span class="st">".bin"</span>):</span>

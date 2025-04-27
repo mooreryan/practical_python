@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../functions/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../understanding_functions/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
   </div>
 </li>
@@ -387,7 +387,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The solutions use the following imports:</p>
-<div id="6c8d97b5" class="cell" data-execution_count="1">
+<div id="465d4d6c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.cluster <span class="im">as</span> cluster</span>
@@ -397,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="solution-sec-problem-8.1" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.1">Solution <a href="../index.html#sec-problem-8.1" class="quarto-xref"><span>Section 8.7.1</span></a></h4>
-<div id="9706859d" class="cell" data-execution_count="2">
+<div id="3ed1cba2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2503478</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>group_B <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">15</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
@@ -410,7 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="solution-sec-problem-8.2" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.2">Solution <a href="../index.html#sec-problem-8.2" class="quarto-xref"><span>Section 8.7.2</span></a></h4>
-<div id="784652e7" class="cell" data-execution_count="3">
+<div id="0774209d" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">493567</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">10</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>group_B <span class="op">=</span> stats.norm(loc<span class="op">=</span><span class="dv">15</span>, scale<span class="op">=</span><span class="dv">2</span>).rvs(<span class="dv">30</span>)</span>
@@ -424,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="solution-sec-problem-8.3" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.3">Solution <a href="../index.html#sec-problem-8.3" class="quarto-xref"><span>Section 8.7.3</span></a></h4>
-<div id="bb190920" class="cell" data-execution_count="4">
+<div id="cea29e3a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> stats.tukey_hsd(group_A, group_B, group_C)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -442,7 +442,7 @@ Comparison  Statistic  p-value  Lower CI  Upper CI
 </section>
 <section id="solution-sec-problem-8.4" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.4">Solution <a href="../index.html#sec-problem-8.4" class="quarto-xref"><span>Section 8.7.4</span></a></h4>
-<div id="ef146e1d" class="cell" data-execution_count="5">
+<div id="2ed48f3c" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">932847</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> np.random.uniform(<span class="op">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
@@ -464,7 +464,7 @@ X2            -0.0319      0.053     -0.606      0.547      -0.138       0.074
 <section id="solution-sec-problem-8.5" class="level4">
 <h4 class="anchored" data-anchor-id="solution-sec-problem-8.5">Solution <a href="../index.html#sec-problem-8.5" class="quarto-xref"><span>Section 8.7.5</span></a></h4>
 <p>Two clusters mainly separate <em>setosa</em> from <em>versicolor</em> and <em>virginica</em>, which makes biological sense given that <em>setosa</em> is the most distinct species.</p>
-<div id="69f38d6f" class="cell" data-execution_count="6">
+<div id="c48b9fbe" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> pd.read_csv(<span class="st">"../../_data/iris.csv"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(iris, hue<span class="op">=</span><span class="st">"Species"</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>_centroids, labels <span class="op">=</span> cluster.vq.kmeans2(iris.drop(columns<span class="op">=</span><span class="st">"Species"</span>), k<span class="op">=</span><span class="dv">2</span>)</span>
