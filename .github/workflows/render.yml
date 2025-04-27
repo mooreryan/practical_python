@@ -29,6 +29,9 @@ jobs:
         with:
           to: html
 
+      - name: Fix sitemap
+        run: python scripts/sitemap_strip_index.py _book/sitemap.xml
+
       - run: git checkout cf-pages
       - run: if [ -d book ]; then rm -r book; fi
       - run: mv _book book
