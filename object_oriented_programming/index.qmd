@@ -32,7 +32,7 @@ Classes enable us to create our own custom data types that model real-world enti
 
 This connection between our programs and the real-world domain we are modeling is what makes object-oriented programming powerful. It allows us to represent and manipulate complex biological entities in a way that feels natural and intuitive, mirroring how we already think about these systems in our research.
 
-For the rest of this tutorial, we'll explore how to implement Object-Oriented Programming (OOP) in Python, giving you the tools to represent the biological systems you work with in a natural way.
+For the rest of this chapter, we'll explore how to implement Object-Oriented Programming (OOP) principles in Python, giving you the tools to represent the biological systems you work with in a natural way.
 
 ## Four Pillars of OOP {#sec-four-pillars-oop}
 
@@ -46,7 +46,7 @@ When learning about object-oriented programming (OOP), you'll often hear about f
 - **Polymorphism**: objects of different classes responding to the same method in their own ways
 - **Inheritance**: creating new classes that receive attributes and methods from existing classes
 
-We'll introduce some of these concepts at a practical level in this tutorial and continue to explore them throughout the course.
+We'll introduce some of these concepts at a practical level in this chapter and continue to explore them throughout the course.
 
 ## Classes in Python: Syntax and Structure {#sec-class-basics}
 
@@ -451,7 +451,7 @@ print(amoeba_2.name)
 print(amoeba_3.name)
 ```
 
-Pretty neat! We will go into more fancy details like this in a future tutorial.
+Pretty neat!
 
 #### A Tricky Example
 
@@ -929,7 +929,7 @@ Other commonly used built-in classes include:
 - `file` objects -- returned when opening files with the `open()` function
 - `datetime` -- for working with dates and times
 
-Each of these classes encapsulates both data (like the items in a list) and behavior (methods like `append` or `sort`), just like the custom classes we wrote in this tutorial.
+Each of these classes encapsulates both data (like the items in a list) and behavior (methods like `append` or `sort`), just like the custom classes we wrote in this chapter.
 
 ## Object-Oriented Thinking
 
@@ -972,7 +972,7 @@ In general, classes work well when you're working with entities that have both d
 - Your project needs additional structure
 - Your data has natural hierarchies (DNA and Proteins are both Molecules)
 
-_Note: We didn't get into class hierarchies in this tutorial. That's an advanced topic for a later time._
+_Note: We didn't get into class hierarchies in this chapter. That's an advanced topic for a later time. (See @sec-exception-hierarchies for info about exception hierarchies.)_
 
 Consider simpler alternatives when:
 

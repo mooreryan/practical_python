@@ -43,7 +43,7 @@ example_text_file = "../_data/sample.txt"
 
 #### Line-by-Line
 
-First, let's see how to read a file line-by-line. The `with` statement creates a context manager that automatically closes the file when the block ends. We will talk more about context managers later in the tutorial, but for now, know that this is generally the recommended way to handle files in Python as it ensures proper resource cleanup.
+First, let's see how to read a file line-by-line. The `with` statement creates a context manager that automatically closes the file when the block ends. We will talk more about context managers later in the chapter (@sec-working-context-managers), but for now, know that this is generally the recommended way to handle files in Python as it ensures proper resource cleanup.
 
 ```{python}
 # Open a file `example_text_file` in read mode
@@ -423,7 +423,7 @@ You might not always need to manually move around files like this, but it is an 
 
 The [io](https://docs.python.org/3/library/io.html) module provides some other methods that you can use with file objects like `readlines()`, `writelines()`, and others. Check out the docs for the module to learn more!
 
-## Working with Context Managers
+## Working with Context Managers {#sec-working-context-managers}
 
 In Python, the `with` statement is generally the preferred way to handle files, as it creates a context manager that automatically takes care of closing them. The syntax is straightforward: write `with open(filename, mode) as file:` and work with your file inside the indented block.
 
@@ -444,7 +444,7 @@ except ValueError as error:
     print(f"{error=}")
 ```
 
-We have been using the `with` statement throughout the tutorial, but let's take a bit of a deeper look at what is going on _with_ it (ha).
+We have been using the `with` statement throughout the chapter, but let's take a bit of a deeper look at what is going on _with_ it (ha).
 
 Take a look at this code, where we open a file for writing, then do a write, then explicitly close the file object:
 

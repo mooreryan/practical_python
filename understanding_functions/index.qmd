@@ -197,7 +197,7 @@ def hello(name, excitement):
 
 The most common way of getting data into functions is through function parameters, which hold the data your function needs to work with.
 
-A quick note about terminology you'll encounter: You'll hear people use both "parameters" and "arguments" when talking about functions, and while they're often used interchangeably, in this tutorial we will make the following distinction:
+A quick note about terminology you'll encounter: You'll hear people use both "parameters" and "arguments" when talking about functions, and while they're often used interchangeably, in this chapter we will make the following distinction:
 
 - Parameters are the names you list when you're creating your function. They are the "placeholders" that tell the function what data to expect.
 - Arguments are the actual values you send to the function when you use it.
@@ -344,7 +344,7 @@ hello("Delaware")
 hello()
 ```
 
-Python sets these default values when you first define the function, not when you call it. It will look at any variables available at that moment (what we call "in scope") to determine the default value. If you're using a variable as a default value, make sure it's defined before you create your function. We'll explore the concept of scope in more detail later in the tutorial.
+Python sets these default values when you first define the function, not when you call it. It will look at any variables available at that moment (what we call "in scope") to determine the default value. If you're using a variable as a default value, make sure it's defined before you create your function. We'll explore the concept of scope in more detail later in the chapter (@sec-scope).
 
 #### A Common Pitfall: Mutable Default Arguments
 
@@ -1321,7 +1321,7 @@ print(x)
 
 #### Error Variables Stay in Their Block
 
-When handling errors (which we'll cover more in a later tutorial), variables created in `except` blocks are only available within that block:
+When handling errors (which we'll cover more in @sec-errors-exceptions), variables created in `except` blocks are only available within that block:
 
 ```{python}
 try:
@@ -1628,7 +1628,7 @@ Type hints are helpful for documentation and code maintenance, but your code wil
 
 ## Wrap-Up
 
-Functions are one of the most fundamental and powerful concepts in Python programming. In this tutorial, we've covered everything from basic function syntax to advanced topics like variable-length arguments and scope rules. You've learned how to write clear, reusable code by packaging logic into well-named functions, how to work with different types of parameters, and how to use return values effectively. We've also explored important concepts like variable scope, documentation best practices, and some advanced features like lambda expressions and type hints. With this foundation in functions, you're now equipped to write more organized, maintainable, and self-documenting Python code that can be easily shared and reused across your bioinformatics projects.
+Functions are one of the most fundamental and powerful concepts in Python programming. In this chapter, we've covered everything from basic function syntax to advanced topics like variable-length arguments and scope rules. You've learned how to write clear, reusable code by packaging logic into well-named functions, how to work with different types of parameters, and how to use return values effectively. We've also explored important concepts like variable scope, documentation best practices, and some advanced features like lambda expressions and type hints. With this foundation in functions, you're now equipped to write more organized, maintainable, and self-documenting Python code that can be easily shared and reused across your bioinformatics projects.
 
 ## Suggested Readings
 

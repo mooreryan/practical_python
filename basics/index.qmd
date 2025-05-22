@@ -5,9 +5,9 @@ date: "2025-02-04"
 jupyter: python3
 ---
 
-# Basics
+# Basics {#sec-basics}
 
-Welcome to your first Python tutorial! In this lesson, we'll explore the fundamental building blocks of Python programming, including:
+Welcome to the first chapter of Practical Python Programming for Life Scientists! In this lesson, we'll explore the fundamental building blocks of Python programming, including:
 
 - Variables and how to use them
 - Basic data types (numbers, text, and true/false values)
@@ -15,7 +15,7 @@ Welcome to your first Python tutorial! In this lesson, we'll explore the fundame
 - Essential built-in functions
 - How to control program flow with conditional statements
 
-This is a comprehensive tutorial that covers a lot of ground. Don't feel pressured to master everything at once -- we'll be practicing these concepts throughout the course. Think of this as your first exposure to these ideas, and we'll build on them step by step in the coming weeks.
+This is a comprehensive chapter that covers a lot of ground. Don't feel pressured to master everything at once -- we'll be practicing these concepts throughout the course. Think of this as your first exposure to these ideas, and we'll build on them step by step in the coming weeks.
 
 ## Introduction to Python
 
@@ -221,7 +221,7 @@ These augmented operators combine arithmetic with assignment. Common ones includ
 - `*=`: augmented multiplication
 - `/=`: augmented division
 
-These operators are particularly handy when updating running totals or counters, like when tracking how many sequences pass quality filters. We'll explore more uses in the next tutorial.
+These operators are particularly handy when updating running totals or counters, like when tracking how many sequences pass quality filters. We'll explore more uses in the subsequent chapters.
 
 ### Named constants
 
@@ -1264,7 +1264,7 @@ To use these functions, just type the function name followed by parentheses cont
 
 ## Wrap-Up
 
-In this tutorial, we covered the fundamental building blocks of Python programming that you'll use throughout your bioinformatics work:
+In this chapter, we covered the fundamental building blocks of Python programming that you'll use throughout your bioinformatics work:
 
 - **Variables** help you store and manage data with meaningful names
 - **Data types** like numbers, strings, and booleans let you work with different kinds of biological data
@@ -1278,8 +1278,8 @@ Remember:
 - Keep conditional logic as simple as possible
 - Make use of Python's built-in functions for common tasks
 
-These basics form the foundation for more advanced programming concepts we'll explore in future tutorials. Practice working with these fundamentals -- they're the tools you'll use to build more complex bioinformatics applications.
+These basics form the foundation for more advanced programming concepts we'll explore in future chapters. Practice working with these fundamentals -- they're the tools you'll use to build more complex bioinformatics applications.
 
-Don't worry if everything hasn't clicked yet. Programming is a skill that develops with practice. Focus on understanding one concept at a time, and remember that you can always refer back to this tutorial as a reference.
+Don't worry if everything hasn't clicked yet. Programming is a skill that develops with practice. Focus on understanding one concept at a time, and remember that you can always refer back to this chapter as a reference.
 
 Next up, we'll build on these basics to work with more complex data structures and write functions of our own!

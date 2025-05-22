@@ -136,7 +136,7 @@ After your implementation is complete, be sure to test that your algorithm works
   - Improve your solution based on test results.
   - Fix errors and handle edge cases.
 
-We will discuss more testing strategies in a later tutorial.
+We will discuss more testing strategies in a later chapter.
 
 ## Real-World Algorithm Example -- Making Coffee
 
@@ -286,11 +286,11 @@ While there are often many ways to solve a programming challenge, we'll focus on
 
 As you gain experience, you'll learn more sophisticated methods, or ways that are built-in to the language itself, but mastering these fundamental patterns first will give you a solid foundation. Let's look at some practical examples that demonstrate these basic patterns in action.
 
-In this tutorial, we will mostly focus on strategies that involve looking at one element at a time from a sequence. Often, this sequential processing will also involve tracking or accumulating values.
+In this chapter, we will mostly focus on strategies that involve looking at one element at a time from a sequence. Often, this sequential processing will also involve tracking or accumulating values.
 
 ### Character Processing
 
-Tutorial 2 showed many examples of using for loops to process characters of a string one-by-one. We will repeat some of them here so that you can get more practice seeing the common patterns.
+@sec-collections showed many examples of using for loops to process characters of a string one-by-one. We will repeat some of them here so that you can get more practice seeing the common patterns.
 
 #### Printing Each Character
 
@@ -338,7 +338,7 @@ for letter in word:
 print(letter_counts)
 ```
 
-_Note: This is a good example of what I mentioned above regarding these solutions not always being the best way to do something. In Tutorial 2, we discussed a better way to approach this particular counting problem. Can you remember it?_
+_Note: This is a good example of what I mentioned above regarding these solutions not always being the best way to do something. In @sec-collections, we discussed a better way to approach this particular counting problem. Can you remember it?_
 
 ### Number Processing
 
@@ -607,7 +607,7 @@ In this example, we're storing positions, so we need more space for longer seque
 
 ## Algorithmic Puzzles
 
-Let's finish off this tutorial by looking at a common, beginner-level algorithmic puzzle: checking if a string is a palindrome.
+Let's finish off this chapter by looking at a common, beginner-level algorithmic puzzle: checking if a string is a palindrome.
 
 > A word is a **palindrome** if it reads the same forward and backward.
 
@@ -798,7 +798,7 @@ Focus on making a basic version work before aiming for perfection. Begin with a 
 
 ## Summary & Connection to Bioinformatics
 
-In this tutorial, we introduced the concept of algorithmic thinking and simple algorithms. We went over some common patterns for simple problems that can form the building blocks of more complex solutions. Then we covered the basics of algorithmic complexity analysis, and finally, went through the process of solving a common algorithmic puzzle.
+In this chapter, we introduced the concept of algorithmic thinking and simple algorithms. We went over some common patterns for simple problems that can form the building blocks of more complex solutions. Then we covered the basics of algorithmic complexity analysis, and finally, went through the process of solving a common algorithmic puzzle.
 
 You might be wondering how these basic programming concepts connect to the bioinformatics tools you'll use in your research. While we rely on sophisticated software for tasks like homology search and genome assembly, these powerful tools are built on the same fundamental programming principles we're learning now.
 

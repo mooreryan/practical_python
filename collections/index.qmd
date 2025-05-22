@@ -7,7 +7,7 @@ jupyter: python3
 
 # Collections {#sec-collections}
 
-In this tutorial, we'll explore Python's fundamental data structures and collections -- the building blocks that help organize and analyze biological data effectively. From strings for handling DNA sequences to dictionaries for mapping genes to functions, you'll learn how to use these tools through practical examples. We'll cover when and why to use each type, giving you the foundation needed to tackle real bioinformatics problems.
+In this chapter, we'll explore Python's fundamental data structures and collections -- the building blocks that help organize and analyze biological data effectively. From strings for handling DNA sequences to dictionaries for mapping genes to functions, you'll learn how to use these tools through practical examples. We'll cover when and why to use each type, giving you the foundation needed to tackle real bioinformatics problems.
 
 ## Introduction to Python Collections
 
@@ -38,7 +38,7 @@ Python provides different collection types because different tasks require diffe
 - If you need to look up protein functions by their names, use a Dictionary
 - If you need to generate sample numbers efficiently, use a Range
 
-Using the right data structure for the job optimizes both speed and code clarity. As we progress through this tutorial, you'll learn which data structures work best in different situations.
+Using the right data structure for the job optimizes both speed and code clarity. As we progress through this chapter, you'll learn which data structures work best in different situations.
 
 ### Common Python Data Structures at a Glance
 
@@ -95,13 +95,13 @@ Notice that each collection has a dedicated syntax for creating it. This makes i
 
 Being able to recognize these collection types and know when to use each is critical to both writing and reading code. Let's explore them further.
 
-_Note: Python contains other useful data structures, including [sets](https://docs.python.org/3/tutorial/datastructures.html#sets), but we won't cover them in this tutorial._
+_Note: Python contains other useful data structures, including [sets](https://docs.python.org/3/tutorial/datastructures.html#sets), but we won't cover them in this chapter._
 
 ## Strings
 
 In Python, strings are ordered collections of characters, meaning they are sequences that can be indexed, sliced, and iterated over just like other sequence types (such as lists and tuples), with each character being an individual element in the collection.
 
-Though we covered strings in Tutorial 1, let's go over some basics again so that you have it here for easy reference.
+Though we covered strings in @sec-basics, let's go over some basics again so that you have it here for easy reference.
 
 ### String Literals
 
@@ -246,7 +246,7 @@ except ValueError:
     print("not found!")
 ```
 
-Don't worry too much now about this try/except construction for now -- we will cover it in a later tutorial! Basically, it is a way to tell Python that we think an error may occur here, and if it does, what we should do to recover.
+Don't worry too much now about this try/except construction for now as we will cover it @sec-errors-exceptions! Basically, it is a way to tell Python that we think an error may occur here, and if it does, what we should do to recover.
 
 #### Check String Prefix/Suffix
 
@@ -272,7 +272,7 @@ print(tag_count)
 
 In Python, strings are immutable sequences of characters (including letters, numbers, symbols, and spaces) that are used to store and manipulate text data. They can be created using single quotes (`''`), double quotes (`""`), or triple quotes (`''' '''` or `""" """`) and support various built-in methods for operations like searching, replacing, splitting, and formatting text.
 
-(For more info about string indexing, slicing, etc., see Tutorial 1.)
+(For more info about string indexing, slicing, etc., see @sec-basics.)
 
 ## Lists
 
@@ -299,7 +299,7 @@ sample_info = ["SAMPLE001", 37.5, "positive", True]
 results = []
 ```
 
-Creating an empty list might seem a bit weird, but is actually common practice in Python -- create an empty list and then use a loop to store multiple things in it. We will see examples of this later in the tutorial.
+Creating an empty list might seem a bit weird, but is actually common practice in Python. You will often create an empty list and then use a loop to store multiple things in it. There will be plenty of examples of this later in the chapter.
 
 ### List Indexing and Slicing
 
@@ -323,7 +323,7 @@ nucleotides = ["A", "T", "G", "A", "C"]
 
 Don't forget that Python starts counting with 0 rather than with 1.
 
-_Note: For now, don't worry too much right now about **how** Python stores items in a list. Later in the tutorial, we will adjust our mental model for collections._
+_Note: For now, don't worry too much right now about **how** Python stores items in a list. Later in the chapter (@sec-what-python-stores-in-list), we will adjust our mental model for collections._
 
 #### Indexing
 
@@ -457,7 +457,7 @@ print(genes.count("TP53"))
 
 ### List Operations
 
-We talked about operators in Tutorial 1. These operators can also be applied to lists in various ways. Let's check it out.
+We talked about operators in @sec-basics. These operators can also be applied to lists in various ways. Let's check it out.
 
 Similar to strings, you can concatenate lists into a single list using `+`:
 
@@ -543,7 +543,7 @@ print(gene2_rep2)
 
 Lists are very flexible in Python, and so can be complicated. However, it will be good for you to get comfortable with Lists as they are one of the most commonly used data structures!
 
-#### What Does Python Actually Store in the List?
+#### What Does Python Actually Store in the List? {#sec-what-python-stores-in-list}
 
 When working with lists and other collections in Python, there's a crucial detail about how Python manages data that might seem counterintuitive at first. Let's explore this through a simple example using 2D points.
 
@@ -1390,7 +1390,7 @@ When you're learning to code, it's best to stick with straightforward, easy-to-r
 
 Here's an interesting feature of Python dictionaries that you might have noticed: when you print out a dictionary, the items appear in the exact order you added them. This wasn't always true in older versions of Python, but now dictionaries automatically keep track of the order of your entries.
 
-One final thing to mention. You can't use every Python type as a dictionary key, only immutable types. E.g., you couldn't use a list as a key for a dictionary. The specific reason for that is beyond the scope of this tutorial, but you may be interested in reading more about it here: [Why must dictionary keys be immutable?](https://docs.python.org/3/faq/design.html#why-must-dictionary-keys-be-immutable)
+One final thing to mention. You can't use every Python type as a dictionary key, only immutable types. E.g., you couldn't use a list as a key for a dictionary. The specific reason for that is beyond the scope of this chapter, but you may be interested in reading more about it here: [Why must dictionary keys be immutable?](https://docs.python.org/3/faq/design.html#why-must-dictionary-keys-be-immutable)
 
 #### Removing Items from a Dictionary {#sec-remove-items-dict}
 
@@ -1551,7 +1551,7 @@ except IndexError as error:
     print(f"Oops! That data isn't available: {error}")
 ```
 
-In this case, we need to handle the `IndexError` because the data that the `aliases` key points to is a list, but that list doesn't have enough items to handle our request for the item at index `10`. Don't worry too much right now on handling specific errors. We will discuss error handling in greater depth in a future tutorial.
+In this case, we need to handle the `IndexError` because the data that the `aliases` key points to is a list, but that list doesn't have enough items to handle our request for the item at index `10`. Don't worry too much right now on handling specific errors. We will discuss error handling in greater depth in @sec-errors-exceptions.
 
 While there are quite a few other ways to handle missing data when "drilling down" through nested data structures in Python, for now, we will just use the `try/except` approach similar to the one shown above.
 

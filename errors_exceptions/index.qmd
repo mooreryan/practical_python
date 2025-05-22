@@ -39,7 +39,7 @@ SyntaxError: expected ':'
 
 As you can see, I forgot to put the colon (`:`) at the end of the first line. This is a classic syntax mistake in Python, similar to forgetting a period at the end of a sentence.
 
-Remember in previous tutorials and assignments, like when we discussed removing items from dictionaries (@sec-remove-items-dict), scope (@sec-scope), and the "ask for forgiveness" approach (@sec-asking-for-forgiveness), we used `try/except` blocks to "catch" errors. However, syntax errors cannot be caught using `try/except`. This is because the Python interpreter checks your code's syntax before running any of it. The syntax error is detected during this checking phase, before your program even starts executing, so the `try/except` block never gets a chance to run.
+Remember in previous chapters and assignments, like when we discussed removing items from dictionaries (@sec-remove-items-dict), scope (@sec-scope), and the "ask for forgiveness" approach (@sec-asking-for-forgiveness), we used `try/except` blocks to "catch" errors. However, syntax errors cannot be caught using `try/except`. This is because the Python interpreter checks your code's syntax before running any of it. The syntax error is detected during this checking phase, before your program even starts executing, so the `try/except` block never gets a chance to run.
 
 ## Understanding Python Exceptions
 
@@ -67,7 +67,7 @@ File 06_errors.qmd:1
 NameError: name 'y' is not defined
 ```
 
-This error message shows the type of error, the file where it happened, and a helpful explanation of the problem. We will go into more detail about reading error messages later in this tutorial.
+This error message shows the type of error, the file where it happened, and a helpful explanation of the problem. We will go into more detail about reading error messages later in this chapter (@sec-reading-error-messages).
 
 ::: {#tip-06-name-error .callout-tip title="Stop & Think" collapse="false"}
 Look at the following code:
@@ -120,7 +120,7 @@ For a complete list of Python exceptions, see the [Built-in Exceptions](https://
 If you were writing a program to read and parse FASTA files, which type of error would occur if the file you were trying to read did not exist?
 :::
 
-### Reading Error Messages
+### Reading Error Messages {#sec-reading-error-messages}
 
 One challenge many beginners face is understanding error messages, both how to interpret them and how to fix the problems they indicate.
 
@@ -484,7 +484,7 @@ If you're developing a program to analyze biological sequencing data, can you th
 
 Let's explore some more advanced ways to handle exceptions in Python. While you might not need to use these techniques in your current assignments and miniprojects, it's still valuable to understand them. You'll encounter these patterns when reading other people's code or working with existing Python libraries and tools.
 
-### Exception Hierarchies
+### Exception Hierarchies {#sec-exception-hierarchies}
 
 Python exceptions form a hierarchy, and are organized a bit like a family tree. Here's a simplified view of this hierarchy:
 
@@ -995,7 +995,7 @@ def example(x, y, z):
 
 ## Summary
 
-In this tutorial, we covered Python exceptions and how to handle them.
+In this chapter, we covered Python exceptions and how to handle them.
 
 - **Syntax errors** happen when your code breaks Python's grammar rules. These must be fixed before your code can run.
 - **Exceptions** occur during program execution when something unexpected happens, like trying to divide by zero.
