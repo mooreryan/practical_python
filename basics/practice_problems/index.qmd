@@ -1,0 +1,444 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-05-23"
+jupyter: python3
+---
+
+# Basics: Practice Problems
+
+These are the practice problems for @sec-basics.  For solutions, see @sec-basics-practice-problem-solutions.
+
+## Assigning Variables and Printing {#sec-assigning-variables-printing}
+
+### Task Description
+
+Create a variable to store the name of a bacterial species (e.g., `"Escherichia coli"`). Assign another variable for the number of base pairs in its genome (e.g., `4_600_000`). Print a statement describing the species and its genome size.
+
+### Learning Objectives
+
+- Assign values to variables
+- Print formatted output
+- Use underscores in large numbers for readability
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# Should print:
+# The species Escherichia coli has a genome size of 4600000 base pairs.
+```
+
+### Common Issues
+
+- Forgetting to enclose text in quotes
+- Forgetting the `f` in the f-strings
+- Not matching variable names in the f-string
+
+### Optional Extensions
+
+- Try with a different species and genome size.
+- Try without using f-strings
+
+## Calculating and Formatting GC Content {#sec-calculating-formatting-gc-content}
+
+### Task Description
+
+Given variables `gc_count` (number of G or C bases) and `total_bases` (total number of bases in the genome), calculate the GC content as a decimal value and print it to two decimal places.
+
+### Learning Objectives
+
+- Perform basic arithmetic operations
+- Calculate percentages or ratios
+- Use f-strings with formatting
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# Should print:
+# GC content: 0.28
+```
+
+### Common Issues
+
+- Using integer division rather than float division (e.g., should use `/`, not `//`)
+- Forgetting to format decimal places
+
+### Optional Extensions
+
+- Multiply by `100` to display as a percentage.
+
+## String Slicing and Concatenation {#sec-string-slicing-concatenation}
+
+### Task Description
+
+1. Create a variable `sequence` to hold the DNA sequence string `"ACTGGTCAA"`.
+2. Then use string slicing (e.g., `s[start:end]`) to create two more variables, one to hold the first four bases, and the other to hold the remaining five bases.
+3. Concatenate the two parts back together
+4. Print everything to check your work
+
+### Learning Objectives
+
+- Create string variables and concatenate strings with `+`
+- Use string slicing `[start:end]` notation
+- Understand zero-based indexing; extract parts of a string
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# Should output something like:
+# sequence='ACTGGTCAA'
+# first_four='ACTG'; last_five='GTCAA'
+# combined='ACTGGTCAA'
+```
+
+### Common Issues
+
+- Off-by-one errors in slicing
+- Incorrect use of negative indices
+
+### Optional Extensions
+
+- Use f-string formatting to combine the first and last parts of the sequence
+- Try the slice notation where you don't specify both the start and the end
+- Extract the last 3 bases using negative indices
+
+## Working with Booleans and Conditional Execution {#sec-working-booleans-conditional-execution}
+
+### Task Description
+
+You have a variable `quality_score`. Write code that prints `"Pass"` if `quality_score` is greater than or equal to `30`, and `"Fail"` otherwise.
+
+Then, given two boolean variables, `is_long_enough` and `is_high_quality`, print `"Accepted"` if both are `True`, otherwise `"Rejected"`.
+
+### Learning Objectives
+
+- Use boolean comparisons and conditional statements
+- Work with boolean variables and logical operators `and`
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# quality_score = 28 -> Fail
+# quality_score = 32 -> Pass
+# is_long_enough = True, is_high_quality = False -> Rejected
+# is_long_enough = True, is_high_quality = True -> Accepted
+```
+
+### Common Issues
+
+- Using `>` instead of `>=` for the test
+- Using `or` instead of `and` in the boolean expression
+
+### Optional Extensions
+
+- Add a message showing the quality score if it is under `30`
+- Show the user the reason for rejection
+
+## Using Built-in Functions and List Operations {#sec-using-builtin-functions-list-ops}
+
+### Task Description
+
+You are given the following gene expression values: `2.1`, `3.4`, `1.8`, `6.2`, and `4.0`.
+
+1. Create a list of gene expression values and print the minimum, maximum, and average.
+2. Then, get the first item in the list and print its type.
+
+### Learning Objectives
+
+- Use built-in functions: `min()`, `max()`, `len()`, `sum()`, `type()`
+- Work with lists
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# Output:
+# min: 1.8
+# max: 6.2
+# mean: 3.5
+# type of first item: <class 'float'>
+```
+
+### Common Issues
+
+- Calling the functions incorrectly
+- Using the name of the function as your variable name
+
+### Optional Extensions
+
+- Show the average to two decimal places
+
+## Truthy/Falsy and Checking Emptiness {#sec-truthy-falsy-checking-emptiness}
+
+### Task Description
+
+Create an empty list called `sequences`. Write code to check if the list is empty. If it is, print `"No sequences found!"`, otherwise print `"Sequences loaded!"`
+
+Then, print the boolean value (`True`/`False`) of several sample values: empty string `""`, `"AGTC"`, `0`, `3.14`, empty list, and a non-empty list.
+
+### Learning Objectives
+
+- Understand truthy/falsy values in Python
+- Check for emptiness using `if` statements
+- Use the `bool()` function
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# For sequences = [], should print: No sequences found!
+# For bool() values: False, True, False, True, False, True
+```
+
+### Common Issues
+
+- Not understanding which values are Truthy/Falsy in Python
+
+### Optional Extensions
+
+- Print the number of loaded sequences if not empty
+
+## Avoiding Built-in Name Shadowing {#sec-avoiding-builtin-name-shadowing}
+
+### Task Description
+
+Assign the DNA sequence `"ACTG"` to a variable called `str`, and print its length.  Then use the `str()` function to convert the float `3.14` to a string.  What happens?
+
+### Learning Objectives
+
+- Use appropriate variable names
+- Avoid overwriting built-in functions
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# Output:
+# 4
+# TypeError: 'str' object is not callable
+```
+
+### Common Issues
+
+- Accidentally shadowing built-ins resulting in confusing errors
+
+### Optional Extensions
+
+- Try the same thing with other built-ins like `list`, `len`
+
+## Filtering Based on Multiple Criteria {#sec-filtering-multiple-criteria}
+
+### Task Description
+
+Given a sequence with the variables `read_length`, `gc_content`, and `quality_score`, print `"Read passes all quality filters"` if:
+
+- The read length is at least `100`
+- The GC Content is no less than `0.4` and no more than `0.6`
+- The quality score is greater than `30`
+
+Otherwise, print `"Read filtered out"`.
+
+### Learning Objectives
+
+- Use multiple conditionals with `and`
+- Check ranges and comparison
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# All conditions met => "Read passes all quality filters"
+# At least one condition not met (e.g., quality score = 25) => "Read filtered out"
+```
+
+### Common Issues
+
+- Using `or` instead of `and`
+- Messing up the boundary values
+- Problems turning "plain language" to boolean conditions
+
+### Optional Extensions
+
+- Explain which filter was not passed
+
+## Formatting Scientific Output {#sec-formatting-scientific-output}
+
+### Task Description
+
+Given a `gene_id` (`"nrdA"`) and a `p_value` (`0.000012345`), print `"Gene [gene_id] => [p_value]"` formatting the p-value in scientific notation with two decimals.
+
+Then print a report about its significance:
+
+- If the p-value is less than `0.01`, print: `Highly significant`
+- If the p-value is less than `0.05`, print: `Significant`
+- If the p-value is less than `0.10`, print: `Almost significant`
+- If the p-value is greater than or equal to `0.10`, print: `Not significant`
+
+### Learning Objectives
+
+- Format numbers as scientific notation
+- if/elif/else chains
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# Output:
+# Gene nrdA => 1.23e-05
+# Highly significant
+```
+
+### Common Issues
+
+- Forgetting formatting codes in f-strings
+- Incorrect boolean logic
+
+### Optional Extensions
+
+- Only print a single message that includes the gene ID, the p-value, and the significance message.
+
+## Sequence Analysis {#sec-sequence-analysis}
+
+### Task Description
+
+Given a ssDNA sequence string (`"TGacTGatcGT"`), first, convert the sequence to all uppercase letters, then analyze the DNA sequence by printing various information about it:
+
+- Sequence length
+- Count of nucleotides, A, C, G, and T
+- Count of ambiguous bases (N)
+- GC Content as a percentage
+- Calculate the molecular weight of the sequence
+
+To calculate the molecular weight, use this formula from the [Thermo Fisher](https://www.thermofisher.com/us/en/home/references/ambion-tech-support/rna-tools-and-calculators/dna-and-rna-molecular-weights-and-conversions.html) website:
+
+$M.W. = (A_n * 313.2) + (T_n * 304.2) + (C_n * 289.2) + (G_n * 329.2) + 79.0$
+
+In the formula, $A_n$ means the number of `A` nucleotides, $T_n$ is the number of `T` nucleotides, and so on.
+
+_Note: Save each calculation to its own variable._
+
+### Learning Objectives
+
+- Perform multiple calculations to solve a single problem
+- Translate mathematical formulas into code
+- Perform basic sequence analysis
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# Should print:
+# DNA Sequence: TGACTGATCGT
+# Length: 11
+# Nucleotide counts
+# A: 2, C: 2, G: 3, T: 4
+# Ambiguous count: 0
+# GC Content (%): 45.45454545454545
+# Molecular weight: 3488.2
+```
+
+### Common Issues
+
+- Forgetting to convert to uppercase first
+- Operator precedence in GC content calculation
+- Not implementing the molecular weight formula correctly
+
+### Optional Extensions
+
+- Make up some rules about what properties a "high quality" sequence should have, e.g., no more than 3 ambiguous bases, having a certain length or GC percentage, etc. Then check the sequence against those rules.
+
+## Hard: Nested Conditions for Sequence Filtering {#sec-nested-conditions-sequence-filtering}
+
+### Task Description
+
+Given variables representing a DNA sequence's length, quality score, and ambiguous base count, write nested conditional statements to print filtering messages according to:
+
+- If sequence length is greater than or equal to `200`:
+    - If quality score is greater than or equal to `30`:
+        - If there is no more than one ambiguous base, print `"Sequence accepted"`
+        - Else print `"Sequence rejected: ambiguous bases present"`
+    - Else print `"Sequence rejected: low quality"`
+- Else print `"Sequence rejected: too short"`
+
+### Learning Objectives
+
+- Practice nested `if` statements
+- Use logical reasoning to handle multiple conditions
+
+### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```python
+# sequence_length = 250, quality_score = 32, ambiguous_bases = 0 → Sequence accepted
+# ambiguous_bases = 2 → Sequence rejected: too many ambiguous bases
+# quality_score = 28 → Sequence rejected: low quality
+# sequence_length = 150 → Sequence rejected: too short
+```
+
+### Common Issues
+
+- Missing or misplacing indentation
+- Not matching the correct `else` with the corresponding `if`
+
+### Optional Extensions
+
+- Can you re-write the solution so that it doesn't use nested conditional statements?

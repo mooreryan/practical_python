@@ -33,6 +33,14 @@ book:
       href: stats_models/index.qmd
     - io_files_contexts/index.qmd
   appendices:
+    - part: Basics
+      chapters:
+        - text: Practice Problems
+          href: basics/practice_problems/index.qmd
+        - text: Practice Problem Solutions
+          href: basics/practice_solutions/index.qmd
+        # - text: Stop & Think Answers
+        #   href: basics/think_answers/index.qmd
     - part: Errors & Exceptions
       chapters:
         - text: Stop & Think Answers
@@ -99,7 +107,7 @@ format:
       - includes/switch_images_for_theme.html
       - includes/simple_analytics.html
     # include-in-header: includes/site_verification.html
-    number-depth: 1
+    number-depth: 2
     toc-depth: 6
   # pdf:
   #   documentclass: scrreprt

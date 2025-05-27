@@ -1,0 +1,213 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-05-23"
+jupyter: python3
+---
+
+# Basics: Practice Problem Solutions {#sec-basics-practice-problem-solutions}
+
+## Solution to [Problem @sec-assigning-variables-printing]
+
+```{python}
+species_name = "Escherichia coli"
+genome_size = 4_600_000
+
+print(f"The species {species_name} has a genome size of {genome_size} base pairs.")
+```
+
+
+## Solution to [Problem @sec-calculating-formatting-gc-content]
+
+```{python}
+gc_count = 19_123
+total_bases = 40_000
+
+gc_content = gc_count / total_bases
+print(f"GC content: {gc_content:.2f}")
+```
+
+
+## Solution to [Problem @sec-string-slicing-concatenation]
+
+```{python}
+sequence = "ACTGGTCAA"
+print(f"{sequence=}")
+
+first_four = sequence[0:4]
+last_five = sequence[4:9]
+print(f"{first_four=}; {last_five=}")
+
+combined = first_four + last_five
+print(f"{combined=}")
+```
+
+## Solution to [Problem @sec-working-booleans-conditional-execution]
+
+```{python}
+quality_score = 28
+if quality_score >= 30:
+    print("Pass")
+else:
+    print("Fail")
+
+is_long_enough = True
+is_high_quality = False
+
+if is_long_enough and is_high_quality:
+    print("Accepted")
+else:
+    print("Rejected")
+```
+
+## Solution to [Problem @sec-using-builtin-functions-list-ops]
+
+```{python}
+expression_levels = [2.1, 3.4, 1.8, 6.2, 4.0]
+
+min_value = min(expression_levels)
+max_value = max(expression_levels)
+mean_value = sum(expression_levels) / len(expression_levels)
+
+
+print(f"min: {min_value}")
+print(f"max: {max_value}")
+print(f"mean: {mean_value}")
+
+first_item = expression_levels[0]
+print(f"type of first item: {type(first_item)}")
+```
+
+## Solution to [Problem @sec-truthy-falsy-checking-emptiness]
+
+```{python}
+sequences = []
+
+if sequences:
+    print("Sequences loaded!")
+else:
+    print("No sequences found!")
+
+print(bool(""))
+print(bool("AGTC"))
+print(bool(0))
+print(bool(3.14))
+print(bool([]))
+print(bool(["AGTC"]))
+```
+
+## Solution to [Problem @sec-avoiding-builtin-name-shadowing]
+
+```{python}
+str = "ACTG"
+print(len(str))
+
+# Note: Don't worry about the try/except for now.
+# There will be a whole chapter about it later!
+try:
+    pi = str(3.14)
+except TypeError as error:
+    print(f"There was an error! {error=}")
+```
+
+## Solution to [Problem @sec-filtering-multiple-criteria]
+
+```{python}
+read_length = 120
+gc_content = 0.55
+quality_score = 32
+
+read_length_good = read_length >= 100
+gc_content_good = 0.4 <= gc_content <= 0.6
+quality_score_good = quality_score > 30
+
+if read_length_good and gc_content_good and quality_score_good:
+    print("Read passes all quality filters")
+else:
+    print("Read filtered out")
+```
+
+## Solution to [Problem @sec-formatting-scientific-output]
+
+```{python}
+gene_id = "nrdA"
+p_value = 0.000012345
+
+print(f"Gene {gene_id} => {p_value:.2e}")
+
+if p_value < 0.01:
+    print("Highly significant")
+elif p_value < 0.05:
+    print("Significant")
+elif p_value < 0.10:
+    print("Almost significant")
+else:
+    print("Not significant")
+```
+
+## Solution to [Problem @sec-sequence-analysis]
+
+```{python}
+dna_sequence = "TGacTGatcGT".upper()
+
+sequence_length = len(dna_sequence)
+
+a_count = dna_sequence.count("A")
+c_count = dna_sequence.count("C")
+g_count = dna_sequence.count("G")
+t_count = dna_sequence.count("T")
+
+ambiguous_count = dna_sequence.count("N")
+
+gc_content = (g_count + c_count) / sequence_length * 100
+
+molecular_weight = (
+    a_count * 313.2 + t_count * 304.2 + c_count * 289.2 + g_count * 329.2 + 79.0
+)
+
+print(f"DNA Sequence: {dna_sequence}")
+print(f"Length: {sequence_length}")
+print(f"Nucleotide counts")
+print(f"A: {a_count}, C: {c_count}, G: {g_count}, T: {t_count}")
+print(f"Ambiguous count: {ambiguous_count}")
+print(f"GC Content (%): {gc_content:.1f}")
+print(f"Molecular weight: {molecular_weight:.1f}")
+```
+
+## Solution to [Problem @sec-nested-conditions-sequence-filtering]
+
+```{python}
+sequence_length = 250
+quality_score = 32
+ambiguous_bases = 1
+
+if sequence_length >= 200:
+    if quality_score >= 30:
+        if ambiguous_bases <= 1:
+            print("Sequence accepted")
+        else:
+            print("Sequence rejected: too many ambiguous bases")
+    else:
+        print("Sequence rejected: low quality")
+else:
+    print("Sequence rejected: too short")
+```
+
+### Optional Extension
+
+Here is one way you might solve the optional extension for this problem:
+
+```{python}
+sequence_length = 250
+quality_score = 32
+ambiguous_bases = 1
+
+if sequence_length < 200:
+    print("Sequence rejected: too short")
+elif quality_score < 30:
+    print("Sequence rejected: low quality")
+elif ambiguous_bases > 1:
+    print("Sequence rejected: too many ambiguous bases")
+else:
+    print("Sequence accepted")
+```
