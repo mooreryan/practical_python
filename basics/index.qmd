@@ -1283,3 +1283,7 @@ These basics form the foundation for more advanced programming concepts we'll ex
 Don't worry if everything hasn't clicked yet. Programming is a skill that develops with practice. Focus on understanding one concept at a time, and remember that you can always refer back to this chapter as a reference.
 
 Next up, we'll build on these basics to work with more complex data structures and write functions of our own!
+
+## Practice Problems
+
+Take a look at @sec-basics-practice-problems for some practice problems. Try working through them. Applying the concepts from this chapter is one of the most effective ways to learn!

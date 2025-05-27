@@ -5,7 +5,7 @@ date: "2025-05-23"
 jupyter: python3
 ---
 
-# Basics: Practice Problems
+# Basics: Practice Problems {#sec-basics-practice-problems}
 
 These are the practice problems for @sec-basics.  For solutions, see @sec-basics-practice-problem-solutions.
 
