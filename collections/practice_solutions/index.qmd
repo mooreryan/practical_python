@@ -1,0 +1,243 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-05-27"
+jupyter: python3
+---
+
+# Collections: Practice Problem Solutions {#sec-collections-practice-problem-solutions}
+
+## Solution to [Problem @sec-creating-accessing-lists]
+
+```{python}
+gene_names = ["TP53", "BRCA1", "MDM2"]
+print(gene_names[0])
+print(gene_names[1])
+print(gene_names[2])
+```
+
+## Solution to [Problem @sec-slicing-lists]
+
+```{python}
+bases = ["A", "T", "G", "C", "G", "C"]
+
+first_three = bases[:3]
+last_two = bases[-2:]
+
+print(first_three)
+print(last_two)
+```
+
+## Solution to [Problem @sec-using-list-methods-append-remove]
+
+```{python}
+genes = ["TP53", "BRCA1"]
+
+genes.append("ATM")
+genes.remove("BRCA1")
+
+print(genes)
+```
+
+## Solution to [Problem @sec-creating-tuples]
+
+```{python}
+gene_location = (2_345_678, 2_346_987)
+print(gene_location)
+```
+
+## Solution to [Problem @sec-dictionary-creation-value-lookup]
+
+```{python}
+gene_functions = {"TP53": "tumor suppression", "BRCA1": "DNA repair"}
+print(gene_functions["TP53"])
+```
+
+## Solution to [Problem @sec-using-dictionary-get-method]
+
+```{python}
+gene_functions = {"TP53": "tumor suppression", "BRCA1": "DNA repair"}
+
+result = gene_functions.get("MDM2", "Unknown")
+
+print(result)
+```
+
+## Solution to [Problem @sec-looping-through-list]
+
+```{python}
+expression = [2.3, 3.1, 1.9]
+
+for value in expression:
+    print(value)
+```
+
+## Solution to [Problem @sec-counting-items-with-loop]
+
+```{python}
+sequence = "AAGCTTAA"
+count = 0
+
+for base in sequence:
+    if base == "A":
+        count += 1
+
+print(count)
+```
+
+## Solution to [Problem @sec-filtering-list-with-for-loop]
+
+```{python}
+genes = ["TP53", "BRCA1", "MDM2", "ATM"]
+genes_with_A = []
+
+for gene in genes:
+    if "A" in gene:
+        genes_with_A.append(gene)
+
+print(genes_with_A)
+```
+
+## Solution to [Problem @sec-using-in-operator]
+
+```{python}
+genes = ["TP53", "BRCA1", "MDM2"]
+
+if "BRCA1" in genes:
+    print("Found")
+else:
+    print("Not found")
+```
+
+## Solution to [Problem @sec-nested-lists-indexing]
+
+```{python}
+samples = [
+    ["Sample1", [1.1, 1.2, 1.3]],
+    ["Sample2", [2.1, 2.2, 2.3]],
+    ["Sample3", [3.1, 3.2, 3.3]],
+]
+
+print(samples[2][1][0])
+```
+
+### Optional Extension
+
+Here is one way that you could nested `for` loops with enumerate to print the values and their indices:
+
+```{python}
+for sample_index, sample_data in enumerate(samples):
+    sample_name, observations = sample_data
+    for observation_index, observation in enumerate(observations):
+        print(f"{sample_index}: {sample_name}; {observation_index}: {observation}")
+```
+
+## Solution to [Problem @sec-building-dict-from-two-lists]
+
+```{python}
+gene_ids = ["nrdA", "nrdJ", "nrdD"]
+products = ["Class I RNR", "Class II RNR", "Class III RNR"]
+
+gene_products = {}
+
+for gene_id, product in zip(gene_ids, products):
+    gene_products[gene_id] = product
+
+print(gene_products)
+```
+
+## Solution to [Problem @sec-list-comprehension-sequence-conversion]
+
+```{python}
+dna = "ATGCTTAC"
+
+rna = ["U" if base == "T" else base for base in dna]
+
+print(rna)
+```
+
+## Solution to [Problem @sec-counting-with-defaultdict]
+
+```{python}
+from collections import defaultdict
+
+sequence = "AAGCGAAGCT"
+counts = defaultdict(int)
+
+for base in sequence:
+    counts[base] += 1
+
+for base, count in counts.items():
+    print(f"{base} => {count}")
+```
+
+## Solution to [Problem @sec-nested-dict-access]
+
+```{python}
+gene_info = {
+    "nrdA": {"product": "Class I RNR", "location": {"start": 1023, "end": 3268}}
+}
+
+start = gene_info["nrdA"]["location"]["start"]
+end = gene_info["nrdA"]["location"]["end"]
+
+print(f"{start=}")
+print(f"{end=}")
+```
+
+### Optional Extension
+
+Let's add another gene to the dictionary and loop through it.
+
+```{python}
+gene_info["new_gene"] = {
+    "product": "Some Protein",
+    "location": {"start": 5000, "end": 8000},
+}
+
+for gene_id, gene_data in gene_info.items():
+    start = gene_data["location"]["start"]
+    end = gene_data["location"]["end"]
+
+    print(f"Gene={gene_id}; {start=}; {end=}")
+```
+
+## Solution to [Problem @sec-reverse-complement-dna-sequence]
+
+```{python}
+complement = {"A": "T", "T": "A", "G": "C", "C": "G"}
+
+sequence = "AAAACCCGGT"
+rev_comp = ""
+
+for base in reversed(sequence):
+    rev_comp += complement[base]
+
+print(rev_comp)
+```
+
+## Solution to [Problem @sec-simulating-random-growth-list]
+
+```{python}
+BACTERIA_COUNT = 10
+bacteria = [5] * BACTERIA_COUNT
+
+for turn in range(10):
+    print(f"Turn {turn}: {bacteria}")
+
+    # Check if this is an even turn
+    is_even_turn = turn % 2 == 0
+
+    for i in range(BACTERIA_COUNT):
+        # Check if this bacteria is at an even index
+        is_even_index = i % 2 == 0
+
+        # Even turns: even-indexed bacteria grow
+        if is_even_turn and is_even_index:
+            bacteria[i] += 1
+        # Odd turns: odd-indexed bacteria shrink
+        elif not is_even_turn and not is_even_index:
+            bacteria[i] -= 1
+
+print(f"At the end: {bacteria}")
+```

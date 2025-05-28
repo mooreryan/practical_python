@@ -41,6 +41,12 @@ book:
           href: basics/practice_solutions/index.qmd
         # - text: Stop & Think Answers
         #   href: basics/think_answers/index.qmd
+    - part: Collections
+      chapters:
+        - text: Practice Problems
+          href: collections/practice_problems/index.qmd
+        - text: Practice Problem Solutions
+          href: collections/practice_solutions/index.qmd
     - part: Errors & Exceptions
       chapters:
         - text: Stop & Think Answers

@@ -357,7 +357,7 @@ except FileNotFoundError:
     print(f"{filename} was not found!")
 ```
 
-TODO: make a note about the stdin stuff needind to put the {} around python to try it for yourself.
+_Note: If you are working with the Quarto notebook associated with these solutions, you will need to put the `{}` around the Python block, like `{python}` so that the example can be run. Because it accepts input from standard in, it is not run when generating the HTML content._
 
 6. Write an integer list to a text file, then read it and compute their sum.
 

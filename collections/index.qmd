@@ -7,7 +7,7 @@ jupyter: python3
 
 # Collections {#sec-collections}
 
-In this chapter, we'll explore Python's fundamental data structures and collections -- the building blocks that help organize and analyze biological data effectively. From strings for handling DNA sequences to dictionaries for mapping genes to functions, you'll learn how to use these tools through practical examples. We'll cover when and why to use each type, giving you the foundation needed to tackle real bioinformatics problems.
+In this chapter, we'll explore Python's fundamental data structures and collections, building blocks that will help you organize and analyze biological data effectively. From strings for handling DNA sequences to dictionaries for mapping genes to functions, you'll learn how to use these tools through practical examples. We'll cover when and why to use each type, giving you the foundation needed to tackle real bioinformatics problems.
 
 ## Introduction to Python Collections
 
@@ -2018,3 +2018,7 @@ We've covered a lot of material about some of Python's most commonly used data s
 - Missing dictionary keys
 - Infinite loops
 - Using lists when dictionaries would be more appropriate
+
+## Practice Problems
+
+Take a look at @sec-collections-practice-problems for some practice problems. Try working through them. Applying the concepts from this chapter is one of the most effective ways to learn!

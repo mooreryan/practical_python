@@ -1,0 +1,634 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2025-05-27"
+jupyter: python3
+---
+
+# Collections: Practice Problems {#sec-collections-practice-problems}
+
+These are the practice problems for @sec-collections.  For solutions, see @sec-collections-practice-problem-solutions.
+
+## Creating and Accessing Lists {#sec-creating-accessing-lists}
+
+### Task Description
+
+Create a list called `gene_names` containing the strings `"TP53"`, `"BRCA1"`, and `"MDM2"`. Then, print out each gene name by accessing its items one at a time using their indices.
+
+### Learning Objectives
+
+- Create a list with multiple items
+- Access list elements by index
+- Print list elements
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Should print:
+# TP53
+# BRCA1
+# MDM2
+```
+
+### Common Issues
+
+- Forgetting to use square brackets for list creation or indexing
+- Starting index at 1 instead of 0
+
+### Optional Extensions
+
+- Use a for loop to print all gene names
+
+
+## Slicing Lists {#sec-slicing-lists}
+
+### Task Description
+
+Given the list `bases = ["A", "T", "G", "C", "A", "T"]`, use slicing to create:
+- `first_three`, the first three items,
+- `last_two`, the last two items.
+
+Print both variables.
+
+### Learning Objectives
+
+- Use list slicing to extract parts of a list
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# ['A', 'T', 'G']
+# ['G', 'C']
+```
+
+### Common Issues
+
+- Off-by-one errors in slicing
+- Misusing negative indices
+
+### Optional Extensions
+
+- Print the middle two items of the list
+- Practice getting different sized slices from the end of the collection
+
+## Using List Methods: `append` and `remove` {#sec-using-list-methods-append-remove}
+
+### Task Description
+
+Start with `genes = ["TP53", "BRCA1"]`. Add `"ATM"` to the end of the list, then remove `"BRCA1"`. Print the resulting list.
+
+### Learning Objectives
+
+- Modify lists by adding and removing items
+- Use `append()` and `remove()` list methods
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# ['TP53', 'ATM']
+```
+
+### Common Issues
+
+- Trying to remove an item not present in the list
+- Using list methods as built-in functions (e.g., `append(numbers, 3)` rather than `numbers.append(3)`)
+
+### Optional Extensions
+
+- Add another gene at the start using `insert()`
+
+## Creating a Tuple {#sec-creating-tuples}
+
+### Task Description
+
+Store the chromosome location for a gene, which starts at position `2_345_678` and ends at `2_346_987`, as a tuple. Print the tuple.
+
+### Learning Objectives
+
+- Create and print a tuple to store related information
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# (2345678, 2346987)
+```
+
+### Common Issues
+
+- Using brackets instead of parentheses
+
+### Optional Extensions
+
+- Print the start and end positions separately by indexing the tuple
+- Try to reassign (change) the first element of the tuple to another value. What happens?
+
+## Dictionary Creation and Value Lookup {#sec-dictionary-creation-value-lookup}
+
+### Task Description
+
+Create a dictionary named `gene_functions` mapping the gene `"TP53"` to `"tumor suppression"` and `"BRCA1"` to `"DNA repair"`. Then, use the dictionary to print the function of `"TP53"`.
+
+### Learning Objectives
+
+- Create dictionaries with key-value pairs
+- Access dictionary values using keys
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# tumor suppression
+```
+
+### Common Issues
+
+- Using parentheses or square brackets instead of curly brackets for dictionary literals
+- Misspelling keys
+
+### Optional Extensions
+
+- Try to print the value for a gene that doesn't exist. What happens?
+
+## Using Dictionary `get` Method {#sec-using-dictionary-get-method}
+
+### Task Description
+
+Use the `gene_functions` dictionary from the previous task. Retrieve the function for `"MDM2"` safely using the `get` method, with a default value of `"Unknown"`. Print the result.
+
+### Learning Objectives
+
+- Use the `get()` method to safely access dictionary values
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# Unknown
+```
+
+### Common Issues
+
+- Not exactly an "issue" _per se_, but, forgetting the default value for `get`, leading to `None`
+- Confusing square bracket dictionary access and the `get()` method
+
+### Optional Extensions
+
+- Add `"MDM2": "p53 regulation"` to the dictionary, then use `get` again
+
+## Looping Through a List {#sec-looping-through-list}
+
+### Task Description
+
+Given `expression = [2.3, 3.1, 1.9]`, write a for loop that prints each value in the list.
+
+### Learning Objectives
+
+- Use a for loop to iterate over a list
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# 2.3
+# 3.1
+# 1.9
+```
+
+### Common Issues
+
+- Forgetting indentation within the loop block
+- Using the wrong variable name inside the loop
+
+### Optional Extensions
+
+- Print the index and value together using `enumerate()`
+
+## Counting Items with a Loop {#sec-counting-items-with-loop}
+
+### Task Description
+
+Given the string `sequence = "AAGCTTAA"`, count how many times `"A"` appears by looping through the string and incrementing a counter variable. Print the count.
+
+### Learning Objectives
+
+- Use a loop and a counter to count characters
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# 4
+```
+
+### Common Issues
+
+- Counting every base rather than only the adenines
+- Using `base = "A"` instead of `base == "A"`
+
+### Optional Extensions
+
+- Use the string method `count()` to check your answer
+
+## Filtering a List with a For Loop {#sec-filtering-list-with-for-loop}
+
+### Task Description
+
+Given a list `genes = ["TP53", "BRCA1", "MDM2", "ATM"]`, create a new list named `genes_with_A` containing only gene names that include the letter `'A'`. Print this filtered list.
+
+### Learning Objectives
+
+- Use a for loop with a conditional to filter and build a new list
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# ['BRCA1', 'ATM']
+```
+
+### Common Issues
+
+- Forgetting to initialize the new list before the loop
+- Appending all items, not just those with 'A'
+
+### Optional Extensions
+
+- Solve the same task using a list comprehension
+
+## Using the `in` Operator {#sec-using-in-operator}
+
+### Task Description
+
+Given a list of gene names `genes = ["TP53", "BRCA1", "MDM2"]`, check if `"BRCA1"` is present in the list, and print `"Found"` if it is, or `"Not found"` otherwise.
+
+### Learning Objectives
+
+- Use the `in` operator to test list membership
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# Found
+```
+
+### Common Issues
+
+- Checking the wrong value or casing
+
+### Optional Extensions
+
+- Prompt the user to enter a gene name and check if it's in the list
+
+## Nested Lists and Indexing {#sec-nested-lists-indexing}
+
+### Task Description
+
+Given the nested list:
+
+```python
+samples = [
+    ["Sample1", [1.1, 1.2, 1.3]],
+    ["Sample2", [2.1, 2.2, 2.3]],
+    ["Sample3", [3.1, 3.2, 3.3]],
+]
+```
+
+Print the value `3.1` by correctly indexing into `samples`.
+
+### Learning Objectives
+
+- Index into nested lists
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# 3.1
+```
+
+### Common Issues
+
+- Mixing up list indices
+- Using the 1-based indexing rather than 0-based indexing (especially if you're used to the R programming language)
+
+### Optional Extensions
+
+- Print all values for "Sample2"
+- Use nested `for` loops with enumerate to print values with their indices
+
+## Building a Dictionary from Two Lists {#sec-building-dict-from-two-lists}
+
+### Task Description
+
+You are given:
+
+```python
+gene_ids = ["nrdA",  "nrdJ", "nrdD"]
+products = ["Class I RNR", "Class II RNR", "Class III RNR"]
+```
+
+Build a dictionary mapping each gene id to its product using `zip()` and a `for` loop. Print the resulting dictionary.
+
+### Learning Objectives
+
+- Loop through multiple lists
+- Build a dictionary programmatically
+
+#### Solution
+
+```{python}
+gene_ids = ["nrdA",  "nrdJ", "nrdD"]
+products = ["Class I RNR", "Class II RNR", "Class III RNR"]
+
+gene_products = {}
+for i in range(len(gene_ids)):
+    gene_products[gene_ids[i]] = products[i]
+
+print(gene_products)
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# {'nrdA': 'Class I RNR', 'nrdJ': 'Class II RNR', 'nrdD': 'Class III RNR'}
+```
+
+### Common Issues
+
+- Mixing up the order of items in the `zip`
+- Mixing up which list provides keys and which provides values
+- In more complicated problems, overwriting existing dictionary keys
+- Potential problems when zipping lists with different lengths
+
+### Optional Extensions
+
+- Use a `for` loop, but without using the `zip()` function to get key-value pairs
+- Use `zip()`, but don't use a `for` loop to build the dictionary
+
+## List Comprehension for Sequence Conversion {#sec-list-comprehension-sequence-conversion}
+
+### Task Description
+
+Given `dna = "ATGCTTAC"`, use a list comprehension to generate a list of its RNA bases (replace every `"T"` with `"U"`, others stay the same). Print the resulting list.
+
+### Learning Objectives
+
+- Use list comprehensions for transformation
+- Apply conditional logic inside a comprehension
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# ['A', 'U', 'G', 'C', 'U', 'U', 'A', 'C']
+```
+
+### Common Issues
+
+- Using `if base = "T"` instead of `==`
+- Not understanding the position/order of `if` and `else` in the comprehension
+
+### Optional Extensions
+
+- Join the resulting list into a string using `join()`
+
+## Medium: Counting with `defaultdict` {#sec-counting-with-defaultdict}
+
+### Task Description
+
+Given a DNA string `sequence = "AAGCGAAGCT"`, use `defaultdict` from the `collections` module to count the occurrences of each base. Print the counts for each base.
+
+### Learning Objectives
+
+- Import and use `defaultdict`
+- Count frequencies programmatically
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Something like:
+# A => 4
+# G => 3
+# C => 2
+# T => 1
+```
+
+### Common Issues
+
+- Forgetting to import `defaultdict`
+- Not using `counts[base] += 1` properly
+
+### Optional Extensions
+
+- Try using a regular dictionary rather than a `defaultdict`
+- Try using a `Counter` instead of a `defaultdict`
+
+## Nested Dictionaries and Access {#sec-nested-dict-access}
+
+### Task Description
+
+Given the nested dictionary:
+
+```python
+gene_info = {
+    "nrdA": {"product": "Class I RNR", "location": {"start": 1023, "end": 3268}}
+}
+```
+
+Print the start and end position of `"nrdA"` by accessing nested keys.
+
+### Learning Objectives
+
+- Access values in nested dictionaries
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# start=1023
+# end=3268
+```
+
+### Common Issues
+
+- Misplacing or omitting square brackets
+- Wrong ordering of keys
+
+### Optional Extensions
+
+- Try to print a value for a key that does not exist and observe the error
+- Add another gene to the dictionary, and loop through start positions for all genes
+
+## Reverse Complement DNA Sequence {#sec-reverse-complement-dna-sequence}
+
+### Task Description
+
+Write code that, given a DNA sequence string (e.g., `"AAAACCCGGT"`), prints its reverse complement as a string. (A <-> T, C <-> G). Use a dictionary for base pairing and a loop.
+
+### Learning Objectives
+
+- Use dictionaries for mapping
+- Loop through a string in reverse
+- Concatenate strings to build a new sequence
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Input: AAAACCCGGT
+# Output: ACCGGGTTTT
+
+# Input: "AGTC"
+# Output: "GACT"
+```
+
+### Common Issues
+
+- Incorrect complement dictionary
+- Forgetting to reverse the DNA sequence
+- In more realistic problems, improper handling of ambiguous bases (see [IUPAC conventions](https://arep.med.harvard.edu/labgc/adnan/projects/Utilities/revcomp.html))
+
+### Optional Extensions
+
+- Write your solution using a list comprehension and the `join()` method
+- Don't use a dictionary to store base complement info
+
+## Simulating Random Growth in a List {#sec-simulating-random-growth-list}
+
+### Task Description
+
+Simulate a population of 10 bacteria, each with starting size 5. On each turn, every bacterium will grow or shrink according to these rules:
+
+- On even numbered turns (0, 2, 4, ...), bacteria with even indices grow by 1 unit, and the other bacteria stay the same
+- On odd numbered turns (1, 3, 5, ...), bacteria with even indices stay the same, and the other bacteria shrink by 1
+
+Run the simulation for 10 turns, starting with turn `0`. At the start of each turn, print the bacteria list. Finally, when the simulation is over, print the final bacteria list.
+
+### Learning Objectives
+
+- Practice with nested loops
+- Update values in a list
+- Check conditions for breaking loops
+
+#### Solution
+
+```{python}
+# Write your code here!
+```
+
+### Test Cases
+
+```{python}
+# Output:
+# Turn 0: [5, 5, 5, ...]
+# Turn 1: [...]
+# ...
+# Turn 9: [...]
+# At the end: [...]
+```
+
+### Common Issues
+
+- 0-based indexing issues or forgetting 0 counts as even
+- Mixing up conditional logic
+- Forgetting how the modulo operator (`%`) works
+- Printing results at the wrong time in the loop (e.g., at the end rather than the start)
+
+### Optional Extensions
+
+- Track and print the average population size at the end of each turn
+- Change the rules to use the [random](https://docs.python.org/3/library/random.html) module to make a more interesting simulation
