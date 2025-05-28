@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ryan M. Moore, PhD">
-<meta name="dcterms.date" content="2025-05-23">
+<meta name="dcterms.date" content="2025-05-27">
 <meta name="description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
 
-<title>Appendix A — Basics: Practice Problems – Practical Python Programming for Life Scientists</title>
+<title>Appendix C — Collections: Practice Problems – Practical Python Programming for Life Scientists</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../basics/practice_solutions/index.html" rel="next">
-<link href="../../io_files_contexts/index.html" rel="prev">
+<link href="../../collections/practice_solutions/index.html" rel="next">
+<link href="../../basics/practice_solutions/index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -110,40 +110,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Appendix A — Basics: Practice Problems – Practical Python Programming for Life Scientists">
+<meta property="og:title" content="Appendix C — Collections: Practice Problems – Practical Python Programming for Life Scientists">
 <meta property="og:description" content="Learn essential Python programming skills tailored for life science research. This practical guide helps biology and life science students with no prior coding experience develop fundamental programming and data analysis skills.">
 <meta property="og:site_name" content="Practical Python Programming for Life Scientists">
-<link rel="canonical" href="https://pythonforlifescientists.com/basics/practice_problems/">
+<link rel="canonical" href="https://pythonforlifescientists.com/collections/practice_problems/">
 </head>
 
 <body class="nav-sidebar docked quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
@@ -315,7 +286,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Appendices</li><li class="breadcrumb-item"><a href="../../basics/practice_problems/index.html">Basics</a></li><li class="breadcrumb-item"><a href="../../basics/practice_problems/index.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Practice Problems</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Appendices</li><li class="breadcrumb-item"><a href="../../collections/practice_problems/index.html">Collections</a></li><li class="breadcrumb-item"><a href="../../collections/practice_problems/index.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Practice Problems</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -418,16 +389,16 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Basics</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../basics/practice_problems/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../basics/practice_problems/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Practice Problems</span></span></a>
   </div>
 </li>
@@ -441,16 +412,16 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Collections</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../collections/practice_problems/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../collections/practice_problems/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Practice Problems</span></span></a>
   </div>
 </li>
@@ -572,115 +543,203 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-assigning-variables-printing" id="toc-sec-assigning-variables-printing" class="nav-link active" data-scroll-target="#sec-assigning-variables-printing"><span class="header-section-number">A.1</span> Assigning Variables and Printing</a>
+  <li><a href="#sec-creating-accessing-lists" id="toc-sec-creating-accessing-lists" class="nav-link active" data-scroll-target="#sec-creating-accessing-lists"><span class="header-section-number">C.1</span> Creating and Accessing Lists</a>
   <ul>
   <li><a href="#task-description" id="toc-task-description" class="nav-link" data-scroll-target="#task-description">Task Description</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a>
+  <ul>
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases" id="toc-test-cases" class="nav-link" data-scroll-target="#test-cases">Test Cases</a></li>
   <li><a href="#common-issues" id="toc-common-issues" class="nav-link" data-scroll-target="#common-issues">Common Issues</a></li>
   <li><a href="#optional-extensions" id="toc-optional-extensions" class="nav-link" data-scroll-target="#optional-extensions">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-calculating-formatting-gc-content" id="toc-sec-calculating-formatting-gc-content" class="nav-link" data-scroll-target="#sec-calculating-formatting-gc-content"><span class="header-section-number">A.2</span> Calculating and Formatting GC Content</a>
+  <li><a href="#sec-slicing-lists" id="toc-sec-slicing-lists" class="nav-link" data-scroll-target="#sec-slicing-lists"><span class="header-section-number">C.2</span> Slicing Lists</a>
   <ul>
   <li><a href="#task-description-1" id="toc-task-description-1" class="nav-link" data-scroll-target="#task-description-1">Task Description</a></li>
-  <li><a href="#learning-objectives-1" id="toc-learning-objectives-1" class="nav-link" data-scroll-target="#learning-objectives-1">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-1" id="toc-learning-objectives-1" class="nav-link" data-scroll-target="#learning-objectives-1">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-1" id="toc-solution-1" class="nav-link" data-scroll-target="#solution-1">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-1" id="toc-test-cases-1" class="nav-link" data-scroll-target="#test-cases-1">Test Cases</a></li>
   <li><a href="#common-issues-1" id="toc-common-issues-1" class="nav-link" data-scroll-target="#common-issues-1">Common Issues</a></li>
   <li><a href="#optional-extensions-1" id="toc-optional-extensions-1" class="nav-link" data-scroll-target="#optional-extensions-1">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-string-slicing-concatenation" id="toc-sec-string-slicing-concatenation" class="nav-link" data-scroll-target="#sec-string-slicing-concatenation"><span class="header-section-number">A.3</span> String Slicing and Concatenation</a>
+  <li><a href="#sec-using-list-methods-append-remove" id="toc-sec-using-list-methods-append-remove" class="nav-link" data-scroll-target="#sec-using-list-methods-append-remove"><span class="header-section-number">C.3</span> Using List Methods: <code>append</code> and <code>remove</code></a>
   <ul>
   <li><a href="#task-description-2" id="toc-task-description-2" class="nav-link" data-scroll-target="#task-description-2">Task Description</a></li>
-  <li><a href="#learning-objectives-2" id="toc-learning-objectives-2" class="nav-link" data-scroll-target="#learning-objectives-2">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-2" id="toc-learning-objectives-2" class="nav-link" data-scroll-target="#learning-objectives-2">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-2" id="toc-test-cases-2" class="nav-link" data-scroll-target="#test-cases-2">Test Cases</a></li>
   <li><a href="#common-issues-2" id="toc-common-issues-2" class="nav-link" data-scroll-target="#common-issues-2">Common Issues</a></li>
   <li><a href="#optional-extensions-2" id="toc-optional-extensions-2" class="nav-link" data-scroll-target="#optional-extensions-2">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-working-booleans-conditional-execution" id="toc-sec-working-booleans-conditional-execution" class="nav-link" data-scroll-target="#sec-working-booleans-conditional-execution"><span class="header-section-number">A.4</span> Working with Booleans and Conditional Execution</a>
+  <li><a href="#sec-creating-tuples" id="toc-sec-creating-tuples" class="nav-link" data-scroll-target="#sec-creating-tuples"><span class="header-section-number">C.4</span> Creating a Tuple</a>
   <ul>
   <li><a href="#task-description-3" id="toc-task-description-3" class="nav-link" data-scroll-target="#task-description-3">Task Description</a></li>
-  <li><a href="#learning-objectives-3" id="toc-learning-objectives-3" class="nav-link" data-scroll-target="#learning-objectives-3">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-3" id="toc-learning-objectives-3" class="nav-link" data-scroll-target="#learning-objectives-3">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-3" id="toc-solution-3" class="nav-link" data-scroll-target="#solution-3">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-3" id="toc-test-cases-3" class="nav-link" data-scroll-target="#test-cases-3">Test Cases</a></li>
   <li><a href="#common-issues-3" id="toc-common-issues-3" class="nav-link" data-scroll-target="#common-issues-3">Common Issues</a></li>
   <li><a href="#optional-extensions-3" id="toc-optional-extensions-3" class="nav-link" data-scroll-target="#optional-extensions-3">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-using-builtin-functions-list-ops" id="toc-sec-using-builtin-functions-list-ops" class="nav-link" data-scroll-target="#sec-using-builtin-functions-list-ops"><span class="header-section-number">A.5</span> Using Built-in Functions and List Operations</a>
+  <li><a href="#sec-dictionary-creation-value-lookup" id="toc-sec-dictionary-creation-value-lookup" class="nav-link" data-scroll-target="#sec-dictionary-creation-value-lookup"><span class="header-section-number">C.5</span> Dictionary Creation and Value Lookup</a>
   <ul>
   <li><a href="#task-description-4" id="toc-task-description-4" class="nav-link" data-scroll-target="#task-description-4">Task Description</a></li>
-  <li><a href="#learning-objectives-4" id="toc-learning-objectives-4" class="nav-link" data-scroll-target="#learning-objectives-4">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-4" id="toc-learning-objectives-4" class="nav-link" data-scroll-target="#learning-objectives-4">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-4" id="toc-solution-4" class="nav-link" data-scroll-target="#solution-4">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-4" id="toc-test-cases-4" class="nav-link" data-scroll-target="#test-cases-4">Test Cases</a></li>
   <li><a href="#common-issues-4" id="toc-common-issues-4" class="nav-link" data-scroll-target="#common-issues-4">Common Issues</a></li>
   <li><a href="#optional-extensions-4" id="toc-optional-extensions-4" class="nav-link" data-scroll-target="#optional-extensions-4">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-truthy-falsy-checking-emptiness" id="toc-sec-truthy-falsy-checking-emptiness" class="nav-link" data-scroll-target="#sec-truthy-falsy-checking-emptiness"><span class="header-section-number">A.6</span> Truthy/Falsy and Checking Emptiness</a>
+  <li><a href="#sec-using-dictionary-get-method" id="toc-sec-using-dictionary-get-method" class="nav-link" data-scroll-target="#sec-using-dictionary-get-method"><span class="header-section-number">C.6</span> Using Dictionary <code>get</code> Method</a>
   <ul>
   <li><a href="#task-description-5" id="toc-task-description-5" class="nav-link" data-scroll-target="#task-description-5">Task Description</a></li>
-  <li><a href="#learning-objectives-5" id="toc-learning-objectives-5" class="nav-link" data-scroll-target="#learning-objectives-5">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-5" id="toc-learning-objectives-5" class="nav-link" data-scroll-target="#learning-objectives-5">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-5" id="toc-solution-5" class="nav-link" data-scroll-target="#solution-5">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-5" id="toc-test-cases-5" class="nav-link" data-scroll-target="#test-cases-5">Test Cases</a></li>
   <li><a href="#common-issues-5" id="toc-common-issues-5" class="nav-link" data-scroll-target="#common-issues-5">Common Issues</a></li>
   <li><a href="#optional-extensions-5" id="toc-optional-extensions-5" class="nav-link" data-scroll-target="#optional-extensions-5">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-avoiding-builtin-name-shadowing" id="toc-sec-avoiding-builtin-name-shadowing" class="nav-link" data-scroll-target="#sec-avoiding-builtin-name-shadowing"><span class="header-section-number">A.7</span> Avoiding Built-in Name Shadowing</a>
+  <li><a href="#sec-looping-through-list" id="toc-sec-looping-through-list" class="nav-link" data-scroll-target="#sec-looping-through-list"><span class="header-section-number">C.7</span> Looping Through a List</a>
   <ul>
   <li><a href="#task-description-6" id="toc-task-description-6" class="nav-link" data-scroll-target="#task-description-6">Task Description</a></li>
-  <li><a href="#learning-objectives-6" id="toc-learning-objectives-6" class="nav-link" data-scroll-target="#learning-objectives-6">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-6" id="toc-learning-objectives-6" class="nav-link" data-scroll-target="#learning-objectives-6">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-6" id="toc-solution-6" class="nav-link" data-scroll-target="#solution-6">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-6" id="toc-test-cases-6" class="nav-link" data-scroll-target="#test-cases-6">Test Cases</a></li>
   <li><a href="#common-issues-6" id="toc-common-issues-6" class="nav-link" data-scroll-target="#common-issues-6">Common Issues</a></li>
   <li><a href="#optional-extensions-6" id="toc-optional-extensions-6" class="nav-link" data-scroll-target="#optional-extensions-6">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-filtering-multiple-criteria" id="toc-sec-filtering-multiple-criteria" class="nav-link" data-scroll-target="#sec-filtering-multiple-criteria"><span class="header-section-number">A.8</span> Filtering Based on Multiple Criteria</a>
+  <li><a href="#sec-counting-items-with-loop" id="toc-sec-counting-items-with-loop" class="nav-link" data-scroll-target="#sec-counting-items-with-loop"><span class="header-section-number">C.8</span> Counting Items with a Loop</a>
   <ul>
   <li><a href="#task-description-7" id="toc-task-description-7" class="nav-link" data-scroll-target="#task-description-7">Task Description</a></li>
-  <li><a href="#learning-objectives-7" id="toc-learning-objectives-7" class="nav-link" data-scroll-target="#learning-objectives-7">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-7" id="toc-learning-objectives-7" class="nav-link" data-scroll-target="#learning-objectives-7">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-7" id="toc-solution-7" class="nav-link" data-scroll-target="#solution-7">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-7" id="toc-test-cases-7" class="nav-link" data-scroll-target="#test-cases-7">Test Cases</a></li>
   <li><a href="#common-issues-7" id="toc-common-issues-7" class="nav-link" data-scroll-target="#common-issues-7">Common Issues</a></li>
   <li><a href="#optional-extensions-7" id="toc-optional-extensions-7" class="nav-link" data-scroll-target="#optional-extensions-7">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-formatting-scientific-output" id="toc-sec-formatting-scientific-output" class="nav-link" data-scroll-target="#sec-formatting-scientific-output"><span class="header-section-number">A.9</span> Formatting Scientific Output</a>
+  <li><a href="#sec-filtering-list-with-for-loop" id="toc-sec-filtering-list-with-for-loop" class="nav-link" data-scroll-target="#sec-filtering-list-with-for-loop"><span class="header-section-number">C.9</span> Filtering a List with a For Loop</a>
   <ul>
   <li><a href="#task-description-8" id="toc-task-description-8" class="nav-link" data-scroll-target="#task-description-8">Task Description</a></li>
-  <li><a href="#learning-objectives-8" id="toc-learning-objectives-8" class="nav-link" data-scroll-target="#learning-objectives-8">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-8" id="toc-learning-objectives-8" class="nav-link" data-scroll-target="#learning-objectives-8">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-8" id="toc-solution-8" class="nav-link" data-scroll-target="#solution-8">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-8" id="toc-test-cases-8" class="nav-link" data-scroll-target="#test-cases-8">Test Cases</a></li>
   <li><a href="#common-issues-8" id="toc-common-issues-8" class="nav-link" data-scroll-target="#common-issues-8">Common Issues</a></li>
   <li><a href="#optional-extensions-8" id="toc-optional-extensions-8" class="nav-link" data-scroll-target="#optional-extensions-8">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-sequence-analysis" id="toc-sec-sequence-analysis" class="nav-link" data-scroll-target="#sec-sequence-analysis"><span class="header-section-number">A.10</span> Sequence Analysis</a>
+  <li><a href="#sec-using-in-operator" id="toc-sec-using-in-operator" class="nav-link" data-scroll-target="#sec-using-in-operator"><span class="header-section-number">C.10</span> Using the <code>in</code> Operator</a>
   <ul>
   <li><a href="#task-description-9" id="toc-task-description-9" class="nav-link" data-scroll-target="#task-description-9">Task Description</a></li>
-  <li><a href="#learning-objectives-9" id="toc-learning-objectives-9" class="nav-link" data-scroll-target="#learning-objectives-9">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-9" id="toc-learning-objectives-9" class="nav-link" data-scroll-target="#learning-objectives-9">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-9" id="toc-solution-9" class="nav-link" data-scroll-target="#solution-9">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-9" id="toc-test-cases-9" class="nav-link" data-scroll-target="#test-cases-9">Test Cases</a></li>
   <li><a href="#common-issues-9" id="toc-common-issues-9" class="nav-link" data-scroll-target="#common-issues-9">Common Issues</a></li>
   <li><a href="#optional-extensions-9" id="toc-optional-extensions-9" class="nav-link" data-scroll-target="#optional-extensions-9">Optional Extensions</a></li>
   </ul></li>
-  <li><a href="#sec-nested-conditions-sequence-filtering" id="toc-sec-nested-conditions-sequence-filtering" class="nav-link" data-scroll-target="#sec-nested-conditions-sequence-filtering"><span class="header-section-number">A.11</span> Hard: Nested Conditions for Sequence Filtering</a>
+  <li><a href="#sec-nested-lists-indexing" id="toc-sec-nested-lists-indexing" class="nav-link" data-scroll-target="#sec-nested-lists-indexing"><span class="header-section-number">C.11</span> Nested Lists and Indexing</a>
   <ul>
   <li><a href="#task-description-10" id="toc-task-description-10" class="nav-link" data-scroll-target="#task-description-10">Task Description</a></li>
-  <li><a href="#learning-objectives-10" id="toc-learning-objectives-10" class="nav-link" data-scroll-target="#learning-objectives-10">Learning Objectives</a></li>
+  <li><a href="#learning-objectives-10" id="toc-learning-objectives-10" class="nav-link" data-scroll-target="#learning-objectives-10">Learning Objectives</a>
+  <ul>
   <li><a href="#solution-10" id="toc-solution-10" class="nav-link" data-scroll-target="#solution-10">Solution</a></li>
+  </ul></li>
   <li><a href="#test-cases-10" id="toc-test-cases-10" class="nav-link" data-scroll-target="#test-cases-10">Test Cases</a></li>
   <li><a href="#common-issues-10" id="toc-common-issues-10" class="nav-link" data-scroll-target="#common-issues-10">Common Issues</a></li>
   <li><a href="#optional-extensions-10" id="toc-optional-extensions-10" class="nav-link" data-scroll-target="#optional-extensions-10">Optional Extensions</a></li>
   </ul></li>
+  <li><a href="#sec-building-dict-from-two-lists" id="toc-sec-building-dict-from-two-lists" class="nav-link" data-scroll-target="#sec-building-dict-from-two-lists"><span class="header-section-number">C.12</span> Building a Dictionary from Two Lists</a>
+  <ul>
+  <li><a href="#task-description-11" id="toc-task-description-11" class="nav-link" data-scroll-target="#task-description-11">Task Description</a></li>
+  <li><a href="#learning-objectives-11" id="toc-learning-objectives-11" class="nav-link" data-scroll-target="#learning-objectives-11">Learning Objectives</a>
+  <ul>
+  <li><a href="#solution-11" id="toc-solution-11" class="nav-link" data-scroll-target="#solution-11">Solution</a></li>
+  </ul></li>
+  <li><a href="#test-cases-11" id="toc-test-cases-11" class="nav-link" data-scroll-target="#test-cases-11">Test Cases</a></li>
+  <li><a href="#common-issues-11" id="toc-common-issues-11" class="nav-link" data-scroll-target="#common-issues-11">Common Issues</a></li>
+  <li><a href="#optional-extensions-11" id="toc-optional-extensions-11" class="nav-link" data-scroll-target="#optional-extensions-11">Optional Extensions</a></li>
+  </ul></li>
+  <li><a href="#sec-list-comprehension-sequence-conversion" id="toc-sec-list-comprehension-sequence-conversion" class="nav-link" data-scroll-target="#sec-list-comprehension-sequence-conversion"><span class="header-section-number">C.13</span> List Comprehension for Sequence Conversion</a>
+  <ul>
+  <li><a href="#task-description-12" id="toc-task-description-12" class="nav-link" data-scroll-target="#task-description-12">Task Description</a></li>
+  <li><a href="#learning-objectives-12" id="toc-learning-objectives-12" class="nav-link" data-scroll-target="#learning-objectives-12">Learning Objectives</a>
+  <ul>
+  <li><a href="#solution-12" id="toc-solution-12" class="nav-link" data-scroll-target="#solution-12">Solution</a></li>
+  </ul></li>
+  <li><a href="#test-cases-12" id="toc-test-cases-12" class="nav-link" data-scroll-target="#test-cases-12">Test Cases</a></li>
+  <li><a href="#common-issues-12" id="toc-common-issues-12" class="nav-link" data-scroll-target="#common-issues-12">Common Issues</a></li>
+  <li><a href="#optional-extensions-12" id="toc-optional-extensions-12" class="nav-link" data-scroll-target="#optional-extensions-12">Optional Extensions</a></li>
+  </ul></li>
+  <li><a href="#sec-counting-with-defaultdict" id="toc-sec-counting-with-defaultdict" class="nav-link" data-scroll-target="#sec-counting-with-defaultdict"><span class="header-section-number">C.14</span> Medium: Counting with <code>defaultdict</code></a>
+  <ul>
+  <li><a href="#task-description-13" id="toc-task-description-13" class="nav-link" data-scroll-target="#task-description-13">Task Description</a></li>
+  <li><a href="#learning-objectives-13" id="toc-learning-objectives-13" class="nav-link" data-scroll-target="#learning-objectives-13">Learning Objectives</a>
+  <ul>
+  <li><a href="#solution-13" id="toc-solution-13" class="nav-link" data-scroll-target="#solution-13">Solution</a></li>
+  </ul></li>
+  <li><a href="#test-cases-13" id="toc-test-cases-13" class="nav-link" data-scroll-target="#test-cases-13">Test Cases</a></li>
+  <li><a href="#common-issues-13" id="toc-common-issues-13" class="nav-link" data-scroll-target="#common-issues-13">Common Issues</a></li>
+  <li><a href="#optional-extensions-13" id="toc-optional-extensions-13" class="nav-link" data-scroll-target="#optional-extensions-13">Optional Extensions</a></li>
+  </ul></li>
+  <li><a href="#sec-nested-dict-access" id="toc-sec-nested-dict-access" class="nav-link" data-scroll-target="#sec-nested-dict-access"><span class="header-section-number">C.15</span> Nested Dictionaries and Access</a>
+  <ul>
+  <li><a href="#task-description-14" id="toc-task-description-14" class="nav-link" data-scroll-target="#task-description-14">Task Description</a></li>
+  <li><a href="#learning-objectives-14" id="toc-learning-objectives-14" class="nav-link" data-scroll-target="#learning-objectives-14">Learning Objectives</a>
+  <ul>
+  <li><a href="#solution-14" id="toc-solution-14" class="nav-link" data-scroll-target="#solution-14">Solution</a></li>
+  </ul></li>
+  <li><a href="#test-cases-14" id="toc-test-cases-14" class="nav-link" data-scroll-target="#test-cases-14">Test Cases</a></li>
+  <li><a href="#common-issues-14" id="toc-common-issues-14" class="nav-link" data-scroll-target="#common-issues-14">Common Issues</a></li>
+  <li><a href="#optional-extensions-14" id="toc-optional-extensions-14" class="nav-link" data-scroll-target="#optional-extensions-14">Optional Extensions</a></li>
+  </ul></li>
+  <li><a href="#sec-reverse-complement-dna-sequence" id="toc-sec-reverse-complement-dna-sequence" class="nav-link" data-scroll-target="#sec-reverse-complement-dna-sequence"><span class="header-section-number">C.16</span> Reverse Complement DNA Sequence</a>
+  <ul>
+  <li><a href="#task-description-15" id="toc-task-description-15" class="nav-link" data-scroll-target="#task-description-15">Task Description</a></li>
+  <li><a href="#learning-objectives-15" id="toc-learning-objectives-15" class="nav-link" data-scroll-target="#learning-objectives-15">Learning Objectives</a>
+  <ul>
+  <li><a href="#solution-15" id="toc-solution-15" class="nav-link" data-scroll-target="#solution-15">Solution</a></li>
+  </ul></li>
+  <li><a href="#test-cases-15" id="toc-test-cases-15" class="nav-link" data-scroll-target="#test-cases-15">Test Cases</a></li>
+  <li><a href="#common-issues-15" id="toc-common-issues-15" class="nav-link" data-scroll-target="#common-issues-15">Common Issues</a></li>
+  <li><a href="#optional-extensions-15" id="toc-optional-extensions-15" class="nav-link" data-scroll-target="#optional-extensions-15">Optional Extensions</a></li>
+  </ul></li>
+  <li><a href="#sec-simulating-random-growth-list" id="toc-sec-simulating-random-growth-list" class="nav-link" data-scroll-target="#sec-simulating-random-growth-list"><span class="header-section-number">C.17</span> Simulating Random Growth in a List</a>
+  <ul>
+  <li><a href="#task-description-16" id="toc-task-description-16" class="nav-link" data-scroll-target="#task-description-16">Task Description</a></li>
+  <li><a href="#learning-objectives-16" id="toc-learning-objectives-16" class="nav-link" data-scroll-target="#learning-objectives-16">Learning Objectives</a>
+  <ul>
+  <li><a href="#solution-16" id="toc-solution-16" class="nav-link" data-scroll-target="#solution-16">Solution</a></li>
+  </ul></li>
+  <li><a href="#test-cases-16" id="toc-test-cases-16" class="nav-link" data-scroll-target="#test-cases-16">Test Cases</a></li>
+  <li><a href="#common-issues-16" id="toc-common-issues-16" class="nav-link" data-scroll-target="#common-issues-16">Common Issues</a></li>
+  <li><a href="#optional-extensions-16" id="toc-optional-extensions-16" class="nav-link" data-scroll-target="#optional-extensions-16">Optional Extensions</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/basics/practice_problems/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/collections/practice_problems/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Appendices</li><li class="breadcrumb-item"><a href="../../basics/practice_problems/index.html">Basics</a></li><li class="breadcrumb-item"><a href="../../basics/practice_problems/index.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Practice Problems</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Appendices</li><li class="breadcrumb-item"><a href="../../collections/practice_problems/index.html">Collections</a></li><li class="breadcrumb-item"><a href="../../collections/practice_problems/index.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Practice Problems</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-basics-practice-problems" class="quarto-section-identifier">Appendix A — Basics: Practice Problems</span></h1>
+<h1 class="title"><span id="sec-collections-practice-problems" class="quarto-section-identifier">Appendix C — Collections: Practice Problems</span></h1>
 </div>
 
 
@@ -697,7 +756,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 23, 2025</p>
+      <p class="date">May 27, 2025</p>
     </div>
   </div>
   
@@ -715,496 +774,734 @@ window.Quarto = {
 </header>
 
 
-<p>These are the practice problems for <a href="../index.html" class="quarto-xref"><span>Chapter 1</span></a>. For solutions, see <a href="../practice_solutions/index.html" class="quarto-xref"><span>Appendix B</span></a>.</p>
-<section id="sec-assigning-variables-printing" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="sec-assigning-variables-printing"><span class="header-section-number">A.1</span> Assigning Variables and Printing</h2>
+<p>These are the practice problems for <a href="../index.html" class="quarto-xref"><span>Chapter 2</span></a>. For solutions, see <a href="../practice_solutions/index.html" class="quarto-xref"><span>Appendix D</span></a>.</p>
+<section id="sec-creating-accessing-lists" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="sec-creating-accessing-lists"><span class="header-section-number">C.1</span> Creating and Accessing Lists</h2>
 <section id="task-description" class="level3">
 <h3 class="anchored" data-anchor-id="task-description">Task Description</h3>
-<p>Create a variable to store the name of a bacterial species (e.g., <code>"Escherichia coli"</code>). Assign another variable for the number of base pairs in its genome (e.g., <code>4_600_000</code>). Print a statement describing the species and its genome size.</p>
+<p>Create a list called <code>gene_names</code> containing the strings <code>"TP53"</code>, <code>"BRCA1"</code>, and <code>"MDM2"</code>. Then, print out each gene name by accessing its items one at a time using their indices.</p>
 </section>
 <section id="learning-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
 <ul>
-<li>Assign values to variables</li>
-<li>Print formatted output</li>
-<li>Use underscores in large numbers for readability</li>
+<li>Create a list with multiple items</li>
+<li>Access list elements by index</li>
+<li>Print list elements</li>
 </ul>
-</section>
-<section id="solution" class="level3">
-<h3 class="anchored" data-anchor-id="solution">Solution</h3>
-<div id="aa0a82a6" class="cell" data-execution_count="1">
+<section id="solution" class="level4">
+<h4 class="anchored" data-anchor-id="solution">Solution</h4>
+<div id="4d4074b9" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases">Test Cases</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Should print:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The species Escherichia coli has a genome size of 4600000 base pairs.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6a21ae31" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Should print:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># TP53</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># BRCA1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># MDM2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues">Common Issues</h3>
 <ul>
-<li>Forgetting to enclose text in quotes</li>
-<li>Forgetting the <code>f</code> in the f-strings</li>
-<li>Not matching variable names in the f-string</li>
+<li>Forgetting to use square brackets for list creation or indexing</li>
+<li>Starting index at 1 instead of 0</li>
 </ul>
 </section>
 <section id="optional-extensions" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions">Optional Extensions</h3>
 <ul>
-<li>Try with a different species and genome size.</li>
-<li>Try without using f-strings</li>
+<li>Use a for loop to print all gene names</li>
 </ul>
 </section>
 </section>
-<section id="sec-calculating-formatting-gc-content" class="level2" data-number="A.2">
-<h2 data-number="A.2" class="anchored" data-anchor-id="sec-calculating-formatting-gc-content"><span class="header-section-number">A.2</span> Calculating and Formatting GC Content</h2>
+<section id="sec-slicing-lists" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="sec-slicing-lists"><span class="header-section-number">C.2</span> Slicing Lists</h2>
 <section id="task-description-1" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-1">Task Description</h3>
-<p>Given variables <code>gc_count</code> (number of G or C bases) and <code>total_bases</code> (total number of bases in the genome), calculate the GC content as a decimal value and print it to two decimal places.</p>
+<p>Given the list <code>bases = ["A", "T", "G", "C", "A", "T"]</code>, use slicing to create: - <code>first_three</code>, the first three items, - <code>last_two</code>, the last two items.</p>
+<p>Print both variables.</p>
 </section>
 <section id="learning-objectives-1" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-1">Learning Objectives</h3>
 <ul>
-<li>Perform basic arithmetic operations</li>
-<li>Calculate percentages or ratios</li>
-<li>Use f-strings with formatting</li>
+<li>Use list slicing to extract parts of a list</li>
 </ul>
-</section>
-<section id="solution-1" class="level3">
-<h3 class="anchored" data-anchor-id="solution-1">Solution</h3>
-<div id="f0b2f526" class="cell" data-execution_count="2">
+<section id="solution-1" class="level4">
+<h4 class="anchored" data-anchor-id="solution-1">Solution</h4>
+<div id="d9e53f03" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-1" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-1">Test Cases</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Should print:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># GC content: 0.28</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fe7c6d74" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ['A', 'T', 'G']</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ['G', 'C']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-1" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-1">Common Issues</h3>
 <ul>
-<li>Using integer division rather than float division (e.g., should use <code>/</code>, not <code>//</code>)</li>
-<li>Forgetting to format decimal places</li>
+<li>Off-by-one errors in slicing</li>
+<li>Misusing negative indices</li>
 </ul>
 </section>
 <section id="optional-extensions-1" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-1">Optional Extensions</h3>
 <ul>
-<li>Multiply by <code>100</code> to display as a percentage.</li>
+<li>Print the middle two items of the list</li>
+<li>Practice getting different sized slices from the end of the collection</li>
 </ul>
 </section>
 </section>
-<section id="sec-string-slicing-concatenation" class="level2" data-number="A.3">
-<h2 data-number="A.3" class="anchored" data-anchor-id="sec-string-slicing-concatenation"><span class="header-section-number">A.3</span> String Slicing and Concatenation</h2>
+<section id="sec-using-list-methods-append-remove" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="sec-using-list-methods-append-remove"><span class="header-section-number">C.3</span> Using List Methods: <code>append</code> and <code>remove</code></h2>
 <section id="task-description-2" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-2">Task Description</h3>
-<ol type="1">
-<li>Create a variable <code>sequence</code> to hold the DNA sequence string <code>"ACTGGTCAA"</code>.</li>
-<li>Then use string slicing (e.g., <code>s[start:end]</code>) to create two more variables, one to hold the first four bases, and the other to hold the remaining five bases.</li>
-<li>Concatenate the two parts back together</li>
-<li>Print everything to check your work</li>
-</ol>
+<p>Start with <code>genes = ["TP53", "BRCA1"]</code>. Add <code>"ATM"</code> to the end of the list, then remove <code>"BRCA1"</code>. Print the resulting list.</p>
 </section>
 <section id="learning-objectives-2" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-2">Learning Objectives</h3>
 <ul>
-<li>Create string variables and concatenate strings with <code>+</code></li>
-<li>Use string slicing <code>[start:end]</code> notation</li>
-<li>Understand zero-based indexing; extract parts of a string</li>
+<li>Modify lists by adding and removing items</li>
+<li>Use <code>append()</code> and <code>remove()</code> list methods</li>
 </ul>
-</section>
-<section id="solution-2" class="level3">
-<h3 class="anchored" data-anchor-id="solution-2">Solution</h3>
-<div id="faf678f6" class="cell" data-execution_count="3">
+<section id="solution-2" class="level4">
+<h4 class="anchored" data-anchor-id="solution-2">Solution</h4>
+<div id="2811f039" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-2" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-2">Test Cases</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Should output something like:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sequence='ACTGGTCAA'</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># first_four='ACTG'; last_five='GTCAA'</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># combined='ACTGGTCAA'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7322ad14" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ['TP53', 'ATM']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-2" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-2">Common Issues</h3>
 <ul>
-<li>Off-by-one errors in slicing</li>
-<li>Incorrect use of negative indices</li>
+<li>Trying to remove an item not present in the list</li>
+<li>Using list methods as built-in functions (e.g., <code>append(numbers, 3)</code> rather than <code>numbers.append(3)</code>)</li>
 </ul>
 </section>
 <section id="optional-extensions-2" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-2">Optional Extensions</h3>
 <ul>
-<li>Use f-string formatting to combine the first and last parts of the sequence</li>
-<li>Try the slice notation where you don’t specify both the start and the end</li>
-<li>Extract the last 3 bases using negative indices</li>
+<li>Add another gene at the start using <code>insert()</code></li>
 </ul>
 </section>
 </section>
-<section id="sec-working-booleans-conditional-execution" class="level2" data-number="A.4">
-<h2 data-number="A.4" class="anchored" data-anchor-id="sec-working-booleans-conditional-execution"><span class="header-section-number">A.4</span> Working with Booleans and Conditional Execution</h2>
+<section id="sec-creating-tuples" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="sec-creating-tuples"><span class="header-section-number">C.4</span> Creating a Tuple</h2>
 <section id="task-description-3" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-3">Task Description</h3>
-<p>You have a variable <code>quality_score</code>. Write code that prints <code>"Pass"</code> if <code>quality_score</code> is greater than or equal to <code>30</code>, and <code>"Fail"</code> otherwise.</p>
-<p>Then, given two boolean variables, <code>is_long_enough</code> and <code>is_high_quality</code>, print <code>"Accepted"</code> if both are <code>True</code>, otherwise <code>"Rejected"</code>.</p>
+<p>Store the chromosome location for a gene, which starts at position <code>2_345_678</code> and ends at <code>2_346_987</code>, as a tuple. Print the tuple.</p>
 </section>
 <section id="learning-objectives-3" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-3">Learning Objectives</h3>
 <ul>
-<li>Use boolean comparisons and conditional statements</li>
-<li>Work with boolean variables and logical operators <code>and</code></li>
+<li>Create and print a tuple to store related information</li>
 </ul>
-</section>
-<section id="solution-3" class="level3">
-<h3 class="anchored" data-anchor-id="solution-3">Solution</h3>
-<div id="79130458" class="cell" data-execution_count="4">
+<section id="solution-3" class="level4">
+<h4 class="anchored" data-anchor-id="solution-3">Solution</h4>
+<div id="1c96360c" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-3" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-3">Test Cases</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quality_score = 28 -&gt; Fail</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># quality_score = 32 -&gt; Pass</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># is_long_enough = True, is_high_quality = False -&gt; Rejected</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># is_long_enough = True, is_high_quality = True -&gt; Accepted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a857db79" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (2345678, 2346987)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-3" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-3">Common Issues</h3>
 <ul>
-<li>Using <code>&gt;</code> instead of <code>&gt;=</code> for the test</li>
-<li>Using <code>or</code> instead of <code>and</code> in the boolean expression</li>
+<li>Using brackets instead of parentheses</li>
 </ul>
 </section>
 <section id="optional-extensions-3" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-3">Optional Extensions</h3>
 <ul>
-<li>Add a message showing the quality score if it is under <code>30</code></li>
-<li>Show the user the reason for rejection</li>
+<li>Print the start and end positions separately by indexing the tuple</li>
+<li>Try to reassign (change) the first element of the tuple to another value. What happens?</li>
 </ul>
 </section>
 </section>
-<section id="sec-using-builtin-functions-list-ops" class="level2" data-number="A.5">
-<h2 data-number="A.5" class="anchored" data-anchor-id="sec-using-builtin-functions-list-ops"><span class="header-section-number">A.5</span> Using Built-in Functions and List Operations</h2>
+<section id="sec-dictionary-creation-value-lookup" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="sec-dictionary-creation-value-lookup"><span class="header-section-number">C.5</span> Dictionary Creation and Value Lookup</h2>
 <section id="task-description-4" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-4">Task Description</h3>
-<p>You are given the following gene expression values: <code>2.1</code>, <code>3.4</code>, <code>1.8</code>, <code>6.2</code>, and <code>4.0</code>.</p>
-<ol type="1">
-<li>Create a list of gene expression values and print the minimum, maximum, and average.</li>
-<li>Then, get the first item in the list and print its type.</li>
-</ol>
+<p>Create a dictionary named <code>gene_functions</code> mapping the gene <code>"TP53"</code> to <code>"tumor suppression"</code> and <code>"BRCA1"</code> to <code>"DNA repair"</code>. Then, use the dictionary to print the function of <code>"TP53"</code>.</p>
 </section>
 <section id="learning-objectives-4" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-4">Learning Objectives</h3>
 <ul>
-<li>Use built-in functions: <code>min()</code>, <code>max()</code>, <code>len()</code>, <code>sum()</code>, <code>type()</code></li>
-<li>Work with lists</li>
+<li>Create dictionaries with key-value pairs</li>
+<li>Access dictionary values using keys</li>
 </ul>
-</section>
-<section id="solution-4" class="level3">
-<h3 class="anchored" data-anchor-id="solution-4">Solution</h3>
-<div id="6f584740" class="cell" data-execution_count="5">
+<section id="solution-4" class="level4">
+<h4 class="anchored" data-anchor-id="solution-4">Solution</h4>
+<div id="0dfe7a83" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-4" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-4">Test Cases</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># min: 1.8</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># max: 6.2</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mean: 3.5</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># type of first item: &lt;class 'float'&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="0e11c659" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tumor suppression</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-4" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-4">Common Issues</h3>
 <ul>
-<li>Calling the functions incorrectly</li>
-<li>Using the name of the function as your variable name</li>
+<li>Using parentheses or square brackets instead of curly brackets for dictionary literals</li>
+<li>Misspelling keys</li>
 </ul>
 </section>
 <section id="optional-extensions-4" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-4">Optional Extensions</h3>
 <ul>
-<li>Show the average to two decimal places</li>
+<li>Try to print the value for a gene that doesn’t exist. What happens?</li>
 </ul>
 </section>
 </section>
-<section id="sec-truthy-falsy-checking-emptiness" class="level2" data-number="A.6">
-<h2 data-number="A.6" class="anchored" data-anchor-id="sec-truthy-falsy-checking-emptiness"><span class="header-section-number">A.6</span> Truthy/Falsy and Checking Emptiness</h2>
+<section id="sec-using-dictionary-get-method" class="level2" data-number="C.6">
+<h2 data-number="C.6" class="anchored" data-anchor-id="sec-using-dictionary-get-method"><span class="header-section-number">C.6</span> Using Dictionary <code>get</code> Method</h2>
 <section id="task-description-5" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-5">Task Description</h3>
-<p>Create an empty list called <code>sequences</code>. Write code to check if the list is empty. If it is, print <code>"No sequences found!"</code>, otherwise print <code>"Sequences loaded!"</code></p>
-<p>Then, print the boolean value (<code>True</code>/<code>False</code>) of several sample values: empty string <code>""</code>, <code>"AGTC"</code>, <code>0</code>, <code>3.14</code>, empty list, and a non-empty list.</p>
+<p>Use the <code>gene_functions</code> dictionary from the previous task. Retrieve the function for <code>"MDM2"</code> safely using the <code>get</code> method, with a default value of <code>"Unknown"</code>. Print the result.</p>
 </section>
 <section id="learning-objectives-5" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-5">Learning Objectives</h3>
 <ul>
-<li>Understand truthy/falsy values in Python</li>
-<li>Check for emptiness using <code>if</code> statements</li>
-<li>Use the <code>bool()</code> function</li>
+<li>Use the <code>get()</code> method to safely access dictionary values</li>
 </ul>
-</section>
-<section id="solution-5" class="level3">
-<h3 class="anchored" data-anchor-id="solution-5">Solution</h3>
-<div id="98847b95" class="cell" data-execution_count="6">
+<section id="solution-5" class="level4">
+<h4 class="anchored" data-anchor-id="solution-5">Solution</h4>
+<div id="ff899294" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-5" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-5">Test Cases</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For sequences = [], should print: No sequences found!</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># For bool() values: False, True, False, True, False, True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9cf8f7f3" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Unknown</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-5" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-5">Common Issues</h3>
 <ul>
-<li>Not understanding which values are Truthy/Falsy in Python</li>
+<li>Not exactly an “issue” <em>per se</em>, but, forgetting the default value for <code>get</code>, leading to <code>None</code></li>
+<li>Confusing square bracket dictionary access and the <code>get()</code> method</li>
 </ul>
 </section>
 <section id="optional-extensions-5" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-5">Optional Extensions</h3>
 <ul>
-<li>Print the number of loaded sequences if not empty</li>
+<li>Add <code>"MDM2": "p53 regulation"</code> to the dictionary, then use <code>get</code> again</li>
 </ul>
 </section>
 </section>
-<section id="sec-avoiding-builtin-name-shadowing" class="level2" data-number="A.7">
-<h2 data-number="A.7" class="anchored" data-anchor-id="sec-avoiding-builtin-name-shadowing"><span class="header-section-number">A.7</span> Avoiding Built-in Name Shadowing</h2>
+<section id="sec-looping-through-list" class="level2" data-number="C.7">
+<h2 data-number="C.7" class="anchored" data-anchor-id="sec-looping-through-list"><span class="header-section-number">C.7</span> Looping Through a List</h2>
 <section id="task-description-6" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-6">Task Description</h3>
-<p>Assign the DNA sequence <code>"ACTG"</code> to a variable called <code>str</code>, and print its length. Then use the <code>str()</code> function to convert the float <code>3.14</code> to a string. What happens?</p>
+<p>Given <code>expression = [2.3, 3.1, 1.9]</code>, write a for loop that prints each value in the list.</p>
 </section>
 <section id="learning-objectives-6" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-6">Learning Objectives</h3>
 <ul>
-<li>Use appropriate variable names</li>
-<li>Avoid overwriting built-in functions</li>
+<li>Use a for loop to iterate over a list</li>
 </ul>
-</section>
-<section id="solution-6" class="level3">
-<h3 class="anchored" data-anchor-id="solution-6">Solution</h3>
-<div id="ca70df39" class="cell" data-execution_count="7">
+<section id="solution-6" class="level4">
+<h4 class="anchored" data-anchor-id="solution-6">Solution</h4>
+<div id="2d3634aa" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-6" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-6">Test Cases</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># TypeError: 'str' object is not callable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9796d4ac" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2.3</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.1</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-6" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-6">Common Issues</h3>
 <ul>
-<li>Accidentally shadowing built-ins resulting in confusing errors</li>
+<li>Forgetting indentation within the loop block</li>
+<li>Using the wrong variable name inside the loop</li>
 </ul>
 </section>
 <section id="optional-extensions-6" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-6">Optional Extensions</h3>
 <ul>
-<li>Try the same thing with other built-ins like <code>list</code>, <code>len</code></li>
+<li>Print the index and value together using <code>enumerate()</code></li>
 </ul>
 </section>
 </section>
-<section id="sec-filtering-multiple-criteria" class="level2" data-number="A.8">
-<h2 data-number="A.8" class="anchored" data-anchor-id="sec-filtering-multiple-criteria"><span class="header-section-number">A.8</span> Filtering Based on Multiple Criteria</h2>
+<section id="sec-counting-items-with-loop" class="level2" data-number="C.8">
+<h2 data-number="C.8" class="anchored" data-anchor-id="sec-counting-items-with-loop"><span class="header-section-number">C.8</span> Counting Items with a Loop</h2>
 <section id="task-description-7" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-7">Task Description</h3>
-<p>Given a sequence with the variables <code>read_length</code>, <code>gc_content</code>, and <code>quality_score</code>, print <code>"Read passes all quality filters"</code> if:</p>
-<ul>
-<li>The read length is at least <code>100</code></li>
-<li>The GC Content is no less than <code>0.4</code> and no more than <code>0.6</code></li>
-<li>The quality score is greater than <code>30</code></li>
-</ul>
-<p>Otherwise, print <code>"Read filtered out"</code>.</p>
+<p>Given the string <code>sequence = "AAGCTTAA"</code>, count how many times <code>"A"</code> appears by looping through the string and incrementing a counter variable. Print the count.</p>
 </section>
 <section id="learning-objectives-7" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-7">Learning Objectives</h3>
 <ul>
-<li>Use multiple conditionals with <code>and</code></li>
-<li>Check ranges and comparison</li>
+<li>Use a loop and a counter to count characters</li>
 </ul>
-</section>
-<section id="solution-7" class="level3">
-<h3 class="anchored" data-anchor-id="solution-7">Solution</h3>
-<div id="89b9a373" class="cell" data-execution_count="8">
+<section id="solution-7" class="level4">
+<h4 class="anchored" data-anchor-id="solution-7">Solution</h4>
+<div id="158a4358" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-7" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-7">Test Cases</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All conditions met =&gt; "Read passes all quality filters"</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># At least one condition not met (e.g., quality score = 25) =&gt; "Read filtered out"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ec80d7b9" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-7" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-7">Common Issues</h3>
 <ul>
-<li>Using <code>or</code> instead of <code>and</code></li>
-<li>Messing up the boundary values</li>
-<li>Problems turning “plain language” to boolean conditions</li>
+<li>Counting every base rather than only the adenines</li>
+<li>Using <code>base = "A"</code> instead of <code>base == "A"</code></li>
 </ul>
 </section>
 <section id="optional-extensions-7" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-7">Optional Extensions</h3>
 <ul>
-<li>Explain which filter was not passed</li>
+<li>Use the string method <code>count()</code> to check your answer</li>
 </ul>
 </section>
 </section>
-<section id="sec-formatting-scientific-output" class="level2" data-number="A.9">
-<h2 data-number="A.9" class="anchored" data-anchor-id="sec-formatting-scientific-output"><span class="header-section-number">A.9</span> Formatting Scientific Output</h2>
+<section id="sec-filtering-list-with-for-loop" class="level2" data-number="C.9">
+<h2 data-number="C.9" class="anchored" data-anchor-id="sec-filtering-list-with-for-loop"><span class="header-section-number">C.9</span> Filtering a List with a For Loop</h2>
 <section id="task-description-8" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-8">Task Description</h3>
-<p>Given a <code>gene_id</code> (<code>"nrdA"</code>) and a <code>p_value</code> (<code>0.000012345</code>), print <code>"Gene [gene_id] =&gt; [p_value]"</code> formatting the p-value in scientific notation with two decimals.</p>
-<p>Then print a report about its significance:</p>
-<ul>
-<li>If the p-value is less than <code>0.01</code>, print: <code>Highly significant</code></li>
-<li>If the p-value is less than <code>0.05</code>, print: <code>Significant</code></li>
-<li>If the p-value is less than <code>0.10</code>, print: <code>Almost significant</code></li>
-<li>If the p-value is greater than or equal to <code>0.10</code>, print: <code>Not significant</code></li>
-</ul>
+<p>Given a list <code>genes = ["TP53", "BRCA1", "MDM2", "ATM"]</code>, create a new list named <code>genes_with_A</code> containing only gene names that include the letter <code>'A'</code>. Print this filtered list.</p>
 </section>
 <section id="learning-objectives-8" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-8">Learning Objectives</h3>
 <ul>
-<li>Format numbers as scientific notation</li>
-<li>if/elif/else chains</li>
+<li>Use a for loop with a conditional to filter and build a new list</li>
 </ul>
-</section>
-<section id="solution-8" class="level3">
-<h3 class="anchored" data-anchor-id="solution-8">Solution</h3>
-<div id="f0772ae3" class="cell" data-execution_count="9">
+<section id="solution-8" class="level4">
+<h4 class="anchored" data-anchor-id="solution-8">Solution</h4>
+<div id="01e82c83" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-8" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-8">Test Cases</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Gene nrdA =&gt; 1.23e-05</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Highly significant</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7311b144" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ['BRCA1', 'ATM']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-8" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-8">Common Issues</h3>
 <ul>
-<li>Forgetting formatting codes in f-strings</li>
-<li>Incorrect boolean logic</li>
+<li>Forgetting to initialize the new list before the loop</li>
+<li>Appending all items, not just those with ‘A’</li>
 </ul>
 </section>
 <section id="optional-extensions-8" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-8">Optional Extensions</h3>
 <ul>
-<li>Only print a single message that includes the gene ID, the p-value, and the significance message.</li>
+<li>Solve the same task using a list comprehension</li>
 </ul>
 </section>
 </section>
-<section id="sec-sequence-analysis" class="level2" data-number="A.10">
-<h2 data-number="A.10" class="anchored" data-anchor-id="sec-sequence-analysis"><span class="header-section-number">A.10</span> Sequence Analysis</h2>
+<section id="sec-using-in-operator" class="level2" data-number="C.10">
+<h2 data-number="C.10" class="anchored" data-anchor-id="sec-using-in-operator"><span class="header-section-number">C.10</span> Using the <code>in</code> Operator</h2>
 <section id="task-description-9" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-9">Task Description</h3>
-<p>Given a ssDNA sequence string (<code>"TGacTGatcGT"</code>), first, convert the sequence to all uppercase letters, then analyze the DNA sequence by printing various information about it:</p>
-<ul>
-<li>Sequence length</li>
-<li>Count of nucleotides, A, C, G, and T</li>
-<li>Count of ambiguous bases (N)</li>
-<li>GC Content as a percentage</li>
-<li>Calculate the molecular weight of the sequence</li>
-</ul>
-<p>To calculate the molecular weight, use this formula from the <a href="https://www.thermofisher.com/us/en/home/references/ambion-tech-support/rna-tools-and-calculators/dna-and-rna-molecular-weights-and-conversions.html">Thermo Fisher</a> website:</p>
-<p><span class="math inline">\(M.W. = (A_n * 313.2) + (T_n * 304.2) + (C_n * 289.2) + (G_n * 329.2) + 79.0\)</span></p>
-<p>In the formula, <span class="math inline">\(A_n\)</span> means the number of <code>A</code> nucleotides, <span class="math inline">\(T_n\)</span> is the number of <code>T</code> nucleotides, and so on.</p>
-<p><em>Note: Save each calculation to its own variable.</em></p>
+<p>Given a list of gene names <code>genes = ["TP53", "BRCA1", "MDM2"]</code>, check if <code>"BRCA1"</code> is present in the list, and print <code>"Found"</code> if it is, or <code>"Not found"</code> otherwise.</p>
 </section>
 <section id="learning-objectives-9" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-9">Learning Objectives</h3>
 <ul>
-<li>Perform multiple calculations to solve a single problem</li>
-<li>Translate mathematical formulas into code</li>
-<li>Perform basic sequence analysis</li>
+<li>Use the <code>in</code> operator to test list membership</li>
 </ul>
-</section>
-<section id="solution-9" class="level3">
-<h3 class="anchored" data-anchor-id="solution-9">Solution</h3>
-<div id="c8d70849" class="cell" data-execution_count="10">
+<section id="solution-9" class="level4">
+<h4 class="anchored" data-anchor-id="solution-9">Solution</h4>
+<div id="5095b5e5" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+</section>
 <section id="test-cases-9" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-9">Test Cases</h3>
-<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Should print:</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># DNA Sequence: TGACTGATCGT</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Length: 11</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Nucleotide counts</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># A: 2, C: 2, G: 3, T: 4</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ambiguous count: 0</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># GC Content (%): 45.45454545454545</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Molecular weight: 3488.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6ed38891" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Found</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-9" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-9">Common Issues</h3>
 <ul>
-<li>Forgetting to convert to uppercase first</li>
-<li>Operator precedence in GC content calculation</li>
-<li>Not implementing the molecular weight formula correctly</li>
+<li>Checking the wrong value or casing</li>
 </ul>
 </section>
 <section id="optional-extensions-9" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-9">Optional Extensions</h3>
 <ul>
-<li>Make up some rules about what properties a “high quality” sequence should have, e.g., no more than 3 ambiguous bases, having a certain length or GC percentage, etc. Then check the sequence against those rules.</li>
+<li>Prompt the user to enter a gene name and check if it’s in the list</li>
 </ul>
 </section>
 </section>
-<section id="sec-nested-conditions-sequence-filtering" class="level2" data-number="A.11">
-<h2 data-number="A.11" class="anchored" data-anchor-id="sec-nested-conditions-sequence-filtering"><span class="header-section-number">A.11</span> Hard: Nested Conditions for Sequence Filtering</h2>
+<section id="sec-nested-lists-indexing" class="level2" data-number="C.11">
+<h2 data-number="C.11" class="anchored" data-anchor-id="sec-nested-lists-indexing"><span class="header-section-number">C.11</span> Nested Lists and Indexing</h2>
 <section id="task-description-10" class="level3">
 <h3 class="anchored" data-anchor-id="task-description-10">Task Description</h3>
-<p>Given variables representing a DNA sequence’s length, quality score, and ambiguous base count, write nested conditional statements to print filtering messages according to:</p>
-<ul>
-<li>If sequence length is greater than or equal to <code>200</code>:
-<ul>
-<li>If quality score is greater than or equal to <code>30</code>:
-<ul>
-<li>If there is no more than one ambiguous base, print <code>"Sequence accepted"</code></li>
-<li>Else print <code>"Sequence rejected: ambiguous bases present"</code></li>
-</ul></li>
-<li>Else print <code>"Sequence rejected: low quality"</code></li>
-</ul></li>
-<li>Else print <code>"Sequence rejected: too short"</code></li>
-</ul>
+<p>Given the nested list:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> [</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Sample1"</span>, [<span class="fl">1.1</span>, <span class="fl">1.2</span>, <span class="fl">1.3</span>]],</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Sample2"</span>, [<span class="fl">2.1</span>, <span class="fl">2.2</span>, <span class="fl">2.3</span>]],</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Sample3"</span>, [<span class="fl">3.1</span>, <span class="fl">3.2</span>, <span class="fl">3.3</span>]],</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Print the value <code>3.1</code> by correctly indexing into <code>samples</code>.</p>
 </section>
 <section id="learning-objectives-10" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives-10">Learning Objectives</h3>
 <ul>
-<li>Practice nested <code>if</code> statements</li>
-<li>Use logical reasoning to handle multiple conditions</li>
+<li>Index into nested lists</li>
 </ul>
-</section>
-<section id="solution-10" class="level3">
-<h3 class="anchored" data-anchor-id="solution-10">Solution</h3>
-<div id="c1cd02fd" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="solution-10" class="level4">
+<h4 class="anchored" data-anchor-id="solution-10">Solution</h4>
+<div id="d1cb6194" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 </section>
 <section id="test-cases-10" class="level3">
 <h3 class="anchored" data-anchor-id="test-cases-10">Test Cases</h3>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sequence_length = 250, quality_score = 32, ambiguous_bases = 0 → Sequence accepted</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ambiguous_bases = 2 → Sequence rejected: too many ambiguous bases</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># quality_score = 28 → Sequence rejected: low quality</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sequence_length = 150 → Sequence rejected: too short</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="62e8af40" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="common-issues-10" class="level3">
 <h3 class="anchored" data-anchor-id="common-issues-10">Common Issues</h3>
 <ul>
-<li>Missing or misplacing indentation</li>
-<li>Not matching the correct <code>else</code> with the corresponding <code>if</code></li>
+<li>Mixing up list indices</li>
+<li>Using the 1-based indexing rather than 0-based indexing (especially if you’re used to the R programming language)</li>
 </ul>
 </section>
 <section id="optional-extensions-10" class="level3">
 <h3 class="anchored" data-anchor-id="optional-extensions-10">Optional Extensions</h3>
 <ul>
-<li>Can you re-write the solution so that it doesn’t use nested conditional statements?</li>
+<li>Print all values for “Sample2”</li>
+<li>Use nested <code>for</code> loops with enumerate to print values with their indices</li>
+</ul>
+</section>
+</section>
+<section id="sec-building-dict-from-two-lists" class="level2" data-number="C.12">
+<h2 data-number="C.12" class="anchored" data-anchor-id="sec-building-dict-from-two-lists"><span class="header-section-number">C.12</span> Building a Dictionary from Two Lists</h2>
+<section id="task-description-11" class="level3">
+<h3 class="anchored" data-anchor-id="task-description-11">Task Description</h3>
+<p>You are given:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>gene_ids <span class="op">=</span> [<span class="st">"nrdA"</span>,  <span class="st">"nrdJ"</span>, <span class="st">"nrdD"</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> [<span class="st">"Class I RNR"</span>, <span class="st">"Class II RNR"</span>, <span class="st">"Class III RNR"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Build a dictionary mapping each gene id to its product using <code>zip()</code> and a <code>for</code> loop. Print the resulting dictionary.</p>
+</section>
+<section id="learning-objectives-11" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-11">Learning Objectives</h3>
+<ul>
+<li>Loop through multiple lists</li>
+<li>Build a dictionary programmatically</li>
+</ul>
+<section id="solution-11" class="level4">
+<h4 class="anchored" data-anchor-id="solution-11">Solution</h4>
+<div id="d5f73299" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>gene_ids <span class="op">=</span> [<span class="st">"nrdA"</span>,  <span class="st">"nrdJ"</span>, <span class="st">"nrdD"</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>products <span class="op">=</span> [<span class="st">"Class I RNR"</span>, <span class="st">"Class II RNR"</span>, <span class="st">"Class III RNR"</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>gene_products <span class="op">=</span> {}</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(gene_ids)):</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    gene_products[gene_ids[i]] <span class="op">=</span> products[i]</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gene_products)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'nrdA': 'Class I RNR', 'nrdJ': 'Class II RNR', 'nrdD': 'Class III RNR'}</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="test-cases-11" class="level3">
+<h3 class="anchored" data-anchor-id="test-cases-11">Test Cases</h3>
+<div id="ab2f7378" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># {'nrdA': 'Class I RNR', 'nrdJ': 'Class II RNR', 'nrdD': 'Class III RNR'}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="common-issues-11" class="level3">
+<h3 class="anchored" data-anchor-id="common-issues-11">Common Issues</h3>
+<ul>
+<li>Mixing up the order of items in the <code>zip</code></li>
+<li>Mixing up which list provides keys and which provides values</li>
+<li>In more complicated problems, overwriting existing dictionary keys</li>
+<li>Potential problems when zipping lists with different lengths</li>
+</ul>
+</section>
+<section id="optional-extensions-11" class="level3">
+<h3 class="anchored" data-anchor-id="optional-extensions-11">Optional Extensions</h3>
+<ul>
+<li>Use a <code>for</code> loop, but without using the <code>zip()</code> function to get key-value pairs</li>
+<li>Use <code>zip()</code>, but don’t use a <code>for</code> loop to build the dictionary</li>
+</ul>
+</section>
+</section>
+<section id="sec-list-comprehension-sequence-conversion" class="level2" data-number="C.13">
+<h2 data-number="C.13" class="anchored" data-anchor-id="sec-list-comprehension-sequence-conversion"><span class="header-section-number">C.13</span> List Comprehension for Sequence Conversion</h2>
+<section id="task-description-12" class="level3">
+<h3 class="anchored" data-anchor-id="task-description-12">Task Description</h3>
+<p>Given <code>dna = "ATGCTTAC"</code>, use a list comprehension to generate a list of its RNA bases (replace every <code>"T"</code> with <code>"U"</code>, others stay the same). Print the resulting list.</p>
+</section>
+<section id="learning-objectives-12" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-12">Learning Objectives</h3>
+<ul>
+<li>Use list comprehensions for transformation</li>
+<li>Apply conditional logic inside a comprehension</li>
+</ul>
+<section id="solution-12" class="level4">
+<h4 class="anchored" data-anchor-id="solution-12">Solution</h4>
+<div id="7e81c1e2" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="test-cases-12" class="level3">
+<h3 class="anchored" data-anchor-id="test-cases-12">Test Cases</h3>
+<div id="988898de" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ['A', 'U', 'G', 'C', 'U', 'U', 'A', 'C']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="common-issues-12" class="level3">
+<h3 class="anchored" data-anchor-id="common-issues-12">Common Issues</h3>
+<ul>
+<li>Using <code>if base = "T"</code> instead of <code>==</code></li>
+<li>Not understanding the position/order of <code>if</code> and <code>else</code> in the comprehension</li>
+</ul>
+</section>
+<section id="optional-extensions-12" class="level3">
+<h3 class="anchored" data-anchor-id="optional-extensions-12">Optional Extensions</h3>
+<ul>
+<li>Join the resulting list into a string using <code>join()</code></li>
+</ul>
+</section>
+</section>
+<section id="sec-counting-with-defaultdict" class="level2" data-number="C.14">
+<h2 data-number="C.14" class="anchored" data-anchor-id="sec-counting-with-defaultdict"><span class="header-section-number">C.14</span> Medium: Counting with <code>defaultdict</code></h2>
+<section id="task-description-13" class="level3">
+<h3 class="anchored" data-anchor-id="task-description-13">Task Description</h3>
+<p>Given a DNA string <code>sequence = "AAGCGAAGCT"</code>, use <code>defaultdict</code> from the <code>collections</code> module to count the occurrences of each base. Print the counts for each base.</p>
+</section>
+<section id="learning-objectives-13" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-13">Learning Objectives</h3>
+<ul>
+<li>Import and use <code>defaultdict</code></li>
+<li>Count frequencies programmatically</li>
+</ul>
+<section id="solution-13" class="level4">
+<h4 class="anchored" data-anchor-id="solution-13">Solution</h4>
+<div id="bdacd3bc" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="test-cases-13" class="level3">
+<h3 class="anchored" data-anchor-id="test-cases-13">Test Cases</h3>
+<div id="cf8f9f0b" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Something like:</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># A =&gt; 4</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># G =&gt; 3</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># C =&gt; 2</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># T =&gt; 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="common-issues-13" class="level3">
+<h3 class="anchored" data-anchor-id="common-issues-13">Common Issues</h3>
+<ul>
+<li>Forgetting to import <code>defaultdict</code></li>
+<li>Not using <code>counts[base] += 1</code> properly</li>
+</ul>
+</section>
+<section id="optional-extensions-13" class="level3">
+<h3 class="anchored" data-anchor-id="optional-extensions-13">Optional Extensions</h3>
+<ul>
+<li>Try using a regular dictionary rather than a <code>defaultdict</code></li>
+<li>Try using a <code>Counter</code> instead of a <code>defaultdict</code></li>
+</ul>
+</section>
+</section>
+<section id="sec-nested-dict-access" class="level2" data-number="C.15">
+<h2 data-number="C.15" class="anchored" data-anchor-id="sec-nested-dict-access"><span class="header-section-number">C.15</span> Nested Dictionaries and Access</h2>
+<section id="task-description-14" class="level3">
+<h3 class="anchored" data-anchor-id="task-description-14">Task Description</h3>
+<p>Given the nested dictionary:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>gene_info <span class="op">=</span> {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nrdA"</span>: {<span class="st">"product"</span>: <span class="st">"Class I RNR"</span>, <span class="st">"location"</span>: {<span class="st">"start"</span>: <span class="dv">1023</span>, <span class="st">"end"</span>: <span class="dv">3268</span>}}</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Print the start and end position of <code>"nrdA"</code> by accessing nested keys.</p>
+</section>
+<section id="learning-objectives-14" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-14">Learning Objectives</h3>
+<ul>
+<li>Access values in nested dictionaries</li>
+</ul>
+<section id="solution-14" class="level4">
+<h4 class="anchored" data-anchor-id="solution-14">Solution</h4>
+<div id="8d0c1d14" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="test-cases-14" class="level3">
+<h3 class="anchored" data-anchor-id="test-cases-14">Test Cases</h3>
+<div id="6798954c" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># start=1023</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># end=3268</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="common-issues-14" class="level3">
+<h3 class="anchored" data-anchor-id="common-issues-14">Common Issues</h3>
+<ul>
+<li>Misplacing or omitting square brackets</li>
+<li>Wrong ordering of keys</li>
+</ul>
+</section>
+<section id="optional-extensions-14" class="level3">
+<h3 class="anchored" data-anchor-id="optional-extensions-14">Optional Extensions</h3>
+<ul>
+<li>Try to print a value for a key that does not exist and observe the error</li>
+<li>Add another gene to the dictionary, and loop through start positions for all genes</li>
+</ul>
+</section>
+</section>
+<section id="sec-reverse-complement-dna-sequence" class="level2" data-number="C.16">
+<h2 data-number="C.16" class="anchored" data-anchor-id="sec-reverse-complement-dna-sequence"><span class="header-section-number">C.16</span> Reverse Complement DNA Sequence</h2>
+<section id="task-description-15" class="level3">
+<h3 class="anchored" data-anchor-id="task-description-15">Task Description</h3>
+<p>Write code that, given a DNA sequence string (e.g., <code>"AAAACCCGGT"</code>), prints its reverse complement as a string. (A &lt;-&gt; T, C &lt;-&gt; G). Use a dictionary for base pairing and a loop.</p>
+</section>
+<section id="learning-objectives-15" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-15">Learning Objectives</h3>
+<ul>
+<li>Use dictionaries for mapping</li>
+<li>Loop through a string in reverse</li>
+<li>Concatenate strings to build a new sequence</li>
+</ul>
+<section id="solution-15" class="level4">
+<h4 class="anchored" data-anchor-id="solution-15">Solution</h4>
+<div id="71608f5d" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="test-cases-15" class="level3">
+<h3 class="anchored" data-anchor-id="test-cases-15">Test Cases</h3>
+<div id="3ff14573" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Input: AAAACCCGGT</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: ACCGGGTTTT</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Input: "AGTC"</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: "GACT"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="common-issues-15" class="level3">
+<h3 class="anchored" data-anchor-id="common-issues-15">Common Issues</h3>
+<ul>
+<li>Incorrect complement dictionary</li>
+<li>Forgetting to reverse the DNA sequence</li>
+<li>In more realistic problems, improper handling of ambiguous bases (see <a href="https://arep.med.harvard.edu/labgc/adnan/projects/Utilities/revcomp.html">IUPAC conventions</a>)</li>
+</ul>
+</section>
+<section id="optional-extensions-15" class="level3">
+<h3 class="anchored" data-anchor-id="optional-extensions-15">Optional Extensions</h3>
+<ul>
+<li>Write your solution using a list comprehension and the <code>join()</code> method</li>
+<li>Don’t use a dictionary to store base complement info</li>
+</ul>
+</section>
+</section>
+<section id="sec-simulating-random-growth-list" class="level2" data-number="C.17">
+<h2 data-number="C.17" class="anchored" data-anchor-id="sec-simulating-random-growth-list"><span class="header-section-number">C.17</span> Simulating Random Growth in a List</h2>
+<section id="task-description-16" class="level3">
+<h3 class="anchored" data-anchor-id="task-description-16">Task Description</h3>
+<p>Simulate a population of 10 bacteria, each with starting size 5. On each turn, every bacterium will grow or shrink according to these rules:</p>
+<ul>
+<li>On even numbered turns (0, 2, 4, …), bacteria with even indices grow by 1 unit, and the other bacteria stay the same</li>
+<li>On odd numbered turns (1, 3, 5, …), bacteria with even indices stay the same, and the other bacteria shrink by 1</li>
+</ul>
+<p>Run the simulation for 10 turns, starting with turn <code>0</code>. At the start of each turn, print the bacteria list. Finally, when the simulation is over, print the final bacteria list.</p>
+</section>
+<section id="learning-objectives-16" class="level3">
+<h3 class="anchored" data-anchor-id="learning-objectives-16">Learning Objectives</h3>
+<ul>
+<li>Practice with nested loops</li>
+<li>Update values in a list</li>
+<li>Check conditions for breaking loops</li>
+</ul>
+<section id="solution-16" class="level4">
+<h4 class="anchored" data-anchor-id="solution-16">Solution</h4>
+<div id="7ea610c5" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="test-cases-16" class="level3">
+<h3 class="anchored" data-anchor-id="test-cases-16">Test Cases</h3>
+<div id="c0922eee" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Output:</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn 0: [5, 5, 5, ...]</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn 1: [...]</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Turn 9: [...]</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># At the end: [...]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="common-issues-16" class="level3">
+<h3 class="anchored" data-anchor-id="common-issues-16">Common Issues</h3>
+<ul>
+<li>0-based indexing issues or forgetting 0 counts as even</li>
+<li>Mixing up conditional logic</li>
+<li>Forgetting how the modulo operator (<code>%</code>) works</li>
+<li>Printing results at the wrong time in the loop (e.g., at the end rather than the start)</li>
+</ul>
+</section>
+<section id="optional-extensions-16" class="level3">
+<h3 class="anchored" data-anchor-id="optional-extensions-16">Optional Extensions</h3>
+<ul>
+<li>Track and print the average population size at the end of each turn</li>
+<li>Change the rules to use the <a href="https://docs.python.org/3/library/random.html">random</a> module to make a more interesting simulation</li>
 </ul>
 
 
@@ -1668,13 +1965,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../io_files_contexts/index.html" class="pagination-link" aria-label="I/O, Files, &amp; Contexts">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">I/O, Files, &amp; Contexts</span></span>
+      <a href="../../basics/practice_solutions/index.html" class="pagination-link" aria-label="Practice Problem Solutions">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Practice Problem Solutions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../basics/practice_solutions/index.html" class="pagination-link" aria-label="Practice Problem Solutions">
-        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Practice Problem Solutions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../collections/practice_solutions/index.html" class="pagination-link" aria-label="Practice Problem Solutions">
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Practice Problem Solutions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1686,7 +1983,7 @@ window.Quarto = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/basics/practice_problems/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/mooreryan/practical_python/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li><li><a href="https://github.com/mooreryan/practical_python/blob/main/collections/practice_problems/index.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
