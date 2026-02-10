@@ -1,0 +1,10 @@
+---
+author: "Ryan M. Moore, PhD"
+date-modified: last-modified
+date: "2026-02-18"
+jupyter: python3
+---
+
+# Stop & Think Answers — @sec-collections
+
+@tip-02-deleting-dict-examples response:  Because you will have already removed the item from the dictionary!

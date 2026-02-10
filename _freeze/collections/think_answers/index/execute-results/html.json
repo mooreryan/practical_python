@@ -1,0 +1,12 @@
+{
+  "hash": "617159866e5feac791c6f366892710a3",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\nauthor: \"Ryan M. Moore, PhD\"\ndate-modified: last-modified\ndate: \"2026-02-18\"\njupyter: python3\n---\n\n# Stop & Think Answers — @sec-collections\n\n@tip-02-deleting-dict-examples response:  Because you will have already removed the item from the dictionary!\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -55,6 +55,8 @@ book:
           href: basics/think_answers/index.qmd
     - part: Collections
       chapters:
+        - text: Stop & Think Answers
+          href: collections/think_answers/index.qmd
         - text: Practice Problems
           href: collections/practice_problems/index.qmd
         - text: Practice Problem Solutions

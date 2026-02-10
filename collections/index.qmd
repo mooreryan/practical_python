@@ -689,13 +689,13 @@ So far, we've worked with two types of collections: lists and strings. But what 
 
 Loops give you a way to automate repetitive tasks. Instead of copying and pasting the same code multiple times to process each item in a list (which would be both tedious and error-prone), loops let you write the instructions once and apply them to every item automatically.
 
-For example, if you had a list of gene sequences and wanted to check each one for a particular pattern, you wouldn't want to write separate code for each sequence. A loop would let you perform this check systematically across your entire dataset.
+For example, if you had a list of gene sequences and wanted to check each one for a particular pattern, you wouldn't want to write separate code for each sequence in the list. A loop would let you perform this check across your entire dataset.
 
 Python offers several different types of loops, each suited for particular situations. In this section we will focus on for loops and while loops.
 
 ### For Loops
 
-A for loop processes each item in a sequence, one at a time. Think of it like going through a list and looking at each item one at a time:
+A for loop processes each item in a sequence, one at a time. To go back to that box metaphor, it's a bit like going to each box, opening it up, and doing something with the item inside.
 
 ```{python}
 for letter in ["D", "N", "A"]:
@@ -704,10 +704,10 @@ for letter in ["D", "N", "A"]:
 
 Let's break that down:
 
-1. `for` -- tells Python we want to start a loop
-2. `letter` -- a variable that will hold each item
-3. `in ["D", "N", "A"]` -- tells Python to loop through the list `["D", "N", "A"]`
-4. `:` -- marks the beginning of the code block to be executed
+1. `for`: tells Python we want to start a loop
+2. `letter`: a variable that will hold each item
+3. `in ["D", "N", "A"]`: tells Python to loop through the list `["D", "N", "A"]`
+4. `:`: marks the beginning of the code block to be executed
 5. The indented code (`print(letter)`) runs once for each item
 
 Note that `for` and `in` are specifically required in for loop syntax. `letter` and `["D", "N", "A"]` will change depending on the context.
@@ -741,7 +741,7 @@ for number in range(5):
 
 This should have printed 5 numbers: 0, 1, 2, 3, 4. Here is Python counting from zero again!
 
-You can also tell range where to start and stop:
+You can also tell `range` where to start and stop:
 
 ```{python}
 # Count from 1 to 5
@@ -758,22 +758,24 @@ for i in range(2, 10, 2):
 
 Let's break down what's happening with `range` here. While we've seen `range` create simple sequences of numbers before, it can actually take up to three arguments: `range(start, stop, step)`. The `step` tells Python how many numbers to count by each time.
 
-It's like counting: normally we count "1, 2, 3, 4..." (step of 1), but sometimes we count "2, 4, 6, 8..." (step of 2). In this example, we're using a step of 2 to skip every other number.
+It's pretty much like regular counting: normally we count "1, 2, 3, 4..." (step of 1), but sometimes we count "2, 4, 6, 8..." (step of 2). In this example, we're using a step of 2 to skip every other number.
 
-The `start` and `step` arguments are optional -- you can just use `range(stop)` if you want to count normally starting from zero. If you're curious about more advanced uses, like counting backwards or working with negative numbers, check out the Python [range docs](https://docs.python.org/3/library/stdtypes.html#range) for more details.
+Both the `start` and `step` arguments are optional: you can just use `range(stop)` if you want to count normally starting from zero. If you're curious about more advanced uses, like counting backwards or working with negative numbers, check out the Python [range docs](https://docs.python.org/3/library/stdtypes.html#range) for more details.
 
-Ranges are memory efficient -- they don't store all the numbers in the range in memory. This is important when generating large batches of numbers.
+Ranges are memory efficient.  They don't store all the numbers in the range in memory. This is important when generating large batches of numbers:
 
-(This code shouldn't be run. It's just here to illustrate the point.)
 
 ```python
 big_range = range(1, 1000000)  # Takes very little memory
 big_list = list(big_range)     # Takes much more memory!
 ```
 
+(You probably don't want to run this code. It's just here to illustrate the point!)
+
+
 #### Nested For Loops
 
-One feature of for loops is that you can put one inside another -- something we call "nesting". Think of it like those Russian nesting dolls, where each doll contains a smaller one inside.
+Another neat feature of for loops is that you can put one inside another, which we will call "nesting". Think of it like those [Russian nesting dolls](https://en.wikipedia.org/wiki/Matryoshka_doll), where each doll contains a smaller one inside.
 
 ```{python}
 for i in range(2):
@@ -783,7 +785,7 @@ for i in range(2):
 
 Let's break down what's happening here. The outer loop (using `i`) runs two times (0, 1), and for _each_ of those times, the inner loop (using `j`) runs three times (0, 1, 2). It's a bit like having a set of drawers where you check each drawer (outer loop), and within each drawer, you look at every item inside (inner loop).
 
-When you run the above code, you'll see each combination of `i` and `j` printed out, showing how the loops work together. This pattern of nested loops is incredibly useful when you need to process data that has multiple levels or dimensions, for example, like comparing every gene in one dataset to every gene in another dataset.
+When you run the above code, you'll see each combination of `i` and `j` printed out, showing how the loops work together. This pattern of nested loops is useful for when you need to process data that has multiple levels or dimensions.  (Say you want to compare some aspect of all genes in one dataset to all genes in another dataset.)
 
 Here is a schematic view:
 
@@ -818,11 +820,11 @@ for i in range(2):
 
 Though I bet you know what's going on with nested loops by now, let's break it down anyway. The innermost loop (`k`) completes all its iterations before the middle loop (`j`) counts up once, and the middle loop completes all its iterations before the outer loop (`i`) counts up once. In this example, for each value of `i`, we'll go through all values of `j`, and for each of those, we'll go through all values of `k`.
 
-Remember that each additional level of nesting multiplies the number of iterations. In our example, we have 2 × 3 × 4 = 24 total iterations. Keep this in mind when working with larger datasets.
+Remember that each additional level of nesting multiplies the number of iterations. In our example, we have 2 × 3 × 4 = 24 total iterations. Keep this in mind when working with larger datasets, as you can create some really slow code this way!
 
 #### Enumerated for Loops
 
-Sometimes when you're working with a sequence, you need to know not just what each item is, but also where it appears. That's where Python's handy `enumerate` function comes in. It lets you track both the position (index) and the value of each item as you loop through them.
+Sometimes when you're working with a sequence, you need to know not just what each item is, but also where it appears in the list. That's where Python's handy `enumerate` function comes in. It lets you track both the position (index) and the value of each item as you loop through them.
 
 Here's a simple example:
 
@@ -874,7 +876,7 @@ Just to make it super clear, let's write out the steps:
 
 #### Infinite Loops and Other Problems
 
-When working with while loops, it's crucial to ensure your loop has a way to end. Think of it like setting up an automated process -- you need a clear stopping point, or the process will run forever!
+When working with while loops, it's crucial to ensure your loop has a way to end. Think of it like setting up an automated process.  You need a clear stopping point, or the process will run forever!
 
 There are two common pitfalls to watch out for:
 
@@ -912,8 +914,10 @@ With a while loop and the `pop` method, it's not too weird -- you run the while 
 # Starting with a list of tasks
 todo_list = ["task1", "task2", "task3"]
 
-while todo_list:  # This is true as long as the list has items
-    current_task = todo_list.pop()  # removes and returns last item
+# This is true as long as the list has items
+while todo_list:
+    # Removes and returns last item
+    current_task = todo_list.pop()
     print(f"Doing task: {current_task}")
 
 print("All tasks complete!")
@@ -942,9 +946,12 @@ for number in numbers[:]:  # The [:] creates a copy
 print(f"at the end: {numbers}")
 ```
 
-Really, this example is pretty artificial -- you wouldn't be trying to delete every item in a list with a for loop anyway. Just be aware that if you modify a collection during a loop, special care must be taken to ensure that you don't mess things up.
+Really, this example is pretty artificial.  You probably wouldn't be trying to delete every item in a list with a for loop anyway. Just be aware that if you modify a collection during a loop, special care must be taken to ensure that you don't mess things up.
 
-_Take note of this for miniproject 1 -- you will "probably" have to remove some items from a list to complete it! But don't worry, you will see some more examples in the project description...._
+
+::: { .callout-tip collapse="false" }
+Take note of this for miniproject 1.  You will "probably" have to remove some items from a list to complete it! But don't worry, you will see some more examples in the project description....
+:::
 
 ### Comprehensions
 
@@ -959,10 +966,10 @@ Let's say that you want to create a list of RNA bases and you've already made a 
 dna = ["A", "T", "G", "C"]
 rna = []
 for base in dna:
-    if base != "T":
-        rna.append(base)
-    else:
+    if base == "T":
         rna.append("U")
+    else:
+        rna.append(base)
 
 print(rna)
 ```
@@ -975,7 +982,7 @@ rna = ["U" if base == "T" else base for base in dna]
 print(rna)
 ```
 
-The comprehension is much more concise! The list comprehension is doing everything that the traditional for loop is doing, but in a single line.
+The comprehension is much more concise! The list comprehension is doing everything that the normal for loop is doing, but in a single line.
 
 The basic structure of a comprehension can be broken down into these components:
 
@@ -1015,9 +1022,9 @@ This example takes each number in the list produced by `range(5)`, squares it, a
 - `x` is the `item` and `range(5)` is the `iterable`
 - There is no `if condition`
 
-Notice that you don't have to initialize an empty list for the comprehension to work -- it makes the list itself, unlike with a for loop.
+Notice that you don't have to initialize an empty list for the comprehension to work.  It takes care of creating the list itself, unlike with a for loop.
 
-Let's look at an example with a condition:
+Let's look at another example with a condition:
 
 ```{python}
 # Using comprehension
@@ -1050,11 +1057,11 @@ print(even_squares)
 
 That is pretty neat right?
 
-While comprehensions are compact, whether or not you think this conciseness leads to better code is a different story. As you gain more experience, you will get a better feel for such things. Whether you use them a lot or a little, you should be aware of them as they are quite common in Python codebases.
+No doubt comprehensions are compact, but whether or not you think this conciseness leads to better code is a different story. As you gain more experience, you will get a better feel for such things. Whether you use them a lot or a little, you should be aware of them as they are quite common in Python codebases.
 
 ## Tuples
 
-Tuples are like lists that can't be changed -- perfect for storing fixed information. We often use tuples when we want to ensure data integrity or represent relationships that shouldn't change.
+Tuples are like lists that can't be changed and are great for storing fixed information.
 
 ### Creating Tuples
 
@@ -1082,8 +1089,8 @@ If `letters` was a list, the above code would change the list to start with `d` 
 
 Whether some data is mutable or immutable determines whether you can modify it or not. Here is a silly metaphor to illustrate what I mean:
 
-- **Mutable** collections (like lists and dictionaries) are like erasable whiteboards -- you can add, remove, or change items whenever you need to
-- **Immutable** collections (like tuples) are more like carved stone tablets -- once created, their contents are "set in stone"
+- **Mutable** collections (like lists and dictionaries) are like erasable whiteboards: you can add, remove, or change items whenever you need to
+- **Immutable** collections (like tuples) are more like carved stone tablets: once created, their contents are "set in stone"
 
 Why does this matter? Here are two practical implications:
 
@@ -1091,9 +1098,9 @@ Why does this matter? Here are two practical implications:
   - Remember how we could modify individual coordinates in our list earlier? If we had used tuples instead, Python would have prevented any accidental modifications
 - **Technical Requirements**: Some Python features, like using values as dictionary keys (which we'll explore soon), only work with immutable data types
 
-Tuples excel at representing fixed relationships between values that logically belong together. Think of them as a way to package related information that you know shouldn't change during your program's execution.
+Tuples excel at representing fixed relationships between values that logically belong together. They basically provide a way to package related information that you know shouldn't change during your program's execution.
 
-E.g., our coordinates example from above could be better written with a tuple:
+E.g., our coordinates example from above could maybe be better written with a tuple:
 
 ```{python}
 # (x, y)
@@ -1119,11 +1126,15 @@ gene_info = ("BRCA1",     # gene name
 print(gene_info)
 ```
 
+As with pretty much everything, you will have a lot of choices with how best to structure your programs!
+
 ### Tuple Packing and Unpacking
 
 Let's look at two really useful Python features that make working with multiple values easier: tuple packing and unpacking.
 
-Tuple packing is pretty straightforward -- Python can automatically bundle multiple values into a tuple for you. Here's an example using a codon and its properties:
+Tuple packing is essentially Python automatically bundling multiple values into a tuple for you.
+
+Here's an example using a codon and its properties:
 
 ```{python}
 # Packing values into a tuple
@@ -1131,7 +1142,7 @@ codon = "AUG", "Methionine", "Start"
 print(codon)
 ```
 
-The opposite operation, tuple unpacking, lets you smoothly assign tuple elements to separate variables:
+The opposite operation, tuple unpacking, lets you assign tuple elements to separate variables:
 
 ```{python}
 # Unpacking a tuple into individual variables
@@ -1212,9 +1223,9 @@ print(name, chromosome, start, stop)
 
 What makes named tuples great?
 
-- They're clear and self-documenting -- the labels tell you exactly what each value means
-- They're less prone to errors -- no more mixing up whether position 2 was start or stop
-- They're efficient and unchangeable (immutable), just like regular tuples
+- They're clear and self-documenting: the labels tell you exactly what each value means
+- They're less prone to errors: no more mixing up whether position 2 was start or stop
+- They're efficient and immutable, just like regular tuples
 
 For example, you can't change values after creation:
 
@@ -1225,7 +1236,7 @@ except AttributeError:
     print("you can't do this!")
 ```
 
-Named tuples are perfect for representing any kind of structured data. Here's another example using DNA sequences:
+Named tuples are great for representing any kind of structured data. Here's another example using DNA sequences:
 
 ```{python}
 Sequence = namedtuple("Sequence", "id dna length gc_content")
@@ -1239,7 +1250,7 @@ print(seq1)  # Shows all fields with their values
 print(seq2)
 ```
 
-I have mentioned a few times now that tuples are immutable, and named tuples are as well. There is a way to get an modified copy of a named tuple however:
+I have mentioned a few times now that tuples are immutable, and named tuples are as well. There is a way to get a modified copy of a named tuple however:
 
 ```{python}
 seq1 = Sequence("SEQ1", "GGCTAA", length=6, gc_content=0.5)
@@ -1254,6 +1265,10 @@ print(seq1_with_new_id)
 ```
 
 The bottom line: When you need to bundle related data together, named tuples are often a great choice. They're essentially as lightweight as regular tuples, but they make your code much easier to read and maintain. Think of them as regular tuples with the added bonus of built-in documentation!
+
+::: { .callout-tip collapse="false" }
+We will see other ways of bundling data later in the course. For example, when we look at objects in @sec-oop.
+:::
 
 ### When to Use Tuples vs. Lists
 
@@ -1272,7 +1287,7 @@ It may still be unclear when to choose tuples rather than lists. While you will 
 - Your data needs to be flexible and modifiable
 - You're accumulating or building up data throughout your program
 
-One way to think of it is: if you're working with data that should remain constant, reach for a tuple. If you need something more flexible that can grow or change (like collecting results), a list is your better choice.
+One way to think of it is: if you're working with data that should remain constant, reach for a tuple. If you need something more flexible that can grow or change (like collecting results), a list is the better choice.
 
 Here is a nice section of the Python docs if you want to dive deeper: [Why are there separate tuple and list data types?](https://docs.python.org/3/faq/design.html#why-are-there-separate-tuple-and-list-data-types)
 
@@ -1280,13 +1295,15 @@ Here is a nice section of the Python docs if you want to dive deeper: [Why are t
 
 Dictionaries in Python are a bit like address books. Just as you can look up someone's phone number using their name, dictionaries let you pair up pieces of information so you can easily find one when you know the other. The first part (like the person's name) is called the _key_, and it leads you to the second part (like their phone number), which is called the _value_.
 
-Let's say you want to keep track of gene names and their functions. Instead of scanning through a long list every time, a dictionary lets you jump straight to the function just by knowing the gene name. They are a great way to organize and retrieve your data quickly.
+Let's say you want to keep track of gene names and their functions. (By now, maybe you can tell that I'm not super creative with these examples....) Instead of scanning through a long list every time, a dictionary lets you jump straight to the function just by knowing the gene name. They are a great way to organize and retrieve your data quickly.
 
 ### Creating Dictionaries
 
+There are a few different ways to create dictionaries in Python. Let's take a look at them!
+
 #### Dictionary Literals (`{}`)
 
-The most straightforward way to create dictionaries is using curly brackets `{}` with `key: value` pairs:
+The most straightforward way to create dictionaries is using curly brackets `{}` with `key: value` pairs. Here is a tiny codon table:
 
 ```{python}
 codon_table = {
@@ -1301,12 +1318,14 @@ print(codon_table)
 
 #### `dict` Function
 
-You can also create dictionaries using the `dict()` function, which is particularly nice when you have simple string keys:
+You can also create dictionaries using the `dict()` function, which can be useful when you have simple string keys:
 
 ```{python}
 gene = dict(gene="nrdA", product="ribonucleotide reductase")
 print(gene)
 ```
+
+Though, in this case I would still prefer the wiggle bracket syntax: `{}`.
 
 #### `dict` + `zip`
 
@@ -1423,6 +1442,8 @@ result = gene_functions.get("BRCA2", "Unknown")
 print(result)
 ```
 
+Using `get` can be very helpful, especially if you have a logical default value!
+
 #### Adding Items to a Dictionary
 
 We mentioned that dictionaries are mutable. Let's see how to add items to our dictionary. You can either add items one at a time or several at once:
@@ -1481,9 +1502,12 @@ print(gene_functions)
 
 The [`del` statement](https://docs.python.org/3/tutorial/datastructures.html#the-del-statement) is probably the more common way to remove an item from a dictionary.
 
-Note that if you run that code block more than one time, you will get different outputs. Can you think of why that would be?
+::: { #tip-02-deleting-dict-examples .callout-tip title="Stop & Think" collapse="false" }
+If you run that code block more than one time, you will get different outputs. Can you think of why that would be?
+:::
 
-By the way...before working with a key, it's often wise to first check if it exists:
+
+By the way...before working with a key, it's often useful to first check if it exists:
 
 ```{python}
 if "TP53" in gene_functions:
@@ -1530,6 +1554,8 @@ for nucleotide in reversed(dna_sequence):
 ```
 
 (The `end=""` parameter tells Python not to add newlines between letters, giving us one continuous sequence.)
+
+Not too bad right?
 
 ### Nested Dictionaries: Organizing Complex Data
 
