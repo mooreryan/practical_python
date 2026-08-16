@@ -122,6 +122,7 @@ format:
     theme:
       dark: [custom.scss, darkly]
       light: [custom.scss, flatly]
+    respect-user-color-scheme: true
       # - custom.scss
       # - flatly
     include-after-body:
